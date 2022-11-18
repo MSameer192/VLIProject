@@ -1,0 +1,15 @@
+.VehicleTbg {
+    background-image: url("./Assets/VehicleTypeBG.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    /* background-size: cover; */
+}
+
+.hover-on-child:hover .VehicleTypeInfo {
+    width: 70%;
+    gap: 24px;
+}
+.NavigateButton_DropShadow{
+    box-shadow: 0px 3px 6px #A1A3EF;
+}

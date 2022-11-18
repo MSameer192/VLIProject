@@ -1,0 +1,20 @@
+.LandingPage {
+    background: linear-gradient(305.35deg, #45108a 10.63%, #45108a 12.39%, #12054e 97.86%, #10054d 97.86%);
+}
+
+.LandingContainerLite {
+    width: 105%;
+
+}
+
+.LandingPagetext {
+    font-family: var(--PrintBoldfont);
+}
+
+
+@media (max-width:768px) {
+    .bgGradient {
+        background-image: linear-gradient(165deg, #291C5F, #5722A4, #410F86);
+    }
+    
+}

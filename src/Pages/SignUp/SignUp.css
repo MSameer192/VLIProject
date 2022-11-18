@@ -1,0 +1,8 @@
+.DropShadow{
+    box-shadow:3px 3px 6px #00000037;
+    width: max-content;
+}
+.BG_Image{
+    background-image: url('./Assets/Signup\ BG\ image.png');
+    background-position: center;
+}

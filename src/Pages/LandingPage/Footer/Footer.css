@@ -1,0 +1,14 @@
+.image {
+    /* display: block; */
+    width: calc(100% - 0px);
+}
+
+.ContactBtn_DropShadow {
+    box-shadow: 7px 11px 6px #FFFFFF16;
+}
+
+@media (max-width:768px) {
+    .FooterLinearGradient {
+        background-image: linear-gradient(165deg, #291C5F, #5722A4, #410F86);
+    }
+}

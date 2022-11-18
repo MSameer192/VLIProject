@@ -1,0 +1,51 @@
+.header {
+    box-shadow: 1px 11px 16px #f9f4f429;
+
+}
+
+.Search {
+    background-image: url("./Assessts/SearchIcon.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-color: rgb(192, 72, 72);
+}
+
+.header-font {
+    position: relative;
+    font-family: var(--SemiBoldfont);
+    /* font-size: 20px; */
+    color: black;
+    text-decoration: none;
+    /* border: 1px solid black; */
+}
+
+.FavouriteImage {
+    /* background-image: url("../Assests/Favorites.png"); */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.CartImage {
+    /* background-image: url("../Assests/Cart.png"); */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    position: relative;
+}
+
+.AvatarImage {
+    /* background-image: url("../Assests/Avatar.png"); */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: 1px solid black;
+    height: 20px;
+    width: 20px;
+}
+
+
+.header-font:hover {
+    color: #A1A3EF
+}
