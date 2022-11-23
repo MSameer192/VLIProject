@@ -42,10 +42,7 @@ const LandingPage = () => {
           </picture>
         </div>
 
-        <div className='w-full absolute'>
-          <Link className='text-xs Refularfont text-white'>Register</Link>
-          <Link className='text-xs Refularfont text-white'>Login</Link>
-        </div>
+   
         <div className='flex flex-row justify-around items-center mt-[150px] md:mt-0 md:absolute top-32 xl:top-28 left-0 w-full'>
 
           <div className='flex flex-col mx-1 w-4/5 md:w-auto md:z-10 md:m-0 relative -top-10 gap-10 md:gap-5 lg:gap-10'>

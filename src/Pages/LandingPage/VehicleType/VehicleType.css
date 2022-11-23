@@ -13,3 +13,6 @@
 .NavigateButton_DropShadow{
     box-shadow: 0px 3px 6px #A1A3EF;
 }
+.VehicleType_DropShadow{
+    box-shadow: 15px 15px 6px rgba(0, 0, 0, 0.16);
+}

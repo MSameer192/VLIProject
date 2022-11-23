@@ -9,12 +9,12 @@ const CourseSearch = () => {
                className='w-full max-w-[1125px]'
                 alt="" />
 
-            <div className='flex justify-center items-center gap-4'>
-                <input className={`pt-3 pb-2 px-8 w-[325px] lg:w-[400px] Regularfont text-[14px] lg:text-xs rounded-[20px] h-[54px] outline-none  border-none focus:border-[1px] focus:border-solid focus:border-black SearchBox_DropShadow`}
+            <div className='flex justify-center items-center gap-2'>
+                <input className={`pt-2 md:pt-3 pb-1 md:pb-2 px-5 md:px-8 w-[260px] sm:w-[290px] md:w-[325px] lg:w-[400px] Regularfont text-[14px] lg:text-xs rounded-[20px] h-10 md:h-14 outline-none  border-none focus:border-[1px] focus:border-solid focus:border-black SearchBox_DropShadow`}
                     type="text"
                     placeholder='Search Course With Code...... '
                 />
-                <div className='h-10 lg:h-14 w-10 lg:w-14 bg-white rounded-[28px] SearchIcon_DropShadow flex justify-center items-center  cursor-pointer'>
+                <div className='h-8 sm:h-10 lg:h-14 w-8 sm:w-10 lg:w-14 bg-white rounded-[28px] SearchIcon_DropShadow flex justify-center items-center  cursor-pointer'>
                     <span className='flex justify-center items-center cursor-pointer'><SearchIcon /></span>
                 </div>
             </div>

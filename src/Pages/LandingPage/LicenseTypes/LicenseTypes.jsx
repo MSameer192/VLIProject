@@ -143,7 +143,7 @@ const LicenseTypes = () => {
                 alt="" />
             <div className={`w-full  flex justify-start items-center flex-col`}>
                 <img className="hidden lg:inline absolute  w-full -z-10" src={require('./Assets/Notes.png')} alt="" />
-                <div className='w-[95%] h-fit flex justify-center  overflow-hidden relative lg:-top-32 lg:mt-64 '>
+                <div className='w-[95%] h-fit flex justify-center relative lg:-top-32 lg:mt-64 '>
                     <div
                         style={{ left: -Size + "px" }}
                         className='flex w-full flex-row gap-8 duration-150 justify-start lg:justify-center relative lg:flex-wrap'>
@@ -178,7 +178,7 @@ function LicenseTypeTiles({ LicenseTypesState, setref }) {
         return (
             <div key={value.LicenseTypeId}
                 ref={(e) => { setref(e) }}
-                className='relative cursor-pointer max-w-[320px] min-w-[220px] w-[60%] h-[324px] flex flex-col items-center lg:h-[480px] gap-7 bg-white rounded-2xl duration-[400ms] hover-on-child'>
+                className='relative cursor-pointer max-w-[320px] min-w-[220px] w-[60%] h-[324px] flex flex-col items-center lg:h-[480px] gap-7 bg-white rounded-2xl duration-[400ms] hover-on-child LicenseShadow'>
                 <div className='w-full h-36 lg:h-56 flex items-center justify-center'>
                     <img loading='lazy' src={`/api/LicenseType/image/?url=${value.LicenseTypeImage}`}
                         className='w-[90%]'

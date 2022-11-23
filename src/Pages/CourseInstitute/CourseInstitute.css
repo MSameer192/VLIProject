@@ -1,0 +1,14 @@
+.SchoolBackGroundImage{
+    background-image: url('./Assets/School\ Image.png');
+    background-size: cover;
+    border: 1px solid black;
+    background-repeat: no-repeat;
+}
+.Border{
+    /* border-solid border-none border-b-[] border-[1px] */
+    border-bottom: 1px solid #DFDFDF;
+}
+.ButtonBorder{
+    border: none;
+    border-bottom: 3px solid white;
+}

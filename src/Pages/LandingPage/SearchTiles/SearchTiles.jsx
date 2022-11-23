@@ -26,12 +26,12 @@ const SearchTiles = () => {
         transition-all rounded-2xl cursor-pointer 
         hover:scale-100 hover:origin-top-left hover:bg-[#ABACEF] md:hover:scale-[1.09] 
         TilesShadow`}>
-          <div className='w-28'>
+          <div className='w-20 md:w-28'>
             <img loading='lazy' src={value.ImageLink} alt="" className='w-full' />
           </div>
           <div className='flex flex-col gap-[5px]'>
-            <h3 className=' text-center Blackfont'>{value.Heading}</h3>
-            <p className='w-72 text-center Regularfont '>{value.Text}</p>
+            <h3 className='text-center Blackfont'>{value.Heading}</h3>
+            <p className='w-56 md:w-72 text-center Regularfont '>{value.Text}</p>
           </div>
         </div>
 

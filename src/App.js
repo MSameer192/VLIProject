@@ -2,8 +2,9 @@ import './App.css';
 import Header from './Components/Header/Headers';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LandingPage from './Pages/LandingPage/LandingPage';
-import SignUp from './Pages/SignUp/SignUp';
+import LoginAndRegister from './Pages/LoginAndRegister/LoginAndRegister';
 import { useState } from 'react';
+import CourseInstitute from './Pages/CourseInstitute/CourseInstitute';
 
 function App() {
   const [AuthPageName, setAuthPageName] = useState("")
@@ -12,10 +13,10 @@ function App() {
     <>
       <BrowserRouter>
         <Header AuthPageName={AuthPageName} setAuthPageName={setAuthPageName} />
-        {AuthPageName !== "" ? <SignUp  AuthPageName={AuthPageName} setAuthPageName={setAuthPageName}  /> : null}
+        {AuthPageName !== "" ? <LoginAndRegister  AuthPageName={AuthPageName} setAuthPageName={setAuthPageName}  /> : null}
         <Routes>
           <Route path='/' element={<LandingPage />} />
-          {/* <Route path='/signin' element={<SignUp/>}/> */}
+          <Route path='/course/:CoursePackagePK' element={<CourseInstitute/>}/>
         </Routes>
       </BrowserRouter>
     </>

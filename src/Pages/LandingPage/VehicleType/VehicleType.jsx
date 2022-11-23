@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { GetVehicleTypes } from '../../../Actions/CategoryA';
-let HoverStyle = "hover:origin-top-left hover:gap-12 hover:scale-100 md:hover:scale-[1.04] "
+
 const VehicleType = () => {
     const Dispatch = useDispatch();
     const [VehicleTypesSate, setVehicleTypesSate] = useState([
@@ -113,35 +113,41 @@ const VehicleType = () => {
 function VehicleTypeTiles({ VehicleTypesSate }) {
     const [ref, setref] = useState({});
     const [Size, setSize] = useState(0);
-
+    console.log( -Size + "px")
+    let HoverStyle = "hover:origin-top-left hover:gap-12 hover:scale-100 md:hover:scale-[1.04] "
     useEffect(() => {
         window.addEventListener("resize", () => {
             setSize(0)
         })
     }, [ref])
-    return <div className={`w-full h-fit md:h-[900px]  relative mb-16 flex flex-col gap-5`}>
+    return <div className={`w-full h-fit lg:h-[900px]  relative mb-16 flex flex-col gap-5 `}>
         {/* Vehicle Type Background */}
         <picture className='hidden md:inline'>
             <source loading="lazy" media="(min-width:1550px)" srcSet={require('./Assets/VehicleTypeBG.png')} />
-            <img loading='lazy' src={require('./Assets/VehicleTypeBG.png')} className='absolute w-full -z-10 bottom-0'
+            <img loading='lazy' src={require('./Assets/VehicleTypeBG.png')} className='absolute w-full -z-10 bottom-1/2 translate-y-1/2'
                 alt=""
             />
         </picture>
 
-        <div className='w-[95%]  mx-2 mt-5 overflow-hidden'>
+        <div className='w-[95%] mx-2 mt-5 overflow-hidden py-5 md:overflow-visible h-fit'>
             <div
                 style={{ left: -Size + "px" }}
-                className='flex w-full flex-row gap-6 duration-150 justify-start md:justify-center relative lg:gap-8 md:mt-64 md:flex-wrap'
+                className={`flex w-full gap-6 h-fit duration-150 
+                justify-start md:justify-center  
+                flex-row md:flex-wrap lg:gap-8 
+                lg:mt-32 xl:mt-52 2xl:mt-64 `
+                }
             >
                 {VehicleTypesSate?.map((value) =>
                     <span
                         key={value.VehicleTypeId}
                         ref={(e) => { setref(e) }}
-                        className={`bg-white rounded-2xl duration-[400ms] cursor-pointer  flex flex-col items-center 
+                        className={`bg-white rounded-2xl duration-[400ms] cursor-pointer flex flex-col items-center 
                         gap-3 xl:gap-7  
-                        max-w-[320px] min-w-[220px] w-[60%]  lg:w-[60%] h-[324px] 
-                        md:h-[340px] lg:h-[370px] 2xl:h-[480px] 
+                        max-w-[320px] min-w-[220px] w-[60%]  lg:w-[60%]
+                        h-[324px] md:h-[340px] lg:h-[370px] 2xl:h-[480px] 
                         ${HoverStyle} hover-on-child
+                        VehicleType_DropShadow
                         `}>
                         <img loading='lazy'
                             className='w-4/5'
