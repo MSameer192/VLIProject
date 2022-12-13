@@ -1,16 +1,23 @@
 import { useEffect } from "react";
 
-export function useOutsideAlerter(ref, setAuthPageName) {
+export function useHideOnClickOutside(ref, setCheckOutside, ClassName) {
     useEffect(() => {
         function handleClickOutside(event) {
-            if (ref.current && !ref.current.contains(event.target)) {
-                setAuthPageName("")
-            }
-        }
+            if (ref.current && !ref.current.contains(event.target) && ClassName) {
+                if (setCheckOutside !== null)
+                    setCheckOutside(false)
 
-        document.addEventListener("mousedown", handleClickOutside);
+                else if (ClassName) {
+                    ref.parentNode.classList.remove(ClassName)
+                    console.log(ClassName)
+                }
+            }
+
+        }
+        ref?.addEventListener('click', handleClickOutside)
+        ref?.addEventListener("mousedown", handleClickOutside);
         return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
+            ref?.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [ref, setAuthPageName]);
+    }, [ref, setCheckOutside, ClassName]);
 }

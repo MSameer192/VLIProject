@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import './VehicleType.css'
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -98,10 +98,10 @@ const VehicleType = () => {
             </div>
 
             {/* Right Small Bulb image */}
-            <div className='absolute top-96 h-[380px]  w-full overflow-hidden hidden md:inline'>
+            <div className='hidden xl:inline-block absolute top-96 h-[380px]  w-full overflow-hidden '>
                 <img loading='lazy'
                     className=' absolute -scale-x-100 -right-32  h-[380px] -z-10'
-                    src={require('../SearchTiles/Assessts/BulbIcon.png')}
+                    src={require('../SearchTiles/Assets/BulbIcon.png')}
                     alt=""
                 />
             </div>
@@ -120,6 +120,7 @@ function VehicleTypeTiles({ VehicleTypesSate }) {
             setSize(0)
         })
     }, [ref])
+ 
     return <div className={`w-full h-fit lg:h-[900px]  relative mb-16 flex flex-col gap-5 `}>
         {/* Vehicle Type Background */}
         <picture className='hidden md:inline'>
@@ -133,9 +134,10 @@ function VehicleTypeTiles({ VehicleTypesSate }) {
             <div
                 style={{ left: -Size + "px" }}
                 className={`flex w-full gap-6 h-fit duration-150 
-                justify-start md:justify-center  
+                justify-start md:justify-center 
                 flex-row md:flex-wrap lg:gap-8 
-                lg:mt-32 xl:mt-52 2xl:mt-64 `
+                lg:mt-32 xl:mt-52 2xl:mt-64 
+                relative md:static`
                 }
             >
                 {VehicleTypesSate?.map((value) =>

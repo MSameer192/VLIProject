@@ -1,0 +1,13 @@
+.EnrolledCourseTopBG {
+    background-image: linear-gradient(70deg, #170654, #440F88);
+}
+
+ 
+
+
+
+@media (max-width: 768px) {
+    .EnrolledCourseTopBG {
+        background-image: linear-gradient(165deg, #291C5F, #5722A4, #410F86);
+    }
+}

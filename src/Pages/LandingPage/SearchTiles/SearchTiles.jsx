@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import './SearchTiles.css';
-import FrontCarImage from './Assessts/FrontCarImage.png';
-import StudentsImage from './Assessts/StudentsImage.png';
-import SideCarImg from './Assessts/SideCarImg.png';
-import BulbIcon from './Assessts/BulbIcon.png'
+import FrontCarImage from './Assets/FrontCarImage.png';
+import StudentsImage from './Assets/StudentsImage.png';
+import SideCarImg from './Assets/SideCarImg.png';
+import BulbIcon from './Assets/BulbIcon.png'
 const SearchTiles = () => {
   const [TilesInfo] = useState([
     { ImageLink: SideCarImg, Heading: "Search by Vehicle", Text: "Lorem Ipsum is simply dummy text  of the printing and typesetting." },
@@ -15,7 +15,7 @@ const SearchTiles = () => {
   return (
 
 
-    <div className='flex flex-col justify-center items-center w-full flex-wrap gap-5 bg-[#4d4d4d00]  md:top-0 md:flex-row md:gap-10 2xl:gap-20'>
+    <div className='relative flex flex-col justify-center items-center w-full flex-wrap gap-5 bg-[#4d4d4d00]  md:top-0 md:flex-row md:gap-10 2xl:gap-20'>
 
 
       {TilesInfo.map((value, index) =>
@@ -38,7 +38,7 @@ const SearchTiles = () => {
       )}
       <picture>
         {/* <source media="(max-width:640px )" srcset="" /> */}
-        {/* <img loading='lazy' className='absolute -z-10 -left-32 -top-48 h-[380px]' src={BulbIcon} alt="" /> */}
+        <img loading='lazy' className='hidden xl:inline-block absolute -z-10 -left-32 -top-48 h-[380px]' src={BulbIcon} alt="" />
       </picture>
 
     </div>

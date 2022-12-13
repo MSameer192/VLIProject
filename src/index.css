@@ -80,3 +80,9 @@ body,
   box-sizing: border-box;
   font-family: var(--Regularfont);
 }
+ 
+.RemoveInputNumArrows::-webkit-inner-spin-button, .RemoveInputNumArrows::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  margin: 0;
+}

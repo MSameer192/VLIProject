@@ -1,15 +1,13 @@
 import React from 'react'
 import CourseSearch from './CourseSearch/CourseSearch';
-import Footer from './Footer/Footer';
 import './LandingPage.css';
 import LatestNews from './LatestNews/LatestNews';
 import LicenseTypes from './LicenseTypes/LicenseTypes';
 import PopularCourses from './PopularCourses/PopularCourses';
-
+import Footer from '../../Components/Footer/Footer'
 import SearchTiles from './SearchTiles/SearchTiles.jsx';
 import SpecialCourses from './SpecialCourses/SpecialCourses';
 import VehicleType from './VehicleType/VehicleType';
-import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
 
@@ -70,7 +68,7 @@ const LandingPage = () => {
       <SpecialCourses />
       <CourseSearch />
       <LatestNews />
-      <Footer />
+      <Footer FooterBgColor="#F1FAFF" />
     </>
   )
 }

@@ -64,7 +64,7 @@ const SignInLeftSide = ({ AuthPageName, setAuthPageName, TopLoginRegisterBtns, S
             <div className='w-full flex flex-col gap-2 md:gap-3 xl:gap-6 mb-4 md:mb-20 items-center '>
 
                 {
-                   <OtherOption OtherOptionDisplay={"inline"} AuthPageName={AuthPageName} />
+                   <OtherOption MobileDisplay={"inline"} DesktopDisplay={"hidden"} AuthPageName={AuthPageName} />
                 }
                 <h4 className='text-3xs md:text-base xl:text-[30px] font-normal text-white md:text-black w-full text-center md:text-left'> Partner {AuthPageName} </h4>
                 <button className={` w-full ${ButtonStyle} justify-start py-2 px-0 bg-white `}>

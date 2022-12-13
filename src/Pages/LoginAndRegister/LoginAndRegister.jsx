@@ -2,19 +2,19 @@ import React, { useRef, useState } from 'react'
 import './LoginAndRegister.css';
 import SignInLeftSide from './Components/LeftSide';
 import SigninRightSide from './Components/RightSide';
-import { useOutsideAlerter } from '../../Helpers/CustomHooks/useOutsideChecker';
+import { useHideOnClickOutside } from '../../Helpers/CustomHooks/useOutsideChecker';
 import { useEffect } from 'react';
 
 const SignUp = ({ AuthPageName, setAuthPageName }) => {
     const wrapperRef = useRef(null);
-    useOutsideAlerter(wrapperRef, setAuthPageName);
+    useHideOnClickOutside(wrapperRef, setAuthPageName);
     const [ScreenSize, setScreenSize] = useState()
     useEffect(() => {
         window.addEventListener("resize", () => {
             setScreenSize(Number(window.innerWidth))
         })
     }, [])
-    console.log(AuthPageName)
+ 
     let TopLoginRegisterBtns = `absolute border-none   rounded-t-[28px]  cursor-pointer Boldfont hidden md:inline-block 
                 -top-9   lg:-top-11 xl:-top-14 2xl:-top-16
                 py-[6px] lg:py-2 xl:py-3 2xl:py-4
@@ -27,7 +27,7 @@ const SignUp = ({ AuthPageName, setAuthPageName }) => {
                 <div className='min-h-fit bgGradient  md:min-h-[auto] h-screen w-full md:w-[95%] flex flex-col justify-center items-center md:mt-28 '
                     ref={wrapperRef}
                 >
-                    <div className='hidden md:block w-full BG_Image md:h-36 lg:h-56 xl:h-80 overflow-hidden '>
+                    <div className=' hidden md:block w-full BG_Image md:min-h-[144px] lg:min-h-[224px] xl:min-h-[320px] overflow-hidden '>
 
                         <div
                             className='w-full h-80 bg-[#00000070]'

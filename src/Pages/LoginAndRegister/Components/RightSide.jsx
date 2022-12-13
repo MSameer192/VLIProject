@@ -16,7 +16,7 @@ const SigninRightSide = ({ AuthPageName, setAuthPageName, TopLoginRegisterBtns }
         <div className={`flex flex-col relative justify-start 
                         w-full md:w-1/2
                         px-10 xl:px-16 2xl:px-24
-                        py-4  xl:py-8  2xl:py-14
+                        py-4  xl:py-8  2xl:py-14 pb-5
                         gap-2 xl:gap-4 `}
         >
             <h4 className=' font-normal w-full text-3xs md:text-xs lg:text-base xl:text-[30px] text-white md:text-black'>
@@ -54,7 +54,7 @@ const SigninRightSide = ({ AuthPageName, setAuthPageName, TopLoginRegisterBtns }
                     <div className={`flex flex-col ${Gap}`}>
                         {
                             AuthPageName === "Sign Up"
-                                ? <OnRegister OtherOptionDisplay={"hidden"} TermsDisplay={"flex"} AuthPageName={AuthPageName} />
+                                ? <OnRegister MobileDisplay={"hidden"} DesktopDisplay={"inline"} TermsDisplay={"flex"} AuthPageName={AuthPageName} />
                                 : <OnLogin />
                         }
 

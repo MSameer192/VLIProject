@@ -1,0 +1,117 @@
+.EnrollmentBG {
+    background-image: url('./Assets/Enrollment\ bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* filter: blur(4px); */
+}
+
+.EnrollmentStepsShadow {
+    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.16);
+}
+
+
+/* Radio Btn Style Start */
+
+.Radio-Btn {
+
+    width: 30px;
+    height: 30px;
+    border: 3px solid #A1A3EF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.Radio-Btn .CheckMark {
+    width: 2px;
+    height: 2px;
+    background-color: #222;
+    display: none;
+}
+
+.Radio-Btn input {
+    display: none;
+}
+
+.Radio-Btn input:checked+.CheckMark {
+    display: inline-block;
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    border-radius: 20px;
+    background-color: #A1A3EF;
+}
+
+/* Radio Btn Style End */
+
+
+.FreeTimeShadow {
+    box-shadow: 0px 3px 6px #00000016;
+}
+
+
+@media (min-width: 0px) {
+    .Radio-Btn {
+
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (min-width: 640px) {
+    .Radio-Btn {
+
+        width: 22px;
+        height: 22px;
+    }
+}
+
+@media (min-width: 768px) {
+    .Radio-Btn {
+
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .Radio-Btn {
+
+        width: 26px;
+        height: 26px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .Radio-Btn {
+
+        width: 28px;
+        height: 28px;
+    }
+}
+
+@media (min-width: 1536px) {
+    .Radio-Btn {
+
+        width: 30px;
+        height: 30px;
+    }
+}
+
+#TimeSlotScrollbar::-webkit-scrollbar {
+    cursor: pointer;
+    height: 5px;
+}
+
+#TimeSlotScrollbar::-webkit-scrollbar-thumb {
+    cursor: pointer;
+    background-color: #A1A3EF;
+    border-radius: 10px;
+}
+
+#TimeSlotScrollbar::-webkit-scrollbar-track {
+
+    cursor: pointer;
+    background-color: #ef528c00;
+}

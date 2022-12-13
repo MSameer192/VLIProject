@@ -168,7 +168,7 @@ function LicenseTypeTiles({ LicenseTypesState, setref }) {
 
         let LicenseTypeDescription = value.LicenseTypeDescription + ".";
         let words = value.LicenseTypeDescription.split(/[-\s(]/);
-        // if(value.LicenseTypeName==="CLASS M") console.log(words.length)
+ 
         if (words.length > 15)
             LicenseTypeDescription = value.LicenseTypeDescription.split(" ").slice(0, 15).join(' ') + " ...";
 

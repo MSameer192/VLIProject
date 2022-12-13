@@ -1,14 +1,43 @@
-.SchoolBackGroundImage{
-    background-image: url('./Assets/School\ Image.png');
+.SchoolBackGroundImage {
+    background-image: url('./CourseIntro/Assets/Course\ Image.png');
     background-size: cover;
     border: 1px solid black;
     background-repeat: no-repeat;
 }
-.Border{
-    /* border-solid border-none border-b-[] border-[1px] */
+
+.Border {
     border-bottom: 1px solid #DFDFDF;
 }
-.ButtonBorder{
+
+.ButtonBorder {
     border: none;
     border-bottom: 3px solid white;
+}
+
+.CourseInstructorsBG {
+    background-image: url('./CourseInstructors/Assets/Course\ Teachers\ BG.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.RevewTileShadow {
+    box-shadow: 15px 15px 50px #65656540;
+}
+
+@media (max-width:639px) {
+
+    .MobileGradient {
+        background-image: linear-gradient(165deg, #291C5F, #5722A4, #410F86);
+    }
+
+
+    .Border {
+        border-bottom: none;
+    }
+
+    .ButtonBorder {
+        border-bottom: 3px solid #AAAAAA;
+    }
+
 }
