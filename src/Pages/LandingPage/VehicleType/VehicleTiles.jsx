@@ -16,7 +16,7 @@ function VehicleTiles({ VehicleTypesSate, setref }) {
                         `}>
                 <img loading='lazy'
                     className={`w-4/5 ${TransitionDuration} img`}
-                    src={`/api/vehicletype/image/?url=${value.VehicleTypeImage}`}
+                    src={`https://vliserver-production.up.railway.app/api/vehicletype/image/?url=${value.VehicleTypeImage}`}
                     alt="Vehicle Type" />
                 <span className='w-[70%] flex gap-2 md:gap-5 flex-col items-center VehicleTypeInfo'>
                     <h2 className={`w-full font-normal ${TransitionDuration} text-3xs md:text-2xs Regularfont`}>
