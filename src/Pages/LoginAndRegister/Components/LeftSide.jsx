@@ -1,4 +1,5 @@
 import React from 'react'
+import ContinuesWith from './LeftSideComp/ContinuesWith';
 import { OtherOption } from './Mini Components/MiniComponents';
 
 const SignInLeftSide = ({ AuthPageName, setAuthPageName, TopLoginRegisterBtns, ScreenSize }) => {
@@ -26,53 +27,30 @@ const SignInLeftSide = ({ AuthPageName, setAuthPageName, TopLoginRegisterBtns, S
                         py-3  lg:py-4   xl:py-8   2xl:py-14
                         justify-between items-start relative`}
         >
-            <button className={`${TopLoginRegisterBtns} ${SignUpbtnColor}  -right-[1px] `}
-                onClick={() => setAuthPageName("Sign Up")}
+            <button type='button' className={`${TopLoginRegisterBtns} ${SignUpbtnColor}  -right-[1px] `}
+                onClick={() => {setAuthPageName("Sign Up");}}
             >
                 Sign Up
             </button>
 
 
-            <div className='flex flex-col gap-[6px] md:gap-3 xl:gap-[18px] w-full '>
-                <h4 className='font-normal text-4xs md:text-base xl:text-[30px] text-center md:text-left text-white md:text-black'>
-                    {ContinueHeading}
-                </h4>
-                <div className='flex flex-row md:flex-col gap-3 xl:gap-[18px] w-full justify-center md:justify-start'>
-                    <button className={`${ButtonStyle} border-none md:border-solid bg-[#ff000000] md:bg-white   w-auto md:w-full `}>
-                        <picture>
-                            <source media="(min-width:768px)" srcset={require("../Assets/Google Icon.png")} />
-                            <img
-                                className='w-9 md:w-7 xl:w-10'
-                                src={require("../Assets/Google Icon @mobile.png")} alt="" />
-                        </picture>
-                        <h5 className={`${h4Style} hidden md:inline-block`}>Continue With Google</h5>
-                    </button>
-                    <button className={`${ButtonStyle} border-none md:border-solid bg-[#ff000000] md:bg-white   w-auto md:w-full `}>
-
-                        <picture>
-                            <source media="(min-width:768)" srcset={require("../Assets/Facebook Icon.png")} />
-                            <img
-                                className='w-9 md:w-7 xl:w-10'
-                                src={require("../Assets/Facebook Icon @mobile.png")} alt="" />
-                        </picture>
-                        <h5 className={`${h4Style} hidden md:inline-block`}>Continue With Facebook</h5>
-                    </button>
-                </div>
-
-            </div>
+            <ContinuesWith ButtonStyle={ButtonStyle} h4Style={h4Style} ContinueHeading={ContinueHeading} />
 
             <div className='w-full flex flex-col gap-2 md:gap-3 xl:gap-6 mb-4 md:mb-20 items-center '>
 
-                {
-                   <OtherOption MobileDisplay={"inline"} DesktopDisplay={"hidden"} AuthPageName={AuthPageName} />
-                }
-                <h4 className='text-3xs md:text-base xl:text-[30px] font-normal text-white md:text-black w-full text-center md:text-left'> Partner {AuthPageName} </h4>
-                <button className={` w-full ${ButtonStyle} justify-start py-2 px-0 bg-white `}>
-                    <img
-                        className='w-6 xl:w-10'
-                        src={require('../Assets/Institute Icon.png')} alt="" />
-                    <h5 className={` ${h4Style} inline-block`}>{AuthPageName === "Sign Up" ? "Register" : "Continue"} as a Partner</h5>
+                {<OtherOption MobileDisplay={"inline"} DesktopDisplay={"hidden"} AuthPageName={AuthPageName} />}
+
+                <h4 className='text-3xs md:text-base xl:text-[30px] font-normal text-white md:text-black w-full text-center md:text-left'>
+                    Partner {AuthPageName}
+                </h4>
+
+                <button type="submit" className={` w-full ${ButtonStyle} justify-start py-2 px-0 bg-white `}>
+                    <img className='w-6 xl:w-10' src={require('../Assets/Institute Icon.png')} alt="" />
+                    <h5 className={` ${h4Style} inline-block`}>
+                        {AuthPageName === "Sign Up" ? "Register" : "Continue"} as a Partner
+                    </h5>
                 </button>
+
             </div>
 
         </div>)

@@ -1,41 +1,53 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './CoursesTiles.css'
-const CoursesSlider = ({ CoursesInfo, CourseTiles, NavigateBtnClass, ClassNames, ShowMoreUrl }) => {
+const CoursesSlider = ({ CoursesInfo, CourseTiles, NavigateBtnClass, ClassNames, ShowMoreUrl, SwitchSize }) => {
     const [ref, setref] = useState({});
     const [Size, setSize] = useState(0);
-
-    useEffect(() => {
-        window.addEventListener("resize", () => {
-            setSize(0)
-        })
-    }, [ref])
     const [Btns, setBtns] = useState(document?.querySelectorAll(`.${NavigateBtnClass}Remove,.${NavigateBtnClass}`));
 
+    // useEffect(()=>{
+    //     if (!SwitchSize) 
+    //         SwitchSize = "sm"
+
+    // },[])
+
     useEffect(() => {
-        if (Btns.length === 0) {
+        if (Btns.length === 0 && NavigateBtnClass) {
             setBtns(document?.querySelectorAll(`.${NavigateBtnClass}Remove,.${NavigateBtnClass}`));
-
         }
-    }, [NavigateBtnClass, Btns,])
+        else {
+            window.addEventListener("resize", () => {
+                setSize(0);
+                for (let index = 0; index < Btns?.length; index++) {
+                    if (index === 0) {
+                        Btns[index].classList.remove(`${NavigateBtnClass}Remove`)
+                    } else {
+                        Btns[index].classList.add(`${NavigateBtnClass}Remove`)
+                    }
+                }
+            })
+        }
 
-    return <div className='w-full h-fit relative mb-16 flex justify-center items-center flex-col gap-5 sm:gap-8 '>
-        <div className='w-[95%] sm:w-full mx-2 mt-5 sm:flex items-center justify-center overflow-hidden'>
+    }, [ref, Btns, NavigateBtnClass])
+
+    return <div className={`w-full h-fit relative mb-16 flex justify-center items-center flex-col gap-5 ${SwitchSize}:gap-8`}>
+        <div className={`w-[95%] ${SwitchSize}:w-full mx-2 mt-5 ${SwitchSize}:flex items-center justify-center py-5 overflow-hidden`}>
             <div
                 style={{ left: -Size + "px" }}
                 className={ClassNames}
-            > 
-                <CourseTiles CoursesInfo={CoursesInfo} setref={setref} />
+            >
+                <CourseTiles CoursesInfo={CoursesInfo} VehicleTypesSate={CoursesInfo} setref={setref} />
             </div>
         </div>
-        <div className='sm:hidden w-full flex justify-center gap-4'>
-            {CoursesInfo.map((value, index) => {
+        <div className={`${SwitchSize}:hidden w-full flex justify-center gap-4 h-10`}>
+            {CoursesInfo?.map((value, index) => {
 
                 let Class = NavigateBtnClass
                 if (index === 0) { Class = NavigateBtnClass } else { Class = NavigateBtnClass + "Remove" }
 
                 return (
-                    <span className={`w-5 h-5 rounded-[28px] bg-[#A1A3EF] cursor-pointer NavigateButton_DropShadow ${Class}`}
+                    <span key={index} className={`w-5 h-5 rounded-[28px] bg-[#A1A3EF] cursor-pointer NavigateButton_DropShadow ${Class}`}
                         onClick={(e) => { Btn(e, Btns, NavigateBtnClass, setBtns); setSize(ref.offsetWidth * index); }}
                     >
                     </span>
@@ -54,7 +66,7 @@ function Btn(e, BtnsArr, BtnClass, setBtns) {
     let ChildIndex = Array.from(BtnsArr).indexOf(e.target);
 
 
-    for (let i = 0; i < BtnsArr.length; i++) {
+    for (let i = 0; i < BtnsArr?.length; i++) {
         if (e.target === BtnsArr[i] && ChildIndex === i) {
             BtnsArr[i].classList.add(BtnClass)
             BtnsArr[i].classList.remove(BtnClass + "Remove")

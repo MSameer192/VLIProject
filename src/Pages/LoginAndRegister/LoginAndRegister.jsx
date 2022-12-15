@@ -1,66 +1,104 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
+import Crypto from 'crypto-js';
 import './LoginAndRegister.css';
 import SignInLeftSide from './Components/LeftSide';
 import SigninRightSide from './Components/RightSide';
-import { useHideOnClickOutside } from '../../Helpers/CustomHooks/useOutsideChecker';
 import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+import { LoginUser, SignUpUser } from '../../Actions/UserA';
+import { useNavigate } from 'react-router-dom';
+
+let TopLoginRegisterBtns = `absolute border-none   rounded-t-[28px]  cursor-pointer Boldfont hidden md:inline-block 
+            -top-9   lg:-top-11 xl:-top-14 2xl:-top-16
+            py-[6px] lg:py-2 xl:py-3 2xl:py-4
+            px-20    lg:px-24 xl:px-28 2xl:px-32 
+            text-2xs lg:text-xs xl:text-base 2xl:text-[30px]`
 
 const SignUp = ({ AuthPageName, setAuthPageName }) => {
-    const wrapperRef = useRef(null);
-    useHideOnClickOutside(wrapperRef, setAuthPageName);
-    const [ScreenSize, setScreenSize] = useState()
+    const { loading, UserInfo, error } = useSelector((Store) => Store.LoginSignupReducer);
+    const [Done, setDone] = useState(false);
+    const Navigate = useNavigate()
+    const Dispatch = useDispatch()
+    const [ScreenSize, setScreenSize] = useState();
+
+    const [Credentials, setCredentials] = useState({});
     useEffect(() => {
         window.addEventListener("resize", () => {
             setScreenSize(Number(window.innerWidth))
         })
     }, [])
- 
-    let TopLoginRegisterBtns = `absolute border-none   rounded-t-[28px]  cursor-pointer Boldfont hidden md:inline-block 
-                -top-9   lg:-top-11 xl:-top-14 2xl:-top-16
-                py-[6px] lg:py-2 xl:py-3 2xl:py-4
-                px-20    lg:px-24 xl:px-28 2xl:px-32 
-                text-2xs lg:text-xs xl:text-base 2xl:text-[30px]`
 
+    const SubmitForm = (e) => {
+        e.preventDefault();
+        if (AuthPageName === "Sign Up")
+            Dispatch(SignUpUser(Credentials, setDone))
+        else
+            Dispatch(LoginUser(Credentials, setDone))
+
+        return false
+    }
+    useEffect(() => {
+        console.log(!error.message && Done, error.message, Done)
+        if (!error?.message && Done) {
+            console.log("!error.message && Done")
+            setAuthPageName(false)
+            setDone(false)
+            Navigate('/')
+        }
+    }, [Navigate, error, Done, setAuthPageName])
     return (
-        
-            <div className='bg-[#00000037] min-h-fit h-[100%] bgGradient  fixed top-0 w-full z-50 overflow-scroll overflow-x-hidden flex justify-center items-center '>
-                <div className='min-h-fit bgGradient  md:min-h-[auto] h-screen w-full md:w-[95%] flex flex-col justify-center items-center md:mt-28 '
-                    ref={wrapperRef}
+
+        !loading
+            ? AuthPageName ?
+                <div className='bg-[#00000037] min-h-fit h-[100%] bgGradient  fixed top-0 w-full z-50 overflow-scroll overflow-x-hidden flex justify-center items-center '
+                    onClick={(e) => { setAuthPageName(false) }}
+
                 >
-                    <div className=' hidden md:block w-full BG_Image md:min-h-[144px] lg:min-h-[224px] xl:min-h-[320px] overflow-hidden '>
-
-                        <div
-                            className='w-full h-80 bg-[#00000070]'
-                        >
-
+                    <form className='min-h-fit bgGradient  md:min-h-[auto] h-screen w-full md:w-[95%] flex flex-col justify-center items-center md:mt-28'
+                        onClick={(e) => { e.stopPropagation() }}
+                        onSubmit={SubmitForm}
+                    >
+                        <div className={`overflow-hidden w-full
+                                    hidden      md:block 
+                                                md:min-h-[144px]    lg:min-h-[224px]    xl:min-h-[320px]
+                                    BG_Image`}>
+                            <div className='w-full h-80 bg-[#00000070]' > </div>
                         </div>
-                    </div>
 
-                    <div className='bg-white w-full flex bgGradient flex-col justify-around md:justify-between items-center h-fit min-h-full md:min-h-[auto] md:h-auto pb-16 md:pb-4 xl:pb-8  '>
-                        <div className='w-[97%] md:w-full h-fit min-h-full md:min-h-[auto] md:h-auto flex  flex-col-reverse justify-around   md:justify-start md:flex-row  md:bg-white '>
+                        <div className='bg-white w-full flex bgGradient flex-col justify-around md:justify-between items-center h-fit min-h-full md:min-h-[auto] md:h-auto pb-16 md:pb-4 xl:pb-8  '>
+                            <div className='w-[97%] md:w-full h-fit min-h-full md:min-h-[auto] md:h-auto flex  flex-col-reverse justify-around   md:justify-start md:flex-row  md:bg-white '>
 
-                            <SignInLeftSide
-                                AuthPageName={AuthPageName}
-                                setAuthPageName={setAuthPageName}
-                                TopLoginRegisterBtns={TopLoginRegisterBtns}
-                                ScreenSize={ScreenSize} />
+                                <SignInLeftSide
+                                    AuthPageName={AuthPageName}
+                                    setAuthPageName={setAuthPageName}
+                                    TopLoginRegisterBtns={TopLoginRegisterBtns}
+                                    ScreenSize={ScreenSize} />
 
-                            <CenterORline />
-                            <SigninRightSide AuthPageName={AuthPageName} setAuthPageName={setAuthPageName} TopLoginRegisterBtns={TopLoginRegisterBtns} />
-                            {/* For Mobile View only */}
-                            <div className='flex md:hidden mt-16  h-[12%]  flex-col text-white Boldfont justify-between items-center '>
-                                <h2>Sign Up For Free</h2>
-                                <p className='text-center'>"Lorem Ipsum is simply  dummy <br />text
-                                    of the printing" </p>
+                                <CenterORline />
+                                <SigninRightSide
+                                    AuthPageName={AuthPageName}
+                                    setAuthPageName={setAuthPageName}
+                                    TopLoginRegisterBtns={TopLoginRegisterBtns}
+                                    setCredentials={setCredentials}
+                                    Credentials={Credentials}
+                                />
+                                {/* For Mobile View only */}
+                                <div className='flex md:hidden mt-16  h-[12%]  flex-col text-white Boldfont justify-between items-center '>
+                                    <h2>Sign Up For Free</h2>
+                                    <p className='text-center'>"Lorem Ipsum is simply  dummy <br />text
+                                        of the printing" </p>
+                                </div>
                             </div>
+
+                            <SubmitButton AuthPageName={AuthPageName} />
                         </div>
 
-                        <SubmitButton AuthPageName={AuthPageName} />
-                    </div>
-
+                    </form>
                 </div>
-            </div>
-    
+                : null
+
+            : <h1>loading</h1>
+
     )
 }
 

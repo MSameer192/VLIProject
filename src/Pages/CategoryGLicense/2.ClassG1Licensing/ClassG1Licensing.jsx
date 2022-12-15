@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
 import CoursesSlider from '../../../Components/CourseSlider/CourseSlider';
 import ImageAndPrice from './ImageAndPricing';
 import { CourseInfo, RatingBtns } from './Navigation';
@@ -45,20 +44,12 @@ const ClassG1Licensing = ({ }) => {
 
 export function MainContent({ PopularCoursesInfo }) {
     let ClassNames = `relative   duration-300 flex items-start
-w-[95%]                             lg:w-11/12                  xl:w-[97%]       
-flex-nowrap     sm:flex-wrap 
-justify-start   sm:justify-around   lg:justify-between
-gap-7                               lg:gap-x-8 lg:gap-y-16
-`
-
-    return  <CoursesSlider CoursesInfo={PopularCoursesInfo} ClassNames={ClassNames} CourseTiles={Tiles} NavigateBtnClass='G1Licensing' />
-
-
- 
-
-
-
-
+                    w-[95%]                             lg:w-11/12                  xl:w-[97%]       
+                    flex-nowrap     sm:flex-wrap 
+                    justify-start   sm:justify-around   lg:justify-between
+                    gap-7                               lg:gap-x-8 lg:gap-y-16
+                    `
+    return <CoursesSlider CoursesInfo={PopularCoursesInfo} ClassNames={ClassNames} CourseTiles={Tiles} NavigateBtnClass='G1Licensing' />
 
 }
 

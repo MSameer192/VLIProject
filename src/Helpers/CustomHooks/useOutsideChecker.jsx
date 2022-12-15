@@ -3,17 +3,20 @@ import { useEffect } from "react";
 export function useHideOnClickOutside(ref, setCheckOutside, ClassName) {
     useEffect(() => {
         function handleClickOutside(event) {
-            if (ref.current && !ref.current.contains(event.target) && ClassName) {
-                if (setCheckOutside !== null)
-                    setCheckOutside(false)
+            event.propogation()
 
-                else if (ClassName) {
+            if (setCheckOutside !== null) {
+                setCheckOutside(false)
+
+            }
+            if (ref && !ref.contains(event.target)) {
+                if (ClassName) {
                     ref.parentNode.classList.remove(ClassName)
-                    console.log(ClassName)
                 }
             }
 
         }
+
         ref?.addEventListener('click', handleClickOutside)
         ref?.addEventListener("mousedown", handleClickOutside);
         return () => {

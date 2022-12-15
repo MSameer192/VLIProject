@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { BaseUrl } from './Base';
 
-let BaseUrl=""
+
 export const GetVehicleTypes = () => async (dispatch) => {
     try {
 

@@ -34,7 +34,7 @@ const LandingPage = () => {
               className=''
               srcSet={require("./Assets/Rectangle.svg").default} />
 
-            <source media="(min-width:768px)" srcset={require('./Assets/LandingContainer.svg').default} />
+            <source media="(min-width:768px)" srcSet={require('./Assets/LandingContainer.svg').default} />
             <img className='hidden w-full md:inline-block'
               src={require('./Assets/LandingContainer.svg').default} alt="" />
           </picture>
