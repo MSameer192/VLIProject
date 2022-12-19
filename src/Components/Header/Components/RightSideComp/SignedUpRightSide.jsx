@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import UserDropDown from './UserDropDown';
 
-const SignedUpRightSide = ({ setShowSidebar, LinkStyle, ToggleClass, User }) => {
+const SignedUpRightSide = ({ setShowSidebar, LinkStyle, ToggleClass, UserInfo }) => {
+    const [RefBtn, setRefBtn] = useState(null);
     return (
         <>
 
@@ -20,13 +21,14 @@ const SignedUpRightSide = ({ setShowSidebar, LinkStyle, ToggleClass, User }) => 
             </Link>
             <span className={`flex ${LinkStyle} gap-5 relative  DropDown cursor-pointer -order-1 lg:order-[0]`}
                 onClick={(e) => { ToggleClass(e.target, "active"); }}
+                ref={(e) => { setRefBtn(e) }}
             >
                 <hr className="hidden lg:block absolute -left-5 h-full pointer-events-none" />
                 <span className="flex gap-2 xl:gap-4 pointer-events-none justify-start">
                     <img src={require("../RightSideAssets/AvatarIcon.svg").default} alt="" srcSet="" />
-                    <h4 className="SemiBold">Arslan {User?.UserName}</h4>
+                    <h4 className="SemiBold">{UserInfo?.FirstName}</h4>
                 </span>
-                <UserDropDown setShowSidebar={setShowSidebar} ToggleClass={ToggleClass} />
+                <UserDropDown setShowSidebar={setShowSidebar} ToggleClass={ToggleClass} RefBtn={RefBtn} />
             </span>
         </>
     )

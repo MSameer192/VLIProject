@@ -1,26 +1,23 @@
 import { useEffect } from "react";
 
-export function useHideOnClickOutside(ref, setCheckOutside, ClassName) {
+export function useHideOnClickOutside(refBtn, refChild, ClassName) {
     useEffect(() => {
         function handleClickOutside(event) {
-            event.propogation()
 
-            if (setCheckOutside !== null) {
-                setCheckOutside(false)
 
-            }
-            if (ref && !ref.contains(event.target)) {
-                if (ClassName) {
-                    ref.parentNode.classList.remove(ClassName)
+            if (refBtn && refChild && !refBtn.contains(event.target) && !refChild.contains(event.target)) {
+                if (refBtn.parentNode.classList.contains(ClassName)) {
+                    refBtn.parentNode.classList.toggle(ClassName)
                 }
+
             }
 
         }
 
-        ref?.addEventListener('click', handleClickOutside)
-        ref?.addEventListener("mousedown", handleClickOutside);
+        document?.addEventListener('click', handleClickOutside)
+        refBtn?.addEventListener("mousedown", handleClickOutside);
         return () => {
-            ref?.removeEventListener("mousedown", handleClickOutside);
+            // refBtn?.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [ref, setCheckOutside, ClassName]);
+    }, [refBtn, refChild, ClassName]);
 }

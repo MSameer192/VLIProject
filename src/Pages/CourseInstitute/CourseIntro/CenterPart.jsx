@@ -1,12 +1,12 @@
 
-export function TitleAndDuration() {
+export function TitleAndDuration({ CourseInfo }) {
 
     return <div className='flex flex-row w-full justify-between items-center gap-3 px-3' >
         <div className='block sm:hidden min-w-[140px] max-w-[440px] w-[40%]'>
             <img className='w-full' src={require('./Assets/Course Image.png')} alt="" />
         </div>
         <div className='flex flex-col gap-2'>
-            <h2 className='text-white text-xs sm:text-[40px] Blackfont'>Vehicle Mechanics</h2>
+            <h2 className='text-white text-xs sm:text-[40px] Blackfont'>{CourseInfo?.Course?.CoursePK}</h2>
             <span className='flex gap-16 items-center'>
                 <span className='flex gap-3 items-center text-white'>
                     <img className='w-5  sm:w-auto' src={require('./Assets/TimeIcon.svg').default} alt="" />

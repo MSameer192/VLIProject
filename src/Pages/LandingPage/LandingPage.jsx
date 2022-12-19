@@ -8,7 +8,7 @@ import Footer from '../../Components/Footer/Footer'
 import SearchTiles from './SearchTiles/SearchTiles.jsx';
 import SpecialCourses from './SpecialCourses/SpecialCourses';
 import VehicleType from './VehicleType/VehicleType';
-
+import {GetLocalStorage} from '../../Helpers/LocalStorage/LocalStorage.js'
 const LandingPage = () => {
 
   return (
@@ -20,7 +20,7 @@ const LandingPage = () => {
 
         <picture className='hidden md:block -z-10'>
 
-          <img className='LandingContainerLite relative -top-5 -left-28'
+          <img  className='LandingContainerLite relative -top-5 -left-28'
             src={require('./Assets/LiteLandingContainer.svg').default} alt="" />
 
         </picture>
@@ -36,6 +36,7 @@ const LandingPage = () => {
 
             <source media="(min-width:768px)" srcSet={require('./Assets/LandingContainer.svg').default} />
             <img className='hidden w-full md:inline-block'
+            loading='lazy'
               src={require('./Assets/LandingContainer.svg').default} alt="" />
           </picture>
         </div>

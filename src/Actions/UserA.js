@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SetLocalStorage } from "../Helpers/LocalStorage/LocalStorage";
+import { DeleteLocalStorage, SetLocalStorage } from "../Helpers/LocalStorage/LocalStorage";
 import { BaseUrl } from "./Base";
 
 export const LoginUser = (UserData, setDone) => async (dispatch) => {
@@ -26,11 +26,13 @@ export const LoginUser = (UserData, setDone) => async (dispatch) => {
         })
         dispatch({
             type: "LoginError",
-            payload: { message: error?.response?.data?.message ? error?.response?.data?.message : undefined }
+            payload: { message: error?.response?.data ? error?.response?.data : undefined }
         })
 
     }
 }
+
+
 export const SignUpUser = (UserData, setDone) => async (dispatch) => {
     try {
         dispatch({
@@ -47,9 +49,56 @@ export const SignUpUser = (UserData, setDone) => async (dispatch) => {
         })
         setDone(true)
     } catch (error) {
+        console.log(error)
         dispatch({
             type: "LoginError",
-            payload: { message: error?.response?.data?.message ? error?.response?.data?.message : undefined }
+            payload: { message: error?.response?.data ? error?.response?.data : undefined }
+        })
+    }
+}
+
+export const SetUser = (UserInfo) => (dispatch) => {
+    try {
+        dispatch({
+            type: "LoginRequest"
+        })
+
+        if (UserInfo)
+            dispatch({
+                type: "LoginSuccess",
+                payload: UserInfo
+            })
+
+        else
+            dispatch({
+                type: "LoginSuccess",
+                payload: undefined
+            })
+
+    } catch (error) {
+        dispatch({
+            type: "LoginError",
+            payload: error
+        })
+    }
+}
+
+export const LogOut = () => (dispatch) => {
+    try {
+        dispatch({
+            type: "LoginRequest"
+        })
+
+        dispatch({
+            type: "LoginSuccess",
+            payload: undefined
+        })
+
+        DeleteLocalStorage("UserInfo")
+    } catch (error) {
+        dispatch({
+            type: "LoginError",
+            payload: error
         })
     }
 }

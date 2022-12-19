@@ -9,7 +9,7 @@ const ContinuesWith = ({ ButtonStyle, h4Style, ContinueHeading }) => {
             <div className='flex flex-row md:flex-col gap-3 xl:gap-[18px] w-full justify-center md:justify-start'>
                 <button className={`${ButtonStyle} border-none md:border-solid bg-[#ff000000] md:bg-white   w-auto md:w-full `}>
                     <picture>
-                        <source media="(min-width:768px)" srcset={require("../../Assets/Google Icon.png")} />
+                        <source media="(min-width:768px)" srcSet={require("../../Assets/Google Icon.png")} />
                         <img
                             className='w-9 md:w-7 xl:w-10'
                             src={require("../../Assets/Google Icon @mobile.png")} alt="" />
@@ -19,7 +19,7 @@ const ContinuesWith = ({ ButtonStyle, h4Style, ContinueHeading }) => {
                 <button className={`${ButtonStyle} border-none md:border-solid bg-[#ff000000] md:bg-white   w-auto md:w-full `}>
 
                     <picture>
-                        <source media="(min-width:768)" srcset={require("../../Assets/Facebook Icon.png")} />
+                        <source media="(min-width:768)" srcSet={require("../../Assets/Facebook Icon.png")} />
                         <img
                             className='w-9 md:w-7 xl:w-10'
                             src={require("../../Assets/Facebook Icon @mobile.png")} alt="" />

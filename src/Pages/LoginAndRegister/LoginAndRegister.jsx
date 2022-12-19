@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Crypto from 'crypto-js';
 import './LoginAndRegister.css';
 import SignInLeftSide from './Components/LeftSide';
 import SigninRightSide from './Components/RightSide';
@@ -14,14 +13,24 @@ let TopLoginRegisterBtns = `absolute border-none   rounded-t-[28px]  cursor-poin
             px-20    lg:px-24 xl:px-28 2xl:px-32 
             text-2xs lg:text-xs xl:text-base 2xl:text-[30px]`
 
+
+
 const SignUp = ({ AuthPageName, setAuthPageName }) => {
-    const { loading, UserInfo, error } = useSelector((Store) => Store.LoginSignupReducer);
+    const { loading, error } = useSelector((Store) => Store.LoginSignupReducer);
     const [Done, setDone] = useState(false);
     const Navigate = useNavigate()
     const Dispatch = useDispatch()
     const [ScreenSize, setScreenSize] = useState();
 
-    const [Credentials, setCredentials] = useState({});
+    const [Credentials, setCredentials] = useState({
+        Email: "",
+        Password: "",
+        ConfirmPassword: "",
+        FirstName: "",
+        LastName: ""
+    });
+
+
     useEffect(() => {
         window.addEventListener("resize", () => {
             setScreenSize(Number(window.innerWidth))
@@ -30,17 +39,15 @@ const SignUp = ({ AuthPageName, setAuthPageName }) => {
 
     const SubmitForm = (e) => {
         e.preventDefault();
-        if (AuthPageName === "Sign Up")
-            Dispatch(SignUpUser(Credentials, setDone))
-        else
-            Dispatch(LoginUser(Credentials, setDone))
+        if (AuthPageName === "Sign Up") Dispatch(SignUpUser(Credentials, setDone))
+        else Dispatch(LoginUser(Credentials, setDone))
 
         return false
     }
     useEffect(() => {
-        console.log(!error.message && Done, error.message, Done)
-        if (!error?.message && Done) {
-            console.log("!error.message && Done")
+
+        if (!Object.keys(error).length === 0 && Done) {
+
             setAuthPageName(false)
             setDone(false)
             Navigate('/')

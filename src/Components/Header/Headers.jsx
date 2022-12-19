@@ -4,20 +4,25 @@ import './Headers.css'
 import { useState } from 'react';
 import HeaderLeftSide from './Components/LeftSide';
 import HeaderRightSide from './Components/RightSide';
+import CheckLogin from '../../Helpers/CustomHooks/CheckLogin';
+import { useSelector } from 'react-redux';
 
 const Headers = ({ setAuthPageName }) => {
 
-    const [ShowSidebar, setShowSidebar] = useState(false)
+    const [ShowSidebar, setShowSidebar] = useState(false);
+    const { UserInfo } = useSelector((store) => store.LoginSignupReducer);
+
+    CheckLogin();
 
     return (
         <>
 
             <header className="relative flex flex-col justify-between items-center z-30  border-[6px]">
 
-                <LoginRegister setAuthPageName={setAuthPageName} />
+                {UserInfo?.UserName ? null : <LoginRegister setAuthPageName={setAuthPageName} />}
                 <div className='flex justify-between items-center fixed top-0 lg:bg-white  bg-[#321d6d] shadow-[1px_11px_6px_rgba(0,_0,_0,0.16)] w-full min-h-[80px]'>
                     <HeaderLeftSide setShowSidebar={setShowSidebar} />
-                    <HeaderRightSide setShowSidebar={setShowSidebar}  ShowSidebar={ShowSidebar} setAuthPageName={setAuthPageName}/>
+                    <HeaderRightSide setShowSidebar={setShowSidebar} ShowSidebar={ShowSidebar} setAuthPageName={setAuthPageName} UserInfo={UserInfo} />
                 </div>
 
             </header>

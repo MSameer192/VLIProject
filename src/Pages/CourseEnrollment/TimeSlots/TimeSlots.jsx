@@ -8,7 +8,7 @@ const TimeSlots = ({ ShowTimeSlots, setShowTimeSlots }) => {
     let BorderStyle = "border-[#E6E6E6] border-solid border-[2px] border-l-0 border-t-0";
     const OutsideReference = useRef(null);
 
-    useHideOnClickOutside(OutsideReference, setShowTimeSlots)
+    useHideOnClickOutside(OutsideReference.current, setShowTimeSlots)
 
     return (
         ShowTimeSlots ? <div className='flex flex-col fixed justify-center  items-center top-0 z-20 h-screen bg-[#00000040] w-full'

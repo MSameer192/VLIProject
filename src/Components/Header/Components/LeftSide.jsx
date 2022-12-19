@@ -1,5 +1,6 @@
 import SearchIcon from './LeftSideAssets/SearchIcon.svg';
 import Logo from './LeftSideAssets/Logo.svg';
+import { Link } from 'react-router-dom';
 function HeaderLeftSide({ setShowSidebar }) {
     return <nav
         className={`flex justify-between md:justify-around items-center w-full lg:w-auto 
@@ -9,20 +10,24 @@ function HeaderLeftSide({ setShowSidebar }) {
                     gap-0 sm:gap-10 lg:gap-10 xl:gap-10 2xl:gap-16`
         }
     >
+
         <img src={require("./LeftSideAssets/HamburgerIcon.svg").default}
             onClick={() => setShowSidebar(true)}
             className=' lg:hidden mx-2'
             alt="" />
-        <picture className='flex justify-center items-center'>
-            <source media="(max-width:1023px)" srcSet={require("./LeftSideAssets/SmallScreenlogo.svg").default} />
-            <source media="(min-width:1024px)" srcSet={Logo} />
-            <img
-                className="w-[150px] sm:w-[300px] lg:w-[275px] xl:w-auto"
-                alt="Logo"
-                id="Logo"
-                src={Logo}
-            />
-        </picture>
+        <Link to='/'>
+
+            <picture className='flex justify-center items-center'>
+                <source media="(max-width:1023px)" srcSet={require("./LeftSideAssets/SmallScreenlogo.svg").default} />
+                <source media="(min-width:1024px)" srcSet={Logo} />
+                <img
+                    className="w-[150px] sm:w-[300px] lg:w-[275px] xl:w-auto"
+                    alt="Logo"
+                    id="Logo"
+                    src={Logo}
+                />
+            </picture>
+        </Link>
 
         <img
             className="cursor-pointer mx-1 mr-2 sm:mr-4 xl:mx-7 text-xs "

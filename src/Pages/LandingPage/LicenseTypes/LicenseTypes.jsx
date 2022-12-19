@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GetLicenseTypes } from '../../../Actions/CategoryA';
 import './LicenseTypes.css';
 import a from './Assets/Arrow Icon.svg'
+import { BaseUrl } from '../../../Actions/Base';
 const LicenseTypes = () => {
     const Dispatch = useDispatch()
     const [ref, setref] = useState({});
@@ -69,7 +70,7 @@ function LicenseTypeTiles({ LicenseTypesState, setref }) {
                 ref={(e) => { setref(e) }}
                 className='relative cursor-pointer max-w-[320px] min-w-[220px] w-[60%] h-[324px] flex flex-col items-center lg:h-[480px] gap-7 bg-white rounded-2xl duration-[400ms] hover-on-child LicenseShadow'>
                 <div className='w-full h-36 lg:h-56 flex items-center justify-center'>
-                    <img loading='lazy' src={`https://vliserver-production.up.railway.app/api/LicenseType/image/?url=${value.LicenseTypeImage}`}
+                    <img loading='lazy' src={`${BaseUrl}/api/LicenseType/image/?url=${value.LicenseTypeImage}`}
                         className='w-[90%]'
                         alt="" />
                 </div>

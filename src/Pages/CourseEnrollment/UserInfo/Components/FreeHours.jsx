@@ -105,7 +105,7 @@ const FreeHours = () => {
 
 
 
-                <input className='text-6xs md:text-5xs lg:text-4xs xl:text-3xs w-7 md:w-9text-center border-none outline-none' type="text" placeholder='mm'
+                <input className='text-6xs md:text-5xs lg:text-4xs xl:text-3xs w-7 md:w-9 text-center border-none outline-none' type="text" placeholder='mm'
                     value={!isNaN(FreeTime?.mm) ? FreeTime?.mm : ""}
                     onChange={(e) => {
 

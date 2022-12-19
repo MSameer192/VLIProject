@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import LoginAndRegister from './Pages/LoginAndRegister/LoginAndRegister';
 import { useState } from 'react';
-import CourseInstitute from './Pages/CourseInstitute/CourseInstitute';
+import CourseOverview from './Pages/CourseInstitute/CourseOverview';
 import CategoryGLicense from './Pages/CategoryGLicense/CategoryGLicense';
 import CourseEnrollment from './Pages/CourseEnrollment/CourseEnrollment';
 import MyCourses from './Components/MyCourses/MyCourses';
@@ -64,9 +64,9 @@ function App() {
         {AuthPageName !== "" ? <LoginAndRegister AuthPageName={AuthPageName} setAuthPageName={setAuthPageName} /> : null}
         <Routes>
           <Route path='/' element={<LandingPage />} />
-          <Route path='/course/:CoursePackagePK' element={<CourseInstitute />} />
+          <Route path='/course/:InstituteCourseId' element={<CourseOverview />} />
           <Route path='/category/G' element={<CategoryGLicense />} />
-          <Route path='/CourseEnrollment' element={<CourseEnrollment />} />
+          <Route path='/Enrollment/Course' element={<CourseEnrollment />} />
 
           <Route path='/Wishlist' element={<WishList />} />
 

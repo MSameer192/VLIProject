@@ -4,16 +4,25 @@ import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Footer from '../../Components/Footer/Footer'
 import CourseDetails from './CourseAbout/CourseAbout'
-import './CourseInstitute.css'
+import './CourseOverview.css'
 import CourseInstructors from './CourseInstructors/CourseInstructors'
 import CourseIntro from './CourseIntro/CourseIntro'
 import CourseSyllabus from './CourseSyllabus/CourseSyllabus'
 import StudentReviews from './StudentReviews/StudentReviews'
 import VehicleDetails from './VehicleDetails/VehicleDetails'
-const CourseInstitute = () => {
-    const { CoursePackagePK } = useParams();
-
+import { useDispatch, useSelector } from 'react-redux'
+import { GetCourse } from '../../Actions/CourseA'
+const CourseOverview = () => {
+    const { InstituteCourseId } = useParams();
+    const dispatch = useDispatch();
     const [DivElement, setDivElement] = useState(document.getElementById("PolygonDivHeight"));
+
+    useEffect(() => {
+        dispatch(GetCourse(InstituteCourseId))
+    }, [InstituteCourseId, dispatch])
+
+
+    const { loading, CourseInfo } = useSelector((Store) => Store.CourseReducer)
     useEffect(() => {
         window.addEventListener("resize", (e) => {
             setDivElement(document.getElementById("PolygonDivHeight"))
@@ -23,41 +32,28 @@ const CourseInstitute = () => {
         }
     }, [DivElement])
 
-    useEffect(() => {
-        // console.log(window.location.pathname ==="/course/" + CoursePackagePK)
-        // if (window.location.pathname === "/course/" + CoursePackagePK)
-        //     document.body.style.backgroundColor = "white"
-        // else
-        //     document.body.style.backgroundColor = "#4e00eb16"
-
-    }, [CoursePackagePK])
+    
     return (
-        <div className='mt-[80px] relative '>
-            {/* <div
-                style={{ height: (DivElement?.offsetWidth * 3 + (DivElement?.offsetWidth * 3) / 10) + "px" }}
-                className='w-full -z-10 absolute bg-[#4B2A7945] overflow-hidden  border-black border-solid'>
+        !loading? <div className='mt-[80px] relative '>
 
-                <img
-                    style={{ left: (-DivElement?.offsetWidth / 0.85) + "px" }}
-                    className='absolute  -left-0 h-full blur-[20px]' src={require('./Assets/Polygon7.svg').default} alt="" />
-            </div> */}
             <div>
 
             </div>
-            <CourseIntro />
+            <CourseIntro CourseInfo={CourseInfo} />
 
             <div id='PolygonDivHeight'
-            className='bg-[#3F2663] pt-10'
+                className='bg-[#3F2663] pt-10'
             >
-                <CourseDetails />
-                <CourseInstructors />
+                <CourseDetails CourseInfo={CourseInfo}/>
+                <CourseInstructors InstructorDetails={CourseInfo?.Instructors} />
                 <CourseSyllabus />
                 <VehicleDetails />
                 <StudentReviews />
             </div>
             <Footer FooterBgColor={'#F1FAFF'} />
         </div>
+        :<h1 className='mt-20'>Loading</h1>
     )
 }
 
-export default CourseInstitute
+export default CourseOverview

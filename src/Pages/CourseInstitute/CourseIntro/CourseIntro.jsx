@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { RatingAndReviewd, ShortDetail, TitleAndDuration } from './CenterPart'
 
-const CourseIntro = () => {
+const CourseIntro = ({ CourseInfo }) => {
     return (
         <div className='relative flex flex-col items-center overflow-hidden'>
             <div className={`absolute left-0 top-0  justify-center
@@ -16,7 +16,7 @@ const CourseIntro = () => {
                 </div>
             </div>
 
-            <h1 className='text-white text-[33px] Boldfont '>Course Name</h1>
+            <h1 className='text-white text-[33px] Boldfont '>{CourseInfo?.Institute?.InstituteName}</h1>
 
             <div className='flex w-full sm:w-11/12 justify-center gap-6 mt-5 sm:mt-32 flex-col sm:flex-row'>
                 <div className='hidden sm:block min-w-[140px] max-w-[440px] w-[40%]'>
@@ -25,7 +25,7 @@ const CourseIntro = () => {
                 <div className='flex flex-col gap-4'>
 
 
-                    <TitleAndDuration />
+                    <TitleAndDuration CourseInfo={CourseInfo} />
                     <ShortDetail />
                     <RatingAndReviewd />
 

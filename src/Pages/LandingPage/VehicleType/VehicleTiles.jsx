@@ -1,3 +1,5 @@
+import { BaseUrl } from "../../../Actions/Base";
+
 function VehicleTiles({ VehicleTypesSate, setref }) {
     let HoverStyle = "hover:origin-top-left hover:gap-10 hover:md:gap-6 hover:scale-100 md:hover:scale-[1.04] "
     let TransitionDuration = "duration-[400ms]";
@@ -16,7 +18,7 @@ function VehicleTiles({ VehicleTypesSate, setref }) {
                         `}>
                 <img loading='lazy'
                     className={`w-4/5 ${TransitionDuration} img`}
-                    src={`https://vliserver-production.up.railway.app/api/vehicletype/image/?url=${value.VehicleTypeImage}`}
+                    src={`${BaseUrl}/api/vehicletype/image/?url=${value.VehicleTypeImage}`}
                     alt="Vehicle Type" />
                 <span className='w-[70%] flex gap-2 md:gap-5 flex-col items-center VehicleTypeInfo'>
                     <h2 className={`w-full font-normal ${TransitionDuration} text-3xs md:text-2xs Regularfont`}>

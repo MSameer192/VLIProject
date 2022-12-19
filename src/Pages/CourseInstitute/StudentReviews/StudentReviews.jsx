@@ -65,11 +65,11 @@ function UserReview() {
 function StarIcon() {
     return (
         <div className='flex gap-1 w-fit'>
-            <img className='w-5' src={require('../CourseIntro/Assets/StarIcon.svg').default} alt="" srcset="" />
-            <img className='w-5' src={require('../CourseIntro/Assets/StarIcon.svg').default} alt="" srcset="" />
-            <img className='w-5' src={require('../CourseIntro/Assets/StarIcon.svg').default} alt="" srcset="" />
-            <img className='w-5' src={require('../CourseIntro/Assets/StarIcon.svg').default} alt="" srcset="" />
-            <img className='w-5' src={require('../CourseIntro/Assets/StarIcon.svg').default} alt="" srcset="" />
+            <img className='w-5' src={require('../CourseIntro/Assets/StarIcon.svg').default} alt="" srcSet="" />
+            <img className='w-5' src={require('../CourseIntro/Assets/StarIcon.svg').default} alt="" srcSet="" />
+            <img className='w-5' src={require('../CourseIntro/Assets/StarIcon.svg').default} alt="" srcSet="" />
+            <img className='w-5' src={require('../CourseIntro/Assets/StarIcon.svg').default} alt="" srcSet="" />
+            <img className='w-5' src={require('../CourseIntro/Assets/StarIcon.svg').default} alt="" srcSet="" />
         </div>
     )
 }
