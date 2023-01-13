@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import CircularProgress from "./CircularProgress"
 
-function CoursesProgresReport({ TotalClasses, ClassesTaken, Index,Color }) {
+function CoursesProgresReport({ ClassType, TotalClasses, ClassesTaken, Index, Color }) {
     const [PercentageCompletion, setPercentageCompletion] = useState()
 
     useEffect(() => {
@@ -16,14 +16,20 @@ function CoursesProgresReport({ TotalClasses, ClassesTaken, Index,Color }) {
     `}>
         <div className='flex flex-col gap-7  md:gap-20 w-11/12 md:w-3/4  lg:w-4/5'>
             <div className="flex flex-col gap-4">
-                <h2 className='text-[30px] md:text-xs lg:text-sm xl:text-base 2xl:text-[30px] text-center md:text-left Boldfont'>Overall Course Completion</h2>
-                <p className='text-xs md:text-[19px] lg:text-2xs xl:text-[21px] 2xl:text-xs text-center md:text-left'>This Portion shows the overall Content which you have completed.
-                    This Portion shows the overall.</p>
+                <h2 className='text-[30px] md:text-xs lg:text-sm xl:text-base 2xl:text-[30px] text-center md:text-left Boldfont'>
+                    {ClassType}
+                </h2>
+                <p className='text-xs md:text-[19px] lg:text-2xs xl:text-[21px] 2xl:text-xs text-center md:text-left'>
+                    This Portion shows the overall Content which you have completed. This Portion shows the overall.
+                </p>
             </div>
 
-           <Classes TotalClasses={TotalClasses} ClassesTaken={ClassesTaken} /> 
+            <Classes TotalClasses={TotalClasses} ClassesTaken={ClassesTaken} />
+
         </div>
+
         <CircularProgress Percentage={PercentageCompletion} Index={Index} Color={Color} />
+
     </div>
 }
 export default CoursesProgresReport

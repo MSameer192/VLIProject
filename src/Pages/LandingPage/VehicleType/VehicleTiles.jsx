@@ -1,7 +1,7 @@
 import { BaseUrl } from "../../../Actions/Base";
 
 function VehicleTiles({ VehicleTypesSate, setref }) {
-    let HoverStyle = "hover:origin-top-left hover:gap-10 hover:md:gap-6 hover:scale-100 md:hover:scale-[1.04] "
+    let HoverStyle = "hover:origin-top-left hover:gap-10 hover:md:gap-6 hover:scale-100 md:hover:scale-[1.04]"
     let TransitionDuration = "duration-[400ms]";
 
     return <>
@@ -17,15 +17,16 @@ function VehicleTiles({ VehicleTypesSate, setref }) {
                         VehicleType_DropShadow 
                         `}>
                 <img loading='lazy'
-                    className={`w-4/5 ${TransitionDuration} img`}
+                    id="VehicleTypeImage"
+                    className={`w-4/5 ${TransitionDuration}`}
                     src={`${BaseUrl}/api/vehicletype/image/?url=${value.VehicleTypeImage}`}
                     alt="Vehicle Type" />
-                <span className='w-[70%] flex gap-2 md:gap-5 flex-col items-center VehicleTypeInfo'>
-                    <h2 className={`w-full font-normal ${TransitionDuration} text-3xs md:text-2xs Regularfont`}>
+                <span id="VehicleTypeInfo" className={`w-[70%] flex gap-2 md:gap-5 flex-col items-center  ${TransitionDuration}`}>
+                    <h2 className={`w-full font-normal text-3xs md:text-2xs Regularfont`}>
                         {value.VehicleTypeName}
                     </h2>
 
-                    <p className={`w-full ${TransitionDuration} text-[12px] md:text-5xs  Regularfont`}>{value.VehicleTypeDescription}</p>
+                    <p className={`w-full text-[12px] md:text-5xs  Regularfont`}>{value.VehicleTypeDescription}</p>
 
                 </span>
             </span>

@@ -130,7 +130,7 @@ function PopularCoursesTiles({ PopularCoursesInfo }) {
                             <div className='flex justify-between  items-end w-full md:w-[100%] gap-16 mt-10 '>
                                 <div className='flex flex-col'>
                                     <span className='flex'>{[...new Array(5)].map(() => {
-                                        return <img className='w-6' src={require('../../CourseInstitute/Assets/StarIcon.svg').default} alt=''/>
+                                        return <img className='w-6' src={require('../../CourseOverview/Assets/StarIcon.svg').default} alt=''/>
                                     })}</span>
                                     <span className='SemiBold text-xs'><img src={require('./Assets/Thumb Icon.svg').default} alt="" /> 100%</span>
                                 </div>

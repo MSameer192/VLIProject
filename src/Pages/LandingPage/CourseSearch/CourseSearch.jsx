@@ -3,7 +3,7 @@ import './CourseSearch.css'
 const CourseSearch = () => {
 
     return (
-        <div className='flex flex-col gap-8 justify-center items-center'>
+        <div id='CourseSearch' className='flex flex-col gap-8 justify-center items-center'>
             <h2 className='PrintBoldfont text-xl'>Course Search</h2>
             <img src={require("./Assets/Course Search Big Img.svg").default}
                className='w-full max-w-[1125px]'

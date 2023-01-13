@@ -35,5 +35,7 @@ export const LicenseTypeReducer = createReducer(LicenseTypeInitialState, {
     LicenseTypeError: (state, action) => {
         state.loading = false;
         state.error = action.payload
-    }
+    },
+
+    
 })

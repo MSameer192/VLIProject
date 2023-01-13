@@ -1,10 +1,25 @@
 import React from 'react'
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { GetSingleEnrolledCourse } from '../../Actions/CourseA';
+import useCheckLogin from '../../Helpers/CustomHooks/CheckLogin';
 import ClassColorAndDetail from './Components/ClassColorAndDetail';
 import ClassDetails from './Components/ClassDetails';
 
 const SingleEnrolledCourse = () => {
+  const { EnrollmentId } = useParams()
+  const Dispatch = useDispatch()
+  const { SEnrolledCourse } = useSelector((Store) => Store.CourseReducer);
+  const { Authenticated } = useSelector((Store) => Store.LoginSignupReducer)
+
+  useEffect(() => {
+    if (EnrollmentId && Authenticated)
+      Dispatch(GetSingleEnrolledCourse(EnrollmentId))
 
 
+  }, [Dispatch, EnrollmentId, Authenticated])
+  useCheckLogin()
   let divWidth = "w-full sm:w-11/12 md:w-[89%] lg:w-[86%] xl:w-[83%] 2xl:w-4/5"
   return (
     <div className='mt-20 flex flex-col items-center'>
@@ -17,16 +32,37 @@ const SingleEnrolledCourse = () => {
 
 
 
-          <div className={`relative mt-20 flex flex-col gap-4 ${divWidth}`}>
-            <h4 className={`absolute 
+          {SEnrolledCourse?.CoursePackage?.InstituteCourse?.ClassSchedules.map((value, index, arr) =>
+
+          (
+            <div className={`relative mt-20 flex flex-col gap-4 ${divWidth}`} key={value.ClassScheduleId}>
+              {
+                arr[index]?.WeekNumber !== arr[index - 1]?.WeekNumber
+                  ? <h4 className={`absolute 
                             text-3xs  sm:text-2xs   md:text-xs  lg:text-sm    xl:text-base  2xl:text-[30px]  
                             -top-10   sm:-top-11    md:-top-12  lg:-top-14    xl:-top-16
                             left-0    sm:-left-4    md:-left-8  lg:-left-12   xl:-left-16   2xl:-left-20
-                            SemiBold`}>Week 1</h4>
-            <ClassDetails />
-            <ClassDetails />
+                            SemiBold`}>
+                    Week {value.WeekNumber}
+                  </h4>
+                  : null
+              }
 
-          </div>
+              {arr.map((ChildeValue) => {
+
+                if (arr[index]?.WeekNumber !== arr[index - 1]?.WeekNumber)
+                  return <ClassDetails ClassDetail={ChildeValue} key={ChildeValue.ClassScheduleId + 1} />
+
+                else
+                  return null
+
+
+              })}
+
+
+            </div>
+
+          ))}
 
         </div>
       </div>

@@ -2,10 +2,11 @@ import React from 'react'
 import { AddToCart, RemoveProduct } from './Components/AddAndRemoveProduct'
 import { ProductPrice, TotalPrice } from './Components/Prices'
 import { Title } from './Components/Titles'
-const DesktopView = () => {
+const DesktopView = ({ WishListArr }) => {
     let thStyle = `border-[#CFCFCF] border-[1px] border-solid text-center px-3 lg:px-6 bg-[#F5F5FF] pt-11 pb-5 
   text-2xs lg:text-xs xl:text-sm 
             Boldfont`
+ 
     return (
         <table className='w-3/4 border-collapse hidden md:table'>
             <thead>
@@ -20,17 +21,24 @@ const DesktopView = () => {
             </thead>
 
             <tbody>
-                <tr className='bg-[#DCFAFF]'>
-                    <Title />
-                    <ProductPrice />
-                    <RemoveProduct />
+                {WishListArr?.length > 0 ?
+                    WishListArr?.map((Wish,) =>
 
-                    <AddToCart />
-                    <TotalPrice />
-                </tr>
-                <tr>
-                    <td className='text-center text-base py-3' colSpan={5}>There is no product in in WishList.</td>
-                </tr>
+                        <tr className='bg-[#DCFAFF]' key={Wish.WishId}>
+                            <Title InstituteCourse={Wish?.InstituteCourse} />
+                            <ProductPrice InstituteCourse={Wish?.InstituteCourse} />
+                            <RemoveProduct WishId={Wish.WishId} InstituteCourse={Wish?.InstituteCourse} />
+
+                            <AddToCart InstituteCourse={Wish?.InstituteCourse} />
+                            <TotalPrice InstituteCourse={Wish?.InstituteCourse} />
+                        </tr>
+
+                    )
+                    : <tr>
+                        <td className='text-center text-base py-3' colSpan={5}>There is no product in in WishList.</td>
+                    </tr>
+                }
+
             </tbody>
         </table>
     )

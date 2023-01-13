@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { GetVehicleTypes } from '../../../Actions/CategoryA';
 import CoursesSlider from '../../../Components/CourseSlider/CourseSlider';
-import Tiles from './VehicleTiles';
+import VehicleTiles from './VehicleTiles';
 import VehicleTypeShortDetail from './VehicleTypeShortDetail';
 
 const VehicleType = () => {
@@ -24,7 +24,7 @@ const VehicleType = () => {
 
 
     return (
-        <div className='w-full flex md:justify-center justify-start items-center flex-col relative gap-5 md:gap-24 mt-16 '>
+        <div id='VehicleTypes' className='w-full flex md:justify-center justify-start items-center flex-col relative gap-5 md:gap-24 mt-16 '>
             {/* Large Bulb Icon Center */}
             <picture className='absolute -z-10 -top-[225px] hidden md:inline' >
                 <img loading='lazy' className='-top-[250px] md:h-[800px] lg:h-[1200px]' src={require('./Assets/LargeBulbCenterImg.png')} alt="" />
@@ -65,7 +65,7 @@ function ContainerTiles({ VehicleTypesSate }) {
             />
         </picture>
 
-        <CoursesSlider CoursesInfo={VehicleTypesSate} CourseTiles={Tiles} NavigateBtnClass={"VehicleType"} ClassNames={SliderParent} SwitchSize="md" />
+        <CoursesSlider CoursesInfo={VehicleTypesSate} CourseTiles={VehicleTiles} NavigateBtnClass={"VehicleType"} ClassNames={SliderParent} SwitchSize="md" />
 
     </div>
 }

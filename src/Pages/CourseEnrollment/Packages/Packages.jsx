@@ -1,21 +1,21 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+
+
+import { useSelector } from 'react-redux';
+
 import Packageslist from './Packageslist'
 
-const Packages = () => {
-    let PackagesData = [
-        { Package: "10 Hours Driving Only-$450+GST" },
-        { Package: "10 Hours Driving Only-$450+GST" },
-        { Package: "10 Hours Driving + 15 Hours Online-$545+GST" },
-        { Package: "10 Hours Driving + 15 Hours Online-$545+GST" },
-        { Package: "10 Hours Driving Only-$450+GST" },
-        { Package: "10 Hours Driving Only-$450+GST" },
-        { Package: "10 Hours Driving + 15 Hours Online-$545+GST" },
-        { Package: "10 Hours Driving + 15 Hours Online-$545+GST" },
-        { Package: "20 Hours Driving + 15 Hours Online-$1070+GST" },
-        { Package: "20 Hours Driving + 15 Hours Online-$1070+GST" }
-    ]
+const Packages = ({ setEnrollmentData, EnrollmentData, PackageRef }) => {
+    const [PackagesArr, setPackagesArr] = useState();
+    const { EnrollCourseInfo } = useSelector((Store) => Store.CourseReducer)
+
+    useEffect(() => {
+        setPackagesArr(EnrollCourseInfo?.CoursePackages)
+    }, [EnrollCourseInfo])
+ 
     return (
-        <div className='flex flex-col items-center'>
+        <div className='flex flex-col items-center'
+            ref={PackageRef}>
             <div className=' flex flex-col items-center gap-5 w-full bg-[#F6F5F5] pt-9 pb-14'>
                 <img className='w-24' src={require('./Assets/SelectPackageIcon.svg').default} alt="" />
                 <h1 className={`text-center px-2 SemiBoldItalic
@@ -28,7 +28,7 @@ const Packages = () => {
                 </h3>
             </div>
 
-            <Packageslist PackagesData={PackagesData} />
+            <Packageslist PackagesArr={PackagesArr} setEnrollmentData={setEnrollmentData} EnrollmentData={EnrollmentData} />
         </div>
     )
 }

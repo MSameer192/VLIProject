@@ -55,8 +55,8 @@ const Ponits = () => {
                         `}
         >
             <div className='flex flex-wrap flex-col gap-7 sm:w-1/2 sm:max-h-[500px] justify-center sm:items-start'>
-                {PointFeatures.map((value) =>
-                    <span className='flex items-center gap-5'>
+                {PointFeatures.map((value, index) =>
+                    <span key={index} className='flex items-center gap-5'>
                         <img src={`${value.Img}`} alt="" />
                         <p className='text-3xs md:text-2xs xl:text-xs'>{value.Point}</p>
                     </span>

@@ -1,15 +1,24 @@
 import React from 'react'
+import { useEffect } from 'react'
 import { useState } from 'react'
 import { Arrows } from './FreeHoursComp/Arrows'
 
-const FreeHours = () => {
-    const [FreeTime, setFreeTime] = useState()
+const FreeHours = ({ EnrollmentData, setEnrollmentData, Duration, INDEX }) => {
+    const [FreeTime, setFreeTime] = useState({
+        [Duration]: {
+            hh: 0,
+            mm: 0,
+            AM: false
+        }
+    })
 
     const [GetFocused, setGetFocused] = useState({
         hh: 0,
         mm: 0,
         AM: false
     });
+
+
     const isBoolean = val => 'boolean' === typeof val;
     const CheckAm = () => {
         if (isBoolean(FreeTime?.AM) === false)
@@ -17,82 +26,105 @@ const FreeHours = () => {
 
     };
 
+    const UpdateArr = (FreeHours) => {
+        let Free = FreeHours.map((value, index) => {
+            if (index === INDEX) {
+                value[`${Duration}`] = FreeTime[`${Duration}`]
+                return value
+            }
+            return { ...value }
+
+        })
+        // console.log(Free)
+
+        setEnrollmentData({
+            ...EnrollmentData, StudentData: {
+                ...EnrollmentData.StudentData,
+                FreeHours: [...Free]
+            }
+        })
+
+    }
     const OnIncrease = () => {
         CheckAm()
+
         if (GetFocused === "hh") {
-            if (FreeTime?.hh >= 12)
-                return setFreeTime({ ...FreeTime, hh: 1 })
+            if (FreeTime[`${Duration}`]?.hh >= 12)
+                return setFreeTime({ ...FreeTime, [Duration]: { ...FreeTime[`${Duration}`], hh: 1 } })
 
-            if (isNaN(FreeTime?.hh))
-                return setFreeTime({ ...FreeTime, hh: 1 })
+            if (isNaN(FreeTime[`${Duration}`]?.hh))
+                return setFreeTime({ ...FreeTime, [Duration]: { ...FreeTime[`${Duration}`], hh: 1 } })
 
-
-            setFreeTime({ ...FreeTime, hh: ++FreeTime.hh })
+            setFreeTime({ ...FreeTime, [Duration]: { ...FreeTime[`${Duration}`], hh: ++FreeTime[`${Duration}`].hh } })
         }
 
 
 
         else if (GetFocused === "mm") {
-            if (FreeTime?.mm >= 59)
-                return setFreeTime({ ...FreeTime, mm: 0 })
+            if (FreeTime[`${Duration}`].mm >= 59)
+                return setFreeTime({ ...FreeTime, [Duration]: { ...FreeTime[`${Duration}`], mm: 0 } })
 
-            if (isNaN(FreeTime?.mm))
-                return setFreeTime({ ...FreeTime, mm: 1 })
+            if (isNaN(FreeTime[`${Duration}`].mm))
+                return setFreeTime({ ...FreeTime, [Duration]: { ...FreeTime[`${Duration}`], mm: 1 } })
 
 
-            setFreeTime({ ...FreeTime, mm: ++FreeTime.mm })
+            setFreeTime({ ...FreeTime, [Duration]: { ...FreeTime[`${Duration}`], mm: ++FreeTime[`${Duration}`].mm } })
         }
 
 
 
 
-        else if (GetFocused === "AM" && (FreeTime?.AM !== "AM" || FreeTime?.AM !== "PM")) {
-            setFreeTime({ ...FreeTime, AM: !FreeTime?.AM })
+        else if (GetFocused === "AM" && (FreeTime[`${Duration}`]?.AM !== "AM" || FreeTime[`${Duration}`]?.AM !== "PM")) {
+            setFreeTime({ ...FreeTime, [Duration]: { ...FreeTime[`${Duration}`], AM: !FreeTime[`${Duration}`]?.AM } })
+
         }
+
 
     }
     const OnDecrease = () => {
-
+        // console.log(FreeTime[`${Duration}`]?.hh)
         if (GetFocused === "hh") {
-            if (FreeTime?.hh <= 1)
-                return setFreeTime({ ...FreeTime, hh: 12 })
+            if (FreeTime[`${Duration}`].hh <= 1)
+                return setFreeTime({ ...FreeTime, [Duration]: { ...FreeTime[`${Duration}`], hh: 12 } })
 
-            if (isNaN(FreeTime?.hh))
-                return setFreeTime({ ...FreeTime, hh: 12 })
+            if (isNaN(FreeTime[`${Duration}`].hh))
+                return setFreeTime({ ...FreeTime, [Duration]: { ...FreeTime[`${Duration}`], hh: 12 } })
 
-            setFreeTime({ ...FreeTime, hh: --FreeTime.hh })
+
+            setFreeTime({ ...FreeTime, [Duration]: { ...FreeTime[`${Duration}`], hh: --FreeTime[`${Duration}`].hh } })
         }
 
 
 
         else if (GetFocused === "mm") {
-            if (FreeTime?.mm >= 0) {
-                return setFreeTime({ ...FreeTime, mm: 59 })
+            if (FreeTime[`${Duration}`].mm <= 0) {
+                return setFreeTime({ ...FreeTime, [Duration]: { ...FreeTime[`${Duration}`], mm: 59 } })
             }
-            if (isNaN(FreeTime?.mm))
-                return setFreeTime({ ...FreeTime, mm: 59 })
+            if (isNaN(FreeTime[`${Duration}`].mm))
+                return setFreeTime({ ...FreeTime, [Duration]: { ...FreeTime[`${Duration}`], mm: 0 } })
 
-            setFreeTime({ ...FreeTime, mm: --FreeTime.mm })
+            setFreeTime({ ...FreeTime, [Duration]: { ...FreeTime[`${Duration}`], mm: --FreeTime[`${Duration}`].mm } })
         }
 
 
 
 
-        else if (GetFocused === "AM" && (FreeTime?.AM !== "AM" || FreeTime?.AM !== "PM")) {
-            setFreeTime({ ...FreeTime, AM: !FreeTime.AM })
+        else if (GetFocused === "AM" && (FreeTime[`${Duration}`].AM !== "AM" || FreeTime[`${Duration}`].AM !== "PM")) {
+            setFreeTime({ ...FreeTime, [Duration]: { ...FreeTime[`${Duration}`], AM: !FreeTime[`${Duration}`].AM } })
         }
-
 
     }
-
-
+    // console.log(EnrollmentData?.FreeHours, FreeTime)
+    useEffect(() => {
+        UpdateArr(EnrollmentData?.StudentData?.FreeHours)
+    }, [FreeTime])
     return (
 
 
         <div className='flex gap-1 border-[1px] border-solid border-[#E8E8E8] pl-1 pr-1 py-1 md:py-2 xl:py-3 rounded-lg bg-white'>
             <span className='flex gap-[2px] items-center'>
                 <input className='text-6xs md:text-5xs lg:text-4xs xl:text-3xs w-7 md:w-9 text-center border-none outline-none' type="text" placeholder='hh'
-                    value={!isNaN(FreeTime?.hh) ? FreeTime?.hh : ""}
+                    value={!isNaN(FreeTime[`${Duration}`].hh) ? FreeTime[`${Duration}`].hh : ""}
                     onChange={(e) => {
                         if (!isNaN(e.target.value) && (e.target.value <= 12 && e.target.value >= 0)) {
                             CheckAm()
@@ -106,7 +138,7 @@ const FreeHours = () => {
 
 
                 <input className='text-6xs md:text-5xs lg:text-4xs xl:text-3xs w-7 md:w-9 text-center border-none outline-none' type="text" placeholder='mm'
-                    value={!isNaN(FreeTime?.mm) ? FreeTime?.mm : ""}
+                    value={!isNaN(FreeTime[`${Duration}`].mm) ? FreeTime[`${Duration}`].mm : ""}
                     onChange={(e) => {
 
                         if (!isNaN(e.target.value) && (e.target.value <= 59 && e.target.value >= 0)) {
@@ -120,8 +152,11 @@ const FreeHours = () => {
 
 
                 <input className='text-6xs md:text-5xs lg:text-4xs xl:text-3xs w-5 md:w-7 text-center border-none outline-none ' type="text" placeholder='AM' readOnly
-                    onChange={(e) => setFreeTime({ ...FreeTime, AM: e.target.value })}
-                    value={isBoolean(FreeTime?.AM) ? FreeTime?.AM ? "AM" : "PM" : ""}
+                    onChange={(e) => {
+                        setFreeTime({ ...FreeTime, AM: e.target.value })
+                        setEnrollmentData({ ...EnrollmentData, FreeHours: [...EnrollmentData.FreeHours, { ...FreeTime, Duration }] })
+                    }}
+                    value={isBoolean(FreeTime[`${Duration}`].AM) ? FreeTime[`${Duration}`].AM ? "AM" : "PM" : ""}
                     onFocus={() => { setGetFocused("AM") }}
                 />
 
@@ -135,15 +170,16 @@ const FreeHours = () => {
     )
 }
 
-function From_To({ HeadingStyle }) {
-    return <div className='flex flex-col gap-2 w-full'>
-        <h3 className={HeadingStyle}>Free Hours</h3> 
+function From_To({ Styling, EnrollmentData, setEnrollmentData }) {
+    let { HeadingStyle, DivStyle } = Styling
+    return <div className={DivStyle}>
+        <h3 className={HeadingStyle}>Free Hours</h3>
         <div className='flex items-center gap-1 lg:gap-2 text-xs'>
-            <FreeHours />
+            <FreeHours EnrollmentData={EnrollmentData} setEnrollmentData={setEnrollmentData} Duration="Start" INDEX={0} />
             To
-            <FreeHours />
+            <FreeHours EnrollmentData={EnrollmentData} setEnrollmentData={setEnrollmentData} Duration="End" INDEX={0} />
         </div>
-       
+
     </div>
 }
 export default From_To

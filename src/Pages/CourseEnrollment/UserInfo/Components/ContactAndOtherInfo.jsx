@@ -1,36 +1,50 @@
 import React from 'react'
+import DOB from './ContactAndOtherInfoComp/DOB';
+import Gender from './ContactAndOtherInfoComp/Gender';
 
-const ContactAndOtherInfo = ({HeadingStyle, InputTypeTextStyle,DivStyle, AddParentStyle, RemoveParentStyle,ExceptionSpanStyle,ExceptionInputStyle }) => {
+const ContactAndOtherInfo = ({ Styling, EnrollmentData, setEnrollmentData, Err, setShowTimeSlots }) => {
+    const { InputTypeTextStyle, DivStyle, HeadingStyle } = Styling;
 
     return (
         <>
             <div className={DivStyle}>
-                <h3 className={HeadingStyle}>Phone Number</h3>
-                <input className={InputTypeTextStyle} type="text" placeholder='123-456-789' />
-            </div>
-            <div className={DivStyle}>
-                <h3 className={HeadingStyle}>Email Address</h3>
-                <input className={InputTypeTextStyle} type="email" placeholder='abc@gmail.com' />
-            </div>
-            <div className={DivStyle}>
-                <h3 className={HeadingStyle}>Date of Birth (DD/MM//YYYY)</h3>
-                {/* Exception */}
-                <span className={ExceptionSpanStyle}>
-                    <input className={ExceptionInputStyle} type="email" placeholder='abc@gmail.com'
-                        onFocus={AddParentStyle}
-                        onBlur={RemoveParentStyle}
-                    />
-                    <img src={require('../Assets/BirtPlaceIcon.svg').default} alt="" />
-                </span>
+                <label htmlFor='PhoneNumber' className={HeadingStyle}>Phone Number</label>
+
+                <h4> {Err?.City ? Err?.City : null}</h4>
+
+                <input className={InputTypeTextStyle} type="text" placeholder='0123-456-7891' id='PhoneNumber' required
+                    value={EnrollmentData?.StudentData?.PhoneNumber}
+                    onChange={(e) => setEnrollmentData({ StudentData: { ...EnrollmentData?.StudentData, PhoneNumber: e.target.value } })}
+                />
             </div>
 
             <div className={DivStyle}>
-                <h3 className={HeadingStyle}>Gender</h3>
-                {/* Exception */}
-                <select className='w-full text-3xs px-4 py-2 rounded-[8px] border-[#E8E8E8] border-solid border-[2px]' name="Gender" id="">
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                </select>
+
+                <label htmlFor='Email' className={HeadingStyle}>Email Address</label>
+
+                <h4> {Err?.City ? Err?.City : null}</h4>
+
+                <input className={InputTypeTextStyle} type="email" placeholder='abc@gmail.com' id='Email' required
+                    value={EnrollmentData?.StudentData?.Email}
+                    onChange={(e) => setEnrollmentData({ StudentData: { ...EnrollmentData?.StudentData, Email: e.target.value } })}
+                />
+            </div>
+
+            <DOB EnrollmentData={EnrollmentData} setEnrollmentData={setEnrollmentData} Styling={Styling} Err={Err} />
+
+
+            <Gender Styling={Styling} EnrollmentData={EnrollmentData} setEnrollmentData={setEnrollmentData} Err={Err} />
+
+            <div className={DivStyle}>
+
+                <label htmlFor='Schedule' className={HeadingStyle}>Create Your Own Class Schedule</label>
+
+                <h4> {Err?.City ? Err?.City : null}</h4>
+
+                <button type='button' id='Schedule' className='text-base bg-[#A1A3EF] px-5 py-2 text-white border-none rounded-xl cursor-pointer'
+                    onClick={() => { setShowTimeSlots(true) }}>
+                    Create Schedule
+                </button>
             </div>
         </>
     )

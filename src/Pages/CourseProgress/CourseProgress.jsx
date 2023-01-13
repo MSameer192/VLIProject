@@ -1,10 +1,30 @@
 import React from 'react'
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { GetCourseProgress } from '../../Actions/CourseA';
+import useCheckLogin from '../../Helpers/CustomHooks/CheckLogin';
 
 import './CourseProgress.css'
 import CoursesProgresReport from './CoursesProgresReport';
 const CourseProgress = () => {
+    const Dispatch = useDispatch();
+    const { EnrollmentId } = useParams();
+
+    const { Authenticated } = useSelector((Store) => Store.LoginSignupReducer)
+    const { CourseProgress, SEnrolledCourse } = useSelector((Store) => Store.CourseReducer);
+    const OnlineHours = SEnrolledCourse?.CoursePackage.OnlineHours;
+    const InClassHours = SEnrolledCourse?.CoursePackage.InClassHours;
+    const DrivingHours = SEnrolledCourse?.CoursePackage.DrivingHours;
 
 
+    useCheckLogin();
+    useEffect(() => {
+        if (Authenticated)
+            Dispatch(GetCourseProgress(EnrollmentId))
+
+
+    }, [Dispatch, EnrollmentId, Authenticated])
     return (
         <div className='flex justify-start items-center mt-20 flex-col'>
 
@@ -12,9 +32,28 @@ const CourseProgress = () => {
                 <h3 className='text-[30px] px-16 pb-6 Boldfont '>Your Progress</h3>
                 <div className='w-full flex flex-col gap-14'>
 
-                    <CoursesProgresReport TotalClasses={10} ClassesTaken={5} Index={1}  />
-                    <CoursesProgresReport TotalClasses={10} ClassesTaken={10} Index={2} Color={"#FE6B1E"} />
-                    <CoursesProgresReport TotalClasses={10} ClassesTaken={5} Index={3} Color={"#2FD535"}/>
+                    <CoursesProgresReport ClassType={"Overall Course Completion"}
+                        TotalClasses={DrivingHours + InClassHours + OnlineHours}
+                        ClassesTaken={CourseProgress?.length}
+                        Index={1}
+                    />
+                    <CoursesProgresReport ClassType={"Online Course Completion"}
+                        TotalClasses={OnlineHours}
+                        ClassesTaken={CourseProgress?.OnlineHours?.length || 0}
+                        Index={2}
+                        Color={"#FE6B1E"} />
+
+                    <CoursesProgresReport ClassType={"In Class Course Completion"}
+                        TotalClasses={InClassHours}
+                        ClassesTaken={CourseProgress?.InClassHours?.length || 0}
+                        Index={3}
+                        Color={"#2FD535"} />
+
+                    <CoursesProgresReport ClassType={"Driving Course Completion"}
+                        TotalClasses={DrivingHours}
+                        ClassesTaken={CourseProgress?.DrivingHours?.length || 0}
+                        Index={4}
+                        Color={"#A1A3EF"} />
 
                 </div>
             </div>

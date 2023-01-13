@@ -3,8 +3,8 @@ import Header from './Components/Header/Headers';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import LoginAndRegister from './Pages/LoginAndRegister/LoginAndRegister';
-import { useState } from 'react';
-import CourseOverview from './Pages/CourseInstitute/CourseOverview';
+import { useEffect, useState } from 'react';
+import CourseOverview from './Pages/CourseOverview/CourseOverview';
 import CategoryGLicense from './Pages/CategoryGLicense/CategoryGLicense';
 import CourseEnrollment from './Pages/CourseEnrollment/CourseEnrollment';
 import MyCourses from './Components/MyCourses/MyCourses';
@@ -12,11 +12,31 @@ import WishList from './Pages/WishList/WishList';
 import EnrolledCourses from './Pages/EnrolledCourses/EnrolledCourses';
 import SingleEnrolledCourse from './Pages/SingleEnrolledCourse/SingleEnrolledCourse';
 import CourseProgress from './Pages/CourseProgress/CourseProgress';
+import { useSelector } from 'react-redux';
+import { io } from 'socket.io-client'
+import useSetSocket, { useSaveSocketUser } from './Helpers/CustomHooks/useSetSocket';
 
+import { createContext } from 'react';
+
+
+export const SocketContext = createContext();
 
 function App() {
-  const [AuthPageName, setAuthPageName] = useState("")
-  let PageInfo = {
+  const [setAuthPageName] = useState("");
+  const { AuthPageName } = useSelector((Store) => Store.ToggleSignupReducer)
+
+  const [Socket, setSocket] = useState(undefined);
+  // SocketContext=useContext(Socket );
+
+  useSetSocket(Socket)
+  useSaveSocketUser(Socket)
+  useEffect(() => {
+    setSocket(io('/'))
+  }, [])
+
+
+
+  let MyCoursesButtonsInfo = {
     Heading: "My Course",
     ButtonsInfo: [
       {
@@ -35,22 +55,24 @@ function App() {
         Text: "Completed Courses"
       },
     ]
-  }
-  let EnrolledCoursePageInfo = {
+  };
+
+
+  let EnrolledCourseButtonsInfo = {
     Heading: "Automotive Course",
     ButtonsInfo: [
       {
-        Link: '/mycourses/enrolledcourse/:EnrolledCourseId/CourseModule',
+        Link: '/enrolledcourse/coursemodule',
         Id: "CourseModule",
         Text: "Course Module"
       },
       {
-        Link: '/mycourses/:EnrolledCourseId/UpcomingClasses',
+        Link: '/enrolledcourse/upcomingclasses',
         Id: "UpcomingClasses",
         Text: "Upcoming Classes"
       },
       {
-        Link: '/mycourses/:EnrolledCourseId/CourseProgress',
+        Link: '/enrolledcourse/progress',
         Id: 'CourseProgress',
         Text: "Course Progress"
       },
@@ -58,33 +80,35 @@ function App() {
   }
 
   return (
-    <>
+    <SocketContext.Provider value={Socket}>
       <BrowserRouter>
         <Header AuthPageName={AuthPageName} setAuthPageName={setAuthPageName} />
-        {AuthPageName !== "" ? <LoginAndRegister AuthPageName={AuthPageName} setAuthPageName={setAuthPageName} /> : null}
+
+        {AuthPageName !== "" ? <LoginAndRegister /> : null}
+
         <Routes>
           <Route path='/' element={<LandingPage />} />
           <Route path='/course/:InstituteCourseId' element={<CourseOverview />} />
-          <Route path='/category/G' element={<CategoryGLicense />} />
+          <Route path='/category/:LicenseTypeId' element={<CategoryGLicense />} />
           <Route path='/Enrollment/Course' element={<CourseEnrollment />} />
 
           <Route path='/Wishlist' element={<WishList />} />
 
 
           <Route path='/mycourses/enrolledcourses'
-            element={<MyCourses PageInfo={PageInfo} Component={<EnrolledCourses />} />} />
+            element={<MyCourses ButtonsInfo={MyCoursesButtonsInfo} PageName="EnrolledCourses"  Component={<EnrolledCourses />} />} />
           <Route path='/mycourses/Wishlist'
-            element={<MyCourses PageInfo={PageInfo} Component={<WishList />} />} />
+            element={<MyCourses ButtonsInfo={MyCoursesButtonsInfo} PageName="Wishlist" Component={<WishList />} />} />
 
-          <Route path='/mycourses/enrolledcourse/:EnrolledCourseId/progress'
-            element={<MyCourses PageInfo={PageInfo} Component={<CourseProgress />} />} />
+          <Route path='/enrolledcourse/progress/:EnrollmentId'
+            element={<MyCourses ButtonsInfo={EnrolledCourseButtonsInfo} PageName="CourseProgress" Component={<CourseProgress />} />} />
 
-          <Route path='/mycourses/enrolledcourse/:EnrolledCourseId/CourseModule'
-            element={<MyCourses PageInfo={EnrolledCoursePageInfo} Component={<SingleEnrolledCourse />} />} />
+          <Route path='/enrolledcourse/coursemodule/:EnrollmentId'
+            element={<MyCourses ButtonsInfo={EnrolledCourseButtonsInfo} PageName="CourseModule" Component={<SingleEnrolledCourse />} />} />
 
         </Routes>
       </BrowserRouter>
-    </>
+    </SocketContext.Provider>
   );
 }
 

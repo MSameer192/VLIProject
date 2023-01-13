@@ -8,9 +8,9 @@ import Footer from '../../Components/Footer/Footer'
 import SearchTiles from './SearchTiles/SearchTiles.jsx';
 import SpecialCourses from './SpecialCourses/SpecialCourses';
 import VehicleType from './VehicleType/VehicleType';
-import {GetLocalStorage} from '../../Helpers/LocalStorage/LocalStorage.js'
+import useCheckLogin from '../../Helpers/CustomHooks/CheckLogin';
 const LandingPage = () => {
-
+  useCheckLogin()
   return (
     <>
       <div className='w-full bgGradient absolute rounded-b-[300px] h-[745px] -z-10'>

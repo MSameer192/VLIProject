@@ -1,14 +1,15 @@
 import React from 'react'
 
-const ClassDetails = () => {
+const ClassDetails = ({ ClassDetail }) => {
+
     return (
         <div className='bg-[#A1A3EF] rounded-lg flex flex-col gap-5 px-6 py-5'>
             <span className='flex flex-col gap-4 md:gap-2'>
                 <h3 className='text-3xs sm:text-2xs md:text-xs lg:text-sm xl:text-base 2xl:text-[30px] text-white SemiBold'>
-                    Class 1
+                    Class {ClassDetail.ClassNumber}
                 </h3>
                 <p className='text-4xs md:text-3xs lg:text-2xs  xl:text-xs text-white'>
-                    Hello, Welcome to the Vehicle Mechanics Course !! My name is Schen chen (Teacher name ) and I'll do my best to help you along your journey. To improve your experience, I'll suggest
+                    {ClassDetail.ClassDescription}
                 </p>
             </span>
             <ClassDuration />

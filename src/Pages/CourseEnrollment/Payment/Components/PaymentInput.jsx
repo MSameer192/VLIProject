@@ -30,7 +30,7 @@ py-2                    md:py-3         lg:py-4     xl:py-5`
             </div>
 
             <PInput />
-            <button className={`text-white bg-[#A1A3EF] border-none cursor-pointer rounded-xl
+            <button type='submit' className={`text-white bg-[#A1A3EF] border-none cursor-pointer rounded-xl
                                         py-2                 md:py-3                xl:py-4
                                         px-6     sm:px-7     md:px-8     lg:px-9    xl:px-10   2xl:px-11 
                                         text-4xs sm:text-3xs md:text-2xs lg:text-xs xl:text-sm 2xl:text-base`}

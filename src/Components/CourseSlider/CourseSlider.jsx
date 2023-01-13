@@ -1,33 +1,32 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './CoursesTiles.css'
-const CoursesSlider = ({ CoursesInfo, CourseTiles, NavigateBtnClass, ClassNames, ShowMoreUrl, SwitchSize }) => {
+const CoursesSlider = ({ CoursesInfo, CourseTiles, NavigateBtnClass, ClassNames, ShowMoreUrl, SwitchSize = "sm" }) => {
     const [ref, setref] = useState({});
     const [Size, setSize] = useState(0);
     const [Btns, setBtns] = useState(document?.querySelectorAll(`.${NavigateBtnClass}Remove,.${NavigateBtnClass}`));
 
-    // useEffect(()=>{
-    //     if (!SwitchSize) 
-    //         SwitchSize = "sm"
-
-    // },[])
+    useEffect(() => {
+        if (Btns?.length === 0 && NavigateBtnClass)
+            setBtns(document?.querySelectorAll(`.${NavigateBtnClass}Remove,.${NavigateBtnClass}`));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [NavigateBtnClass])
 
     useEffect(() => {
-        if (Btns.length === 0 && NavigateBtnClass) {
-            setBtns(document?.querySelectorAll(`.${NavigateBtnClass}Remove,.${NavigateBtnClass}`));
-        }
-        else {
-            window.addEventListener("resize", () => {
-                setSize(0);
-                for (let index = 0; index < Btns?.length; index++) {
-                    if (index === 0) {
-                        Btns[index].classList.remove(`${NavigateBtnClass}Remove`)
-                    } else {
-                        Btns[index].classList.add(`${NavigateBtnClass}Remove`)
-                    }
+
+        window.addEventListener("resize", () => {
+            setSize(0);
+
+            for (let index = 0; index < Btns?.length; index++) {
+                if (index === 0) {
+                    Btns[index].classList.remove(`${NavigateBtnClass}Remove`)
+                } else {
+                    Btns[index].classList.add(`${NavigateBtnClass}Remove`)
                 }
-            })
-        }
+
+            }
+        })
+
 
     }, [ref, Btns, NavigateBtnClass])
 
@@ -48,17 +47,21 @@ const CoursesSlider = ({ CoursesInfo, CourseTiles, NavigateBtnClass, ClassNames,
 
                 return (
                     <span key={index} className={`w-5 h-5 rounded-[28px] bg-[#A1A3EF] cursor-pointer NavigateButton_DropShadow ${Class}`}
-                        onClick={(e) => { Btn(e, Btns, NavigateBtnClass, setBtns); setSize(ref.offsetWidth * index); }}
+                        onClick={(e) => { Btn(e, Btns, NavigateBtnClass, setBtns); setSize(ref?.offsetWidth * index); }}
                     >
                     </span>
                 )
             })}
 
         </div>
+        {
+            CoursesInfo?.length > 4
+                ? <Link to={ShowMoreUrl} className='Regularfont px-4 py-3 no-underline bg-[#A1A3EF] text-white cursor-pointer rounded-xl border-none text-4xs md:text-base ShowMoreBtn_BlackShadow'>
+                    Show More
+                </Link>
+                : null
+        }
 
-        <Link to={ShowMoreUrl} className='Regularfont px-4 py-3 no-underline bg-[#A1A3EF] text-white cursor-pointer rounded-xl border-none text-4xs md:text-base ShowMoreBtn_BlackShadow'>
-            Show More
-        </Link>
     </div>
 }
 

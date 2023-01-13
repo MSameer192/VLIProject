@@ -4,16 +4,16 @@ import './Headers.css'
 import { useState } from 'react';
 import HeaderLeftSide from './Components/LeftSide';
 import HeaderRightSide from './Components/RightSide';
-import CheckLogin from '../../Helpers/CustomHooks/CheckLogin';
-import { useSelector } from 'react-redux';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { OpenLoginSignUp } from '../../Actions/ToggleSignupA'; 
+
 
 const Headers = ({ setAuthPageName }) => {
 
     const [ShowSidebar, setShowSidebar] = useState(false);
     const { UserInfo } = useSelector((store) => store.LoginSignupReducer);
-
-    CheckLogin();
-
+ 
     return (
         <>
 
@@ -31,17 +31,19 @@ const Headers = ({ setAuthPageName }) => {
     )
 }
 
-function LoginRegister({ setAuthPageName }) {
+function LoginRegister() {
+    const Dispatch = useDispatch();
+
     return <nav id='RegisterPortion'
         className='w-auto hidden lg:flex justify-center items-center gap-9 absolute right-7 top-24'>
         <Link className='text-xs  xl:text-2xs no-underline Regularfont text-white'
-            onClick={() => setAuthPageName("Sign In")}
+            onClick={() => Dispatch(OpenLoginSignUp("Sign In", true))}
         >Login</Link>
         <Link className={` text-center no-underline Regularfont text-white bg-[#EA52C6] rounded-[25px]
                                             lg:py-3 xl:py-4     2xl:py-5
                                             lg:px-7 xl:px-10    2xl:px-12 
                                     text-xs         xl:text-2xs`}
-            onClick={() => setAuthPageName("Sign Up")}
+            onClick={() => Dispatch(OpenLoginSignUp("Sign Up", true))}
         >
             Register
         </Link>

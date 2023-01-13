@@ -6,13 +6,14 @@
     /* background-size: cover; */
 }
 
-.hover-on-child:hover .VehicleTypeInfo {
+
+.hover-on-child:hover #VehicleTypeInfo {
 
     width: 70%;
     gap: 24px;
 }
 
-.hover-on-child:hover .img {
+.hover-on-child:hover #VehicleTypeImage {
     scale: .9;
 }
 
@@ -25,7 +26,7 @@
 }
 
 @media (max-width:1024px) {
-    .hover-on-child:hover .VehicleTypeInfo {
+    .hover-on-child:hover #VehicleTypeInfo {
         width: 80%;
         gap: 16px;
     }
