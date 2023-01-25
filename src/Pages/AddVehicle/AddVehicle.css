@@ -1,0 +1,97 @@
+.CarIconShadow {
+    box-shadow: -1px 5px 6px rgba(0, 0, 0, 0.16), inset 0px 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.ImagePreview {
+    width: 100%;
+
+}
+
+.select-box {
+    flex-direction: column;
+    max-width: 450px;
+    max-height: 50px;
+    position: relative;
+}
+
+.selected-value-container {
+    cursor: pointer;
+    width: 100%;
+    padding: 10px 30px;
+    position: relative;
+    border: 1px solid black;
+}
+
+.selected-value-container::after {
+    content: "";
+    background-image: url('./Assets/Arrow.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translate(0%, 50%);
+    height: 9px;
+    width: 18px;
+    rotate: 180deg;
+    transition: 200ms ease-in-out;
+}
+
+.selected-value-container.Selecting::after {
+    content: "";
+
+    top: 50%;
+    transform: translate(0%, -50%);
+
+    rotate: 0deg;
+}
+
+.radio {
+    display: none;
+}
+
+.Options-Container {
+    padding: 0px 10px 10px 0px;
+    position: absolute;
+    width: 100%;
+    overflow-y: scroll;
+    max-height: 200px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px 0px;
+    transition: 200ms;
+    overflow-x: hidden;
+    background-color: white;
+    z-index: 10;
+}
+
+.Options-Container.UnActive {
+    max-height: 0px;
+    border: none;
+    padding: 0px;
+}
+
+.Options-Container::-webkit-scrollbar {
+    width: 8px;
+    background-color: rgba(0, 0, 0, 0.629);
+    border-radius:  0px 10px 10px 0px;
+}
+
+.Options-Container::-webkit-scrollbar-thumb {
+    border-radius: 0px 8px 8px 0px;
+    background-color: #B1B1B1;
+}
+
+.options {
+    font-size: 15px;
+    cursor: pointer;
+    z-index: 10;
+    margin: 5px 0px;
+    padding: 5px 30px;
+    background-color: #E8E8E8;
+    transition: 200ms ease-in-out;
+}
+
+.options:hover {
+    background-color: #f1f1f1;
+}

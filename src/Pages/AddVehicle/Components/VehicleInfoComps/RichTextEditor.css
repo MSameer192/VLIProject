@@ -1,0 +1,10 @@
+.se-wrapper {
+    min-height: 275px;
+    max-height: 400px;
+overflow: scroll;
+}
+
+.se-resizing-bar {
+    opacity: 0;
+    display: none;
+}

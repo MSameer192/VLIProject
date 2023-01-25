@@ -1,0 +1,11 @@
+.CourseTile:hover .ThumbIcon, .CourseTile:hover {
+    fill: white;
+    color: white;
+}
+
+.FavIcon{
+    fill:  #E76F51;
+}
+.ThumbIcon{
+    fill:#A1A3EF ;
+}

@@ -1,0 +1,18 @@
+.BG_Image {
+    background-image: url('./Assets/Signup\ BG\ image.png');
+    background-position: center;
+}
+
+@media (min-width: 768px) {
+    .DropShadow {
+        box-shadow: 3px 3px 6px #00000037;
+    }
+}
+
+.LeftBorders {
+   
+    border-radius: 45px;
+    border-color: red;
+    border-width: 2px;
+    border-style: dashed;
+}

@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: SegoeRegular;
+  src: url('./Fonts/Segoe/segoeui.ttf');
+}
+
+@font-face {
+  font-family: SegoeBlack;
+  src: url('./Fonts/Segoe/segoeuib.ttf');
+}
+
+@font-face {
+  font-family: SegoeSemiBold;
+  src: url('./Fonts/Segoe/seguisb.ttf');
+}
+
+@font-face {
+  font-family: SegoeSemiBoldItalic;
+  src: url('./Fonts/Segoe/seguisbi.ttf');
+}
+
+@font-face {
+  font-family: SegoePrintBold;
+  src: url('./Fonts/Segoe/segoeprb.ttf');
+}
+
+@font-face {
+  font-family: SegoeBold;
+  src: url('./Fonts/Segoe/segoeuib.ttf');
+}
+
+
+:root {
+  --Regularfont: SegoeRegular;
+  --Blackfont: SegoeBlack;
+  --SemiBoldfont: SegoeSemiBold;
+  --SemiBoldItalicfont: SegoeSemiBoldItalic;
+  --PrintBoldfont: SegoePrintBold;
+  --Boldfont: SegoeBold;
+}
+
+.PrintBoldfont{
+  font-family: var(--PrintBoldfont) ;
+}
+
+.Regularfont{
+  font-family: var(--Regularfont);
+}
+.SemiBold{
+  font-family: var(--SemiBoldfont);
+}
+.SemiBoldItalic{
+  font-family: var(--SemiBoldItalicfont);
+}
+.Blackfont{
+  font-family: var(--Blackfont);
+}
+.Boldfont{
+  font-family: var(--Boldfont);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+@media (max-width: 768px) {
+  body{
+    background-color: #4e00eb16;
+  }
+}
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: var(--Regularfont);
+}
+ 
+.RemoveInputNumArrows::-webkit-inner-spin-button, .RemoveInputNumArrows::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: inherit;
+  -moz-appearance: textfield;
+  margin: 0;
+}
+.sun-editor .se-wrapper{
+  overflow-y: scroll;
+  max-height: 100px;
+}

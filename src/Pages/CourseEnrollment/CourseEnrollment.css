@@ -1,0 +1,23 @@
+*{
+    scroll-behavior:smooth
+}
+
+.EnrollmentBG {
+    background-image: url('./Assets/Enrollment\ bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.EnrollmentStepsShadow {
+    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.16);
+}
+
+
+
+/* In UserInfo-> ContactAndOtherInfo -> DatePortion */
+#RemoveDateIcon::-webkit-inner-spin-button,
+#RemoveDateIcon::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
