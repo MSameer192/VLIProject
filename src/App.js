@@ -19,7 +19,11 @@ import { createContext } from 'react';
 import AddVehicle from './Pages/AddVehicle/AddVehicle';
 import VehicleInventory from './Pages/VehicleInventory/VehicleInventory';
 import InstituteDashboard from './Pages/InstituteDashboard/InstituteDashboard';
-
+import { GetLocalStorage } from './Helpers/LocalStorage/LocalStorage';
+import InstituteSideBar from './Components/InstituteSideBar/InstituteSideBar';
+import UpdateVehicle from './Pages/AddVehicle/UpdatedVehicle';
+import AddCourse from './Pages/AddCourse/AddCourse';
+import  { useSetLoginInfo } from './Helpers/CustomHooks/CheckLogin'
 
 export const SocketContext = createContext();
 
@@ -80,15 +84,18 @@ function App() {
       },
     ]
   }
-  const Home = !UserInfo?.User || UserInfo?.User === "Student"
+  useSetLoginInfo()
+  const Home = !GetLocalStorage("UserInfo")?.User || UserInfo?.User === "Student"
     ? <LandingPage /> :
-    UserInfo?.User === "Institute" ?
+    GetLocalStorage("UserInfo")?.User === "Institute" ?
       <InstituteDashboard /> : null
+
+ 
   return (
     <SocketContext.Provider value={Socket}>
       <BrowserRouter>
         <Header AuthPageName={AuthPageName} setAuthPageName={setAuthPageName} />
-
+        {GetLocalStorage("UserInfo")?.User === "Institute" ? <InstituteSideBar /> : null}
         {AuthPageName !== "" ? <LoginAndRegister /> : null}
 
         <Routes>
@@ -98,6 +105,7 @@ function App() {
           <Route path='/Enrollment/Course' element={<CourseEnrollment />} />
 
           <Route path='/Wishlist' element={<WishList />} />
+
 
 
           <Route path='/mycourses/enrolledcourses'
@@ -113,9 +121,9 @@ function App() {
 
 
 
-
-
+          <Route path='/AddCourse' element={<AddCourse />} />
           <Route path='/vehicle/add' element={<AddVehicle />} />
+          <Route path='/vehicle/update/:VehicleId' element={<UpdateVehicle />} />
           <Route path='/vehicle/inventory' element={<VehicleInventory />} />
 
         </Routes>

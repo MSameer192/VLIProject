@@ -5,23 +5,30 @@ import SunEditor from 'suneditor-react';
 import 'suneditor/dist/css/suneditor.min.css';
 import './RichTextEditor.css'
 let Space = { menu: "spaced" }
-const RichTextEditor = ({ OnChange, VehicleErrors, setVehicleErrors }) => {
-    const [DescriptionErr, setDescriptionErr] = useState()
-    useEffect(() => {
+const RichTextEditor = ({ OnChange, VehicleErrors, setVehicleErrors, VehicleData, setVehicleData }) => {
+    const [DescriptionErr, setDescriptionErr] = useState();
+    const [Description, setDescription] = useState();
+
+    useEffect(() => { 
         setVehicleErrors({ ...VehicleErrors, Description: DescriptionErr })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [DescriptionErr])
 
-    return <SunEditor 
+    useEffect(() => {
+        setVehicleData({ ...VehicleData, Description })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [Description])
+
+    return <SunEditor
 
         onChange={(Content) => {
-            const aa=document.getElementsByClassName("se-wrapper-inner")
-console.log(aa[1].innerHTML)
-            if (Content !== "")
+            // const aa = document.getElementsByClassName("se-wrapper-inner")
+            if (Content !== "") {
                 setDescriptionErr(false)
+                setDescription(Content)
+            }
             else
                 setDescriptionErr(true)
-            OnChange(Content, "Description")
         }}
     />
 }

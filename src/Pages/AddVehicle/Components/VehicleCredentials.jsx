@@ -16,18 +16,13 @@ const InputParentSpanStyle = "max-w-[375px] w-11/12 sm:w-1/2 relative"
 
 const VehicleCredentials = ({ VehicleData, setVehicleData, VehicleErrors, setVehicleErrors }) => {
 
-
-    const [VehicleCredState, setVehicleCredState] = useState({});
-
-    useEffect(() => {
-        setVehicleData({ ...VehicleData, ...VehicleCredState })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [VehicleCredState])
-
     const OnChange = (e, KeyName) => {
-        setVehicleCredState({ ...VehicleCredState, [KeyName]: e.target.value })
+ 
+        setVehicleData({ ...VehicleData, [KeyName]: e.target.value })
         setVehicleErrors({ ...VehicleErrors, [KeyName]: false })
     }
+
+
     return (
         <div className={`w-11/12 mt-10 sm:bg-white flex flex-col gap-10 py-6 items-center sm:items-start
                         sm:px-6     md:px-8     lg:px-10    xl:px-12    2xl:px-14`}>
@@ -41,7 +36,7 @@ const VehicleCredentials = ({ VehicleData, setVehicleData, VehicleErrors, setVeh
                         <ErrorIndicator Error={VehicleErrors?.IdentityNumber} />
                         <input type="text" id='IdentityNumber'
                             className={InputStyle} placeholder='Identity Number'
-                            value={VehicleCredState.IdentityNumber}
+                            value={VehicleData.IdentityNumber}
                             onChange={(e) => OnChange(e, "IdentityNumber")}
                         />
                     </span>
@@ -52,7 +47,7 @@ const VehicleCredentials = ({ VehicleData, setVehicleData, VehicleErrors, setVeh
                         <ErrorIndicator Error={VehicleErrors?.PlateNumber} />
                         <input type="text" id='PlateNumber'
                             className={InputStyle} placeholder='Plate Number'
-                            value={VehicleCredState.PlateNumber}
+                            value={VehicleData.PlateNumber}
                             onChange={(e) => OnChange(e, "PlateNumber")}
                         />
                     </span>
@@ -64,7 +59,7 @@ const VehicleCredentials = ({ VehicleData, setVehicleData, VehicleErrors, setVeh
                         <ErrorIndicator Error={VehicleErrors?.InsuranceNumber} />
                         <input type="text" id='InsuranceNumber'
                             className={InputStyle} placeholder='Insurance Number'
-                            value={VehicleCredState.InsuranceNumber}
+                            value={VehicleData.InsuranceNumber}
                             onChange={(e) => OnChange(e, "InsuranceNumber")}
                         />
                     </span>
@@ -76,11 +71,10 @@ const VehicleCredentials = ({ VehicleData, setVehicleData, VehicleErrors, setVeh
                         <ErrorIndicator Error={VehicleErrors?.TrainerNumberPlate} />
                         <input type="text" id='TrainerNumberPlate'
                             className={InputStyle} placeholder='Trainer Number Plate'
-                            value={VehicleCredState.TrainerNumberPlate}
+                            value={VehicleData.TrainerNumberPlate}
                             onChange={(e) => OnChange(e, "TrainerNumberPlate")}
                         />
                     </span>
-
                 </div>
             </div>
         </div>

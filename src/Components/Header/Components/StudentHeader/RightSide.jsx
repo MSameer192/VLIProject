@@ -6,16 +6,24 @@ import SignedUpRightSide from "./RightSideComp/SignedUpRightSide";
 function StudentRightSide({ setShowSidebar, ShowSidebar }) {
     let LinkStyle = "text-2xs text-white lg:text-black md:text-xs lg:text-3xs xl:text-2xs 2xl:text-[21px] hover:text-[#A1A3EF]  no-underline SemiBold ";
 
-    let MobileViewSideBar = `mx-12 gap-7 flex-col absolute p-10 justify-start rounded-b-[60px] items-start h-[80vh] w-[95%] top-0 -left-12`
-    let DesktopRightSide = `right-header flex flex-wrap  min-h-fit
-    lg:mx-5     xl:mx-10    2xl:mx-16
-    lg:gap-7    xl:gap-8    2xl:gap-11 
 
-    lg:flex-row lg:static lg:p-0 lg:justify-end lg:rounded-none lg:items-center lg:h-full lg:w-auto`;
+
+    let DesktopRightSide = `right-header flex flex-wrap  min-h-fit top-0 -left-12
+    mx-12               lg:mx-5     xl:mx-10    2xl:mx-16
+    gap-7               lg:gap-7    xl:gap-8    2xl:gap-11
+    p-10                lg:p-0
+    flex-col            lg:flex-row 
+    absolute            lg:static  
+    justify-start       lg:justify-end
+    rounded-b-[60px]    lg:rounded-none 
+    items-start         lg:items-center 
+    h-[80vh]            lg:h-full 
+    w-full              lg:w-auto`;
+
     const { UserInfo } = useSelector((store) => store.LoginSignupReducer);
     return <nav
         style={{ left: ShowSidebar ? "-48px" : "-2000px" }}
-        className={`${MobileViewSideBar} ${DesktopRightSide} SideBarBG`}
+        className={`${DesktopRightSide} SideBarBG`}
     >
         {/* Common */}
         <Link className={LinkStyle} to='/Ebooks'>E-Books</Link>
@@ -30,7 +38,7 @@ function StudentRightSide({ setShowSidebar, ShowSidebar }) {
             : <SignedOutRightSide setShowSidebar={setShowSidebar} LinkStyle={LinkStyle} />
         }
 
-        <button className='p-3 rounded-xl border-none cursor-pointer bg-[#A1A3EF] flex items-center justify-center lg:hidden absolute -right-2 top-2'
+        <button className='p-3 rounded-xl border-none cursor-pointer bg-[#A1A3EF] flex items-center justify-center lg:hidden absolute right-2 top-2'
             onClick={() => setShowSidebar(false)}
         >
             <img src={require('./RightSideAssets/CrossIcon.svg').default} alt="" />

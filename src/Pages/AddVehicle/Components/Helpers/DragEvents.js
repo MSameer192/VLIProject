@@ -1,3 +1,5 @@
+import { SetImagePreview } from "./Others";
+
 export const DragOver = (e) => {
     e.stopPropagation();
     e.preventDefault();
@@ -9,9 +11,8 @@ export const DragOver = (e) => {
         const HideElements = ChangeBg.getElementsByClassName("HideOnDrag");
         [...HideElements]?.forEach(element => element.classList.add("hidden"));
     }
-
-
 }
+
 export const DragLeave = (e) => {
     e.stopPropagation();
     const ChangeBg = e.target;
@@ -21,20 +22,9 @@ export const DragLeave = (e) => {
     const HideElements = ChangeBg.getElementsByClassName("HideOnDrag");
     [...HideElements]?.forEach(element => element.classList.remove("hidden"));
 }
-const UpdateImagePreview = (Element, image) => {
-    let ImgElement = Element.getElementsByClassName('ImgPreview')[0];
-    if (!ImgElement) {
-        ImgElement = document.createElement('img');
-        ImgElement.classList.add("ImagePreview");
-    }
-    const Reader = new FileReader();
-    Reader.readAsDataURL(image);
-    Reader.onload = () => {
-        ImgElement.src = Reader.result;
-        Element.appendChild(ImgElement);
-    }
-}
-export const Drop = (e, VehicleImagesState, setVehicleImagesState) => {
+
+
+export const Drop = (e, VehicleImagesState, setVehicleImagesState, setImage) => {
     e.preventDefault();
     e.stopPropagation();
     const ChangeBg = e.target;
@@ -43,15 +33,9 @@ export const Drop = (e, VehicleImagesState, setVehicleImagesState) => {
     if (e.dataTransfer.files.length > 0) {
         const InputEle = e.target.getElementsByTagName("input")[0];
         InputEle.files = e.dataTransfer.files;
-        setVehicleImagesState({ ...VehicleImagesState, [InputEle.name]: InputEle.files[0] })
-        UpdateImagePreview(e.target, e.dataTransfer.files[0])
-    }
-}
 
-export const OnImageChange = (e, VehicleImagesState, setVehicleImagesState) => {
-    const PreviewContainer = e.target.parentNode;
-    const HideElements = PreviewContainer.getElementsByClassName("HideOnDrag");
-    [...HideElements]?.forEach(element => element.classList.toggle("hidden"));
-    UpdateImagePreview(PreviewContainer, e.target.files[0]);
-    setVehicleImagesState({ ...VehicleImagesState, [e.target.name]: e.target.files[0] })
+        VehicleImagesState.push(InputEle.files[0])
+        setVehicleImagesState([...VehicleImagesState, InputEle.files[0]])
+        SetImagePreview(setImage, e.dataTransfer.files[0])
+    }
 }

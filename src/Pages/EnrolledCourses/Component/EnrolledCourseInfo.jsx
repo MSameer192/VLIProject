@@ -21,12 +21,22 @@ const EnrolledCourseInfo = ({ Course }) => {
 
 
             <hr className='w-3/5 lg:w-0  h-0 lg:min-h-[150px] ' />
-            <Link to={`/enrolledcourse/coursemodule/${Course.EnrollmentId}`} className={`no-underline whitespace-nowrap bg-[#A1A3EF] text-white border-none rounded-xl py-3 cursor-pointer
+            <sapn>
+                <Link to={`/enrolledcourse/coursemodule/${Course.EnrollmentId}`} className={`no-underline whitespace-nowrap bg-[#A1A3EF] text-white border-none rounded-xl py-3 cursor-pointer
                             px-5        md:px-6     xl:px-8
                             text-3xs    md:text-xs 
                         `}>
-                Go To Course
-            </Link>
+                    Go To Course
+                </Link>
+                <Link to={`/enrolledcourse/coursemodule/${Course.EnrollmentId}`} className={`no-underline whitespace-nowrap bg-[#EE1B1B] text-white border-none rounded-xl py-3 cursor-pointer
+                            px-5        md:px-6     xl:px-8
+                            text-3xs    md:text-xs 
+                        `}>
+                    Subscription Status
+                </Link>
+
+
+            </sapn>
         </div>
     )
 }

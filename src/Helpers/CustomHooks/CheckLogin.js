@@ -16,7 +16,7 @@ const useCheckLogin = (Navigation, UserType, InstituteUserTypes) => {
             Dispatch(SetUser(GetLocalStorage("UserInfo")))
 
             if (GetLocalStorage("UserInfo")?.User === UserType) {
-                if (GetLocalStorage("UserInfo")?.User === "Institute" && !Institute)
+                if (GetLocalStorage("UserInfo")?.User === "Institute" && !CheckInstitute(InstituteUserTypes))
                     Navigate('/')
             }
             else if (GetLocalStorage("UserInfo")?.User !== UserType)
@@ -33,16 +33,20 @@ const useCheckLogin = (Navigation, UserType, InstituteUserTypes) => {
 }
 function CheckInstitute(InstituteUserTypes) {
     let checkInstitute
-    InstituteUserTypes?.forEach(element => {
-        if (GetLocalStorage("UserInfo")?.InstituteUserType === element) checkInstitute = true
+    InstituteUserTypes?.forEach(InstituteUserTypeName => {
+        if (GetLocalStorage("UserInfo")?.InstituteUserType === InstituteUserTypeName) checkInstitute = true
     });
 
     return checkInstitute
 }
-function useInstituteNavigate() {
-    const Navigate = useNavigate();
+export const useSetLoginInfo = () => {
+   
+    const Dispatch = useDispatch();
     const { Authenticated } = useSelector((Store) => Store.LoginSignupReducer);
     useEffect(() => {
+        if (GetLocalStorage("UserInfo")) {
+            Dispatch(SetUser(GetLocalStorage("UserInfo")))
+        }
     }, [])
 }
 export default useCheckLogin

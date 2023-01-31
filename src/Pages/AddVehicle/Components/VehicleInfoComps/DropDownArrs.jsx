@@ -16,9 +16,9 @@ const MakersDropDownArr = ({ Name, onChange, StateValue }) => {
     )
 }
 const CarsDropDownArr = ({ Name, onChange, StateValue }) => {
-
+ 
     return cars.map((value) =>
-        <DropDownOption key={value} ID={RemoveSpaces(value)} Text={value} Name={Name} onChange={onChange} StateValue={StateValue} />
+        <DropDownOption key={value} ID={value} Text={value} Name={Name} onChange={onChange} StateValue={StateValue} />
     )
 }
 const YearsDropDownArr = ({ Name, onChange, StateValue }) => {

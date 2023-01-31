@@ -2,7 +2,6 @@ import CryptoJS from 'crypto-js';
 
 export const SetLocalStorage = (name, key) => {
     key = CryptoJS.AES.encrypt(`${JSON.stringify(key)}`, process.env.REACT_APP_EncryptionKey).toString();
-
     localStorage.setItem(name, JSON.stringify(key));
 }
 
@@ -14,9 +13,9 @@ export const GetLocalStorage = (name) => {
         decrypted = decrypted.toString(CryptoJS.enc.Utf8);
         return JSON.parse(decrypted)
     }
-    else {
+    else 
         return null
-    }
+    
 }
 
 

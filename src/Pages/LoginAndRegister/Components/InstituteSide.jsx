@@ -1,10 +1,10 @@
 import React from 'react'
 import { useRef } from 'react'
 import { useState } from 'react'
-import InstituteDocuments from './InstituteSide/InstituteCredentials/InstituteDocuments'
-import InstituteInfo from './InstituteSide/InstituteCredentials/InstituteInfo'
-import InstituteTimings from './InstituteSide/InstituteTimings/InstituteTimings'
-import InstituteUserInfo from './InstituteSide/InstituteUserInfo/InstituteUserInfo'
+import InstituteDocuments from './InstituteSide/InstituteDocuments'
+import InstituteInfo from './InstituteSide/InstituteInfo'
+import InstituteTimings from './InstituteSide/InstituteTimings'
+import InstituteUserInfo from './InstituteSide/InstituteUserInfo'
 import { CenterORline } from './UserSigning'
 
 const InstituteSide = () => {
@@ -31,7 +31,7 @@ const InstituteSide = () => {
                 </div>
                 
                 
-                <div className='w-[33.33%]  items-center justify-center flex flex-col'>
+                <div className='w-[33.33%]  items-center justify-center'>
                     <InstituteTimings OnClickFunction={OnClickFunction} Position={200} />
                 </div>
             </div>

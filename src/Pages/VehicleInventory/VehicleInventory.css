@@ -1,0 +1,12 @@
+.DropDownBorder {
+    border-bottom: 2px solid rgba(27, 27, 27, 0.10);
+    outline: none;
+}
+
+.DropDownBorder:focus-within {
+    outline: 1px solid black;
+}
+
+.CarTilesBorder{
+    border-bottom: 2px solid #EBEBEB;
+}

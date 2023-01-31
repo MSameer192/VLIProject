@@ -6,10 +6,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { OpenLoginSignUp } from '../../Actions/ToggleSignupA';
 import InstituteHeader from './Components/InstituteHeader/InstituteHeader';
 import StudentHeader from './Components/StudentHeader/StudentHeader';
+import { GetLocalStorage } from '../../Helpers/LocalStorage/LocalStorage';
 
 
 const Headers = ({ setAuthPageName }) => {
-
     const [ShowSidebar, setShowSidebar] = useState(false);
     const { UserInfo } = useSelector((store) => store.LoginSignupReducer);
     return (
@@ -20,7 +20,7 @@ const Headers = ({ setAuthPageName }) => {
                 {UserInfo?.UserName ? null : <LoginRegister setAuthPageName={setAuthPageName} />}
                 <div className='flex justify-between items-center fixed top-0 lg:bg-white  bg-[#321d6d]  w-full h-[80px]  '>
                     {
-                        !UserInfo?.User || UserInfo?.User === "Student" ?
+                        !GetLocalStorage("UserInfo")?.User || UserInfo?.User === "Student" ?
                             <>
                                 <StudentHeader ShowSidebar={ShowSidebar} setShowSidebar={setShowSidebar} setAuthPageName={setAuthPageName} />
                             </>

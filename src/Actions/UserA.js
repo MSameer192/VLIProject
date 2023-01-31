@@ -2,8 +2,8 @@ import axios from "axios";
 import { DeleteLocalStorage, SetLocalStorage } from "../Helpers/LocalStorage/LocalStorage";
 import { BaseUrl } from "./Base";
 import { AgainOpenLoginSignUp, DoneLoginSignUp } from "./ToggleSignupA";
-const Headers = { headers: { "Content-Type": "application/json" } }
-const Credentials = { withCredentials: true }
+export const Headers = { headers: { "Content-Type": "application/json" } }
+export const Credentials = { withCredentials: true }
 export const LoginUser = (UserData, Dispatch, PageName) => async (dispatch) => {
     try {
         dispatch({
@@ -11,7 +11,8 @@ export const LoginUser = (UserData, Dispatch, PageName) => async (dispatch) => {
         })
 
         const { data } = await axios.post(`${BaseUrl}/api/login`, UserData,
-            { headers: { "Content-Type": "application/json" } },
+            Headers,
+            
         );
 
         data.User.PhoneNumber = ""
@@ -21,7 +22,7 @@ export const LoginUser = (UserData, Dispatch, PageName) => async (dispatch) => {
             Auth: true
         })
         SetLocalStorage("UserInfo", data.User)
- 
+
         Dispatch(DoneLoginSignUp(false))
     } catch (error) {
         console.log("error")
@@ -163,7 +164,7 @@ export const AddtoWishList = (InstitutetCourseId) => async (dispatch) => {
 
         const { data } = await axios.post(`${BaseUrl}/api/wishlist`, { InstitutetCourseId },
             { headers: { "Content-Type": "application/json" }, withCredentials: true });
- 
+
         dispatch({
             type: "AddToWishListSuccess",
             payload: data

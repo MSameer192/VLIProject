@@ -45,7 +45,7 @@ const LicenseTypes = () => {
 
                     {LicenseTypesState.map((value, index) => <span key={index + 0.1}
                         className='w-5 h-5 rounded-[10px] bg-[#A1A3EF] cursor-pointer'
-                        onClick={() => { setSize(ref.offsetWidth * index) }}
+                        onClick={() => setSize(ref.offsetWidth * index)}
                     ></span>)}
                 </div>
 
@@ -67,7 +67,7 @@ function LicenseTypeTiles({ LicenseTypesState, setref }) {
         if (value?.LicenseTypeName !== "Industrial Machinery") LicenseTypeName = value.LicenseTypeName + " Licensing";
 
 
-        
+
         let HoverStyle = "hover:origin-top-left hover:gap-10 hover:md:gap-6 hover:scale-100 md:hover:scale-[1.04]"
         let TransitionDuration = "duration-[400ms]";
         return (

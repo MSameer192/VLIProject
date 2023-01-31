@@ -9,12 +9,10 @@ function DropDown({ Label, DropDownOptions, Name, onChange, StateValue }) {
 
     }
     let TextStyle = `text-3xs font-normal whitespace-nowrap`;
-    if (Name === "Manufacturers") {
-        // console.log(StateValue)
-    }
+
     return <div className='select-box w-full'  >
         <div className='selected-value-container Selecting cursor-pointer' onClick={OpenDropDown}>
-            <h3 className={`pointer-events-none ${TextStyle}`}> {Label}</h3>
+            <h3 className={`pointer-events-none ${TextStyle}`}>{!StateValue ? Label : StateValue}</h3>
         </div>
         <div className='Options-Container UnActive' >
             <DropDownOptions Name={Name} onChange={onChange} StateValue={StateValue} />

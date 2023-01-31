@@ -13,19 +13,15 @@ const VehicleInfo = ({ VehicleData, setVehicleData, VehicleErrors, setVehicleErr
 
     let DivStyle = `flex w-full justify-center sm:justify-start
                     sm:gap-14   md:gap-16   lg:gap-20   xl:gap-24   2xl:gap-28`;
-    const [VehicleInfoState, setVehicleInfoState] = useState({
-    })
-    useEffect(() => {
-        setVehicleData({ ...VehicleData, ...VehicleInfoState })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [VehicleInfoState])
 
-    const OnChange = (Content, KeyName, errs) => {
-        setVehicleInfoState({ ...VehicleInfoState, [KeyName]: Content })
-        if (Content.toString() !== "" && KeyName !== "Description") 
+
+    const OnChange = (Content, KeyName) => {
+        setVehicleData({ ...VehicleData, [KeyName]: Content })
+        if (Content.toString() !== "" && KeyName !== "Description")
             setVehicleErrors({ ...VehicleErrors, [KeyName]: false })
-        
+
     }
+    // console.log(VehicleData.Manufacturer)
     return (
         <div className='sm:bg-white w-11/12 mt-8 flex flex-col items-center sm:items-start sm:px-14 gap-10 py-6'>
             <h2 className='font-normal text-[#707070] text-3xs md:text-2xs xl:text-sm Boldfont'>Car Information</h2>
@@ -39,7 +35,7 @@ const VehicleInfo = ({ VehicleData, setVehicleData, VehicleErrors, setVehicleErr
                     <span className='w-11/12 sm:w-2/3 relative max-w-[450px]'>
                         <ErrorIndicator Error={VehicleErrors?.Manufacturer} />
                         <DropDown DropDownOptions={MakersDropDownArr} Label="Select a company" Name="Manufacturers"
-                            StateValue={VehicleInfoState.Manufacturer}
+                            StateValue={VehicleData.Manufacturer}
                             onChange={(e) => OnChange(e.value, "Manufacturer")} />
                     </span>
                 </div>
@@ -49,7 +45,7 @@ const VehicleInfo = ({ VehicleData, setVehicleData, VehicleErrors, setVehicleErr
                     <span className='w-11/12 sm:w-2/3 relative max-w-[450px]'>
                         <ErrorIndicator Error={VehicleErrors?.Model} />
                         <DropDown DropDownOptions={CarsDropDownArr} Label="Select a Model" Name="Model"
-                            StateValue={VehicleInfoState.Model}
+                            StateValue={VehicleData.Model}
                             onChange={(e) => OnChange(e.value, "Model")} />
                     </span>
 
@@ -61,7 +57,7 @@ const VehicleInfo = ({ VehicleData, setVehicleData, VehicleErrors, setVehicleErr
                     <span className='w-11/12 sm:w-2/3 relative max-w-[450px]'>
                         <ErrorIndicator Error={VehicleErrors?.Year} />
                         <DropDown DropDownOptions={YearsDropDownArr} Label="Select Year" Name="Year"
-                            StateValue={VehicleInfoState.Year}
+                            StateValue={VehicleData.Year}
                             onChange={(e) => OnChange(e.value, "Year")} />
                     </span>
 
@@ -72,7 +68,7 @@ const VehicleInfo = ({ VehicleData, setVehicleData, VehicleErrors, setVehicleErr
                     <span className='w-11/12 sm:w-2/3 relative max-w-[450px]'>
                         <ErrorIndicator Error={VehicleErrors?.Color} />
                         <DropDown DropDownOptions={ColorsDropDownArr} Label="Select Color" Name="Color"
-                            StateValue={VehicleInfoState.Color}
+                            StateValue={VehicleData.Color}
                             onChange={(e) => OnChange(e.value, "Color")} />
                     </span>
 
@@ -82,7 +78,7 @@ const VehicleInfo = ({ VehicleData, setVehicleData, VehicleErrors, setVehicleErr
                     <span className='w-11/12 sm:w-2/3 relative max-w-[450px]'>
                         <ErrorIndicator Error={VehicleErrors?.Type} />
                         <DropDown DropDownOptions={TypesDropDownArr} Label="Select Type" Name="Type"
-                            StateValue={VehicleInfoState.Type}
+                            StateValue={VehicleData.Type}
                             onChange={(e) => OnChange(e.value, "Type")} />
                     </span>
 
@@ -93,7 +89,7 @@ const VehicleInfo = ({ VehicleData, setVehicleData, VehicleErrors, setVehicleErr
                     <span className='w-11/12 sm:w-2/3 relative max-w-[450px]'>
                         <ErrorIndicator Error={VehicleErrors?.Seats} />
                         <DropDown DropDownOptions={SeatsDropDownArr} Label="Select no. of  Seats" Name="Seat"
-                            StateValue={VehicleInfoState.Seats}
+                            StateValue={VehicleData.Seats}
                             onChange={(e) => OnChange(e.value, "Seats")} />
                     </span>
 
@@ -103,7 +99,7 @@ const VehicleInfo = ({ VehicleData, setVehicleData, VehicleErrors, setVehicleErr
                     <span className='w-11/12 sm:w-2/3 relative max-w-[450px]'>
                         <ErrorIndicator Error={VehicleErrors?.EngineCapacity} />
                         <DropDown DropDownOptions={EngineCapacityDropDownArr} Label="Select Engine capacity" Name="EngineCapacity"
-                            StateValue={VehicleInfoState.EngineCapacity}
+                            StateValue={VehicleData.EngineCapacity}
                             onChange={(e) => OnChange(e.value, "EngineCapacity")} />
                     </span>
 
@@ -113,16 +109,18 @@ const VehicleInfo = ({ VehicleData, setVehicleData, VehicleErrors, setVehicleErr
                     <span className='w-11/12 sm:w-2/3 relative max-w-[450px]'>
                         <ErrorIndicator Error={VehicleErrors?.GearType} />
                         <DropDown DropDownOptions={GearTypeDropDownArr} Label="Select Gear Type" Name="GearType"
-                            StateValue={VehicleInfoState.GearType}
+                            StateValue={VehicleData.GearType}
                             onChange={(e) => OnChange(e.value, "GearType")} />
                     </span>
-
+ 
                 </div>
                 <div className={`${DivStyle}`}>
                     <p className={TextStyle}>Description</p>
                     <span className='w-11/12 sm:w-2/3  max-w-[800px] relative'>
                         <ErrorIndicator Error={VehicleErrors?.Description} />
-                        <RichTextEditor OnChange={OnChange} VehicleErrors={VehicleErrors}  setVehicleErrors={setVehicleErrors} />
+                        <RichTextEditor OnChange={OnChange} VehicleErrors={VehicleErrors} setVehicleErrors={setVehicleErrors}
+                            VehicleData={VehicleData} setVehicleData={setVehicleData}
+                        />
                     </span>
                 </div>
             </div>
