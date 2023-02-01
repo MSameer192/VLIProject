@@ -1,4 +1,4 @@
-import React, {  useState } from 'react'
+import React, { useState } from 'react'
 import './CourseEnrollment.css'
 import EnrollmentSteps from './EnrollmentSteps/EnrollmentSteps'
 import Packages from './Packages/Packages'
@@ -40,11 +40,11 @@ const CourseEnrollment = () => {
     });
     const [Err, setErr] = useState({})
 
-    useCheckLogin();
+    useCheckLogin(true, ["Student"]);
     const Navigate = useNavigate()
     const PackageRef = useRef(null);
     usePageLoadCheckers(location, EnrollmentData, setEnrollmentData)
- 
+
     return (
         <div className='mt-20'>
             <TopPart />
@@ -54,7 +54,7 @@ const CourseEnrollment = () => {
 
             <EnrollmentSteps />
 
-            <form onSubmit={(e) => SubmitForm(e, EnrollmentData, Err, setErr, Dispatch,Navigate)} >
+            <form onSubmit={(e) => SubmitForm(e, EnrollmentData, Err, setErr, Dispatch, Navigate)} >
 
                 <UserInfo setEnrollmentData={setEnrollmentData} EnrollmentData={EnrollmentData} PackageRef={PackageRef}
                     Err={Err} setShowTimeSlots={setShowTimeSlots} />

@@ -6,7 +6,7 @@ import './MyCourses.css'
 import MyCoursesButtons from './MyCoursesButtons';
 
 
-const MyCourses = ({ Component, ButtonsInfo,PageName }) => {
+const MyCourses = ({ Component, ButtonsInfo, PageName }) => {
   let Id = window.location.href.split("/mycourses/");
   const [Ele, setEle] = useState(document.getElementById(Id[1]));
   const { EnrollmentId } = useParams();
@@ -46,11 +46,14 @@ const MyCourses = ({ Component, ButtonsInfo,PageName }) => {
       setButtonsInfoState(ButtonsInfo)
 
   }, [EnrollmentId, ButtonsInfo, ButtonsInfoState, CheckButtonsInfo])
+  
   useEffect(() => {
     if (Ele)
       OnClickMethod(Ele)
 
   }, [Ele])
+
+
   let MinHeight = "min-h-[calc(100%_-_80px)]";
 
   return (
@@ -65,7 +68,7 @@ const MyCourses = ({ Component, ButtonsInfo,PageName }) => {
                         text-base sm:text-[30px] md:text-[34px] lg:text-[38px] xl:text-[45px] 
                         Boldfont`}
         >
-          {ButtonsInfo?.Heading}
+          {ButtonsInfo?.Heading ? ButtonsInfo?.Heading : null}
         </h1>
         <MyCoursesButtons PageName={PageName} ButtonsInfo={ButtonsInfoState?.ButtonsInfo} EnrolledCoursesRef={EnrolledCoursesRef} OnClickMethod={OnClickMethod} />
 

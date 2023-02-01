@@ -35,7 +35,7 @@ const InstituteSideBar = () => {
   const OnClick = Name => setPageName(Name)
 
   return (
-    <div className='flex-col gap-10 h-[calc(100vh_-_80px)] w-24 mt-20 items-center fixed py-8 hidden sm:flex'>
+    <div className='flex-col gap-10 h-[calc(100vh_-_80px)] w-24 mt-20 items-center fixed py-8 hidden sm:flex bg-white'>
 
       <NavLink className={({ isActive }) => Classes(isActive, "/")} to="/"
         onClick={() => OnClick("/")}

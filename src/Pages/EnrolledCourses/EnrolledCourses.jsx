@@ -2,13 +2,14 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { GetEnrolledCourses } from '../../Actions/CourseA'
 import useCheckLogin from '../../Helpers/CustomHooks/CheckLogin'
-import EnrolledCourseInfo from './Component/EnrolledCourseInfo'
+import EnrolledCourseInfo from './Component/EnrolledCourseInfo/EnrolledCourseInfo'
+ 
 import Ponits from './Component/Ponits'
 
 const EnrolledCourses = () => {
 
     const Dispatch = useDispatch()
-    useCheckLogin(false, "Student");
+    useCheckLogin(false, ["Student", "Institute"]);
     const { Authenticated } = useSelector((Store) => Store.LoginSignupReducer);
 
     const { EnrolledCourses } = useSelector((Store) => Store.CourseReducer);

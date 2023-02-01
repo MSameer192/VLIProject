@@ -36,7 +36,7 @@ const CourseOverview = () => {
 
     }, [DivElement])
     useGetWishList()
-    useCheckLogin(false,"Student");
+    useCheckLogin(false,["Student"]);
     const InstructorRef = useRef();
     const CourseSyllabusRef = useRef();
     const VehicleDetailRef = useRef();

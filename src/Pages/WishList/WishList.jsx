@@ -16,7 +16,7 @@ const WishList = () => {
     Dispatch(GetWishList())
   }, [Dispatch])
 
-  useCheckLogin(true,"Student");
+  useCheckLogin(true,["Student"]);
   return (
     !loading ?
       <div className='mt-20 flex flex-col items-center gap-12'>

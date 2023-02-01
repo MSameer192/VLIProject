@@ -23,9 +23,9 @@ const CategoryGLicense = () => {
         Dispatch(GetLicenseTypeCourse(LicenseTypeId))
     }, [Dispatch, LicenseTypeId])
 
-    useCheckLogin(false, "Student")
+    useCheckLogin(false, ["Student"])
     useGetWishList()
-
+console.log(Courses)
     return (
 
         <div className='mt-20 overflow-hidden'>

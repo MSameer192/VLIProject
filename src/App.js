@@ -10,7 +10,7 @@ import CourseEnrollment from './Pages/CourseEnrollment/CourseEnrollment';
 import MyCourses from './Components/MyCourses/MyCourses';
 import WishList from './Pages/WishList/WishList';
 import EnrolledCourses from './Pages/EnrolledCourses/EnrolledCourses';
-import SingleEnrolledCourse from './Pages/SingleEnrolledCourse/SingleEnrolledCourse';
+import SEnrolledCourse from './Pages/SingleEnrolledCourse/SingleEnrolledCourse';
 import CourseProgress from './Pages/CourseProgress/CourseProgress';
 import { useSelector } from 'react-redux';
 import { io } from 'socket.io-client'
@@ -23,7 +23,9 @@ import { GetLocalStorage } from './Helpers/LocalStorage/LocalStorage';
 import InstituteSideBar from './Components/InstituteSideBar/InstituteSideBar';
 import UpdateVehicle from './Pages/AddVehicle/UpdatedVehicle';
 import AddCourse from './Pages/AddCourse/AddCourse';
-import  { useSetLoginInfo } from './Helpers/CustomHooks/CheckLogin'
+import { useSetLoginInfo } from './Helpers/CustomHooks/CheckLogin'
+import { EnrolledCourseButtonsInfo, InsEnrolledCourseButtons, MyCoursesButtonsInfo } from './PageNames';
+import EnrolledCourseIns from './Pages/EnrolledCourse By Student (For Institute)/EnrolledCourseIns';
 
 export const SocketContext = createContext();
 
@@ -40,57 +42,14 @@ function App() {
     setSocket(io('/'))
   }, [])
 
-
-
-  let MyCoursesButtonsInfo = {
-    Heading: "My Course",
-    ButtonsInfo: [
-      {
-        Link: '/mycourses/enrolledcourses',
-        Id: "EnrolledCourses",
-        Text: "Enrolled Courses"
-      },
-      {
-        Link: '/mycourses/Wishlist',
-        Id: "Wishlist",
-        Text: "My Wishlist"
-      },
-      {
-        Link: '/mycourses/completed',
-        Id: 'completed',
-        Text: "Completed Courses"
-      },
-    ]
-  };
-
-
-  let EnrolledCourseButtonsInfo = {
-    Heading: "Automotive Course",
-    ButtonsInfo: [
-      {
-        Link: '/enrolledcourse/coursemodule',
-        Id: "CourseModule",
-        Text: "Course Module"
-      },
-      {
-        Link: '/enrolledcourse/upcomingclasses',
-        Id: "UpcomingClasses",
-        Text: "Upcoming Classes"
-      },
-      {
-        Link: '/enrolledcourse/progress',
-        Id: 'CourseProgress',
-        Text: "Course Progress"
-      },
-    ]
-  }
+ 
   useSetLoginInfo()
   const Home = !GetLocalStorage("UserInfo")?.User || UserInfo?.User === "Student"
     ? <LandingPage /> :
     GetLocalStorage("UserInfo")?.User === "Institute" ?
       <InstituteDashboard /> : null
 
- 
+
   return (
     <SocketContext.Provider value={Socket}>
       <BrowserRouter>
@@ -117,7 +76,7 @@ function App() {
             element={<MyCourses ButtonsInfo={EnrolledCourseButtonsInfo} PageName="CourseProgress" Component={<CourseProgress />} />} />
 
           <Route path='/enrolledcourse/coursemodule/:EnrollmentId'
-            element={<MyCourses ButtonsInfo={EnrolledCourseButtonsInfo} PageName="CourseModule" Component={<SingleEnrolledCourse />} />} />
+            element={<MyCourses ButtonsInfo={EnrolledCourseButtonsInfo} PageName="CourseModule" Component={<SEnrolledCourse />} />} />
 
 
 
@@ -125,6 +84,8 @@ function App() {
           <Route path='/vehicle/add' element={<AddVehicle />} />
           <Route path='/vehicle/update/:VehicleId' element={<UpdateVehicle />} />
           <Route path='/vehicle/inventory' element={<VehicleInventory />} />
+          <Route path='/enrolledcourse/EnrolledCourse/:EnrollmentId'
+            element={<MyCourses ButtonsInfo={InsEnrolledCourseButtons} PageName="EnrolledCourse" Component={<EnrolledCourseIns />} />} />
 
         </Routes>
 

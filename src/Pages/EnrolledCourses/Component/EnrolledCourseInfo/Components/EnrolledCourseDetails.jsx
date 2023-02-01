@@ -4,7 +4,9 @@ const EnrolledCourseDetails = ({ InstituteCourse }) => {
     return (
         <div className='flex gap-5 items-center flex-col md:flex-row '>
             <span className='inline-block h-full'>
-                <img className='h-auto min-w-[150px] w-full sm:w-auto sm:h-full' src={`/api/vehicletype/image?url=${InstituteCourse.Course.CourseThumbnail}`} alt="" />
+                <img className='h-auto min-w-[150px] w-full sm:w-auto sm:h-full'
+                    src={InstituteCourse ? `/api/vehicletype/image?url=${InstituteCourse?.Course?.CourseThumbnail}` : null}
+                    alt="Course Thumbnail" />
             </span>
             <CorseDetailsText />
         </div>

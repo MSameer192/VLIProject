@@ -18,7 +18,7 @@ const CourseProgress = () => {
     const DrivingHours = SEnrolledCourse?.CoursePackage.DrivingHours;
 
 
-    useCheckLogin();
+    useCheckLogin(false,[]);
     useEffect(() => {
         if (Authenticated)
             Dispatch(GetCourseProgress(EnrollmentId))

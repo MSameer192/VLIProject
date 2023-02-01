@@ -9,26 +9,28 @@ const useCheckLogin = (Navigation, UserType, InstituteUserTypes) => {
     const Dispatch = useDispatch();
     const { Authenticated } = useSelector((Store) => Store.LoginSignupReducer);
     let Institute = CheckInstitute(InstituteUserTypes)
+    let User = CheckUser(UserType)
 
     useEffect(() => {
 
         if (GetLocalStorage("UserInfo")) {
             Dispatch(SetUser(GetLocalStorage("UserInfo")))
 
-            if (GetLocalStorage("UserInfo")?.User === UserType) {
-                if (GetLocalStorage("UserInfo")?.User === "Institute" && !CheckInstitute(InstituteUserTypes))
+            if (UserType.length > 0) {
+                if (GetLocalStorage("UserInfo")?.User === User) {
+                    if (GetLocalStorage("UserInfo")?.User === "Institute" && !CheckInstitute(InstituteUserTypes))
+                        Navigate('/')
+                }
+                else if (GetLocalStorage("UserInfo")?.User !== User)
                     Navigate('/')
             }
-            else if (GetLocalStorage("UserInfo")?.User !== UserType)
-                Navigate('/')
-
         }
         else if (!Authenticated || !GetLocalStorage("UserInfo")) {
             if (Navigation)
                 Navigate('/')
         }
 
-    }, [Dispatch, Navigate, UserType, Navigation, Institute, Authenticated])
+    }, [Dispatch, Navigate, Navigation, Institute, Authenticated])
 
 }
 function CheckInstitute(InstituteUserTypes) {
@@ -39,8 +41,16 @@ function CheckInstitute(InstituteUserTypes) {
 
     return checkInstitute
 }
+function CheckUser(UserTypes) {
+    let checkUser
+    UserTypes?.forEach(UserTypeName => {
+        if (GetLocalStorage("UserInfo")?.User === UserTypeName) checkUser = UserTypeName
+    });
+
+    return checkUser
+}
 export const useSetLoginInfo = () => {
-   
+
     const Dispatch = useDispatch();
     const { Authenticated } = useSelector((Store) => Store.LoginSignupReducer);
     useEffect(() => {

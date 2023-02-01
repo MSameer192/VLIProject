@@ -10,7 +10,7 @@ import SpecialCourses from './SpecialCourses/SpecialCourses';
 import VehicleType from './VehicleType/VehicleType';
 import useCheckLogin from '../../Helpers/CustomHooks/CheckLogin';
 const LandingPage = () => {
-  useCheckLogin()
+  useCheckLogin(false, [])
   return (
     <>
       <div className='w-full bgGradient absolute rounded-b-[300px] h-[745px] -z-10'>
@@ -20,7 +20,7 @@ const LandingPage = () => {
 
         <picture className='hidden md:block -z-10'>
 
-          <img  className='LandingContainerLite relative -top-5 -left-28'
+          <img className='LandingContainerLite relative -top-5 -left-28'
             src={require('./Assets/LiteLandingContainer.svg').default} alt="" />
 
         </picture>
@@ -36,12 +36,12 @@ const LandingPage = () => {
 
             <source media="(min-width:768px)" srcSet={require('./Assets/LandingContainer.svg').default} />
             <img className='hidden w-full md:inline-block'
-            loading='lazy'
+              loading='lazy'
               src={require('./Assets/LandingContainer.svg').default} alt="" />
           </picture>
         </div>
 
-   
+
         <div className='flex flex-row justify-around items-center mt-[150px] md:mt-0 md:absolute top-32 xl:top-28 left-0 w-full'>
 
           <div className='flex flex-col mx-1 w-4/5 md:w-auto md:z-10 md:m-0 relative -top-10 gap-10 md:gap-5 lg:gap-10'>

@@ -16,7 +16,7 @@ const VehicleInventory = () => {
     Dispatch(GetVehicleTypes())
     Dispatch(GetLicenseTypes())
   }, [Dispatch])
-  useCheckLogin(true, "Institute", ["Staff", "Admin"])
+  useCheckLogin(true, ["Institute"], ["Staff", "Admin"])
 
   return (
     <div className={`flex bg-[#F7F7F7] pt-28 gap-10 sm:gap-0 relative

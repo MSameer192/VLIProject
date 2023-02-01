@@ -8,9 +8,9 @@ const useGetWishList = () => {
     const Dispatch = useDispatch();
 
     useEffect(() => {
-        if (Authenticated && !WishList) {
+        if (Authenticated && !WishList) 
             Dispatch(GetWishList())
-        }
+        
     }, [Authenticated, WishList, Dispatch])
 }
 

@@ -2,8 +2,8 @@ import axios from "axios";
 import { BaseUrl } from "./Base";
 import { Credentials, Headers } from "./UserA";
 const instance = axios.create({
-   withCredentials: true,
-   baseURL: BaseUrl
+    withCredentials: true,
+    baseURL: BaseUrl
 })
 export const AddVehicleA = (VehicleData, Navigate) => async (dispatch) => {
     try {
@@ -27,7 +27,7 @@ export const AddVehicleA = (VehicleData, Navigate) => async (dispatch) => {
 export const UpdateVehicleA = (VehicleData, Navigate) => async (dispatch) => {
     try {
         dispatch({ type: "GetAllVehiclesRequest" });
-
+        console.log(VehicleData)
         const { data } = await axios.put('/api/Vehicle/update', VehicleData);
 
         dispatch({
@@ -48,7 +48,7 @@ export const GetVehicleA = () => async (dispatch) => {
     try {
         dispatch({ type: "GetAllVehiclesRequest" });
 
-        const { data } = await axios.get('/api/Vehicles',{ withCredentials: true });
+        const { data } = await axios.get('/api/Vehicles', { withCredentials: true });
 
         dispatch({
             type: "GetAllVehiclesSuccess",

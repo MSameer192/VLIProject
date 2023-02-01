@@ -7,12 +7,14 @@ import VehicleImages from './Components/VehicleImages'
 import VehicleCredentials from './Components/VehicleCredentials'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { GetSingleVehicleA, UpdateVehicleA } from '../../Actions/VehicleA'
+import { GetSingleVehicleA } from '../../Actions/VehicleA'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-import { Iterable } from './Components/Helpers/Others'
-const UpdateVehicle = () => {
+import { SubmitUpdateVehicleForm } from './Helpers/OnSubmit'
+import InstituteTemplate from '../../Components/InstituteTemplate/InstituteTemplate'
+
+const UpdateVehicleChild = () => {
     const Dispatch = useDispatch();
     const Navigate = useNavigate();
     const { VehicleId } = useParams()
@@ -42,14 +44,14 @@ const UpdateVehicle = () => {
             setVehicleImagesState(VehicleDataA?.VehicleImages)
         }
     }, [VehicleDataA])
-    const SubmitForm = (e) => SubmitVehicleForm(e, VehicleData, VehicleImagesState, VehicleErrors, setVehicleErrors, Dispatch, Navigate);
-    useCheckLogin(true, "Institute", ["Admin", "Staff"]);
     useEffect(() => {
         if (VehicleId)
             Dispatch(GetSingleVehicleA(VehicleId))
 
     }, [Dispatch, VehicleId])
-    console.log(VehicleImagesState)
+    useCheckLogin(true, ["Institute"], ["Admin", "Staff"]);
+
+    const SubmitForm = (e) => SubmitUpdateVehicleForm(e, VehicleData, VehicleImagesState, VehicleErrors, setVehicleErrors, Dispatch, Navigate);
     return (
         !loading ? <div className='bg-[#F7F7F7] mt-20 flex flex-col items-center ml-0 sm:ml-24 w-full sm:w-[calc(100%-96px)]'>
             <Steps />
@@ -80,47 +82,13 @@ const UpdateVehicle = () => {
 
 
 
-
-
-function SubmitVehicleForm(e, VehicleData, VehicleImagesState, VehicleErrors, setVehicleErrors, Dispatch, Navigate) {
-    let Errors = {}
-    e.preventDefault();
-    const VehicleFormData = new FormData();
-
-    for (let [key, value] of Object.entries(VehicleData)) {
-        if (!value) Errors[key] = true
-        else delete Errors[key]
-    }
-    if (VehicleImagesState.length < 0) {
-        setVehicleErrors({ ...VehicleErrors, VehicleImage: "Please select atleast 1 image" })
-    }
-    setVehicleErrors({ ...VehicleErrors, ...Errors })
-    // if (Object.entries(Errors).length > 0)
-    //     return
-    let WorkVehicleImages = Iterable(VehicleImagesState)
-    const Exp = /Image\d/i;
-    WorkVehicleImages = WorkVehicleImages.filter((value, index) => {
-        let Key = Object.keys(value).filter((Key) => Exp.test(Key));
-        return value[value[Key[0]]] !== undefined || value[value[Key[0]]] !== null
-    })
-
-
-    WorkVehicleImages = WorkVehicleImages.map((value, index) => {
-        ++index
-        let Key = Object.keys(value).filter((Key) => Exp.test(Key))
-
-        if (value[Key[0]]) {
-            VehicleFormData.append(`Image${index}`, value[Key[0]]);
-            delete value[Key[0]]
-            value[`Image${index}`] = "Changed"
-        }
-        return value
-    })
-    VehicleData.Images = WorkVehicleImages
-    console.log(VehicleData.Images)
-
-    VehicleFormData.append("VehicleInfo", JSON.stringify(VehicleData));
-
-    Dispatch(UpdateVehicleA(VehicleFormData, Navigate))
+const UpdatedVehicle = () => {
+    return (
+        <InstituteTemplate Element={UpdateVehicleChild} />
+    )
 }
-export default UpdateVehicle
+
+
+
+
+export default UpdatedVehicle

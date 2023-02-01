@@ -9,9 +9,12 @@ export const VehicleTypeF = () => {
             <select name="VehicleType" defaultValue="VehicleType" className='pb-2 DropDownBorder' id="VehicleType">
 
                 {
-                    VehicleTypes.map((value) => {
-                        return <option value={value.VehicleTypeId} className='font-normal text-5xs '>{value.VehicleTypeName}</option>
-                    })
+                    VehicleTypes?.map((value) =>
+                        <option key={value.VehicleTypeId}
+                            value={value.VehicleTypeId} className='font-normal text-5xs '>
+                            {value.VehicleTypeName}
+                        </option>
+                    )
                 }
             </select>
         </div>
@@ -25,9 +28,9 @@ export const LicenseTypeF = () => {
             <label className='text-4xs' htmlFor="LicenseType">License Types</label>
             <select name="LicenseType" defaultValue="LicenseType" className='pb-2 DropDownBorder' id="LicenseType">
                 {
-                    LicenseTypes.map((value) => {
-                        return <option value={value.LicenseTypeId} className='font-normal text-5xs '>{value.LicenseTypeId}</option>
-                    })
+                    LicenseTypes.map((value) =>
+                        <option key={value.LicenseTypeId} value={value.LicenseTypeId} className='font-normal text-5xs '>{value.LicenseTypeName}</option>
+                    )
                 }
             </select>
         </div>
