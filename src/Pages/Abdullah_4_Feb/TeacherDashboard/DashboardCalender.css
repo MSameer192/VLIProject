@@ -1,0 +1,45 @@
+/* F0F0F7 */
+.calenderClassTecherDash {
+  background-color: #f0f0f7 !important;
+  padding: 30px 24px;
+  padding-top: 70px;
+  border: none !important;
+  border-radius: 24px;
+  filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.16));
+}
+.react-calendar__tile--now {
+  background: #cae7d8 !important;
+  color: #58ba6d !important;
+  font-weight: bold;
+  border-radius: 50%;
+}
+.react-calendar__tile--now:hover {
+  background-color: #58ba6d !important;
+  color: #cae7d8 !important;
+}
+.react-calendar__tile--active {
+  background: #ccdbf9 !important;
+  color: #4b8ffe !important;
+  border-radius: 50%;
+  font-weight: bold;
+}
+.react-calendar__tile--active:hover {
+  background: #4b8ffe !important;
+  color: #ccdbf9 !important;
+}
+.calenderClassTecherDashDiv {
+  width: 406px;
+  height: 462px;
+  border-radius: 24px;
+  filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.16));
+  background: #ffffff;
+  padding: 22px 35px 42px 35px;
+}
+.calenderClassTecherDashHeading {
+  position: relative;
+  top: 40px;
+  font-size: 18px;
+  z-index: 99;
+  color: #4d4f5c;
+  left: 30px;
+}

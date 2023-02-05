@@ -1,0 +1,57 @@
+.approvedSection {
+  width: 470px;
+  height: 160px;
+  filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.04));
+  background: #ffffff;
+  padding: 20px;
+}
+.approvedSection h6 {
+  margin-bottom: 60px;
+  font-size: 16px;
+}
+.approvedSection p {
+  font-size: 14px;
+  margin-top: 9px;
+}
+.approvedProgress{
+  stroke: #3FFF4C !important;
+}
+.approvedProgress2{
+  stroke: #FFCFA5 !important;
+}
+.approvedProgress3{
+  /* stroke: #FBADAD !important; */
+  stroke: #fc7b7b !important;
+}
+.approvedDiv{
+  position: relative !important;
+  top: -113px !important;
+  color: #3FFF4C;
+  font-weight: bold;
+  left: -30px;
+  font-size: 16px;
+  text-align: center;
+}
+.approvedDiv p{
+  font-size: 17px;
+}
+.underReviewProgress{
+  color: #FFC99B;
+}
+.rejectedProgress{
+  color: #FBADAD;
+}
+
+@media (max-width: 670px) {
+.approvedDiv p{
+  font-size: 12px;
+}
+.approvedDiv{
+  top: -85px !important;
+  left: -35px;
+  font-size: 12px;
+}
+.approvedSection {
+  width: 400px;
+}
+}

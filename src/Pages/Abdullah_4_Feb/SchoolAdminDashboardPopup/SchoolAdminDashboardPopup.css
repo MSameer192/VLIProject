@@ -1,0 +1,98 @@
+.schoolAdminDashPopup h6 {
+  margin-top: -10px;
+  font-size: 22px !important;
+}
+.schoolAdminDashPopup > .addCourseFivePopupVehicle > img {
+  width: 122px;
+  height: 122px;
+}
+.schoolAdminDashPopup h5 {
+  font-size: 18px;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+.schoolAdminDashPopup button {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+/*********************************************************** second popup **********************************************/
+.schoolAdminDashPopup2 {
+  width: 430px !important;
+}
+.schoolAdminDashPopup2 h6,
+.schoolAdminDashPopup2 p {
+  text-align: start !important;
+}
+.schoolAdminDashPopup2 h6 {
+  margin-left: 29px !important;
+  padding-top: 30px !important;
+}
+.adminDashboardPopup2texterea {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  height: 70px;
+  border-color: #d6d6d6;
+  border-width: 1px;
+  border-style: solid;
+  background: #ffffff;
+  margin-top: 15px;
+  margin-bottom: 22px;
+  padding: 5px;
+}
+.schoolAdminDashPopup2 button {
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-bottom: 30px !important;
+  width: 110px;
+  height: 32px;
+}
+.schoolAdminDashPopup3 h6 {
+  color: #4d4f5c;
+
+}
+.schoolAdminDashPopup3 p {
+  text-align: center !important;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 30px !important;
+  margin-bottom: 50px;
+}
+.schoolAdminDashPopup3 button {
+  width: 125px;
+  height: 38px;
+  background-color: #a1a3ef !important;
+  white-space: nowrap;
+  padding: 0 !important;
+  font-size: 11px !important;
+}
+
+/*********************************************************** third popup **********************************************/
+.schoolAdminDashPopup3 > .navaddCourseFivePopup {
+  background-color: #f1f1f1;
+}
+.addCourseFivePopup > .navaddCourseFivePopup > .addCourseFivePopupCross img {
+  float: right;
+  margin: 7px;
+  margin-top: 16px;
+  width: 20px;
+}
+.navaddCourseFivePopup h6 {
+  text-align: center !important;
+  position: relative;
+  top: -12px;
+  left: -20px;
+}
+
+@media (max-width: 568px) {
+  .addCourseFivePopup {
+    left: 50% !important;
+  }
+  .schoolAdminDashPopup2 {
+    width: 300px !important;
+  }
+  .schoolAdminDashPopup3 p {
+    font-size: 15px !important;
+  }
+}

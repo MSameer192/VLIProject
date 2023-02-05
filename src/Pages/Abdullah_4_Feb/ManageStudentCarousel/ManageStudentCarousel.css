@@ -1,0 +1,186 @@
+h1 {
+  margin: 150px auto 30px auto;
+  text-align: center;
+  color: #fff;
+}
+
+.hi-slide {
+  position: relative;
+  /* width: 840px; */
+  width: 80%;
+  height: 600px;
+  /* margin: 115px auto 0; */
+  margin: 0 auto;
+  /* background-color: red; */
+}
+.hi-slide .hi-next,
+.hi-slide .hi-prev {
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  border-radius: 50px;
+
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #fff;
+  color: black;
+  transition: all 0.6s;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.hi-slide .hi-next:hover,
+.hi-slide .hi-prev:hover {
+  opacity: 1;
+  background-color: #fff;
+}
+
+.hi-slide .hi-prev {
+  left: -60px;
+}
+
+.hi-slide .hi-prev::before {
+  content: "<";
+}
+
+.hi-slide .hi-next {
+  right: -60px;
+}
+
+.hi-slide .hi-next::before {
+  content: ">";
+}
+
+.hi-slide > ul {
+  list-style: none;
+  position: relative;
+  width: 840px;
+  /* width: 62.6%; */
+  height: 580px;
+  margin: 0;
+  padding: 0;
+  margin: 0 auto;
+  /* background-color: #0031f6; */
+}
+
+.hi-slide > ul > li {
+  overflow: hidden;
+  position: absolute;
+  z-index: 0;
+  left: 377px;
+  top: 146px;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border: 3px solid #fff;
+  cursor: pointer;
+  filter: drop-shadow(6px 12px 12px rgba(0, 0, 0, 0.08));
+  background-color: #ffffff;
+  filter: drop-shadow(6px 12px 12px rgba(0, 0, 0, 0.08));
+  border-radius: 15px;
+}
+
+.hi-slide > ul > li > img {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+}
+.studenCarouselBoxes > .vehicalBox > .vehicalImgConainer {
+  margin-top: -45px;
+}
+.studenCarouselBoxes > .vehicalBox {
+  box-shadow: none;
+}
+.managingStudentCarouselTxt p {
+  font-size: 18px;
+  color: #45454d;
+  text-align: center;
+}
+.managingStudentCarouselTxt > center > .cauraselInstructorTxt {
+  width: 70px;
+  height: 20px;
+  color: #0031f6;
+  font-size: 13px;
+  border: none;
+  background-color: #d5e5fd;
+  border-radius: 7px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+.infoCaurasel img {
+  width: 28px;
+  height: 19px;
+  margin-left: 20px;
+  position: relative;
+  top: 4px;
+}
+.infoCaurasel span {
+  font-size: 15px;
+}
+.infoCaurasel {
+  margin-top: 7px;
+}
+@media (max-width: 1069px) {
+  .hi-slide > ul {
+    width: 505px;
+  }
+  .studenCarouselBoxes > .vehicalBox > .vehicalImgConainer > center > img {
+    height: 180px !important;
+  }
+  .infoCaurasel span {
+    font-size: 12px;
+  }
+  .infoCaurasel img {
+    width: 18px !important;
+    height: 10px !important;
+    margin-left: 5px;
+    top: 1px;
+  }
+}
+@media (max-width: 630px) {
+  .hi-slide > ul > li {
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
+    right: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: 420px !important;
+    margin-bottom: 50px !important;
+  }
+  .infoCaurasel img {
+    width: 22px !important;
+    height: 13px !important;
+    margin-left: 12px;
+  }
+  .hi-slide > ul {
+    width: 90%;
+    /* width: 400px; */
+  }
+  .infoCaurasel span {
+    font-size: 16px;
+  }
+  .hi-slide {
+    width: 60%;
+  }
+}
+@media (max-width: 460px) {
+  .infoCaurasel span {
+    font-size: 13px;
+  }
+  .infoCaurasel img {
+    width: 19px !important;
+    height: 10px !important;
+    margin-left: 5px;
+  }
+  .hi-slide {
+    width: 58%;
+  }
+  .hi-slide > ul {
+    width: 100%;
+  }
+}
