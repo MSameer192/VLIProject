@@ -1,0 +1,19 @@
+.Instructor_ImagePreview{
+    @apply w-1/2 max-w-[165px] aspect-square
+}
+.Instructor_BrowseBtn{
+    @apply  bg-[#F0F0F7] text-6xs sm:text-5xs lg:text-4xs
+}
+.Instructor_PreviewContainer{
+    @apply   flex gap-5
+                w-full          sm:w-auto           md:w-1/2 
+                items-center    sm:items-start
+                justify-end                         md:justify-start
+}
+.Instructor-PreviewContainer-Container{
+    @apply   flex justify-between max-w-[600px]
+             flex-col   sm:flex-row     md:flex-col                 2xl:flex-row 
+             w-full                     md:w-[45%] 
+             gap-4                      md:gap-2        lg:gap-3    2xl:gap-5
+
+}

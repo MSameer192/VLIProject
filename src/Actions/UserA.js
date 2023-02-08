@@ -12,7 +12,7 @@ export const LoginUser = (UserData, Dispatch, PageName) => async (dispatch) => {
 
         const { data } = await axios.post(`${BaseUrl}/api/login`, UserData,
             Headers,
-            
+
         );
 
         data.User.PhoneNumber = ""
@@ -36,7 +36,7 @@ export const LoginUser = (UserData, Dispatch, PageName) => async (dispatch) => {
 }
 
 
-export const SignUpUser = (UserData, Dispatch) => async (dispatch) => {
+export const SignUpUser = (UserData, Dispatch,PageName) => async (dispatch) => {
     try {
         dispatch({
             type: "SignUpRequest"
@@ -49,16 +49,48 @@ export const SignUpUser = (UserData, Dispatch) => async (dispatch) => {
             payload: data,
             Auth: true
         })
-
+        Dispatch(DoneLoginSignUp(false))
 
     } catch (error) {
-
+        Dispatch(AgainOpenLoginSignUp(PageName))
         dispatch({
-            type: "LoginError",
+            type: "SignUpError",
             payload: (error?.response?.data) ? (error?.response?.data) : {}
         })
     }
 }
+
+
+export const RegisterInstituteA = (UserData, cb) => async (dispatch) => {
+    try {
+        dispatch({
+            type: "RegisterInstituteRequest"
+        })
+        console.log(UserData)
+        const { data } = await axios.post(`${BaseUrl}/api/Institute/Register`, UserData,
+            { withCredentials: true }
+        )
+        dispatch({
+            type: "RegisterInstituteSuccess",
+            payload: data,
+            Auth: true
+        })
+
+        cb()
+    } catch (error) {
+
+        dispatch({
+            type: "RegisterInstituteError",
+            payload: (error?.response?.data) ? (error?.response?.data) : {}
+        })
+    }
+}
+
+
+
+
+
+
 
 export const SetUser = (UserInfo) => (dispatch) => {
     try {

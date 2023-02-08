@@ -1,0 +1,51 @@
+.InputHeadings {
+    @apply font-normal  text-4xs                        md:text-3xs   lg:text-[19px]  xl:text-2xs
+                        text-center     sm:text-start
+}
+
+.InputDetails {
+    @apply text-[#707070]   text-6xs                          md:text-5xs xl:text-4xs
+                              text-center     sm:text-start 
+                              max-w-full      sm:max-w-[280px]
+}
+
+
+
+
+.Add_C_B_InputSideContainer {
+    @apply flex flex-col gap-4  w-11/12 sm:w-3/4
+}
+
+.Add_C_BTextArea {
+    @apply w-full border-none shadow-[5px_4px_6px_#00000029] resize-none p-2
+}
+
+
+.Add_C_B_HeadingContainer {
+    @apply flex w-full px-6;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+
+.DataInputContainer {
+    @apply flex  flex-col sm:flex-row items-center sm:items-start
+    gap-4   sm:gap-7   md:gap-10   lg:gap-[52px]   xl:gap-16  2xl:gap-[70px]
+}
+
+
+.DataInputContainer>.Admin_HeadingContainer {
+    @apply flex flex-col gap-2 w-full sm:w-1/4
+}
+
+
+
+
+
+
+.OnAddPopup-BG {
+    @apply fixed h-screen w-screen bg-[#00000029] -left-0 -top-0 z-30 flex justify-center items-center
+}
+
+.OnAddPopup-Container{
+    @apply flex flex-col gap-20 items-center w-[350px] h-56 bg-white relative py-[22px] rounded-[20px]
+}

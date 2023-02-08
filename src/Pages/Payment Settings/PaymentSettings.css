@@ -1,0 +1,16 @@
+.PaymentSettingBorder {
+    border-top: 1px solid #707070;
+}
+.Tiles {
+    width: 45%;
+}
+@media (max-width: 1000px) {
+    .TilesContainer {
+        flex-direction: column;
+    }
+
+    .Tiles {
+        width: 100%;
+        /* max-width: 700px; */
+    }
+}

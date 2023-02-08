@@ -1,1 +1,10 @@
- 
+.BrandingButton{
+   @apply border-none bg-[#A1A3EF] cursor-pointer text-white;
+}
+
+
+.RemoveDateIcon::-webkit-inner-spin-button,
+.RemoveDateIcon::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}

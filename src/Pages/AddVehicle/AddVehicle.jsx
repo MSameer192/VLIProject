@@ -7,7 +7,6 @@ import VehicleImages from './Components/VehicleImages'
 import VehicleCredentials from './Components/VehicleCredentials'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { AddVehicleA } from '../../Actions/VehicleA'
 import { useNavigate } from 'react-router-dom'
 import InstituteTemplate from '../../Components/InstituteTemplate/InstituteTemplate'
 import { SubmitAddVehicleForm } from './Helpers/OnSubmit'
@@ -31,7 +30,7 @@ const AddVehicleChild = () => {
         PlateNumber: undefined,
         InsuranceNumber: undefined,
         TrainerNumberPlate: undefined
-    });
+    }); 
 
 
     const SubmitForm = (e) => SubmitAddVehicleForm(e, VehicleData, VehicleImagesState, VehicleErrors, setVehicleErrors, Dispatch, Navigate);
@@ -40,7 +39,6 @@ const AddVehicleChild = () => {
     return (
         !loading ? <div className='bg-[#F7F7F7] mt-20 flex flex-col items-center ml-0 sm:ml-24 w-full sm:w-[calc(100%-96px)]'>
             <Steps />
-
             <form className='flex flex-col items-center w-full' onSubmit={SubmitForm}>
                 <VehicleInfo
                     setVehicleData={setVehicleData} VehicleData={VehicleData}
@@ -65,12 +63,6 @@ const AddVehicleChild = () => {
             : <h1 className='mt-20'>Loading</h1>
     )
 }
-
-
-
-
-
-
 
 const AddVehicle = () => {
     return (

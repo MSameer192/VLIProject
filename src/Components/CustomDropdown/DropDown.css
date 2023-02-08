@@ -1,0 +1,15 @@
+.select-box {
+    flex-direction: column;
+    max-width: 450px;
+    max-height: 50px;
+    position: relative;
+}
+
+.selected-value-container {
+    cursor: pointer;
+    width: 100%;
+    /* padding: 10px 30px; */
+ 
+    position: relative;
+    @apply  py-[10px]
+}

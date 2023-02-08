@@ -12,7 +12,7 @@ const UserInfo = ({ EnrollmentData, setEnrollmentData, PackageRef, Err, setShowT
 
 
     let ExceptionSpanStyle = "flex w-full rounded-[8px] bg-white px-5 border-[#E8E8E8] border-solid border-[2px]"
-    let ExceptionInputStyle = "w-full text-6xs  md:text-5xs lg:text-2xs xl:text-3xs py-2 rounded-[8px] border-none focus:border-none focus:outline-none"
+    let ExceptionInputStyle = "w-full text-6xs md:text-5xs lg:text-2xs xl:text-3xs py-2 rounded-[8px] border-none focus:border-none focus:outline-none"
     let DivResponsive = "sm:w-[95%] md:w-11/12 lg:w-4/5 xl:w-[70%]";
 
     let Styling = { InputTypeTextStyle, HeadingStyle, DivStyle, ExceptionSpanStyle, ExceptionInputStyle, DivResponsive, AddParentStyle, RemoveParentStyle }

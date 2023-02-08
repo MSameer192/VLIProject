@@ -1,0 +1,19 @@
+.NumberTextContainer{
+    @apply w-full flex rounded-md bg-white py-[10px] px-6 h-fit;
+    border:2px solid #a1a4ef00;
+}
+
+.NumberText{
+    @apply w-full text-xs border-none outline-none
+}
+
+.ArrowContainer {
+    @apply flex flex-col items-center justify-center gap-1
+}
+
+.ArrowContainer>.UpArrow{
+    @apply drop-shadow-[3px_4px_6px_#00000029] cursor-pointer
+}
+.ArrowContainer>.DownArrow{
+    @apply rotate-180 drop-shadow-[-3px_-4px_-6px_#00000029] cursor-pointer
+}

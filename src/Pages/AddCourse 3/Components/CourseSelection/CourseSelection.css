@@ -1,0 +1,925 @@
+.addCoursesMainContainer {
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  background-color: #f7f7f7;
+}
+.courseHeaderNav {
+  /* margin-top: 200px; */
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  height: 130px;
+  box-shadow: 0 10px 15px -2px rgb(214, 214, 214);
+  padding-top: 40px;
+  z-index: -1 !important;
+}
+.togglerAddCourse {
+  margin-left: 120px;
+  margin-top: 15px;
+}
+.searchTopCourses {
+  margin-left: 50px;
+  height: 50px;
+  width: 330px;
+  border: 1px solid rgb(146, 146, 146);
+  padding-left: 35px;
+  font-size: 18px;
+  outline: none;
+  border-right: none;
+}
+.searchCoursesSearch {
+  padding-left: 33px;
+  padding-right: 33px;
+  padding-top: 21px;
+  position: relative;
+  top: 5px;
+  padding-bottom: 10px;
+  color: white;
+  background-color: #6dbcdb;
+}
+.searchCoursesSearch img {
+  width: 22px !important;
+  height: 22px !important;
+}
+.addCourseNavRightThings {
+  position: relative;
+  top: -13px;
+}
+.addCourseNavAlaram {
+  margin-right: 50px;
+  width: 30px;
+}
+.addCourseNavStraightToggle {
+  height: 30px;
+  width: 7px;
+}
+.addCourseNavProfilePhoto {
+  max-width: 55px;
+  position: relative;
+  top: 13px;
+}
+.addCourseNavdropdown {
+  width: 11px;
+}
+.addCourseNavProfileName {
+  position: relative;
+  top: -6px;
+  font-weight: bold;
+}
+.addCourseNavStraightToggle,
+.addCourseNavProfilePhoto,
+.addCourseNavProfileName,
+.addCourseNavdropdown {
+  margin-right: 12px;
+}
+
+.dashboardTabsContainer {
+  height: 104.5%;
+  box-shadow: 0 10px 20px -5px rgb(117, 114, 114);
+  margin-top: -85px;
+  padding-top: 75px;
+  background-color: white;
+}
+.dashboardTabsContainerActiveCont {
+  height: 80px;
+  margin-left: 2px;
+  background-color: #e5e5e5;
+  border-left: 8px solid #a3a0fb;
+  margin-bottom: -20px;
+}
+.dashboardTabsContainerActiveCont img {
+  position: relative;
+  top: -27px;
+}
+.dashboardTabsContainer img {
+  margin-bottom: 66px;
+  display: block;
+  margin: 0 auto;
+  padding-top: 65px;
+}
+
+.mainContainerAddCourse {
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+  left: -15px;
+}
+.addCourseProgress {
+  width: 82%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  margin-bottom: -15px;
+}
+
+.addCourseindexNumber {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  min-height: 20px;
+  max-height: 46px;
+  font-size: 15px;
+  font-weight: normal;
+  background-color: #c9dbf9;
+  color: #3b86ff;
+  border-radius: 50%;
+}
+.progressDiscription {
+  display: block;
+  margin-top: 25px;
+  margin-left: -30px;
+}
+.colorEEE {
+  color: #eee;
+}
+.addCourseline {
+  height: 2px;
+  width: 10%;
+  position: relative;
+  top: 30px;
+  left: -22px;
+}
+.addCourseindexNumberActive {
+  background-color: #3b86ff;
+  color: white;
+}
+.colorWhiteAddCourseGap {
+  color: #f7f7f7;
+}
+/* .vehicleInventrory {
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+} */
+
+
+.noteSec {
+  max-width: 70%;
+  padding-left: 80px;
+  display: flex;
+  /* position: relative;
+    top: 20px; */
+}
+.addPackgeTxt {
+  -ms-flex: 0 0 33.333333%;
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+  padding-right: 20px;
+  margin-top: 110px;
+}
+.addPackgeTxt h6 {
+  font-size: 18px;
+  font-weight: 600;
+}
+.addPackgeTxt p {
+  width: 85%;
+  margin-top: 5px;
+  font-size: 16px;
+  font-weight: normal;
+  color: rgb(102, 102, 102);
+}
+.noteSctionMain {
+  -ms-flex: 0 0 36.333333%;
+  flex: 0 0 36.333333%;
+  max-width: 36.333333%;
+  width: 100%;
+  margin-left: -30px;
+  box-shadow: 0 0px 15px -2px rgb(214, 214, 214);
+}
+.noteSctionMain p,
+.noteSctionMain h6 {
+  padding: 0px 20px;
+  padding-bottom: 10px;
+}
+.noteSctionMain h6 {
+  font-size: 18px;
+  font-weight: normal;
+}
+.noteSctionMain p {
+  font-size: 13px;
+  font-weight: normal;
+  color: rgb(165, 165, 165);
+}
+.noteSectionButtonsSec {
+  display: flex;
+  background-color: #b2b4f2;
+  width: 100%;
+  text-align: center;
+  font-size: 15px;
+  color: white;
+  height: 45px;
+}
+.noteSectionButtonsSec span {
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding-top: 10px;
+}
+.noteSectionButtonsSecPrev {
+  background-color: #65647a;
+}
+.pricingPackTxt {
+  -ms-flex: 0 0 30.333333%;
+  flex: 0 0 30.333333%;
+  max-width: 30.333333%;
+  padding-left: 30px;
+}
+.pricingPackTxt h6 {
+  font-size: 22px;
+  margin-top: 50px;
+  color: #a1a3ef;
+}
+.noteSectionDotsRotate {
+  font-size: 80px !important;
+  text-align: center;
+  margin-top: -55px;
+  margin-bottom: -15px;
+}
+.addCourseTable {
+  border: 1px solid #d0d0d0;
+}
+.packageTable {
+  margin-top: 50px;
+}
+.addCourseTable {
+  border-spacing: 25px 17px;
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  background-color: #f7f7f7;
+  /* border-spacing: 20px 10px; */
+  /* border-spacing: 0px 0px; */
+}
+.addCourseTableHeader {
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  background-color: #fff;
+  border-spacing: 0px 10px;
+  border: 1px solid #d0d0d0;
+}
+.addCourseTableHeader th {
+  font-size: 22px;
+  font-weight: normal;
+}
+.addCourseTable th {
+  white-space: nowrap;
+}
+
+.addCourseTable td {
+  white-space: nowrap;
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 5px 2px #fff;
+  -moz-box-shadow: 0 0 5px 2px #fff;
+  box-shadow: 0 0 5px 2px rgb(204, 203, 203);
+  padding: 7px 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 3px;
+}
+.addCourseTable th {
+  padding-bottom: 20px;
+  font-size: 20px;
+  font-weight: normal;
+}
+.addCourseTable > tr > td:hover {
+  background-color: #ddd;
+}
+.statusAddCourseTableBtn {
+  border-radius: 30px !important;
+}
+.addCourseTableTH {
+  /* background-color: #fff; */
+  box-shadow: 0 0 5px 2px rgb(204, 203, 203);
+}
+.addCourseTableTH th {
+  padding-top: 20px;
+}
+.addCOurseRowLast {
+  color: #a5a5a5;
+}
+.addCOurseRowLast > .statusAddCourseTableBtn {
+  background-color: #b1b3f1;
+  box-shadow: none;
+  color: white;
+}
+/* Installments */
+.installmentsTxt {
+  max-width: 20% !important;
+}
+
+.courseCVDiv {
+  max-width: 70%;
+  padding-left: 40px;
+  display: flex;
+  margin-top: 50px;
+}
+.courseCVDivHeading {
+  -ms-flex: 0 0 33.333333%;
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+}
+.courseCVDivHeading h6 {
+  font-size: 18px;
+  font-weight: 600;
+}
+.courseCVDivHeading p {
+  margin-top: 5px;
+  font-size: 15px;
+  font-weight: normal;
+  color: rgb(102, 102, 102);
+}
+.attachCurriculumDiv {
+  -ms-flex: 0 0 30.333333%;
+  flex: 0 0 30.333333%;
+  max-width: 30.333333%;
+  width: 100%;
+  margin-left: 40px;
+}
+.attachDropDownCurr {
+  box-shadow: 0 0px 15px -2px rgb(214, 214, 214);
+  height: 138px;
+  width: 195px;
+  border-radius: 15px;
+  background-color: #f0f0f7;
+  border: 3px dashed #d1d1d2;
+}
+.attachBtnCurriculum {
+  border: none;
+  box-shadow: 0 0px 15px -2px rgb(185, 185, 185);
+  height: 35px;
+  background-color: white;
+  text-align: start;
+  margin-bottom: 20px;
+  padding: 5px 10px;
+  color: rgb(189, 187, 187);
+  font-size: 16px;
+  border-radius: 3px;
+}
+.attachCurrBrowse {
+  -ms-flex: 0 0 30.333333%;
+  flex: 0 0 30.333333%;
+  max-width: 30.333333%;
+  margin-top: 55px;
+}
+.attachCurrBrowseBtn {
+  padding: 6px 20px 10px 20px;
+  background-color: #f0f0f7;
+  box-shadow: 5px 5px 10px -3px rgb(189, 188, 188);
+  border: none;
+  width: 110px;
+  height: 35px;
+  border-radius: 5px;
+}
+.SaveAndContinueBtn {
+  background-color: #a1a3ef;
+  box-shadow: 5px 5px 10px -3px rgb(189, 188, 188);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 30px 0px;
+  font-size: 23px;
+  color: white;
+}
+.SaveAndContinueBtn:hover {
+  background-color: white;
+  color: #a1a3ef;
+}
+#installmentsEdit {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(207, 207, 207, 0.7);
+}
+.installmentsEditPopup {
+  width: 600px;
+  height: 350px;
+  background-color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px;
+  border-radius: 30px;
+}
+.installmentsEditPopup h5 {
+  font-size: 22px;
+  margin-bottom: 32px;
+  font-weight: normal;
+}
+.installmentPopupflex,
+.secinstallmentPopupflex {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+}
+.installmentsEditPopup input {
+  margin-right: 5px;
+}
+.secinstallmentPopupflex input {
+  margin-left: 10px;
+  width: 40%;
+  height: 25px;
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.16));
+  outline: none;
+  padding: 5px;
+  border: none;
+}
+.installmentsEditPopup p {
+  font-size: 19px;
+  color: #5f9cff;
+  margin-top: 58px;
+}
+.installmentPopupButtons {
+  margin-top: 15px;
+}
+.installmentPopupButtons button {
+  width: 90px;
+  height: 35px;
+  outline: none;
+  border: none;
+  margin-left: 8px;
+  margin-right: 8px;
+  border-radius: 12px;
+  background-color: #a1a3ef;
+  color: white;
+  font-size: 16px;
+}
+@media (max-width: 1500px) {
+  .noteSec {
+    max-width: 90%;
+  }
+  .addCourseTable td {
+    padding: 5px 20px;
+    font-size: 14px;
+  }
+  .addCourseTableTH th {
+    font-size: 16px;
+  }
+  .attachCurrBrowse {
+    margin-left: 30px;
+  }
+}
+
+@media (max-width: 1463px) {
+  .searchCoursesSearch {
+    position: absolute;
+    margin-top: -5px;
+    height: 50px;
+    width: 65px;
+    padding-top: 16px;
+    padding-left: 21px;
+  }
+}
+@media (max-width: 1295px) {
+  .colorWhiteAddCourseGap {
+    font-size: 29px;
+  }
+  .attachCurrBrowse {
+    margin-left: 60px;
+  }
+}
+@media (max-width: 1199px) {
+  .addCourseNavRightThings {
+    margin-left: -100px;
+  }
+  .searchTopCourses {
+    margin-left: 20px;
+    width: 250px !important;
+  }
+  .addCourseTable2 tr td {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 1250px) {
+  .addCourseTable td {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+  .addCourseTableTH th {
+    font-size: 11.7px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .noteSec {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 1100px) {
+  .courseCVDiv {
+    max-width: 80%;
+  }
+}
+@media (max-width: 1000px) {
+  .addCourseline {
+    display: none;
+  }
+  .progressDiscription {
+    font-size: 11px;
+    margin-left: -12px;
+  }
+  .addCourse1 > .col-1 {
+    -ms-flex: 0 0 12%;
+    flex: 0 0 12%;
+    max-width: 12%;
+  }
+  .addCourse1 > .col-11 {
+    -ms-flex: 0 0 88%;
+    flex: 0 0 88%;
+    max-width: 88%;
+  }
+  .dashboardTabsContainerActiveCont img {
+    top: -36px;
+  }
+  .packageTable {
+    overflow: scroll;
+  }
+  .noteSec {
+    padding-left: 0px;
+  }
+  .installmentsTxt {
+    -ms-flex: 0 0 50% !important;
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+  }
+  .attachCurrBrowse {
+    margin-top: 0px;
+  }
+}
+@media (max-width: 869px) {
+  .searchTopCourses {
+    margin-left: 40px;
+    width: 150px !important;
+  }
+  .noteSec {
+    padding-left: 0px;
+  }
+  .pricingPackTxt {
+    -ms-flex: 0 0 24.333333%;
+    flex: 0 0 24.333333%;
+    max-width: 24.333333%;
+  }
+  .noteSctionMain {
+    -ms-flex: 0 0 42%;
+    flex: 0 0 42%;
+    max-width: 42%;
+    margin-left: -15px;
+  }
+  .pricingPackTxt h6 {
+    font-size: 17px;
+  }
+  .addPackgeTxt {
+    margin-top: 60px;
+  }
+  .attachBtnCurriculum {
+    white-space: nowrap;
+  }
+  .progressDiscription {
+    font-size: 10px;
+  }
+}
+@media (max-width: 700px) {
+  .togglerAddCourse {
+    width: 20px;
+    margin-left: 70px;
+  }
+  .searchTopCourses {
+    margin-left: 20px;
+    height: 30px;
+    max-width: 100px;
+    padding-left: 10px;
+    font-size: 12px;
+    margin-top: 7px;
+  }
+  .searchCoursesSearch {
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4.5px;
+    padding-bottom: 4.5px;
+    position: relative;
+    top: 1px;
+  }
+  .courseHeaderNav {
+    height: 80px;
+    padding-top: 18px;
+  }
+  .addCourseNavRightThings {
+    position: relative;
+    top: -5px;
+  }
+  .searchCoursesSearch img {
+    width: 15px !important;
+    height: 12px !important;
+  }
+  .addCourseNavAlaram {
+    margin-right: 40px;
+    width: 20px;
+  }
+  .addCourseNavStraightToggle {
+    height: 20px;
+    width: 4px;
+  }
+  .addCourseNavProfilePhoto {
+    max-width: 35px;
+    top: 7px;
+  }
+  .addCourseNavProfileName {
+    font-size: 10px;
+  }
+  .addCourseNavdropdown {
+    width: 6px;
+    margin-left: 5px;
+  }
+  .dashboardTabsContainer img {
+    width: 15px;
+    padding-top: 35px;
+  }
+  .dashboardTabsContainerActiveCont {
+    height: 50px;
+    border-left: 4px solid #a3a0fb;
+  }
+  .dashboardTabsContainerActiveCont img {
+    top: -18px;
+  }
+  .addCourseProgress {
+    width: 100%;
+    margin-top: 10px;
+  }
+  .addCourseindexNumber {
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 12px;
+  }
+  .progressDiscription {
+    font-size: 8px;
+    margin-top: 15px;
+  }
+  .addPackgeTxt h6 {
+    font-size: 12px;
+  }
+  .addPackgeTxt p {
+    width: 85%;
+    margin-top: 5px;
+    font-size: 10px;
+  }
+  .noteSctionMain h6 {
+    font-size: 14px;
+  }
+  .noteSctionMain p {
+    font-size: 10px;
+  }
+  .noteSectionDotsRotate {
+    font-size: 40px !important;
+    margin-top: -35px;
+  }
+  .noteSectionButtonsSec {
+    font-size: 10px;
+    height: 25px;
+  }
+  .noteSectionButtonsSec span {
+    padding-top: 5px;
+  }
+  .pricingPackTxt h6 {
+    font-size: 13px;
+  }
+  .addCourseTable {
+    border-spacing: 12px 12px;
+  }
+  .addCourseTable td {
+    padding: 4px 4px;
+  }
+  .addCourseTableTH th,
+  .addCourseTableTH th,
+  .addCourseTable td {
+    font-size: 8px !important;
+  }
+  .addCourseTableTH th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .courseCVDiv {
+    padding-left: 10px;
+  }
+  .courseCVDivHeading h6 {
+    font-size: 12px;
+  }
+  .courseCVDivHeading p {
+    font-size: 10px;
+  }
+  .attachDropDownCurr {
+    height: 95px;
+    width: 135px;
+  }
+  .attachBtnCurriculum {
+    height: 25px;
+    padding: 2px 7px;
+    font-size: 13px;
+  }
+  .attachCurrBrowseBtn {
+    font-size: 12px;
+    width: 80px;
+    height: 27px;
+  }
+  .SaveAndContinueBtn {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 536px) {
+  .searchTopCourses {
+    height: 21px;
+    font-size: 9px;
+    margin-top: 11px;
+  }
+  .searchCoursesSearch {
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    position: relative;
+    top: 2.3px;
+  }
+  .searchCoursesSearch img {
+    position: relative;
+    top: -2px;
+    width: 10px !important;
+    height: 7px !important;
+  }
+  .addCourseNavAlaram {
+    margin-right: 30px;
+    width: 12px;
+  }
+  .addCourseNavStraightToggle {
+    height: 12px;
+    width: 3px;
+  }
+  .addCourseNavProfilePhoto {
+    max-width: 24px;
+    top: 6px;
+  }
+  .addCourseNavProfileName {
+    font-size: 8px;
+  }
+  .addCourseNavdropdown {
+    width: 5px;
+    margin-left: 3px;
+  }
+  .addCourseNavRightThings {
+    margin-left: -54px;
+  }
+  .courseHeaderNav {
+    height: 60px;
+    padding-top: 8px;
+  }
+  .addCourseNavRightThings {
+    top: 3px;
+  }
+  .togglerAddCourse {
+    width: 15px;
+    margin-top: 18px;
+  }
+  .dashboardTabsContainer img {
+    width: 10px;
+    padding-top: 25px;
+  }
+  .dashboardTabsContainerActiveCont {
+    height: 30px;
+    border-left: 2px solid #a3a0fb;
+    margin-bottom: -10px;
+  }
+  .dashboardTabsContainerActiveCont img {
+    top: -14px;
+  }
+  .addCourseProgress {
+    margin-top: -10px;
+    width: 90%;
+  }
+  .addCourseindexNumber {
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-size: 8px;
+  }
+  .progressDiscription {
+    font-size: 6px;
+    margin-top: 8px;
+    margin-left: -10px;
+  }
+  .mainContainerAddCourse {
+    width: 100%;
+  }
+  .addPackgeTxt h6 {
+    font-size: 9px;
+  }
+  .addPackgeTxt p {
+    margin-top: 2px;
+    font-size: 8px;
+  }
+  .noteSctionMain p,
+  .noteSctionMain h6 {
+    /* margin-top: -10px; */
+    padding: 0px 10px;
+    padding-bottom: 10px;
+  }
+  .noteSctionMain h6 {
+    font-size: 10px;
+  }
+  .noteSctionMain p {
+    font-size: 8px;
+  }
+  .noteSectionDotsRotate {
+    font-size: 30px !important;
+    margin-top: -25px !important;
+    margin-bottom: -10px;
+  }
+  .pricingPackTxt h6 {
+    font-size: 10px;
+  }
+
+  .addCourseTableTH th,
+  .addCourseTableTH th,
+  .addCourseTable td {
+    font-size: 6px !important;
+  }
+  .addCourseTable {
+    border-spacing: 8px 8px;
+  }
+  .addCourseTable td {
+    padding: 4px 0px;
+  }
+
+  .courseCVDivHeading h6 {
+    font-size: 10px;
+  }
+  .courseCVDivHeading p {
+    font-size: 8px;
+  }
+  .attachDropDownCurr {
+    height: 70px;
+    width: 100px;
+    border-radius: 8px;
+  }
+  .attachBtnCurriculum {
+    height: 22px;
+    font-size: 9px;
+  }
+  .attachCurrBrowseBtn {
+    font-size: 9px;
+    width: 60px;
+    padding-left: 17px;
+    height: 19px;
+    padding: 2px 20px 10px 15px;
+    margin-left: -30px;
+  }
+  .SaveAndContinueBtn {
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+}
+@media (max-width: 503px) {
+  .togglerAddCourse {
+    margin-left: 50px;
+  }
+  .searchTopCourses {
+    margin-left: 0px;
+  }
+
+  .addCourseNavProfileName {
+    font-size: 6px;
+    margin-left: -5px;
+  }
+}
+@media (max-width: 443px) {
+  .searchTopCourses {
+    font-size: 8px;
+    max-width: 70px;
+  }
+  .searchCoursesSearch {
+    position: relative;
+    top: 3px;
+  }
+
+  .addCourseNavAlaram {
+    margin-right: 20px;
+    margin-left: -20px;
+  }
+}
+@media (max-width: 400px) {
+  .togglerAddCourse {
+    margin-left: 30px;
+  }
+}

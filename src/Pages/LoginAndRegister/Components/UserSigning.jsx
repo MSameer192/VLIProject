@@ -1,13 +1,36 @@
 import React from 'react'
+import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { LoginUser, SignUpUser } from '../../../Actions/UserA'
 import { SubmitButton } from '../LoginAndRegister'
 import SignInLeftSide from './UserSigning/LeftSide'
 import SigninRightSide from './UserSigning/RightSide'
 
 
-const UserSigning = ({ ScreenSize, TopLoginRegisterBtns, setCredentials, Credentials, AuthPageName }) => {
+const UserSigning = ({ ScreenSize, TopLoginRegisterBtns }) => {
+    const [Credentials, setCredentials] = useState({
+        Email: "",
+        Password: "",
+        ConfirmPassword: "",
+        FirstName: "",
+        LastName: ""
+    });
+    const { AuthPageName } = useSelector((Store) => Store.ToggleSignupReducer)
+    const Dispatch = useDispatch()
+
+    const SubmitForm = (e) => {
+        e.preventDefault();
+
+        if (AuthPageName === "Sign Up")
+            Dispatch(SignUpUser(Credentials, Dispatch, AuthPageName))
+        else
+            Dispatch(LoginUser(Credentials, Dispatch, AuthPageName))
+
+        return false
+    }
     return (
 
-        <div className='flex w-full flex-col items-center '>
+        <form className='flex w-full flex-col items-center ' onSubmit={SubmitForm}>
 
             <div className={`flex
             w-[97%]             md:w-full
@@ -36,15 +59,18 @@ const UserSigning = ({ ScreenSize, TopLoginRegisterBtns, setCredentials, Credent
                 </div>
             </div>
             <SubmitButton ButtonType="submit" AuthPageName={AuthPageName} />
-        </div>
+        </form>
     )
 }
 
 export function CenterORline({ Visible }) {
     if (Visible === undefined)
         Visible = true
+    const { AuthPageName } = useSelector((Store) => Store.ToggleSignupReducer)
+
+    let Order = AuthPageName === "Register" ? "order-2" : ""
     return (
-        <span className=' relative justify-center items-center  hidden md:flex self-stretch '>
+        <span className={`relative justify-center items-center  hidden md:flex self-stretch ${Order}`}>
             <hr className='h-[70%] relative -top-[2%]' />
             {
                 Visible

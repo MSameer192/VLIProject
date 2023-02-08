@@ -42,7 +42,7 @@ export const EnrolledCourseButtonsInfo = {
 export const InsEnrolledCourseButtons = {
     ButtonsInfo: [
         {
-            Link: '/enrolledcourse/AboutClient',
+            Link: '/enrolledcourse/AboutClient/:EnrollmentId',
             Id: "AboutClient",
             Text: "About Client"
         },

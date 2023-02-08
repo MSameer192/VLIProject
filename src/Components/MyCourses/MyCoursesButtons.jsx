@@ -12,6 +12,7 @@ const MyCoursesButtons = ({ EnrolledCoursesRef, OnClickMethod, ButtonsInfo, Page
 
         <div className='flex gap-[6px] flex-wrap sm:gap-4 md:gap-5 lg:gap-10 xl:gap-12 2xl:gap-14'>
             {ButtonsInfo?.map((value, index) => {
+                console.log(value)
                 let Style
                 if (value.Id === PageName)
                     Style = LinkStyle + " ButtonBorder"

@@ -34,7 +34,6 @@ const FIlters = () => {
     return (
         <div className={`top-0 flex  justify-center items-center duration-200 overflow-hidden
         w-full                  sm:w-full       md:w-11/12
-        
         z-30                    sm:z-0
         fixed                   sm:relative
         rounded-b-[70px]        sm:rounded-none 

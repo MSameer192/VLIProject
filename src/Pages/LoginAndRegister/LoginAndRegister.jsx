@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import './LoginAndRegister.css';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { LoginUser, SignUpUser } from '../../Actions/UserA';
 import { useNavigate } from 'react-router-dom';
 import { OpenLoginSignUp, ResetLoginSignUp } from '../../Actions/ToggleSignupA';
 import UserSigning from './Components/UserSigning';
@@ -17,20 +16,13 @@ let TopLoginRegisterBtns = `absolute border-none   rounded-t-[28px]  cursor-poin
 
 
 const SignUp = () => {
-    const { loading, error } = useSelector((Store) => Store.LoginSignupReducer);
+    const {   error } = useSelector((Store) => Store.LoginSignupReducer);
     const { AuthPageName, Navigation, Done } = useSelector((Store) => Store.ToggleSignupReducer)
 
     const Navigate = useNavigate()
     const Dispatch = useDispatch()
     const [ScreenSize, setScreenSize] = useState();
 
-    const [Credentials, setCredentials] = useState({
-        Email: "",
-        Password: "",
-        ConfirmPassword: "",
-        FirstName: "",
-        LastName: ""
-    });
 
 
     useEffect(() => {
@@ -39,16 +31,7 @@ const SignUp = () => {
         })
     }, [])
 
-    const SubmitForm = (e) => {
-        e.preventDefault();
 
-        if (AuthPageName === "Sign Up")
-            Dispatch(SignUpUser(Credentials, Dispatch, AuthPageName))
-        else
-            Dispatch(LoginUser(Credentials, Dispatch, AuthPageName))
-
-        return false
-    }
     useEffect(() => {
         if (Object.keys(error).length === 0 && Done && Navigation) {
 
@@ -64,12 +47,11 @@ const SignUp = () => {
 
         AuthPageName ?
             <div className='bg-[#00000037] min-h-fit h-[100%] bgGradient  fixed top-0 w-full z-50 overflow-scroll overflow-x-hidden flex justify-center items-center '
-                onClick={(e) => { Dispatch(OpenLoginSignUp(false, false)) }}
+                onClick={e => { Dispatch(OpenLoginSignUp(false, false)) }}
             >
-                {!loading
-                    ? <form className='min-h-fit bgGradient  md:min-h-[auto] h-screen w-full md:w-[95%] flex flex-col justify-center items-center md:mt-28'
-                        onClick={(e) => { e.stopPropagation() }}
-                        onSubmit={SubmitForm}
+            
+                    ? <div className='min-h-fit bgGradient  md:min-h-[auto] h-screen w-full md:w-[95%] flex flex-col justify-center items-center md:mt-28'
+                        onClick={(e) =>  e.stopPropagation() }
                     >
                         <div className={`overflow-hidden w-full
                                     hidden      md:block 
@@ -82,13 +64,13 @@ const SignUp = () => {
                             {
                                 AuthPageName === "Register"
                                     ? <InstituteSide />
-                                    : <UserSigning ScreenSize={ScreenSize} TopLoginRegisterBtns={TopLoginRegisterBtns} setCredentials={setCredentials} Credentials={Credentials} AuthPageName={AuthPageName} />
+                                    : <UserSigning ScreenSize={ScreenSize} TopLoginRegisterBtns={TopLoginRegisterBtns}  />
                             }
 
 
                         </div>
-                    </form>
-                    : <h1 className='mt-40 text-[red]'>loading</h1>}
+                    </div>
+            
             </div>
             : null
 
@@ -97,13 +79,8 @@ const SignUp = () => {
     )
 }
 
-export function SubmitButton({ AuthPageName, ButtonType, OnClickFunction, Position, EleRef }) {
-    const OnClick = () => {
-        if (OnClickFunction !== undefined) {
-            OnClickFunction(Position)
-            EleRef.current.style.display = "flex"
-        }
-    }
+export function SubmitButton({ AuthPageName, ButtonType, OnClickFun }) {
+
     return <span className='relative hidden md:flex justify-center w-[60%] xl:w-4/5 max-w-[575px] md:mt-5 lg:mt-9 2xl:mt-0'>
         <img
             className='absolute w-[150px] lg:w-[180px] xl:w-auto -top-[90px] lg:-top-[109px] xl:-top-[111px] left-[50%] -translate-x-1/2 pointer-events-none'
@@ -113,7 +90,7 @@ export function SubmitButton({ AuthPageName, ButtonType, OnClickFunction, Positi
                             py-4     xl:py-6`}
 
             type={ButtonType}
-            onClick={OnClick}
+            onClick={OnClickFun}
         >
             {AuthPageName}
         </button>

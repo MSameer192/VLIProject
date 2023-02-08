@@ -8,14 +8,14 @@ const DOB = ({ Styling, Err, EnrollmentData, setEnrollmentData }) => {
     const ShowDate = (e) => e.target.parentElement.previousElementSibling.showPicker()
 
     return <div className={DivStyle}>
-        <label htmlFor='RemoveDateIcon' className={HeadingStyle}>Date of Birth (DD/MM//YYYY)</label>
+        <label htmlFor='DateIcon' className={HeadingStyle}>Date of Birth (DD/MM//YYYY)</label>
 
         <h4> {Err?.City ? Err?.City : null}</h4>
 
         <span className={ExceptionSpanStyle}>
 
 
-            <input className={ExceptionInputStyle} type="date" placeholder='DD/MM/YYYY' id='RemoveDateIcon' required
+            <input className={`${ExceptionInputStyle} RemoveDateIcon`} type="date" placeholder='DD/MM/YYYY' id='DateIcon' required
                 onFocus={AddParentStyle}
                 onBlur={RemoveParentStyle}
                 value={EnrollmentData?.StudentData?.DOB}
@@ -24,7 +24,7 @@ const DOB = ({ Styling, Err, EnrollmentData, setEnrollmentData }) => {
             />
 
 
-            <label htmlFor="RemoveDateIcon">
+            <label htmlFor="DateIcon">
                 <img src={require('../../Assets/BirtPlaceIcon.svg').default} alt=""
                     onClick={ShowDate}
                 />

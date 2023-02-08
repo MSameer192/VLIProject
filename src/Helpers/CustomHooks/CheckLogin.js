@@ -8,7 +8,7 @@ const useCheckLogin = (Navigation, UserType, InstituteUserTypes) => {
     const Navigate = useNavigate()
     const Dispatch = useDispatch();
     const { Authenticated } = useSelector((Store) => Store.LoginSignupReducer);
-    let Institute = CheckInstitute(InstituteUserTypes)
+    let Institute = CheckInstitute(InstituteUserTypes, UserType)
     let User = CheckUser(UserType)
 
     useEffect(() => {
@@ -18,7 +18,7 @@ const useCheckLogin = (Navigation, UserType, InstituteUserTypes) => {
 
             if (UserType.length > 0) {
                 if (GetLocalStorage("UserInfo")?.User === User) {
-                    if (GetLocalStorage("UserInfo")?.User === "Institute" && !CheckInstitute(InstituteUserTypes))
+                    if (GetLocalStorage("UserInfo")?.User === "Institute" && !Institute)
                         Navigate('/')
                 }
                 else if (GetLocalStorage("UserInfo")?.User !== User)
@@ -30,14 +30,24 @@ const useCheckLogin = (Navigation, UserType, InstituteUserTypes) => {
                 Navigate('/')
         }
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [Dispatch, Navigate, Navigation, Institute, Authenticated])
 
 }
-function CheckInstitute(InstituteUserTypes) {
-    let checkInstitute
-    InstituteUserTypes?.forEach(InstituteUserTypeName => {
-        if (GetLocalStorage("UserInfo")?.InstituteUserType === InstituteUserTypeName) checkInstitute = true
-    });
+function CheckInstitute(InstituteUserTypes, UserType) {
+    let checkInstitute = false;
+    let UserTypeName
+    UserType.forEach((UserName) => {
+        if (UserName === "Institute")
+            UserTypeName = UserName
+    })
+
+    if (UserTypeName === "Institute")
+        InstituteUserTypes?.forEach(InstituteUserTypeName => {
+            if (GetLocalStorage("UserInfo")?.InstituteUserType === InstituteUserTypeName) checkInstitute = true
+        });
+    else return true
+
 
     return checkInstitute
 }

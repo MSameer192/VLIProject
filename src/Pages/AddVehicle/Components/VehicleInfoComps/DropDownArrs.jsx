@@ -1,5 +1,5 @@
 import React from 'react'
-import DropDownOption from '../Components/DropDownOption';
+import DropDownOption from '../../../../Components/CustomDropdown/DropDownOption';
 import { cars, Colors, EngineCapacity, GearType, Seats, Types, years } from './Arrs';
 
 export const RemoveSpaces = (value) => value?.toString()?.replace(/\s/g, "")
@@ -10,17 +10,16 @@ const MakersDropDownArr = ({ Name, onChange, StateValue }) => {
         "Rolls-Royce", "Bugatti", "McLaren", "Tesla", "Dodge", "Chrysler", "Jeep", "GMC", "Ram"];
 
     return (
-        Manufacturers.map((value) =>
+        Manufacturers.map(value =>
             <DropDownOption key={value} ID={value} Text={value} Name={Name} onChange={onChange} StateValue={StateValue} />
         )
     )
 }
-const CarsDropDownArr = ({ Name, onChange, StateValue }) => {
- 
-    return cars.map((value) =>
+const CarsDropDownArr = ({ Name, onChange, StateValue }) =>
+    cars.map((value) =>
         <DropDownOption key={value} ID={value} Text={value} Name={Name} onChange={onChange} StateValue={StateValue} />
     )
-}
+
 const YearsDropDownArr = ({ Name, onChange, StateValue }) => {
 
     return years.map((value) =>

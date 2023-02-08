@@ -1,0 +1,11 @@
+.CourseThumbnailPreviewer {
+    @apply h-[120px] w-[120px] bg-white;
+    border-color: #c8c8c8;
+    border-width: 3px;
+    border-style: dashed;
+    border-radius: 15px;
+}
+
+.ThumbnailBrowseLabel{
+    @apply text-4xs text-[#6E6E6E] bg-white px-4 py-2 cursor-pointer rounded-lg border-none shadow-[5px_6px_6px_#00000029]
+}

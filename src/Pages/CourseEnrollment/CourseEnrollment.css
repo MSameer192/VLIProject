@@ -16,8 +16,3 @@
 
 
 /* In UserInfo-> ContactAndOtherInfo -> DatePortion */
-#RemoveDateIcon::-webkit-inner-spin-button,
-#RemoveDateIcon::-webkit-calendar-picker-indicator {
-    display: none;
-    -webkit-appearance: none;
-}

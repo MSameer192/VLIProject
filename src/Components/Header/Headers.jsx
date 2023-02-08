@@ -4,7 +4,7 @@ import './Headers.css'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { OpenLoginSignUp } from '../../Actions/ToggleSignupA';
-import InstituteHeader from './Components/InstituteHeader/InstituteHeader';
+import OtherHeader from './Components/Others Header/Others Header';
 import StudentHeader from './Components/StudentHeader/StudentHeader';
 import { GetLocalStorage } from '../../Helpers/LocalStorage/LocalStorage';
 
@@ -27,8 +27,8 @@ const Headers = ({ setAuthPageName }) => {
                             : null
                     }
                     {
-                        UserInfo?.User === "Institute" ?
-                            <InstituteHeader setShowSidebar={setShowSidebar} ShowSidebar={ShowSidebar} setAuthPageName={setAuthPageName} />
+                        UserInfo?.User === "Institute" || UserInfo?.User === "Admin" ?
+                            <OtherHeader setShowSidebar={setShowSidebar} ShowSidebar={ShowSidebar} setAuthPageName={setAuthPageName} />
                             : null
                     }
                 </div>

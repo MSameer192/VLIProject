@@ -1,0 +1,14 @@
+.Intsructor-InputContainer{
+    @apply flex  flex-col w-11/12 pt-7 pb-10  bg-white shadow-[4px_5px_6px_#00000029]
+
+    rounded-md  sm:rounded-lg   md:rounded-2xl  lg:rounded-3xl  xl:rounded-[38px]
+    gap-10      sm:gap-12       md:gap-14       lg:gap-16       xl:gap-[88px]       2xl:gap-20;
+    
+}
+
+.Instructor-SubmitBtn{
+    @apply bg-[#A1A3EF] rounded-3xl px-7 py-3  text-white border-none outline-none cursor-pointer duration-[250ms]
+    hover:bg-white hover:text-[#A1A3EF] 
+    text-3xs                    md:text-2xs     lg:text-xs      xl:text-base
+    
+}
