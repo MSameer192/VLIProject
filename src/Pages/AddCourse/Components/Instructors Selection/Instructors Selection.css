@@ -1,0 +1,324 @@
+.addCourse4Table {
+  /* background-color: red !important; */
+  max-width: 100% !important;
+  border-spacing: 1;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 6px;
+  overflow: hidden;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+.addCourse4Table * {
+  position: relative;
+}
+.addCourse4Table td,
+.addCourse4Table th {
+  padding-left: 8px;
+  color: #083e7c;
+  font-size: 18px;
+}
+.addCourse4Table thead tr th {
+  font-weight: normal;
+  /* text-align: start; */
+}
+.addCourse4Table thead tr {
+  height: 60px;
+  /* background: #ffed86; */
+  border-bottom: 2px solid #d3e4ff;
+  border-top: 2px solid #d3e4ff;
+}
+.addCourse4Table tbody tr {
+  height: 100px;
+  border-bottom: 2px solid #d3e4ff;
+  /* padding: 20px 0px; */
+}
+.addCourse4Table tbody tr:last-child {
+  border: 0;
+}
+.addCourse4Table td,
+.addCourse4Table th {
+  text-align: left;
+}
+.addCourse4Table td.l,
+.addCourse4Table th.l {
+  text-align: right;
+}
+.addCourse4Table td.c,
+.addCourse4Table th.c {
+  text-align: center;
+}
+.addCourse4Table td.r,
+.addCourse4Table th.r {
+  text-align: center;
+}
+@media screen and (max-width: 35.5em) {
+  .addCourse4Table {
+    display: block;
+  }
+  .addCourse4Table > *,
+  .addCourse4Table tr,
+  .addCourse4Table td,
+  .addCourse4Table th {
+    display: block;
+  }
+  .addCourse4Table thead {
+    display: none;
+  }
+  .addCourse4Table tbody tr {
+    height: auto;
+    padding: 8px 0;
+  }
+  .addCourse4Table tbody tr td {
+    padding-left: 45%;
+    margin-bottom: 12px;
+  }
+  .addCourse4Table tbody tr td:last-child {
+    margin-bottom: 0;
+  }
+  .addCourse4Table tbody tr td:before {
+    position: absolute;
+    font-weight: 700;
+    width: 40%;
+    left: 10px;
+    top: 0;
+  }
+  .addCourse4Table tbody tr td:nth-child(1):before {
+    content: "S.no";
+  }
+  .addCourse4Table tbody tr td:nth-child(2):before {
+    content: "";
+  }
+  .addCourse4Table tbody tr td:nth-child(3):before {
+    content: "Name";
+  }
+  .addCourse4Table tbody tr td:nth-child(4):before {
+    content: "Email";
+  }
+  .addCourse4Table tbody tr td:nth-child(5):before {
+    content: "Status";
+  }
+  .addCourse4Table tbody tr td:nth-child(6):before {
+    content: "Joining Date";
+  }
+  .addCourse4Table tbody tr td:nth-child(7):before {
+    content: "Under Training Clients";
+  }
+  .addCourse4Table tbody tr td:nth-child(8):before {
+    content: "Total Classes";
+  }
+  .addCourse4Table tbody tr td:nth-child(9):before {
+    content: "";
+  }
+}
+.addCourse4Heading {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.addCourse4Heading h4 {
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+.FilterInstructorDiv {
+  -webkit-box-shadow: 0 0 10px rgb(206, 206, 206);
+  box-shadow: 0 0 8px 2px rgb(207, 207, 207);
+  width: 280px;
+  height: 50px;
+  text-align: center;
+}
+.FilterInstructorDiv p {
+  padding-top: 12px;
+  font-size: 16px;
+}
+.FilterInstructorDiv img {
+  width: 10px;
+  float: right;
+  margin-right: 20px;
+  margin-top: 5px;
+}
+.addCourseinstructorImg {
+  width: 50px;
+}
+.addCourse4Status {
+  background-color: #aaffbe;
+  width: 170px;
+  height: 40px;
+  text-align: center;
+  padding-top: 10px;
+  font-weight: bold;
+  border-radius: 5px;
+  color: green;
+  font-size: 15px;
+}
+.addCourse4CheckBox {
+  width: 20px;
+  height: 20px;
+  outline: 3px solid #c7bfff !important;
+  border-radius: 1px;
+}
+.backgroudColorRed {
+  color: white;
+  background-color: #f64c4c;
+}
+.backgroudColorPurple {
+  background-color: #b5aaff;
+  color: white;
+}
+.addCoursePage5Container {
+  width: 97%;
+  height: 100vh;
+  /* background-color: red; */
+  background-color: rgba(214, 214, 214, 0.45);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.addCourseFivePopup {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 80%);
+  width: 350px;
+  background-color: white;
+  text-align: center;
+  border-radius: 20px;
+}
+.addCourseFivePopup > .addCourseFivePopupCross img {
+  float: right;
+  margin: 7px;
+  width: 20px;
+}
+.addCourseFivePopup h6 {
+  padding-top: 15px;
+  font-size: 15px;
+  margin-left: 20px;
+}
+.addCourseFivePopup p {
+  padding: 0px 30px;
+  margin-top: 10px;
+  font-size: 15px;
+}
+.addCourseFivePopup > .addCourseFivePopupVehicle img {
+  width: 150px;
+}
+.addCourseFivePopup button {
+  background-color: #a1a3ef;
+  border-radius: 12px;
+  border: none;
+  font-size: 13px;
+  padding: 5px 30px;
+  color: white;
+  margin-bottom: 17px;
+}
+@media (max-width: 1300px) {
+  .addCourse4Status {
+    width: 120px;
+    font-size: 13px;
+  }
+  .addCourse4Table td,
+  .addCourse4Table th {
+    padding-left: 5px;
+    font-size: 16px;
+  }
+}
+@media (max-width: 1120px) {
+  .addCourse4Table td,
+  .addCourse4Table th {
+    padding-left: 2px;
+    font-size: 13px;
+  }
+  .addCourse4Status {
+    font-size: 12px;
+  }
+}
+@media (max-width: 1000px) {
+  .addCOurse4Table {
+    overflow: scroll;
+  }
+  .addCoursePage5Container {
+    height: 1100px !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .addCourse4Table td,
+  .addCourse4Table th {
+    padding-left: 2px;
+    font-size: 8px;
+  }
+  tbody tr td {
+    white-space: nowrap !important;
+  }
+
+  .addCourse4Status {
+    width: 80px;
+    height: 25px;
+    padding-top: 5px;
+    font-size: 9px;
+  }
+  .addCourseinstructorImg {
+    width: 30px;
+  }
+
+  .addCourse4Heading h4 {
+    font-size: 12px;
+  }
+  .FilterInstructorDiv {
+    width: 150px;
+    height: 30px;
+  }
+  .FilterInstructorDiv p {
+    padding-top: 6px;
+    font-size: 11px;
+  }
+  .FilterInstructorDiv img {
+    width: 4px;
+    margin-right: 20px;
+    margin-top: 6px;
+  }
+}
+
+@media (max-width: 568px) {
+  .addCoursePage5Container {
+    height: 2400px !important;
+  }
+}
+@media (max-width: 568px) {
+  .addCourseFivePopup {
+    width: 270px;
+    left: 45%;
+  }
+  .addCoursePage5Container {
+    width: 92%;
+  }
+  .addCourseFivePopup h6 {
+    font-size: 13px;
+  }
+  .addCourseFivePopup p {
+    font-size: 12px;
+  }
+  .addCourseFivePopup > .addCourseFivePopupVehicle img {
+    width: 120px;
+  }
+}
+
+@media (max-width: 400px) {
+  .addCourse4Table tbody tr td {
+    padding-left: 58%;
+  }
+  .FilterInstructorDiv {
+    width: 100px;
+    height: 25px;
+  }
+  .FilterInstructorDiv p {
+    padding-top: 6px;
+    font-size: 8px;
+  }
+  .FilterInstructorDiv img {
+    width: 2px;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+}
