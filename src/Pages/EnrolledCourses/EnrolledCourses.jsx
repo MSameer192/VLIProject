@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { GetEnrolledCourses } from '../../Actions/CourseA'
+import MyCourses from '../../Components/MyCourses/MyCourses'
 import useCheckLogin from '../../Helpers/CustomHooks/CheckLogin'
+import { MyCoursesButtonsInfo } from '../../PageNames'
 import EnrolledCourseInfo from './Component/EnrolledCourseInfo/EnrolledCourseInfo'
- 
+
 import Ponits from './Component/Ponits'
 
-const EnrolledCourses = () => {
+const EnrolledCoursesChild = () => {
 
     const Dispatch = useDispatch()
     useCheckLogin(false, ["Student", "Institute"]);
@@ -34,5 +36,5 @@ const EnrolledCourses = () => {
         </div>
     )
 }
-
+const EnrolledCourses = () => <MyCourses ButtonsInfo={MyCoursesButtonsInfo} PageName="EnrolledCourses" Component={EnrolledCoursesChild} />
 export default EnrolledCourses

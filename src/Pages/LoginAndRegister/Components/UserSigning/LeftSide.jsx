@@ -52,8 +52,9 @@ const SignInLeftSide = ({ TopLoginRegisterBtns, ScreenSize }) => {
                     Partner {AuthPageName}
                 </h4>
 
-                <button type="submit" className={` w-full ${ButtonStyle} justify-start py-2 px-0 bg-white `}
+                <button className={`w-full ${ButtonStyle} justify-start py-2 px-0 bg-white `}
                     onClick={() => Dispatch(OpenLoginSignUp("Register", true))}
+                    type="button"
                 >
                     <img className='w-6 xl:w-10' src={require('../../Assets/Institute Icon.png')} alt="" />
                     <h5 className={` ${h4Style} inline-block`}>

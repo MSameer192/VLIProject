@@ -2,36 +2,43 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
 
-const Packageslist = ({ PackagesArr, EnrollmentData, setEnrollmentData }) => {
-    const [Selected, setSelected] = useState();
+const Packageslist = ({ PackagesArr, EnrollmentData, setEnrollmentData, Err, setErr }) => {
+    const [SelectedElement, setSelectedElement] = useState();
+
 
     const SelectPackage = (e, Package) => {
-        let Btns = document.querySelectorAll('.SelectButton')
-
-        for (let index = 0; index < Btns.length; index++) {
-            if (e.target !== Btns[index]) {
-                Btns[index].style.backgroundColor = "#A1A3EF";
-                Btns[index].innerText = "Select"
-            } else {
-                if (Btns[index].innerText === "Selected") {
-                    Btns[index].innerText = "Select"
+        if (SelectedElement !== e.target) {
+            let Btns = document.querySelectorAll('.SelectButton')
+            
+            for (let index = 0; index < Btns.length; index++) {
+                if (e.target !== Btns[index]) {
                     Btns[index].style.backgroundColor = "#A1A3EF";
-                }
-                else {
-                    Btns[index].style.backgroundColor = "#1c1d36";
-                    Btns[index].innerText = "Selected"
+                    Btns[index].innerText = "Select"
+                } else {
+                    if (Btns[index].innerText === "Selected") {
+                        Btns[index].innerText = "Select"
+                        Btns[index].style.backgroundColor = "#A1A3EF";
+                    }
+                    else {
+                        Btns[index].style.backgroundColor = "#1c1d36";
+                        Btns[index].innerText = "Selected"
+                    }
                 }
             }
+
+            setEnrollmentData({ ...EnrollmentData, Package: Package })
+            setSelectedElement(e.target)
+            if (Err?.Package) {
+                delete Err?.Package
+                setErr({ ...Err })
+            }
         }
-        setSelected(Package)
     }
-    useEffect(() => {
-        setEnrollmentData({ ...EnrollmentData, Package: Selected })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [Selected])
+
 
     return (
-        <div className='flex flex-wrap justify-center flex-col md:flex-row gap-x-14 gap-y-7 py-28 px-2 sm:px-3 w-full lg:w-11/22 2xl:w-4/5'>
+        <div className='flex flex-wrap justify-center flex-col md:flex-row gap-x-14 gap-y-7 py-28 px-2 sm:px-3 w-full lg:w-11/22 2xl:w-4/5' >
+
 
             {PackagesArr?.map((value, index) =>
                 <div key={value?.CoursePackageId} className='flex gap-2 md:gap-4 w-full md:w-[46%] lg:w-2/5 xl:w-[45%] 2xl:w-[47%] '>

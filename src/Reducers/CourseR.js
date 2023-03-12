@@ -19,6 +19,22 @@ export const CourseReducer = createReducer({}, (builder) => {
 
 
 
+    builder.addCase("GetAdminCoursesRequest", (state, action) => {
+        state.loading = true
+    });
+
+    builder.addCase("GetAdminCoursesSuccess", (state, action) => {
+        state.loading = false;
+        state.AdminCourses = action.payload;
+    })
+
+    builder.addCase('GetAdminCoursesFailure', (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+    })
+
+
+
 
 
 
@@ -84,7 +100,7 @@ export const CourseReducer = createReducer({}, (builder) => {
 
     builder.addCase("GetSEnrolledCoursesSuccess", (state, action) => {
         state.loading = false;
-        state.SEnrolledCourse= action.payload;
+        state.SEnrolledCourse = action.payload;
     })
 
     builder.addCase('GetSEnrolledCoursesFailure', (state, action) => {
@@ -92,6 +108,9 @@ export const CourseReducer = createReducer({}, (builder) => {
         state.error = action.payload;
     })
 
+
+
+     
 
 
 
@@ -108,10 +127,10 @@ export const CourseReducer = createReducer({}, (builder) => {
         state.loading = false;
         state.error = action.payload;
     })
-    
-    
-    
-    
+
+
+
+
     builder.addCase("EnrolledCourseProgressRequest", (state, action) => {
         state.loading = true
     })
@@ -121,6 +140,52 @@ export const CourseReducer = createReducer({}, (builder) => {
         state.CourseProgress = action.payload;
     })
     builder.addCase("EnrolledCourseProgressFailure", (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+    })
+
+
+
+
+    builder.addCase("CreateCourseRequest", (state, action) => {
+        state.loading = true
+    })
+
+    builder.addCase("CreateCourseSuccess", (state, action) => {
+        state.loading = false;
+        state.Course = action.payload;
+    })
+    builder.addCase("CreateCourseFailure", (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+    })
+ 
+ 
+ 
+    builder.addCase("FilterCoursesRequest", (state, action) => {
+        state.loading = true
+    })
+
+    builder.addCase("FilterCoursesSuccess", (state, action) => {
+        state.loading = false;
+        state.AdminCourses = action.payload;
+    })
+    builder.addCase("FilterCoursesFailure", (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+    })
+   
+   
+   
+    builder.addCase("GetInstituteCoursesRequest", (state, action) => {
+        state.loading = true
+    })
+
+    builder.addCase("GetInstituteCoursesSuccess", (state, action) => {
+        state.loading = false;
+        state.Courses = action.payload;
+    })
+    builder.addCase("GetInstituteCoursesFailure", (state, action) => {
         state.loading = false;
         state.error = action.payload;
     })

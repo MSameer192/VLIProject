@@ -1,0 +1,12 @@
+svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+path {
+  fill: #8787f9;
+}
+
+.test {
+  fill: antiquewhite !important;
+}

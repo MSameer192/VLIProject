@@ -26,9 +26,9 @@ const AddBookAdminChild = () => {
     const [Success, setSuccess] = useState()
 
 
-    const Dispatch = useDispatch()
+    const Dispatch = useDispatch();
     const OnSubmit = (e) => SubmitFormData(e, BookData, Err, setErr, Dispatch, setSuccess)
-    console.log(Success)
+
     return (
         <form className='flex flex-col items-center gap-9 bg-[#F7F7F7] pt-10 pb-44'
             onSubmit={OnSubmit}

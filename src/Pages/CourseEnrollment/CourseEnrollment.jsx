@@ -20,6 +20,7 @@ const CourseEnrollment = () => {
     const Dispatch = useDispatch()
 
     const [ShowTimeSlots, setShowTimeSlots] = useState(false);
+
     const [EnrollmentData, setEnrollmentData] = useState({
         StudentData: {
             FirstName: "",
@@ -32,19 +33,19 @@ const CourseEnrollment = () => {
             PhoneNumber: "",
             Email: "",
             Gender: "",
-            FreeHours: [{ Start: { hh: "", mm: "", AM: "" }, End: { hh: "", mm: "", AM: "" } }],
+            FreeHours: [{ Start: { hh: "0", mm: "0", AM: "PM" }, End: { hh: "0", mm: "0", AM: "PM" } }],
             Schedule: { Monday: undefined, Tuesday: undefined, Thursday: undefined, Wednesday: undefined, Friday: undefined },
 
         },
-        Package: {},
+        Package: undefined,
     });
     const [Err, setErr] = useState({})
-
+    // console.log(EnrollmentData)
     useCheckLogin(true, ["Student"]);
     const Navigate = useNavigate()
     const PackageRef = useRef(null);
     usePageLoadCheckers(location, EnrollmentData, setEnrollmentData)
-
+    console.log(EnrollmentData?.StudentData?.Schedule)
     return (
         <div className='mt-20'>
             <TopPart />
@@ -57,11 +58,15 @@ const CourseEnrollment = () => {
             <form onSubmit={(e) => SubmitForm(e, EnrollmentData, Err, setErr, Dispatch, Navigate)} >
 
                 <UserInfo setEnrollmentData={setEnrollmentData} EnrollmentData={EnrollmentData} PackageRef={PackageRef}
-                    Err={Err} setShowTimeSlots={setShowTimeSlots} />
+                    Err={Err} setErr={setErr} setShowTimeSlots={setShowTimeSlots} />
 
-                <Packages setEnrollmentData={setEnrollmentData} EnrollmentData={EnrollmentData} PackageRef={PackageRef} />
+                <Packages setEnrollmentData={setEnrollmentData} EnrollmentData={EnrollmentData} PackageRef={PackageRef}
+                    setErr={setErr} Err={Err}
+                />
 
-                <Payment />
+                <Payment Package={EnrollmentData?.Package} EnrollmentData={EnrollmentData}
+                    Err={Err} setErr={setErr}
+                />
 
             </form>
             <Footer FooterBgColor='#F6F5F5' />

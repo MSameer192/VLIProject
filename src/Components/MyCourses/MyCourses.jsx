@@ -6,8 +6,9 @@ import './MyCourses.css'
 import MyCoursesButtons from './MyCoursesButtons';
 
 
-const MyCourses = ({ Component, ButtonsInfo, PageName }) => {
+const MyCourses = ({ Component, ButtonsInfo, PageName, FooterBgColor, Z_Index, HideFooter }) => {
   let Id = window.location.href.split("/mycourses/");
+  const [Name, setName] = useState()
   const [Ele, setEle] = useState(document.getElementById(Id[1]));
   const { EnrollmentId } = useParams();
   const [ButtonsInfoState, setButtonsInfoState] = useState(ButtonsInfo);
@@ -37,7 +38,9 @@ const MyCourses = ({ Component, ButtonsInfo, PageName }) => {
     if ((EnrollmentId && ButtonsInfo) && !CheckButtonsInfo) {
       setCheckButtonsInfo(true);
       ButtonsInfo?.ButtonsInfo?.forEach((value, index) => {
-        ButtonsInfoCopy[index] = { ...value, Link: value.Link + "/" + EnrollmentId }
+        if (value.params)
+          ButtonsInfoCopy[index] = { ...value, Link: value.Link + "/" + EnrollmentId }
+       
       })
       setButtonsInfoState({ ...ButtonsInfo, ButtonsInfo: [...ButtonsInfoCopy] })
 
@@ -46,7 +49,7 @@ const MyCourses = ({ Component, ButtonsInfo, PageName }) => {
       setButtonsInfoState(ButtonsInfo)
 
   }, [EnrollmentId, ButtonsInfo, ButtonsInfoState, CheckButtonsInfo])
-  
+
   useEffect(() => {
     if (Ele)
       OnClickMethod(Ele)
@@ -64,19 +67,19 @@ const MyCourses = ({ Component, ButtonsInfo, PageName }) => {
                             MyCoursesTopBG`}
       >
 
-        <h1 className={`text-white 
+        <h1 className={`text-white m-0 text-left
                         text-base sm:text-[30px] md:text-[34px] lg:text-[38px] xl:text-[45px] 
                         Boldfont`}
         >
-          {ButtonsInfo?.Heading ? ButtonsInfo?.Heading : null}
+          {Name ? Name : ButtonsInfo?.Heading ? ButtonsInfo?.Heading : null}
         </h1>
         <MyCoursesButtons PageName={PageName} ButtonsInfo={ButtonsInfoState?.ButtonsInfo} EnrolledCoursesRef={EnrolledCoursesRef} OnClickMethod={OnClickMethod} />
 
       </div>
 
-      {Component}
-
-      <Footer />
+      {/* {Component} */}
+      <Component setName={setName} Name={Name} />
+      {!HideFooter ? <Footer FooterBgColor={FooterBgColor} Z_Index={Z_Index} /> : null}
     </div>
   )
 }

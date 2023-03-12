@@ -1,10 +1,12 @@
 import React from 'react'
 import "./Footer.css";
 import { Link } from 'react-router-dom'
-const Footer = ({ FooterBgColor }) => {
+const Footer = ({ FooterBgColor, Z_Index }) => {
 
+    if (!Z_Index)
+        Z_Index = "-z-10"
     return (
-        <footer className={`pt-[130px] md:pt-[100px] mt-32 md:mt-0 w-full  md:max-h-[auto] relative md:h-fit flex flex-col items-center gap-3 md:gap-10 lg:gap-40 rounded-t-[50px] md:rounded-t-[0px] md:bg-[${FooterBgColor}] FooterLinearGradient md:overflow-hidden -z-10`}>
+        <footer className={`pt-[130px] md:pt-[100px] mt-32 md:mt-0 w-full  md:max-h-[auto] relative md:h-fit flex flex-col items-center gap-3 md:gap-10 lg:gap-40 rounded-t-[50px] md:rounded-t-[0px] md:bg-[${FooterBgColor}] FooterLinearGradient md:overflow-hidden ${Z_Index}`}>
 
 
             <ContactPortionFooter />

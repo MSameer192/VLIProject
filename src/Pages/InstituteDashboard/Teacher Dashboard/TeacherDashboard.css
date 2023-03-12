@@ -1,0 +1,25 @@
+.StudentNumberCardBg {
+    background: linear-gradient(-45deg,
+            #9aff00 0.00%,
+            #3dd7ff 100.00%);
+}
+
+.WeekCardBg {
+    background: linear-gradient(137deg,
+            #f9d324 0.00%,
+            #ff564e 100.00%);
+}
+.TimeCardBg {
+    background: linear-gradient(-44deg, 
+    #0fd850 0.00%, 
+    #e8ee48 100.00%);
+}
+.CompleteCourseCardBg {
+    background: linear-gradient(180deg, 
+    #b224ef 0.00%, 
+    #7579ff 100.00%);
+}
+
+.TeacherCards {
+    @apply flex flex-col pb-[50px] pt-[58px] gap-3 items-center max-w-[250px] px-5 w-1/4 rounded-md cursor-pointer
+}

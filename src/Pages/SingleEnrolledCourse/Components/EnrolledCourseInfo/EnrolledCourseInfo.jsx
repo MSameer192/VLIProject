@@ -4,11 +4,12 @@ import ClassDetails from './Components/ClassDetails'
 
 const SEnrolledCourseInfo = ({ SEnrolledCourse }) => {
     let divWidth = "w-full sm:w-11/12 md:w-[89%] lg:w-[86%] xl:w-[83%] 2xl:w-4/5"
+
     return (
         <div className='w-11/12 md:w-4/5 flex items-start flex-col gap-5'>
             <h2 className='text-xs sm:text-sm md:text-base lg:text-[28px] xl:text-[30px] 2xl:text-lg Blackfont'>Module 1</h2>
             <div className='bg-[#F0F0F7] flex flex-col gap-10 items-center  px-3 py-20'>
-                <div className={`flex flex-col items-center gap-6 ${divWidth}`}>
+                <div className={`flex flex-col items-end gap-6 ${divWidth}`}>
                     <ClassColorAndDetail />
                 </div>
 

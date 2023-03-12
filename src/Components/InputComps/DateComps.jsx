@@ -9,15 +9,15 @@ export const DateInput = ({ Err, onChange, State }) => {
     const RemoveParentStyle = (e) => e.target.parentNode.style = ""
 
     const ShowDate = (e) => e.target.parentElement.previousElementSibling.showPicker()
-console.log(State)
-    return <div className={DivStyle}>
-        <label htmlFor='RemoveDateIcon' className={HeadingStyle}>Date of Birth (DD/MM//YYYY)</label>
 
-        <h4> {Err ? Err : null}</h4>
+    return <div className={DivStyle}>
+        <label htmlFor='DOB' className={HeadingStyle}>Date of Birth (DD/MM//YYYY)</label>
+
+        <h4 className='font-normal text-[red]'> {Err ? Err : null}</h4>
 
         <span className={ExceptionSpanStyle}> 
 
-            <input className={`${ExceptionInputStyle} RemoveDateIcon`} type="date" placeholder='DD/MM/YYYY' id='RemoveDateIcon' required
+            <input className={`${ExceptionInputStyle} RemoveDateIcon`} type="date" placeholder='DD/MM/YYYY' id='DOB' required
                 onFocus={AddParentStyle}
                 onBlur={RemoveParentStyle}
                 value={State}
@@ -25,7 +25,7 @@ console.log(State)
             />
 
 
-            <label htmlFor="RemoveDateIcon">
+            <label htmlFor="DOB">
                 <img src={require('./Assets/BirtPlaceIcon.svg').default} alt=""
                     onClick={ShowDate}
                 />

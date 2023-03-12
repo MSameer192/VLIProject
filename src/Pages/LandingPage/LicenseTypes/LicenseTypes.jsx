@@ -70,9 +70,12 @@ function LicenseTypeTiles({ LicenseTypesState, setref }) {
 
         let HoverStyle = "hover:origin-top-left hover:gap-10 hover:md:gap-6 hover:scale-100 md:hover:scale-[1.04]"
         let TransitionDuration = "duration-[400ms]";
+
+        if (LicenseTypeName !== "Industrial Machinery")
+            LicenseTypeName = `Class ${LicenseTypeName}`
         return (
             <Link key={value.LicenseTypeId}
-                to={`/category/${value.LicenseTypeId}`}
+                to={`/license/category/${value.LicenseTypeId}`}
                 ref={(e) => { setref(e) }}
                 className={`flex flex-col items-center relative cursor-pointer text-black no-underline
                 max-w-[320px] min-w-[220px] w-[60%] gap-7 bg-white rounded-2xl duration-[400ms] ${HoverStyle} ${TransitionDuration}
@@ -87,7 +90,7 @@ function LicenseTypeTiles({ LicenseTypesState, setref }) {
                 </div>
                 <div id='LicenseTypeInfo' className={`flex flex-col items-center gap-3 mx-8 ${TransitionDuration}`}>
 
-                    <h3 className='font-thin  text-3xs lg:text-xs text-center Regularfont'>{LicenseTypeName}</h3>
+                    <h3 className='font-thin  text-3xs lg:text-xs text-center Regularfont'>  {LicenseTypeName} </h3>
 
 
                     <p className="font-thin  text-center text-[12px] lg:text-4xs Regularfont">{LicenseTypeDescription}</p>

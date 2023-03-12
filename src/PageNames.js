@@ -4,17 +4,20 @@ export const MyCoursesButtonsInfo = {
         {
             Link: '/mycourses/enrolledcourses',
             Id: "EnrolledCourses",
-            Text: "Enrolled Courses"
+            Text: "Enrolled Courses",
+            params:true
         },
         {
             Link: '/mycourses/Wishlist',
             Id: "Wishlist",
-            Text: "My Wishlist"
+            Text: "My Wishlist",
+            params:true
         },
         {
             Link: '/mycourses/completed',
             Id: 'completed',
-            Text: "Completed Courses"
+            Text: "Completed Courses",
+            params:true
         },
     ]
 };
@@ -24,17 +27,20 @@ export const EnrolledCourseButtonsInfo = {
         {
             Link: '/enrolledcourse/coursemodule',
             Id: "CourseModule",
-            Text: "Course Module"
+            Text: "Course Module",
+            params:true
         },
         {
             Link: '/enrolledcourse/upcomingclasses',
             Id: "UpcomingClasses",
-            Text: "Upcoming Classes"
+            Text: "Upcoming Classes",
+            params:true
         },
         {
             Link: '/enrolledcourse/progress',
             Id: 'CourseProgress',
-            Text: "Course Progress"
+            Text: "Course Progress",
+            params:true
         },
     ]
 }
@@ -42,19 +48,52 @@ export const EnrolledCourseButtonsInfo = {
 export const InsEnrolledCourseButtons = {
     ButtonsInfo: [
         {
-            Link: '/enrolledcourse/AboutClient/:EnrollmentId',
+            Link: '/enrolledcourse/AboutClient',
             Id: "AboutClient",
-            Text: "About Client"
+            Text: "About Client",
+            params:true
         },
         {
-            Link: '/enrolledcourse/EnrolledCourse/:EnrollmentId',
+            Link: '/enrolledcourse/EnrolledCourse',
             Id: "EnrolledCourse",
-            Text: "Enrolled Course"
+            Text: "Enrolled Course",
+            params:true
         },
         {
             Link: '/enrolledcourse/PaymentSetting',
             Id: 'PaymentSetting',
-            Text: "Payment Setting"
+            Text: "Payment Setting",
+            params:true
+        },
+    ]
+}
+
+
+export const TeacherButtons = {
+    ButtonsInfo: [
+        {
+            Link: '/teacher/AboutStudent',
+            Id: "AboutStudent",
+            Text: "About Student",
+            params:true
+        },
+        {
+            Link: '/teacher/CourseModule',
+            Id: "CourseModule",
+            Text: "Course Module",
+            params:true
+        },
+        {
+            Link: '/teacher/UpcomingClasses',
+            Id: 'UpcomingClasses',
+            Text: "Upcoming Classes",
+            params:false
+        },
+        {
+            Link: '/teacher/CourseProgress',
+            Id: 'CourseProgress',
+            Text: "CourseProgress",
+            params:true
         },
     ]
 }

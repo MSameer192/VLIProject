@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { useEffect } from 'react'
 
-const SideFilters = ({ Title, FiltersArr, TitleStyle }) => {
+const SideFilters = ({ Title, FiltersArr, TitleStyle, WidthStyle, PositionAndIndex,OnClick }) => {
     const FilterRef = useRef();
 
     const HideFilter = (e) => {
@@ -31,11 +31,13 @@ const SideFilters = ({ Title, FiltersArr, TitleStyle }) => {
 
     if (!TitleStyle)
         TitleStyle = "text-2xs font-normal Boldfont"
+    if (!WidthStyle)
+        WidthStyle = "w-full  md:w-11/12"
+    if (!PositionAndIndex)
+        PositionAndIndex = "fixed   sm:relative     z-30                    sm:z-0"
     return (
         <div className={`top-0 flex  justify-center items-center duration-200 overflow-hidden
-        w-full                  sm:w-full       md:w-11/12
-        z-30                    sm:z-0
-        fixed                   sm:relative
+        ${WidthStyle} ${PositionAndIndex} cursor-auto
         rounded-b-[70px]        sm:rounded-none 
         SideBarBG`}
 
@@ -55,7 +57,9 @@ const SideFilters = ({ Title, FiltersArr, TitleStyle }) => {
                     {FiltersArr ? <FiltersArr /> : null}
                 </div>
 
-                <button type='button' className='bg-[#A1A3EF] text-white flex items-center justify-center p-4 text-4xs  outline-none border-none rounded-md whitespace-nowrap cursor-pointer relative'>
+                <button type='button' className='bg-[#A1A3EF] text-white flex items-center justify-center p-4 text-4xs  outline-none border-none rounded-md whitespace-nowrap cursor-pointer relative'
+                onClick={OnClick}
+                >
                     <img className='absolute left-3' src={require('./Search.svg').default} alt="" />
                     Apply Filters
                 </button>

@@ -22,7 +22,7 @@ export const AddBookA = (BookData, setSuccess) => async (dispatch) => {
         })
     }
 }
-export const GetBooksA = (BookData, setSuccess) => async (dispatch) => {
+export const GetBooksA = () => async (dispatch) => {
     try {
 
         dispatch({
@@ -35,7 +35,7 @@ export const GetBooksA = (BookData, setSuccess) => async (dispatch) => {
             type: "GetAllBooksSuccess",
             payload: data,
         })
-        setSuccess(true)
+  
     } catch (error) {
         dispatch({
             type: "GetAllBooksError",

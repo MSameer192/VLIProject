@@ -15,7 +15,7 @@ export const usePageLoadCheckers = (location, EnrollmentData, setEnrollmentData)
 
     // This would navigate user to home if user tries to enter previous url.
     useEffect(() => {
- 
+
         if (!location?.state?.InstituteCourseId && Loaded === false) {
 
             Navigate('/')
@@ -43,7 +43,7 @@ export const usePageLoadCheckers = (location, EnrollmentData, setEnrollmentData)
     //This would fill all the fields with information previously enterd by user, automatically, when page is loaded
     useEffect(() => {
         if (EnrollmentData?.StudentData?.FirstName === "")
-            setEnrollmentData({ StudentData: { ...EnrollmentData.StudentData, ...UserInfo } })
+            setEnrollmentData({ ...EnrollmentData, StudentData: { ...EnrollmentData.StudentData, ...UserInfo, ...UserInfo?.StudentInfos } })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [EnrollmentData, UserInfo])
 

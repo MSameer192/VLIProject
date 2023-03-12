@@ -1,7 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import DropDown from '../../../../../Components/CustomDropdown/DropDown'
+import DropDownOptions from '../../../../../Components/CustomDropdown/DropDownOption';
 import { LicenseTypeOptions, VehicleTypeOptions } from './DropDownArr/DropDownArr'
-const CourseCategory = ({ setCourseData, CourseData }) => {
+const CourseCategory = ({ setCourseData, CourseData, SubLicenseType, setSubLicenseType }) => {
+
+    const { LicenseTypes } = useSelector(Store => Store.LicenseTypeReducer)
+
+    useEffect(() => {
+        LicenseTypes.forEach((value) => {
+            if (value.LicenseTypeId === CourseData.LicenseTypeFK && value.SubLicenseTypes.length > 0)
+                setSubLicenseType(value.SubLicenseTypes)
+            else if (value.LicenseTypeId === CourseData.LicenseTypeFK && value.SubLicenseTypes.length <= 0)
+                setSubLicenseType([])
+        })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [LicenseTypes, CourseData, setSubLicenseType])
+
+
+
+
+
+    const SubLicenseTypeOptions = ({ Name, onChange, StateValue }) =>
+        SubLicenseType.map((value) =>
+            <DropDownOptions ID={value.SubLicenseTypeId} key={value.SubLicenseTypeId} Text={value.SubLicenseTypeName} Name={Name} onChange={onChange} StateValue={StateValue} />)
+
+
     return (
         <div className='DataInputContainer mb-20'>
             <span className='Admin_HeadingContainer'>
@@ -14,29 +38,58 @@ const CourseCategory = ({ setCourseData, CourseData }) => {
             </span>
 
             <div className='Add_C_B_InputSideContainer'>
-                <div className='flex w-full items-center justify-center md:justify-start flex-wrap md:flex-nowrap gap-4 md:gap-6 lg:gap-8 xl:gap-10 2xl:gap-12 pt-3 sm:pt-0'>
+                <div className='flex w-full justify-center md:justify-start flex-wrap md:flex-nowrap gap-4 md:gap-6 lg:gap-8 xl:gap-10 2xl:gap-12 pt-3 sm:pt-0'>
                     <span className='flex flex-col max-w-[360px] gap-[6px] sm:gap-3 w-full'>
-                        <h3 className='font-normal text-7xs sm:text-6xs md:text-5xs lg:text-3xs xl:2xs 2xl:text-xs'>
+                        <h3 className='font-normal whitespace-nowrap text-7xs sm:text-6xs md:text-5xs lg:text-3xs xl:2xs 2xl:text-xs'>
                             Course Category for Vehicle Type
                         </h3>
                         <DropDown Label="Select Vehicle Type" Name="VehicleType"
                             styles="bg-white border-none" TextStyle="text-6xs sm:text-5xs md:text-4xs xl:text-3xs"
                             SelectValueStyle="px-3 sm:px-4 md:px-2 lg:px-6 xl:px-7 2xl:px-[30px]"
-                            onChange={target => { setCourseData({ ...CourseData, "VehicleTypeFK": target.value }) }}
+                            StateValue={CourseData?.VehicleTypeName}
+                            onChange={(target, Text) =>
+                                setCourseData({ ...CourseData, "VehicleTypeFK": target.value, VehicleTypeName: Text })
+                            }
+
                             DropDownOptions={VehicleTypeOptions}
                         />
                     </span>
-                    <span className='flex flex-col max-w-[360px] gap-[6px] sm:gap-3 w-full'>
-                        <h3 className='font-normal text-7xs sm:text-6xs md:text-5xs lg:text-3xs xl:2xs 2xl:text-xs'>
-                            Course Category for License Type
-                        </h3>
-                        <DropDown Label="Select License Type" Name="LicenseType"
-                            styles="bg-white border-none" TextStyle="text-6xs sm:text-5xs md:text-4xs xl:text-3xs"
-                            SelectValueStyle="px-3 sm:px-4 md:px-2 lg:px-6 xl:px-7 2xl:px-[30px]"
-                            DropDownOptions={LicenseTypeOptions}
-                            onChange={target => setCourseData({ ...CourseData, "LicenseTypeFK": target.value  })}
-                        />
-                    </span>
+                    <div className='flex flex-col gap-5  max-w-[360px]  sm:gap-3 w-full'>
+                        <span className='flex flex-col max-w-[360px] gap-[6px] sm:gap-3 w-full'>
+                            <h3 className='font-normal whitespace-nowrap text-7xs sm:text-6xs md:text-5xs lg:text-3xs xl:2xs 2xl:text-xs'>
+                                Course Category for License Type
+                            </h3>
+                            <DropDown Label="Select License Type" Name="LicenseType"
+                                styles="bg-white border-none" TextStyle="text-6xs sm:text-5xs md:text-4xs xl:text-3xs"
+                                SelectValueStyle="px-3 sm:px-4 md:px-2 lg:px-6 xl:px-7 2xl:px-[30px]"
+                                DropDownOptions={LicenseTypeOptions}
+                                StateValue={CourseData?.LicenseTypeName}
+                                onChange={(target, Text) =>
+                                    setCourseData({
+                                        ...CourseData, "LicenseTypeFK": target.value, LicenseTypeName: Text,
+                                        SubLicenseTypeFK: undefined,
+                                        SubLicenseTypeName: undefined
+                                    })}
+                            />
+                        </span>
+                        {SubLicenseType?.length > 0
+                            ? <span className='flex flex-col max-w-[360px] gap-[6px] sm:gap-3 w-full'>
+                                <h3 className='font-normal text-[12px] whitespace-nowrap sm:text-7xs md:text-6xs lg:text-4xs xl:3xs 2xl:text-2xs'>
+                                    Course Category for sub License Type
+                                </h3>
+                                <DropDown Label="Select sub License Type" Name="SubLicenseType"
+                                    styles="bg-white border-none" TextStyle="text-7xs sm:text-6xs md:text-5xs xl:text-4xs"
+                                    SelectValueStyle="px-3 sm:px-4 md:px-2 lg:px-6 xl:px-7 2xl:px-[30px]"
+                                    DropDownOptions={SubLicenseTypeOptions}
+                                    StateValue={CourseData?.SubLicenseTypeName}
+                                    onChange={(target, Text) =>
+                                        setCourseData({ ...CourseData, "SubLicenseTypeFK": target.value, SubLicenseTypeName: Text })
+                                    }
+                                />
+                            </span>
+                            : null}
+
+                    </div>
                 </div>
             </div>
         </div>

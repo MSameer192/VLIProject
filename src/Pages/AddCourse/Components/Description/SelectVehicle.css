@@ -1,0 +1,81 @@
+.vehicalBox {
+  box-shadow: 0 10px 15px -2px rgb(214, 214, 214);
+  border-radius: 5px;
+  margin-top: 50px;
+}
+.vehicalImgConainer {
+  width: 100%;
+}
+.vehicalImgConainer img {
+  width: 96%;
+}
+.vehicalDetail {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+.vehicalDetail > .vehicalName {
+  font-weight: bold;
+}
+.vehicalDetail > .vehicalModel {
+  font-size: 14px;
+}
+.vehicalHr {
+  border-top: 1px solid #fbfbfb;
+  width: 92%;
+  margin: 0 auto;
+}
+.idCardSection img {
+  width: 20px;
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+.idCardSection span {
+  font-size: 13px;
+  position: relative;
+  top: -5px;
+  font-weight: bold;
+  padding-left: 6px;
+}
+.discOfVehical {
+  line-height: 14px;
+  font-size: 13px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.vehicalSelectBtn {
+  border: none;
+  box-shadow: 0 0px 15px -2px rgb(185, 185, 185);
+  background-color: #a1a3ef;
+  margin: 10px 0px 25px 0px;
+  padding: 5px 20px;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  border-radius: 10px;
+}
+@media (max-width: 1200px) {
+  .addCourse3Main > .row > .col-3 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+}
+@media (max-width: 850px) {
+  .addCourse3Main > .row > .col-3 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+@media (max-width: 550px) {
+  .addCOurse3Desc img {
+    width: 50px !important;
+  }
+  .addCourse3Main > .row > .col-3 {
+
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

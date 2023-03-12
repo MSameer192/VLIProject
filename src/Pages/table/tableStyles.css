@@ -1,0 +1,53 @@
+/* -------------Table---------- */
+
+@media (max-width: 845px) {
+  .tableContainer {
+    width: 100% !important;
+  }
+
+  .cancelIconTable {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .tableContainerTop {
+    padding-inline: 20px !important;
+  }
+
+  .tableItself {
+    padding-inline: 20px !important;
+  }
+
+  .tableHeading {
+    font-size: 16px !important;
+  }
+
+  .tableSubHeading {
+    font-size: 14px !important;
+  }
+
+  .tableHeadText {
+    font-size: 12px !important;
+  }
+
+  .tableText {
+    font-size: 12px !important;
+  }
+
+  .tableActionIcon {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .tableRadioBtn {
+    width: 15px !important;
+    height: 15px !important;
+    margin-right: 8px !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .tableText {
+    font-size: 10px !important;
+  }
+}

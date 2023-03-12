@@ -16,6 +16,7 @@ const AddCourseAdminChild = () => {
     const [CourseData, setCourseData] = useState({});
     const [Err, setErr] = useState();
     const [Success, setSuccess] = useState();
+    const [SubLicenseType, setSubLicenseType] = useState([]);
     const Dispatch = useDispatch()
     useEffect(() => {
         Dispatch(GetLicenseTypes())
@@ -23,11 +24,12 @@ const AddCourseAdminChild = () => {
     }, [Dispatch])
 
 
-    const OnSubmit = e => SubmitFormData(e, CourseData, Err, setErr, Dispatch, setSuccess);
+    const OnSubmit = e => SubmitFormData(e, CourseData, SubLicenseType, Err, setErr, Dispatch, setSuccess);
     useCheckLogin(true, ["Admin"])
     useEffect(() => {
 
     }, [])
+
     return (
         <form className='flex flex-col gap-9 bg-[#F7F7F7] py-10 items-center' onSubmit={OnSubmit}>
             <div className='flex justify-center items-center bg-[#F0F0F7] w-11/12 lg:w-[95%] xl:w-[88%] py-4 px-4 mx-4 sm:mx-8 md:mx-12 lg:mx-16 xl:mx-20 2xl:mx-[90px]'>
@@ -37,7 +39,8 @@ const AddCourseAdminChild = () => {
                     </span>
                     <div className='flex w-full flex-col gap-7'>
                         <CourseTitle setCourseData={setCourseData} CourseData={CourseData} />
-                        <CourseCategory setCourseData={setCourseData} CourseData={CourseData} />
+                        <CourseCategory setCourseData={setCourseData} CourseData={CourseData}
+                            SubLicenseType={SubLicenseType} setSubLicenseType={setSubLicenseType} />
                         <SearchTags setCourseData={setCourseData} CourseData={CourseData} />
                         <ShortDescription setCourseData={setCourseData} CourseData={CourseData} />
                         <CourseThumnail setCourseData={setCourseData} CourseData={CourseData} />
@@ -67,7 +70,9 @@ const AddCourseAdminChild = () => {
 }
 const AddCourseAdmin = () => <InstituteTemplate Element={AddCourseAdminChild} />
 
-const SubmitFormData = (e, CourseData, Err, setErr, Dispatch, setSuccess) => {
+
+
+const SubmitFormData = (e, CourseData, SubLicenseType, Err, setErr, Dispatch, setSuccess) => {
     e.preventDefault();
     let Errors = {}
     e.preventDefault();
@@ -77,17 +82,26 @@ const SubmitFormData = (e, CourseData, Err, setErr, Dispatch, setSuccess) => {
         if (!value) Errors[key] = true
         else delete Errors[key]
     }
+    if (SubLicenseType.length > 0 && !CourseData.SubLicenseTypeFK)
+        Errors.SubLicenseTypeFK = true;
+
 
     setErr({ ...Err, ...Errors })
+
     if (Object.entries(Errors).length > 0)
         return
 
 
     CourseFormData.append("CourseThumbnail", CourseData.CourseThumbnail);
     delete CourseData.CourseThumbnail;
+    delete CourseData.SubLicenseTypeName;
+    delete CourseData.LicenseTypeName;
+    delete CourseData.VehicleTypeName;
+    if (!CourseData.SubLicenseTypeFK)
+        delete CourseData.SubLicenseTypeFK;
     CourseFormData.append("VehicleInfo", JSON.stringify(CourseData));
 
-
+    
     Dispatch(CreateAdminCourseA(CourseFormData, setSuccess))
 }
 

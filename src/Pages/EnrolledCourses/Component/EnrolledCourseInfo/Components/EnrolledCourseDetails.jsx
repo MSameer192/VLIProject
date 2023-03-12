@@ -1,24 +1,27 @@
 import React from 'react'
+import { BaseUrl } from '../../../../../Actions/Base'
 
 const EnrolledCourseDetails = ({ InstituteCourse }) => {
+ 
     return (
         <div className='flex gap-5 items-center flex-col md:flex-row '>
             <span className='inline-block h-full'>
                 <img className='h-auto min-w-[150px] w-full sm:w-auto sm:h-full'
-                    src={InstituteCourse ? `/api/vehicletype/image?url=${InstituteCourse?.Course?.CourseThumbnail}` : null}
+                    src={InstituteCourse ? `${BaseUrl}/api/vehicletype/image?url=${InstituteCourse?.Course?.CourseThumbnail}` : null}
                     alt="Course Thumbnail" />
             </span>
-            <CorseDetailsText />
+            <CorseDetailsText InstituteCourse={InstituteCourse} />
         </div>
     )
 }
 
-function CorseDetailsText() {
+function CorseDetailsText({InstituteCourse}) { 
+ 
     return <span className='flex flex-col    gap-2 sm:gap-5 md:gap-8 lg:gap-11 xl:gap-14 2xl:gap-16 justify-between items-center'>
         <h3 className={`text-center             lg:text-start
                         text-3xs    md:text-2xs                 xl:text-xs `}
         >
-            Automotive Course
+           {InstituteCourse?.Course?.CourseName}
         </h3>
 
 
@@ -27,9 +30,7 @@ function CorseDetailsText() {
                        text-4xs                 md:text-3xs 
                        text-center                           lg:text-start`}
         >
-            Class G. Allowed to drive any car, van or small truck or combination of vehicle and
-            towed vehicle up to 11,000 kilograms provided the vehicle towed is not over 4,600
-            kilograms
+            {InstituteCourse?.Course?.Description}
         </p>
 
     </span>

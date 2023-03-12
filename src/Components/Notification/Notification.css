@@ -1,0 +1,4 @@
+.SNotification{
+    border-top: 1px solid #F1F1F3;
+    @apply w-full py-2 bg-white flex gap-5 
+}

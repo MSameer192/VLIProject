@@ -3,6 +3,7 @@ import { SetUser } from '../../Actions/UserA'
 import { useDispatch, useSelector } from 'react-redux'
 import { GetLocalStorage } from '../LocalStorage/LocalStorage'
 import { useNavigate } from 'react-router-dom'
+import { GeneralEvent } from '../../Actions/Events/FilterA'
 
 const useCheckLogin = (Navigation, UserType, InstituteUserTypes) => {
     const Navigate = useNavigate()
@@ -34,6 +35,8 @@ const useCheckLogin = (Navigation, UserType, InstituteUserTypes) => {
     }, [Dispatch, Navigate, Navigation, Institute, Authenticated])
 
 }
+
+
 function CheckInstitute(InstituteUserTypes, UserType) {
     let checkInstitute = false;
     let UserTypeName
@@ -51,6 +54,7 @@ function CheckInstitute(InstituteUserTypes, UserType) {
 
     return checkInstitute
 }
+
 function CheckUser(UserTypes) {
     let checkUser
     UserTypes?.forEach(UserTypeName => {
@@ -59,14 +63,17 @@ function CheckUser(UserTypes) {
 
     return checkUser
 }
+
+
 export const useSetLoginInfo = () => {
 
     const Dispatch = useDispatch();
     const { Authenticated } = useSelector((Store) => Store.LoginSignupReducer);
-    useEffect(() => {
+     useEffect(() => {
         if (GetLocalStorage("UserInfo")) {
-            Dispatch(SetUser(GetLocalStorage("UserInfo")))
+            Dispatch(SetUser(GetLocalStorage("UserInfo"))) 
+            Dispatch(GeneralEvent(GetLocalStorage("UserInfo").Notifications,"GetNotificationsSuccess"))
         }
-    }, [])
+    }, [Dispatch])
 }
 export default useCheckLogin

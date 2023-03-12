@@ -3,7 +3,7 @@ import ContactAndOtherInfo from './Components/ContactAndOtherInfo';
 import FreeHours from './Components/FreeHours';
 import UserLocationInfo from './Components/UserLocationInfo';
 
-const UserInfo = ({ EnrollmentData, setEnrollmentData, PackageRef, Err, setShowTimeSlots }) => {
+const UserInfo = ({ EnrollmentData, setEnrollmentData, PackageRef, Err, setShowTimeSlots, setErr }) => {
     const AddParentStyle = (e) => e.target.parentNode.style = "border:2px solid black";
     const RemoveParentStyle = (e) => e.target.parentNode.style = ""
     let InputTypeTextStyle = "w-full text-6xs  md:text-5xs lg:text-2xs xl:text-3xs px-5 py-2 rounded-[8px] border-[#E8E8E8] border-solid border-[2px]"
@@ -17,21 +17,33 @@ const UserInfo = ({ EnrollmentData, setEnrollmentData, PackageRef, Err, setShowT
 
     let Styling = { InputTypeTextStyle, HeadingStyle, DivStyle, ExceptionSpanStyle, ExceptionInputStyle, DivResponsive, AddParentStyle, RemoveParentStyle }
 
+    const OnChange = (e, Key) => {
+        if (Key === "PostalCode")
+            setEnrollmentData({ ...EnrollmentData, StudentData: { ...EnrollmentData?.StudentData, [Key]: Number(e.target.value) } });
+        else
+            setEnrollmentData({ ...EnrollmentData, StudentData: { ...EnrollmentData?.StudentData, [Key]: e.target.value } });
 
+        if (e.target.value !== "") {
+            delete Err?.[Key]
+            setErr({ ...Err});
+        } else {
+            setErr({ ...Err, [Key]: `${Key} is required` });
+        }
+    }
     return (
 
         <div className='flex flex-col mt-[72px] justify-center items-center gap-10 mb-6 px-7'>
-            <div className={`flex flex-col sm:flex-row flex-wrap gap-10 w-full justify-between items-center ${DivResponsive}`}>
+            <div className={`flex flex-col sm:flex-row flex-wrap gap-10 w-full justify-between items-center ${DivResponsive}`} id='StudentData'>
                 <UserName
-                    EnrollmentData={EnrollmentData} setEnrollmentData={setEnrollmentData} Styling={Styling} Err={Err}
+                    EnrollmentData={EnrollmentData} Styling={Styling} Err={Err} OnChange={OnChange}
                 />
 
                 <UserLocationInfo
-                    EnrollmentData={EnrollmentData} setEnrollmentData={setEnrollmentData} Styling={Styling} Err={Err}
+                    EnrollmentData={EnrollmentData} Styling={Styling} Err={Err} OnChange={OnChange}
                 />
 
                 <ContactAndOtherInfo
-                    EnrollmentData={EnrollmentData} setEnrollmentData={setEnrollmentData} Err={Err} setShowTimeSlots={setShowTimeSlots}
+                    EnrollmentData={EnrollmentData} Err={Err} setShowTimeSlots={setShowTimeSlots} OnChange={OnChange}
                     Styling={Styling}
                 />
 
@@ -67,24 +79,24 @@ const UserInfo = ({ EnrollmentData, setEnrollmentData, PackageRef, Err, setShowT
 
 export default UserInfo
 
-function UserName({ Styling, setEnrollmentData, EnrollmentData, Err }) {
+function UserName({ Styling, EnrollmentData, Err, OnChange }) {
     const { HeadingStyle, InputTypeTextStyle, DivStyle } = Styling
     return (
         <>
             <div className={DivStyle}>
                 <label htmlFor='FirstName' className={HeadingStyle}>First Name</label>
-                <h4> {Err?.FirstName ? Err?.FirstName : null}</h4>
+                <h4 className='font-normal text-[red]'> {Err?.FirstName ? Err?.FirstName : null}</h4>
                 <input className={InputTypeTextStyle} type="text" placeholder='John' id='FirstName' required
                     value={EnrollmentData?.StudentData?.FirstName}
-                    onChange={(e) => setEnrollmentData({ ...EnrollmentData, StudentData: { ...EnrollmentData?.StudentData, FirstName: e.target.value } })}
+                    onChange={(e) => OnChange(e, "FirstName")}
                 />
             </div>
             <div className={DivStyle}>
                 <label htmlFor='LastName' className={HeadingStyle}>Last Name</label>
-                <h4> {Err?.LastName ? Err?.LastName : null}</h4>
+                <h4 className='font-normal text-[red]'> {Err?.LastName ? Err?.LastName : null}</h4>
                 <input className={InputTypeTextStyle} type="text" placeholder='Smith' id='LastName' required
                     value={EnrollmentData?.StudentData?.LastName}
-                    onChange={(e) => setEnrollmentData({ ...EnrollmentData, StudentData: { ...EnrollmentData?.StudentData, LastName: e.target.value } })}
+                    onChange={(e) => OnChange(e, "LastName")}
                 />
             </div>
         </>

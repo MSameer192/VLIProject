@@ -13,7 +13,7 @@
 
 
 .Add_C_B_InputSideContainer {
-    @apply flex flex-col gap-4  w-11/12 sm:w-3/4
+    @apply flex flex-col gap-4 w-11/12 sm:w-[72%]
 }
 
 .Add_C_BTextArea {
@@ -34,7 +34,7 @@
 
 
 .DataInputContainer>.Admin_HeadingContainer {
-    @apply flex flex-col gap-2 w-full sm:w-1/4
+    @apply flex flex-col gap-2 w-full sm:w-[22%]
 }
 
 

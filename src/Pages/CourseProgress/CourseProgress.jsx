@@ -19,10 +19,8 @@ const CourseProgress = () => {
 
     useCheckLogin(false, ["Student"]);
     useEffect(() => {
-        if (Authenticated)
+        if (Authenticated && EnrollmentId)
             Dispatch(GetCourseProgress(EnrollmentId))
-
-
     }, [Dispatch, EnrollmentId, Authenticated])
     return (
         <div className='flex justify-start items-center mt-20 flex-col'>

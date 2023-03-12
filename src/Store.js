@@ -8,6 +8,8 @@ import { VehicleReducer } from "./Reducers/VehicleR.js";
 import { InstructorReducer } from "./Reducers/InstructorR.js";
 import { AdminCourseReducer } from "./Reducers/AdminCourseR.js";
 import { BookReducer } from "./Reducers/BookR.js";
+import { StudentReducer } from "./Reducers/StudentR.js";
+import { NotificationReducer } from "./Reducers/NotificationsReducer.js";
 
 
 const Store = configureStore({
@@ -22,7 +24,9 @@ const Store = configureStore({
         WishListReducer,
         InstructorReducer,
         AdminCourseReducer,
-        BookReducer
+        BookReducer,
+        StudentReducer,
+        NotificationReducer
 
     }
 })

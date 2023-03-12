@@ -1,0 +1,7 @@
+.ApprovePopupBtn{
+    @apply text-white px-5 py-[10px] text-4xs border-none rounded-[40px] cursor-pointer w-1/2 max-w-[105px]
+}
+
+.CourseResponsePopupContainer{
+    @apply w-full max-w-[440px] bg-white flex flex-col  relative rounded-2xl
+}

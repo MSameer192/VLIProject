@@ -15,17 +15,22 @@ export const LoginUser = (UserData, Dispatch, PageName) => async (dispatch) => {
 
         );
 
-        data.User.PhoneNumber = ""
+        data.User.PhoneNumber = "";
+        
         dispatch({
             type: "LoginSuccess",
             payload: data.User,
             Auth: true
         })
-        SetLocalStorage("UserInfo", data.User)
-
+        dispatch({
+            type: "GetNotificationsSuccess",
+            payload: data.Notifications,
+        })
+        SetLocalStorage("UserInfo", { ...data.User, Notifications: data.Notifications })
+        // SetLocalStorage("UserInfo", data.User)
         Dispatch(DoneLoginSignUp(false))
     } catch (error) {
-        console.log("error")
+
         Dispatch(AgainOpenLoginSignUp(PageName))
         dispatch({
             type: "LoginError",
@@ -34,9 +39,70 @@ export const LoginUser = (UserData, Dispatch, PageName) => async (dispatch) => {
 
     }
 }
+export const SignUpWithGoogleAction = (SignUpInfo, Dispatch, PageName) => async (dispatch) => {
 
 
-export const SignUpUser = (UserData, Dispatch,PageName) => async (dispatch) => {
+    try {
+        dispatch({
+            type: "SignUpRequest",
+        })
+        const { data } = await axios.post('/api/signup/Google', SignUpInfo);
+
+        dispatch({
+            type: "SignUpSuccess",
+            payload: data?.User,
+        })
+        dispatch({
+            type: "GetNotificationsSuccess",
+            payload: data.Notifications,
+        })
+
+        SetLocalStorage("UserInfo", { ...data.User, Notifications: data.Notifications });
+        Dispatch(DoneLoginSignUp(false))
+    } catch (error) {
+        Dispatch(AgainOpenLoginSignUp(PageName))
+        dispatch({
+            type: "SignUpFailure",
+            payload: error,
+        })
+
+    }
+}
+export const LoginWithGoogleAction = (LoginInfo, Dispatch, PageName) => async (dispatch) => {
+
+
+    try {
+        dispatch({
+            type: "LoginRequest",
+        })
+        const { data } = await axios.post('/api/login/Google', LoginInfo,
+            {
+                headers: { "Content-Type": "application/json" }
+            });
+
+
+        dispatch({
+            type: "LoginSuccess",
+            payload: data.User,
+            Auth: true
+        })
+        dispatch({
+            type: "GetNotificationsSuccess",
+            payload: data.Notifications,
+        })
+        SetLocalStorage("UserInfo", { ...data.User, Notifications: data.Notifications })
+        Dispatch(DoneLoginSignUp(false))
+    } catch (error) {
+        Dispatch(AgainOpenLoginSignUp(PageName))
+        dispatch({
+            type: "LoginFailure",
+            payload: error,
+        })
+
+    }
+}
+
+export const SignUpUser = (UserData, Dispatch, PageName) => async (dispatch) => {
     try {
         dispatch({
             type: "SignUpRequest"
@@ -49,8 +115,12 @@ export const SignUpUser = (UserData, Dispatch,PageName) => async (dispatch) => {
             payload: data,
             Auth: true
         })
+        dispatch({
+            type: "GetNotificationsSuccess",
+            payload: data.Notifications,
+        })
+        SetLocalStorage("UserInfo", { ...data.User, Notifications: data.Notifications })
         Dispatch(DoneLoginSignUp(false))
-
     } catch (error) {
         Dispatch(AgainOpenLoginSignUp(PageName))
         dispatch({

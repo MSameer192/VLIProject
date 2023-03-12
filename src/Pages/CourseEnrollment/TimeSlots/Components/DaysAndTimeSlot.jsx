@@ -1,4 +1,4 @@
-import { CheckSchedule } from "../../Helpers/CheckSchedule"
+import { CheckSchedule } from "../../Payment/Components/Helper/CheckSchedule"
 import { DaysName } from "./Components/DaysName"
 import { RadioBtns } from "./Components/RadioBtns"
 import { TimeSlotsNames } from "./Components/TimeSlotsName"

@@ -2,11 +2,11 @@ import React, { useRef } from 'react'
 import './TimeSlots.css'
 import { useTimeSlotsHider } from '../../../Helpers/CustomHooks/Hide Elements/useTimeSlotsHidder';
 import { useState } from 'react';
-import { CheckSchedule } from '../Helpers/CheckSchedule';
+import { CheckSchedule } from '../Payment/Components/Helper/CheckSchedule';
 import { DaysAndTimeSlot } from './Components/DaysAndTimeSlot';
 
 const TimeSlots = ({ ShowTimeSlots, setShowTimeSlots, setEnrollmentData, EnrollmentData, Err, setErr }) => {
-    let TimeSlotsArr = ["", "09:00 AM - 10:00AM", "11:00 AM - 12:00PM", "01:00 AM - 02:00PM", "03:00 AM - 04:00PM", "05:00 AM - 06:00PM"];
+    let TimeSlotsArr = ["", "09:00 AM - 10:00 AM", "11:00 AM - 12:00 PM", "01:00 PM - 02:00 PM", "03:00 PM - 04:00 PM", "05:00 PM - 06:00 PM"];
     let Days = ["", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
     let BorderStyle = "border-[#E6E6E6] border-solid border-[2px] border-l-0 border-t-0";
     const [InsideReference, setInsideReference] = useState();
@@ -15,20 +15,23 @@ const TimeSlots = ({ ShowTimeSlots, setShowTimeSlots, setEnrollmentData, Enrollm
 
     useTimeSlotsHider(OutsideReference, InsideReference, setShowTimeSlots, ShowTimeSlots)
     const SetSchedule = (day, TimeSlot) => {
-        setEnrollmentData({ StudentData: { ...EnrollmentData.StudentData, Schedule: { ...EnrollmentData.StudentData.Schedule, [day]: TimeSlot } } })
+        setEnrollmentData({ ...EnrollmentData, StudentData: { ...EnrollmentData.StudentData, Schedule: { ...EnrollmentData.StudentData.Schedule, [day]: TimeSlot } } })
     }
     const [FirstTimeAttempted, setFirstTimeAttempted] = useState(false);
 
 
     const OnSelectSchedule = () => {
-
         setFirstTimeAttempted(true)
         let CheckErr = CheckSchedule(EnrollmentData, Err, setErr, null, FirstTimeAttempted)
-        if (Object.entries(CheckErr).length !== 0) 
+        if (Object.entries(CheckErr).length !== 0)
             return
-        
+        if (Err?.Schedule) {
+            delete Err?.Schedule
+            setErr({ ...Err })
+        }
         setShowTimeSlots(false);
     }
+    
     return (
         ShowTimeSlots
             ? <div

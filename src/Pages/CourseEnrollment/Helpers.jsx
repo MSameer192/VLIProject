@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { EnrollIntoCourse } from "../../Actions/CourseA";
-import { CheckSchedule } from "./Helpers/CheckSchedule";
+import { CheckSchedule } from "./Payment/Components/Helper/CheckSchedule";
 
 export const SubmitForm = (e, EnrollmentData, Err, setErr, Dispatch, Navigate) => {
 
@@ -33,7 +33,7 @@ export const SubmitForm = (e, EnrollmentData, Err, setErr, Dispatch, Navigate) =
         if (value === undefined)
             CheckErr = true
     }
-    console.log(Errors, CheckErr)
+ 
     if (!CheckErr)
         return
     Dispatch(EnrollIntoCourse(EnrollmentData, Navigate))

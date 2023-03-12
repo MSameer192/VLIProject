@@ -9,16 +9,19 @@ import SearchTiles from './SearchTiles/SearchTiles.jsx';
 import SpecialCourses from './SpecialCourses/SpecialCourses';
 import VehicleType from './VehicleType/VehicleType';
 import useCheckLogin from '../../Helpers/CustomHooks/CheckLogin';
+import { LoginRegister } from '../../Components/Header/Headers';
+import { useSelector } from 'react-redux';
 const LandingPage = () => {
   useCheckLogin(false, [])
+  const { UserInfo } = useSelector(Store => Store.LoginSignupReducer)
   return (
     <>
       <div className='w-full bgGradient absolute rounded-b-[300px] h-[745px] -z-10'>
 
       </div>
-      <div className='relative mb-40 md:mb-10 overflow-hidden w-full flex flex-col items-center md:block'>
+      <div className='relative mb-40 md:mb-10   w-full flex flex-col items-center md:block'>
 
-        <picture className='hidden md:block -z-10'>
+        <picture className='hidden md:block -z-10 overflow-hidden'>
 
           <img className='LandingContainerLite relative -top-5 -left-28'
             src={require('./Assets/LiteLandingContainer.svg').default} alt="" />
@@ -28,6 +31,7 @@ const LandingPage = () => {
 
 
         <div className='-top-0 rounded-b-[300px] w-full md:h-auto h- md:absolute md:rounded-[0px] md:min-h-fit md:bg-[#291c5f00] '>
+          {UserInfo?.UserName ? null : <LoginRegister />}
           <picture className=' '>
 
             <source media="(max-width:635px)"
@@ -60,7 +64,7 @@ const LandingPage = () => {
           <img className='w-[35%] xl:w-1/2 relative xl:top-[40px] 2xl:top-[60px] hidden md:inline-block'
             src={require('./Assets/LandingPageCar.png')} alt="" />
         </div>
-
+ 
       </div>
       <SearchTiles />
       <VehicleType />

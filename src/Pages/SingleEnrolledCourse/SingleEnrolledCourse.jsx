@@ -16,12 +16,11 @@ const SEnrolledCourse = () => {
     if (EnrollmentId && Authenticated && UserInfo.User === "Student")
       Dispatch(GetSingleEnrolledCourse(EnrollmentId))
   }, [Dispatch, EnrollmentId, Authenticated, UserInfo])
-  useCheckLogin(true, ["Student", "Institute"])
-  
+  // useCheckLogin(true, ["Student"])
+
   return (
     <div className='mt-20 flex flex-col items-center'>
       <SEnrolledCourseInfo SEnrolledCourse={SEnrolledCourse} />
-      
     </div>
   )
 }

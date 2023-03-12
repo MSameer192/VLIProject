@@ -19,7 +19,7 @@ py-2                    md:py-3         lg:py-4     xl:py-5`
         <div className={InputDivStyle}
         >
 
-            <div className='flex flex-col mx-5 gap-4 w-full'>
+            {/* <div className='flex flex-col mx-5 gap-4 w-full'>
                 <input className={`${InputStyle}`} type="text" placeholder='First name' />
                 <input className={`${InputStyle}`} type="text" placeholder='Last name' />
                 <input className={`${InputStyle}`} type="text" placeholder='Card number' />
@@ -27,9 +27,9 @@ py-2                    md:py-3         lg:py-4     xl:py-5`
                 <input className={`${InputStyle}`} type="text" placeholder='Security Code (CVV)' />
 
                 <p className='text-6xs md:text-4xs xl:text-3xs'>Your payments will be processed internationally. Additional bank fees may apply.</p>
-            </div>
+            </div> */}
 
-            <PInput />
+            {/* <PInput /> */}
             <button type='submit' className={`text-white bg-[#A1A3EF] border-none cursor-pointer rounded-xl
                                         py-2                 md:py-3                xl:py-4
                                         px-6     sm:px-7     md:px-8     lg:px-9    xl:px-10   2xl:px-11 

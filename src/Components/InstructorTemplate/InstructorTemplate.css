@@ -1,0 +1,54 @@
+.addCourseinstructorImg {
+    width: 50px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.addCourse4Status {
+
+    max-width: 200px;
+    width: 100%;
+
+    text-align: center;
+    padding: 10px 5px;
+    font-weight: bold;
+    border-radius: 5px;
+
+    font-size: 15px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media (max-width: 1300px) {
+    .addCourse4Status {
+        width: 120px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 1120px) {
+
+
+
+    .addCourse4Status {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 700px) {
+
+
+    .addCourseinstructorImg {
+        width: 30px;
+    }
+
+    .addCourse4Status {
+        width: 80px;
+        height: 25px;
+        padding-top: 5px;
+        font-size: 9px;
+    }
+}

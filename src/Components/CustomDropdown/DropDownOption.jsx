@@ -36,7 +36,7 @@ function DropDownOptions({ ID, Text, Name, onChange, StateValue }) {
             value={ID}
             id={ID}
             onClick={Stop}
-            onChange={(e) => onChange(e.target)}
+            onChange={(e) => onChange(e.target, Text)}
         />
         <label className='cursor-pointer' htmlFor={ID}>{Text}</label>
     </div>

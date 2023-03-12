@@ -1,12 +1,14 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState, useContext } from 'react'
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux';
-import Dropdown from './Dropdown'
-import { LicenseTypeF, VehicleTypeF } from './Filters/VehicleTypeF';
-
+import { AlphabeticalF, LicenseTypeF, SortByDateF, VehicleTypeF } from './Filters/VehicleTypeF';
+import { SocketContext } from '../../../App'
+import { GeneralEvent } from '../../../Actions/Events/FilterA';
+import { useDispatch } from 'react-redux';
 const FIlters = () => {
+    const [FilterVal, setFilterVal] = useState()
+    const Socket = useContext(SocketContext)
     const FilterRef = useRef();
-
+    const Dispatch = useDispatch()
     const HideFilter = (e) => {
         if (e.currentTarget === e.target) {
             e.target.parentNode.style.height = "0px"
@@ -31,6 +33,18 @@ const FIlters = () => {
             FilterRef.current.style.height = "0px"
         }
     }, [])
+
+
+    const OnClick = () => {
+        Dispatch(GeneralEvent(null, "GetAllVehiclesRequest"))
+        Socket?.emit("FilterVehicles", FilterVal)
+
+    }
+    useEffect(() => {
+        Socket?.on("FilteredInsVehicles", (data) => {
+            Dispatch(GeneralEvent(data, "GetAllVehiclesSuccess"))
+        })
+    }, [Socket, Dispatch])
     return (
         <div className={`top-0 flex  justify-center items-center duration-200 overflow-hidden
         w-full                  sm:w-full       md:w-11/12
@@ -52,13 +66,14 @@ const FIlters = () => {
             <div className={`flex flex-col w-11/12 sm:w-full max-w-[400px]  bg-white px-10 py-10 gap-16`}>
                 <h4 className='text-2xs font-normal Boldfont'> Filter</h4>
                 <div className='flex flex-col gap-9'>
-                    <VehicleTypeF />
-                    <LicenseTypeF />
-                    <Dropdown HeadingName="Sort by Date Modified" ID="New to Old" />
-                    <Dropdown HeadingName="Filter by Alphabetic Order" ID="A to Z" />
+                    <VehicleTypeF onChange={e => setFilterVal({ VehicelTypeFK: e.target.value })} />
+                    <LicenseTypeF onChange={e => setFilterVal({ LicenseTypeFK: e.target.value })} />
+                    <SortByDateF onChange={e => setFilterVal({ Date: e.target.value })} />
+                    <AlphabeticalF onChange={e => setFilterVal({ Model: e.target.value })} />
                 </div>
 
-                <button type='button' className='bg-[#A1A3EF] text-white flex items-center justify-center p-4 text-4xs  outline-none border-none rounded-md whitespace-nowrap cursor-pointer relative'>
+                <button type='button' className='bg-[#A1A3EF] text-white flex items-center justify-center p-4 text-4xs  outline-none border-none rounded-md whitespace-nowrap cursor-pointer relative'
+                    onClick={OnClick}>
                     <img className='absolute left-3' src={require('../Assets/Search.svg').default} alt="" />
                     Apply Filters
                 </button>

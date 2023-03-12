@@ -11,16 +11,19 @@ export function BuyCourse({ CourseInfo }) {
     const Navigate = useNavigate()
     const Dispatch = useDispatch();
     const NavigateToEnrollment = () => {
+        if (CourseInfo?.Enrolled)
+            Navigate('/mycourses/enrolledcourses')
         if (Authenticated)
             Navigate('/Enrollment/Course', { state: { InstituteCourseId: CourseInfo?.InstituteCourseId } })
-            
+
         else Dispatch(OpenLoginSignUp("Sign In", false))
 
     }
 
     return <span className="flex gap-5 mt-10 flex-col items-center sm:flex-row">
         <button onClick={NavigateToEnrollment} className={`${ButtonStyle} bg-[#A1A3EF]`}>
-            Enroll for 2000/Rs
+            {CourseInfo?.Enrolled ? "Enrolled" : `Enroll for ${CourseInfo?.CoursePackages[0]?.TotalFee}`}
+
         </button>
         <button className={`${ButtonStyle} text-white sm:text-[#A1A3EF] bg-[#A1A3EF] s sm:bg-white`}>
 

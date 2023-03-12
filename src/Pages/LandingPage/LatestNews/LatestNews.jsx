@@ -8,7 +8,7 @@ const LatestNews = () => {
   
     
     return (
-        <div className='mt-9 md:bg-[#F1FAFF] flex justify-center items-center flex-col gap-4 md:pb-32 md:px-3 lg:px-10 xl:px-20'>
+        <div className='mt-9 md:bg-[#F1FAFF] flex justify-center items-center flex-col gap-4 md:pb-32 md:px-3 lg:px-10 xl:px-20 w-full'>
             <div className='flex justify-center items-center flex-col gap-2'>
                 <h2 className='PrintBoldfont text-xl'>Latest News</h2>
                 <p className='hidden md:inline-block text-center md:text-left md:text-xs lg:text-base  text-[#A1A3EF] max-w-[575px] Regularfont'>
@@ -18,12 +18,12 @@ const LatestNews = () => {
             </div>
 
 
-            <div className='w-full overflow-hidden flex justify-center items-center flex-col lg:flex-row'>
+            <div className='w-full overflow-hidden flex justify-between items-center flex-col lg:flex-row  border-black border-solid'>
                 <SideNewsPanels Title={"Sponsored"} />
 
                 <div
                     id="NewsImagePElement"
-                    className='flex flex-col justify-center items-center w-[90%] max-w-[376px]  md:max-w-[auto] md:w-[60%] overflow-hidden mt-4'
+                    className='flex flex-col justify-center items-center w-[90%] max-w-[376px] md:max-w-[850px] md:w-[800px] overflow-hidden mt-4'
                     >
                  
                         <img

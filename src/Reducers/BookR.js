@@ -23,7 +23,7 @@ export const BookReducer = createReducer(InitialState, (builder) => {
 
 
 
-    
+
     builder.addCase("GetAllBooksRequest", (state, action) => {
         state.loading = true
     });
@@ -34,6 +34,23 @@ export const BookReducer = createReducer(InitialState, (builder) => {
     })
 
     builder.addCase('GetAllBooksFailure', (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+    })
+
+
+
+
+    builder.addCase("FilterBooksRequest", (state, action) => {
+        state.loading = true
+    });
+
+    builder.addCase("FilterBooksSuccess", (state, action) => {
+        state.loading = false;
+        state.Books = action.payload;
+    })
+
+    builder.addCase('FilterBooksFailure', (state, action) => {
         state.loading = false;
         state.error = action.payload;
     })

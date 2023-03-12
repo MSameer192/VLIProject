@@ -1,0 +1,5 @@
+.InstructorCardInfoContainer{
+    border-top: 1px solid #EBEBEB;
+    border-bottom: 1px solid #EBEBEB;
+    @apply flex flex-col py-1 px-4 gap-2 w-full mt-1 mb-3 min-h-[96px] text-[12px]
+}

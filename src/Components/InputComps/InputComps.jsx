@@ -74,8 +74,9 @@ export const SelectList = ({ Label, Id, onChange, OptionsArr, defaultValue, Text
             id={Id}
             value={State}
             onChange={onChange}
+      
         >
-            <option defaultValue={defaultValue} disabled>{Text}</option>
+            <option disabled   value={defaultValue}>{Text}</option>
 
             {OptionsArr ? <OptionsArr /> : null}
 
