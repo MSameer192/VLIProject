@@ -1,1 +1,1 @@
-export const BaseUrl = "https://vliserver-production-d9ab.up.railway.app"//process.env.REACT_APP_BASE_API_URL 
+export const BaseUrl = ""//process.env.REACT_APP_BASE_API_URL 
