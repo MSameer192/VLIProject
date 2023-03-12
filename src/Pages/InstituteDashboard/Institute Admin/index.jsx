@@ -5,6 +5,7 @@ import GeographyGraph from "./dashboard 0.2/GeographyGraph";
 import TopCards from "./Components/TopCards/TopCards";
 import Popups from "./Components/Popups/Popups";
 import { GetLocalStorage } from "../../../Helpers/LocalStorage/LocalStorage";
+import DashBoardAdminCourses from "../Admin/AdminCourses";
 
 function InsStaffAdminDashboard() {
   const [Edit, setEdit] = useState();
@@ -43,9 +44,7 @@ function InsStaffAdminDashboard() {
               </div>
             </div>
             : GetLocalStorage("UserInfo").User === "Admin" ?
-              <div className="flex w-11/12 bg-white rounded-[40px]"> 
-              
-              </div>
+              <DashBoardAdminCourses />
               : null
         }
       </div>
