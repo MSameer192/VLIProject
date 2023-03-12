@@ -123,7 +123,7 @@ function App() {
           <Route path='/Instructor/add' element={<AddInstructor />} />
           <Route path='/Instructor/update/:InstructorId' element={<UpdateInstructor />} />
 
-
+ 
           <Route path='/vehicle/add' element={<AddVehicle />} />
           <Route path='/vehicle/update/:VehicleId' element={<UpdateVehicle />} />
           <Route path='/vehicle/inventory' element={<VehicleInventory />} />
