@@ -44,7 +44,7 @@ const FIlters = () => {
         Socket?.on("FilteredInsVehicles", (data) => {
             Dispatch(GeneralEvent(data, "GetAllVehiclesSuccess"))
         })
-    }, [Socket, Dispatch])
+    }, [Socket, Dispatch]) 
     return (
         <div className={`top-0 flex  justify-center items-center duration-200 overflow-hidden
         w-full                  sm:w-full       md:w-11/12
