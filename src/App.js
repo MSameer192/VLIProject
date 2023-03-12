@@ -45,6 +45,7 @@ import Sales from './Pages/Institute/Sales/Sales';
 import RecommendCourse from './Pages/Institute/RecommendCourse/RecommendCourse';
 import UpdateInstructor from './Pages/Institute/AddInstructor/UpdateInstructor';
 import RecommendedCoursesByAdmin from './Pages/Institute/RecommendedCoursesByAdmin/RecommendedCoursesByAdmin';
+import { BaseUrl } from './Actions/Base';
 
 
 
@@ -63,20 +64,17 @@ function App() {
   useSaveSocketUser(Socket)
   useEffect(() => {
     if (!UserType || UserType === "Student")
-      setSocket(io('/'))
+      setSocket(io(`${BaseUrl}/`))
+
     else if (UserType === "Institute")
-      setSocket(io(`/${UserType.toLowerCase()}/${InstituteUserType.toLowerCase()}`))
+      setSocket(io(`${BaseUrl}/${UserType.toLowerCase()}/${InstituteUserType.toLowerCase()}`))
+
     else if (UserType !== "Student")
-      setSocket(io('/' + UserType.toLowerCase()))
+      setSocket(io(`${BaseUrl}/${UserType.toLowerCase()}`))
 
   }, [UserType, InstituteUserType])
 
-
-  // useEffect(() => {
-  //   if (InstituteUserType === "Staff")
-  //     // Socket?.join(GetLocalStorage("UserInfo")?.Institute?.InstituteId+"Staff")
-
-  // }, [])
+ 
   useSetLoginInfo()
 
  
