@@ -14,7 +14,7 @@ export const onConfirm = (event, action, Events, setEvents) => {
         })
         setEvents([...NewEvents])
     }
-    console.log(event)
+  
 
     return { ...event, event_id: event.event_id }
 }

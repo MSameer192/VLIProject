@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GeneralEvent } from '../../Actions/Events/FilterA';
 import { SetSocketA } from '../../Actions/SocketA';
 import { GetLocalStorage } from '../LocalStorage/LocalStorage';
-
+import { v4 as uuidV4 } from 'uuid'
 const useSetSocket = (Socket) => {
     const Dispatch = useDispatch();
     const { Authenticated, UserInfo } = useSelector((Store) => Store.LoginSignupReducer)
@@ -24,9 +24,11 @@ const useSetSocket = (Socket) => {
                 return
 
             else
-                Dispatch(SetSocketA({ UserId: window.crypto.randomUUID(), Authenticated: false }))
+                Dispatch(SetSocketA({ UserId: uuidV4(), Authenticated: false }))
 
         }
+
+
     }, [Socket, Authenticated, Dispatch, UserInfo, SocketUserId])
 }
 
