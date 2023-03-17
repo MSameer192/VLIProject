@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useRef } from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { ResetLoginSignUp } from '../../../Actions/ToggleSignupA'
 import { RegisterInstituteA } from '../../../Actions/UserA'
 import { SubmitButton } from '../LoginAndRegister'
 import InstituteDocuments from './InstituteSide/InstituteDocuments'
@@ -50,7 +51,7 @@ const InstituteSide = () => {
     const OnClick = (Pos, EleRef, Arr) => {
         if (CheckNext(Arr)) {
             setLeftPosition(Pos)
-            // EleRef.current.style.display = "flex"
+            EleRef.current.style.display = "flex"
         }
     }
     useEffect(() => {
@@ -59,30 +60,47 @@ const InstituteSide = () => {
     const DocumentRef = useRef();
     const UserInfoRef = useRef();
     const TimingRef = useRef()
-    const OnSubmit = e => SubmitFormData(e, Dispatch, InstituteData, setSuccess)
+    const OnSubmit = e => SubmitFormData(e, Dispatch, InstituteData, setSuccess, setErr, Err);
+    const Arr = ["InstituteName", "WebsiteUrl", "Address", "TotalInstructors", "TotalVehicles", "MOTR_Slip", "InstituteLogo", "LR_Slip", "Institute_Banner"];
+
+
+
+
+    useEffect(() => {
+        if (Success)
+            Dispatch(ResetLoginSignUp(false))
+    }, [Dispatch, Success])
     return (
-        <div className='w-full h-fit flex items-start overflow-hidden'>
+        <div className='w-full md:bg-white pt-10  md:pt-0 flex items-start h-fit overflow-x-hidden pb-16 md:pb-4 xl:pb-8 relative'>
+            <button type="button" className='p-3 md:hidden cursor-pointer rounded-xl border-none bg-[#A1A3EF] flex items-center justify-center absolute right-6 top-2 z-10'
+                onClick={() => Dispatch(ResetLoginSignUp(false))}
+            >
+                <img className=' cursor-pointer' src={require('../Assets/CrossIcon.svg').default} alt="" />
+            </button>
             <form
                 style={{ left: `-${LeftPosition}%` }}
                 className='min-w-[300%] flex items-start relative left-0 duration-300'
                 onSubmit={OnSubmit}>
 
-                <div className='w-[33.33%] flex items-center justify-center flex-col xl:flex-row ' ref={DocumentRef} >
+                <div className='w-[33.33%] flex flex-col xl:flex-row ' ref={DocumentRef} >
                     <InstituteDocuments InstituteData={InstituteData} setInstituteData={setInstituteData} />
                     <CenterORline Visible={false} />
                     <InstituteInfo
                         InstituteData={InstituteData} setInstituteData={setInstituteData} UserInfoRef={UserInfoRef} OnClick={OnClick}
                         Err={Err} setErr={setErr}
                     />
-                    <span className='xl:hidden order-7 flex w-full items-center justify-center mt-10'>
-                        <SubmitButton AuthPageName="Next" ButtonType="button" OnClick={() => OnClick(100, UserInfoRef, "Arr")}
-                        />
+                    <span className='xl:hidden order-7 flex w-full items-center justify-center mt-20'>
+                        <SubmitButton AuthPageName="Next" ButtonType="button" OnClickFun={() => {
+                            OnClick(100, UserInfoRef, Arr)
+                            DocumentRef.current.style.height = "0px"
+                        }} />
+
                     </span>
                 </div>
 
 
-                <div className='w-[33.33%] items-center justify-center' ref={UserInfoRef}>
-                    <InstituteUserInfo OnSuccess={OnClick} TimingRef={TimingRef} Success={Success} setInstituteData={setInstituteData} InstituteData={InstituteData} />
+                <div className='w-[33.33%] items-start justify-start px-5' ref={UserInfoRef}>
+                    <InstituteUserInfo OnSuccess={OnClick} TimingRef={TimingRef} Success={Success} setInstituteData={setInstituteData} InstituteData={InstituteData} Err={Err} setErr={setErr} />
                 </div>
 
 
@@ -96,7 +114,7 @@ const InstituteSide = () => {
 
     )
 }
-const SubmitFormData = (e, Dispatch, InstituteData, setSuccess) => {
+const SubmitFormData = (e, Dispatch, InstituteData, setSuccess, setErr, Err) => {
     e.preventDefault();
     let InstituteDataNoImage = {};
     let Errors = {};
@@ -117,7 +135,7 @@ const SubmitFormData = (e, Dispatch, InstituteData, setSuccess) => {
             InstituteDataNoImage = { ...InstituteDataNoImage, [key]: value }
     }
     InstituteFormData.append("InstituteData", JSON.stringify(InstituteDataNoImage))
-    console.log(InstituteDataNoImage)
+    setErr({ ...Err, ...Errors })
     Dispatch(RegisterInstituteA(InstituteFormData, () => setSuccess(true)))
 
 }

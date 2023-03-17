@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './CoursesTiles.css'
-const CoursesSlider = ({ CoursesInfo, CourseTiles, NavigateBtnClass, ClassNames, ShowMoreUrl, SwitchSize = "sm" }) => {
+const CoursesSlider = ({ CoursesInfo, CourseTiles, NavigateBtnClass, ClassNames, ShowMoreUrl, SwitchSize = "", ExtraMove = 0, ShowMore = true }) => {
     const [ref, setref] = useState({});
     const [Size, setSize] = useState(0);
     const [Btns, setBtns] = useState(document?.querySelectorAll(`.${NavigateBtnClass}Remove,.${NavigateBtnClass}`));
@@ -29,17 +29,22 @@ const CoursesSlider = ({ CoursesInfo, CourseTiles, NavigateBtnClass, ClassNames,
 
 
     }, [ref, Btns, NavigateBtnClass])
+    if (SwitchSize !== "")
+        SwitchSize = SwitchSize + ":";
 
-    return <div className={`w-full h-fit relative mb-16 flex justify-center items-center flex-col gap-5 ${SwitchSize}:gap-8`}>
-        <div className={`w-[95%] ${SwitchSize}:w-full mx-2 mt-5 ${SwitchSize}:flex items-center justify-center py-5 overflow-hidden`}>
+    if (window.innerWidth > 641)
+        ExtraMove = 0;
+
+    return <div className={`w-full h-fit relative mb-16 flex justify-center items-center flex-col gap-5 ${SwitchSize}gap-8`}>
+        <div className={`w-[95%] ${SwitchSize}w-full mx-2 mt-5 ${SwitchSize}flex items-center justify-center py-5 overflow-hidden`}>
             <div
-                style={{ left: -Size + "px" }}
+                style={{ left: -(Size * (ref?.offsetWidth) + ((Size * (ExtraMove)) / 2)) + "px" }}
                 className={ClassNames}
             >
                 <CourseTiles CoursesInfo={CoursesInfo} VehicleTypesSate={CoursesInfo} setref={setref} />
             </div>
         </div>
-        <div className={`${SwitchSize}:hidden w-full flex justify-center gap-4 h-10`}>
+        <div className={`${SwitchSize !== "" ? SwitchSize + "hidden" : ""} w-full flex justify-center gap-4 h-10`}>
             {CoursesInfo?.map((value, index) => {
 
                 let Class = NavigateBtnClass
@@ -47,7 +52,7 @@ const CoursesSlider = ({ CoursesInfo, CourseTiles, NavigateBtnClass, ClassNames,
 
                 return (
                     <span key={index} className={`w-5 h-5 rounded-[28px] bg-[#A1A3EF] cursor-pointer NavigateButton_DropShadow ${Class}`}
-                        onClick={(e) => { Btn(e, Btns, NavigateBtnClass, setBtns); setSize(ref?.offsetWidth * index); }}
+                        onClick={(e) => { Btn(e, Btns, NavigateBtnClass, setBtns); setSize(index); }}
                     >
                     </span>
                 )
@@ -55,7 +60,7 @@ const CoursesSlider = ({ CoursesInfo, CourseTiles, NavigateBtnClass, ClassNames,
 
         </div>
         {
-            CoursesInfo?.length > 4
+            ShowMore && CoursesInfo?.length > 4
                 ? <Link to={ShowMoreUrl} className='Regularfont px-4 py-3 no-underline bg-[#A1A3EF] text-white cursor-pointer rounded-xl border-none text-4xs md:text-base ShowMoreBtn_BlackShadow'>
                     Show More
                 </Link>

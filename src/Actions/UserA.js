@@ -16,7 +16,7 @@ export const LoginUser = (UserData, Dispatch, PageName) => async (dispatch) => {
         );
 
         data.User.PhoneNumber = "";
-        
+
         dispatch({
             type: "LoginSuccess",
             payload: data.User,
@@ -136,7 +136,7 @@ export const RegisterInstituteA = (UserData, cb) => async (dispatch) => {
         dispatch({
             type: "RegisterInstituteRequest"
         })
-        console.log(UserData)
+
         const { data } = await axios.post(`${BaseUrl}/api/Institute/Register`, UserData,
             { withCredentials: true }
         )
@@ -145,7 +145,11 @@ export const RegisterInstituteA = (UserData, cb) => async (dispatch) => {
             payload: data,
             Auth: true
         })
-
+        dispatch({
+            type: "GetNotificationsSuccess",
+            payload: data.Notifications,
+        })
+        SetLocalStorage("UserInfo", { ...data.User, Notifications: data.Notifications })
         cb()
     } catch (error) {
 

@@ -50,13 +50,13 @@ const VehicleType = () => {
 function ContainerTiles({ VehicleTypesSate }) {
 
     let SliderParent = `flex w-full gap-6 h-fit duration-150 
-    justify-start   md:justify-center 
-    flex-row        md:flex-wrap 
+    justify-start   sm:justify-center 
+    flex-row        sm:flex-wrap 
                                         lg:gap-8 
                                         lg:mt-32  xl:mt-52  2xl:mt-64 
-    relative        md:static`;
+    relative        sm:static`;
 
-    return <div className={`w-full h-fit lg:min-h-[900px]  relative mb-16 flex flex-col gap-5`}>
+    return <div className={`w-full h-fit lg:min-h-[900px]  relative mb-16 flex flex-col gap-5 overflow-hidden`}>
         {/* Vehicle Type Background */}
         <picture className='hidden md:inline w-full h-full'>
 
@@ -66,7 +66,9 @@ function ContainerTiles({ VehicleTypesSate }) {
             />
         </picture>
 
-        <CoursesSlider CoursesInfo={VehicleTypesSate} CourseTiles={VehicleTiles} NavigateBtnClass={"VehicleType"} ClassNames={SliderParent} SwitchSize="md" />
+        <CoursesSlider CoursesInfo={VehicleTypesSate} CourseTiles={VehicleTiles} NavigateBtnClass={"VehicleType"}
+            ClassNames={SliderParent} SwitchSize="sm" ShowMore={false}
+        />
 
     </div>
 }

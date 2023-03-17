@@ -4,12 +4,12 @@ import ImageAndPrice from './ImageAndPrice'
 import { CourseInfo, RatingBtns } from './Navigation'
 
 export function CourseTiles({ CoursesInfo, setref }) {
-   
+
 
     return (
         <>
             {CoursesInfo?.map((Course, index) => {
- 
+
                 return Course?.InstituteCourses?.map((InstituteCourses) =>
                     <div
                         className={`flex flex-col rounded-[20px] items-center

@@ -14,7 +14,7 @@ let BtnsNames = ["/", "inbox", "vehicle", "invoice", "customer", "settings"];
 
 const SideBar = () => {
   const [PageName, setPageName] = useState(FindValue(BtnsNames));
-  // console.log(PageName)
+
   let LinkStyle = "flex justify-center items-center py-6 w-full duration-300 SideBarBtns";
 
 

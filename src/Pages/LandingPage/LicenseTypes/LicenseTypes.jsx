@@ -7,6 +7,13 @@ import './LicenseTypes.css';
 import a from './Assets/Arrow Icon.svg'
 import { BaseUrl } from '../../../Actions/Base';
 import { Link } from 'react-router-dom';
+import CoursesSlider from '../../../Components/CourseSlider/CourseSlider';
+let ClassNames = `relative   duration-300 flex items-start my-10
+                    w-[95%]                             lg:w-11/12                  xl:w-[97%]       
+                    flex-nowrap     md:flex-wrap  
+                    justify-start   md:justify-around   lg:justify-center
+                    gap-7                               lg:gap-x-8 lg:gap-y-16
+                    `
 const LicenseTypes = () => {
     const Dispatch = useDispatch()
     const [ref, setref] = useState({});
@@ -32,9 +39,11 @@ const LicenseTypes = () => {
                 className='w-full'
                 src={require('./Assets/DrivingLicenseCars.png')}
                 alt="" />
-            <div className={`w-full  flex justify-start items-center flex-col`}>
+
+
+            <div className={`w-full relative`}>
                 <img className="hidden lg:inline absolute  w-full -z-10" src={require('./Assets/Notes.png')} alt="" />
-                <div className='w-[95%] h-fit flex justify-center relative lg:-top-32 lg:mt-64 '>
+                {/* <div className='w-[95%] h-fit flex justify-center relative lg:-top-32 lg:mt-64 '>
                     <div
                         style={{ left: -Size + "px" }}
                         className='flex w-full flex-row gap-8 duration-150 justify-start lg:justify-center relative lg:flex-wrap'>
@@ -47,15 +56,19 @@ const LicenseTypes = () => {
                         className='w-5 h-5 rounded-[10px] bg-[#A1A3EF] cursor-pointer'
                         onClick={() => setSize(ref.offsetWidth * index)}
                     ></span>)}
-                </div>
+                </div> */}
+
+                <CoursesSlider CoursesInfo={LicenseTypesState} ClassNames={ClassNames} CourseTiles={LicenseTypeTiles}
+                    ShowMore={false} NavigateBtnClass='G1Licensing' SwitchSize={"md"} ExtraMove={28}
+                />
 
             </div>
         </div>
     )
 }
-function LicenseTypeTiles({ LicenseTypesState, setref }) {
+function LicenseTypeTiles({ CoursesInfo, setref }) {
 
-    return LicenseTypesState?.map((value) => {
+    return CoursesInfo?.map((value) => {
 
         let LicenseTypeDescription = value.LicenseTypeDescription + ".";
         let words = value.LicenseTypeDescription.split(/[-\s(]/);

@@ -11,15 +11,15 @@ import Ponits from './Component/Ponits'
 const EnrolledCoursesChild = () => {
 
     const Dispatch = useDispatch()
-    useCheckLogin(false, ["Student", "Institute"]);
     const { Authenticated } = useSelector((Store) => Store.LoginSignupReducer);
-
     const { EnrolledCourses } = useSelector((Store) => Store.CourseReducer);
+
 
     useEffect(() => {
         if (Authenticated)
             Dispatch(GetEnrolledCourses())
     }, [Dispatch, Authenticated])
+    useCheckLogin(true, ["Student"]);
 
     return (
         <div className='flex flex-col items-center gap-10 '>

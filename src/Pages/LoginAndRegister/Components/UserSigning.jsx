@@ -30,11 +30,11 @@ const UserSigning = ({ ScreenSize, TopLoginRegisterBtns }) => {
     }
     return (
 
-        <form className='flex w-full flex-col items-center ' onSubmit={SubmitForm}>
+        <form className='flex w-full flex-col items-center h-fit' onSubmit={SubmitForm}>
 
             <div className={`flex
             w-[97%]             md:w-full
-            min-h-full          md:min-h-[auto]
+            min-h-fit           md:min-h-[auto]
             h-fit               md:h-auto
             justify-around      md:justify-start
             flex-col-reverse    md:flex-row  

@@ -1,10 +1,11 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { OpenLoginSignUp } from "../../../../Actions/ToggleSignupA";
 import SignedOutRightSide from "./RightSideComp/SignedOutRightSide";
 import SignedUpRightSide from "./RightSideComp/SignedUpRightSide";
 
 function StudentRightSide({ setShowSidebar, ShowSidebar }) {
-    let LinkStyle = "text-2xs text-white lg:text-black md:text-xs lg:text-3xs xl:text-2xs 2xl:text-[21px] hover:text-[#A1A3EF]  no-underline SemiBold ";
+    let LinkStyle = "text-2xs text-white lg:text-black md:text-xs lg:text-3xs xl:text-2xs 2xl:text-[21px] hover:text-[#A1A3EF]  no-underline SemiBold  bg-[#ffffff00] border-none cursor-pointer";
 
 
 
@@ -19,7 +20,7 @@ function StudentRightSide({ setShowSidebar, ShowSidebar }) {
     items-start         lg:items-center 
     h-[80vh]            lg:h-full 
     w-full              lg:w-auto`;
-
+    const Dispatch = useDispatch()
     const { UserInfo } = useSelector((store) => store.LoginSignupReducer);
     return <nav
         style={{ left: ShowSidebar ? "-48px" : "-2000px" }}
@@ -32,17 +33,26 @@ function StudentRightSide({ setShowSidebar, ShowSidebar }) {
             <sub style={{ fontSize: 30, position: "absolute", bottom: "-17px", right: "-18px" }}>&#8963;</sub>
         </Link>
 
-
         {UserInfo && UserInfo.User === "Student"
-            ? <SignedUpRightSide  setShowSidebar={setShowSidebar} LinkStyle={LinkStyle}/>
+            ? <SignedUpRightSide setShowSidebar={setShowSidebar} LinkStyle={LinkStyle} />
             : <SignedOutRightSide setShowSidebar={setShowSidebar} LinkStyle={LinkStyle} />
         }
+        {
+            !UserInfo?.UserName ?
+                <>
+                    <button className={`${LinkStyle}  lg:hidden`} type="button" onClick={() => Dispatch(OpenLoginSignUp("Sign In", true))} >Login</button>
+                    <button className={`${LinkStyle} lg:hidden`} type="button" onClick={() => Dispatch(OpenLoginSignUp("Sign Up", true))} >Sign up</button>
+                </>
+                : null
 
-        <button className='p-3 rounded-xl border-none cursor-pointer bg-[#A1A3EF] flex items-center justify-center lg:hidden absolute right-2 top-2'
+        }
+        <button type="button" className='p-3 rounded-xl border-none cursor-pointer bg-[#A1A3EF] flex items-center justify-center lg:hidden absolute right-2 top-2'
             onClick={() => setShowSidebar(false)}
         >
             <img src={require('./RightSideAssets/CrossIcon.svg').default} alt="" />
         </button>
+
+
     </nav>
 }
 

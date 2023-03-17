@@ -38,8 +38,14 @@ const SigninRightSide = ({ TopLoginRegisterBtns, Credentials, setCredentials }) 
                     <div className={`flex flex-col ${Gap}`}>
                         {
                             AuthPageName === "Sign Up"
-                                ? <OnRegister MobileDisplay={"hidden"} DesktopDisplay={"inline"} TermsDisplay={"flex"} AuthPageName={AuthPageName} />
-                                : <OnLogin />
+                                ? <>
+                                    <OnRegister MobileDisplay={"hidden"} DesktopDisplay={"inline"}
+                                        TermsDisplay={"flex"} AuthPageName={AuthPageName} />
+                                </>
+                                :
+                                <>
+                                    <OnLogin />
+                                </>
                         }
                     </div>
 

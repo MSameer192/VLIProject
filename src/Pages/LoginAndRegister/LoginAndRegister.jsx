@@ -16,7 +16,7 @@ let TopLoginRegisterBtns = `absolute border-none   rounded-t-[28px]  cursor-poin
 
 
 const SignUp = () => {
-    const {   error } = useSelector((Store) => Store.LoginSignupReducer);
+    const { error } = useSelector((Store) => Store.LoginSignupReducer);
     const { AuthPageName, Navigation, Done } = useSelector((Store) => Store.ToggleSignupReducer)
 
     const Navigate = useNavigate()
@@ -46,31 +46,32 @@ const SignUp = () => {
     return (
 
         AuthPageName ?
-            <div className='bg-[#00000037] min-h-fit h-[100%] bgGradient  fixed top-0 w-full z-50 overflow-scroll overflow-x-hidden flex justify-center items-center '
+            <div className='bg-[#00000037] max-h-screen  fixed top-0 w-full z-50 overflow-scroll flex md:justify-center'
                 onClick={e => { Dispatch(OpenLoginSignUp(false, false)) }}
             >
-            
-                    ? <div className='min-h-fit bgGradient  md:min-h-[auto] h-screen w-full md:w-[95%] flex flex-col justify-center items-center md:mt-28'
-                        onClick={(e) =>  e.stopPropagation() }
-                    >
-                        <div className={`overflow-hidden w-full
-                                    hidden      md:block 
-                                                md:min-h-[144px]    lg:min-h-[224px]    xl:min-h-[320px]
+
+                <div className='h-fit bgGradient md:min-h-[auto] min-h-screen w-full md:w-[95%] flex flex-col justify-start items-start md:mt-28'
+                    onClick={(e) => e.stopPropagation()}
+                >
+
+                    <div className={`overflow-hidden w-full
+                                    hidden         md:block 
+                                    min-h-[100px]  md:min-h-[144px] lg:min-h-[224px] xl:min-h-[320px]
                                     BG_Image`}>
-                            <div className='w-full h-80 bg-[#00000070]' > </div>
-                        </div>
-                        <div className='bg-white w-full flex  bgGradient flex-col justify-around md:justify-between items-center h-fit min-h-full md:min-h-[auto] md:h-auto pb-16 md:pb-4 xl:pb-8'>
-
-                            {
-                                AuthPageName === "Register"
-                                    ? <InstituteSide />
-                                    : <UserSigning ScreenSize={ScreenSize} TopLoginRegisterBtns={TopLoginRegisterBtns}  />
-                            }
-
-
-                        </div>
+                        <div className='w-full h-80 bg-[#00000070]' > </div>
                     </div>
-            
+                    <div className='relative lg:bg-white w-full flex flex-col justify-start  lg:justify-between lg:items-center h-fit min-h-full md:min-h-[auto] md:h-auto'>
+                     
+                        {
+                            AuthPageName === "Register"
+                                ? <InstituteSide />
+                                : <UserSigning ScreenSize={ScreenSize} TopLoginRegisterBtns={TopLoginRegisterBtns} />
+                        }
+
+
+                    </div>
+                </div>
+
             </div>
             : null
 
@@ -81,7 +82,7 @@ const SignUp = () => {
 
 export function SubmitButton({ AuthPageName, ButtonType, OnClickFun }) {
 
-    return <span className='relative hidden md:flex justify-center w-[60%] xl:w-4/5 max-w-[575px] md:mt-5 lg:mt-9 2xl:mt-0'>
+    return <span className='relative  flex justify-center w-[60%] xl:w-4/5 max-w-[575px] md:mt-5 lg:mt-9 2xl:mt-0'>
         <img
             className='absolute w-[150px] lg:w-[180px] xl:w-auto -top-[90px] lg:-top-[109px] xl:-top-[111px] left-[50%] -translate-x-1/2 pointer-events-none'
             src={require("./Assets/Sign up Avater.png")} alt="" />

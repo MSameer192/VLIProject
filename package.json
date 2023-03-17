@@ -2,7 +2,7 @@
   "name": "client-4",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:9000",
+  "proxy": "http://localhost:9100",
   "dependencies": {
     "@aldabil/react-scheduler": "^2.6.10",
     "@emotion/react": "^11.10.5",

@@ -25,7 +25,7 @@ const CourseCategory = () => {
             Dispatch(GetLicenseTypeCourse(LicenseTypeId))
         else if (VehicleTypeId)
             Dispatch(GetVehicleTypeCourse(VehicleTypeId))
-    }, [Dispatch, LicenseTypeId,VehicleTypeId])
+    }, [Dispatch, LicenseTypeId, VehicleTypeId])
 
     useCheckLogin(false, ["Student"])
     useGetWishList()
@@ -36,18 +36,17 @@ const CourseCategory = () => {
 
             <IntroPart Courses={Courses} />
             <Filter />
- 
+
             {
                 !loading ?
                     LicenseTypeId
                         ? !Courses?.SubLicenseTypes?.length || Courses?.SubLicenseTypes?.length === 0
-                            ? <ClassG1Licensing Type={Courses} />
+                            ? <ClassG1Licensing Types={Courses} />
 
                             : Courses?.SubLicenseTypes?.map((SubLicenseType, index) => {
 
                                 if (index === 0)
-                                    return <ClassG1Licensing Type={SubLicenseType} />
-
+                                    return <ClassG1Licensing Types={SubLicenseType} />
 
                                 if (index === 1) {
                                     let NextSubLicenseType
@@ -66,11 +65,11 @@ const CourseCategory = () => {
                                 if (index === 2)
                                     return <ClassGLicensing LicenseType={SubLicenseType} />
 
-                                return <ClassG1Licensing Type={SubLicenseType} />
+                                return <ClassG1Licensing Types={SubLicenseType} />
                             })
 
                         : VehicleTypeId
-                            ? <ClassG1Licensing Type={Courses} />
+                            ? <ClassG1Licensing Types={Courses} />
                             : null
                     : null
             }

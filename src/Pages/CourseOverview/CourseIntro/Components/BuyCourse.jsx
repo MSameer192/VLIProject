@@ -10,10 +10,11 @@ export function BuyCourse({ CourseInfo }) {
     const { Authenticated } = useSelector((Store) => Store.LoginSignupReducer)
     const Navigate = useNavigate()
     const Dispatch = useDispatch();
+
     const NavigateToEnrollment = () => {
         if (CourseInfo?.Enrolled)
             Navigate('/mycourses/enrolledcourses')
-        if (Authenticated)
+        else if (Authenticated)
             Navigate('/Enrollment/Course', { state: { InstituteCourseId: CourseInfo?.InstituteCourseId } })
 
         else Dispatch(OpenLoginSignUp("Sign In", false))
@@ -25,7 +26,7 @@ export function BuyCourse({ CourseInfo }) {
             {CourseInfo?.Enrolled ? "Enrolled" : `Enroll for ${CourseInfo?.CoursePackages[0]?.TotalFee}`}
 
         </button>
-        <button className={`${ButtonStyle} text-white sm:text-[#A1A3EF] bg-[#A1A3EF] s sm:bg-white`}>
+        <button className={`${ButtonStyle} text-white sm:text-[#A1A3EF] bg-[#A1A3EF] sm:bg-white`}>
 
             Download Curriculum
         </button>

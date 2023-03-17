@@ -43,12 +43,12 @@ const UserInput = ({ AuthPageName, Credentials, setCredentials }) => {
                         <h4 className='text-[red] font-normal'>
                             {AuthPageName === "Sign Up" ? error.ConfirmPassword : null}
                         </h4>
- 
+
 
                         <input className={`${InputBoxStyle} max-w-[650px]`} type="password" placeholder='Confirm Password' required
 
                             value={Credentials.ConfirmPassword}
-                            onChange={(e) => { setCredentials({ ...Credentials, ConfirmPassword: e.target.value }) }}
+                            onChange={(e) => setCredentials({ ...Credentials, ConfirmPassword: e.target.value })}
                         />
                     </span>
                     : null

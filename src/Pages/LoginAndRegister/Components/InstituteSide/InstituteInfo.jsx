@@ -1,4 +1,5 @@
-import React from 'react'
+import React  from 'react'
+import { useDispatch } from 'react-redux';
 import { SubmitButton } from '../../LoginAndRegister';
 
 const InstituteInfo = ({ UserInfoRef, InstituteData, setInstituteData, OnClick, Err, setErr }) => {
@@ -6,7 +7,7 @@ const InstituteInfo = ({ UserInfoRef, InstituteData, setInstituteData, OnClick, 
     text-4xs    lg:text-2xs     xl:text-xs      2xl:text-base
     py-[6px]                    xl:py-3
     px-[8px]                    xl:px-[22px]    2xl:px-7`;
-
+    const Dispatch = useDispatch()
     const OnChange = (e, Name) => {
         setErr({ ...Err, [Name]: undefined })
         setInstituteData({ ...InstituteData, [Name]: e.target.value })
@@ -15,14 +16,14 @@ const InstituteInfo = ({ UserInfoRef, InstituteData, setInstituteData, OnClick, 
     const OnClickFun = () => {
         OnClick(100, UserInfoRef, Arr)
     }
-
+   
     return (
         <>
-            <div className='w-full xl:w-1/2 flex flex-col items-center justify-around  xl:self-stretch order-1 xl:order-6'>
-                <div className='flex flex-col items-center gap-5 py-5 px-5 mb-24 w-full'>
+            <div className='w-full min-h-fit xl:w-1/2 flex flex-col items-center justify-around mt-5 xl:self-stretch order-1 xl:order-6'>
+                <div className='flex flex-col items-center gap-5 py-5 px-5 xl:mb-24 w-full'>
 
                     <span className='flex flex-col w-full max-w-[650px]'>
-                        <h6 className='text-5xs text-[red] font-normal'>{Err.InstituteName?"Institute Name  is requireed" :Err.InstituteName}</h6>
+                        <h6 className='text-5xs text-[red] font-normal'>{Err.InstituteName ? "Institute Name  is requireed" : Err.InstituteName}</h6>
                         <input className={`${InputBoxStyle}  w-full`} type="text" name="" id="PartnerName" placeholder='Partner Name'
                             onChange={e => OnChange(e, "InstituteName")}
 
@@ -38,7 +39,7 @@ const InstituteInfo = ({ UserInfoRef, InstituteData, setInstituteData, OnClick, 
                         <input className={`${InputBoxStyle} w-full`} type="text" name="" id="Address" placeholder='Address'
                             onChange={e => OnChange(e, "Address")}
                         />
-                    </span> 
+                    </span>
                     <span className="flex   w-full gap-5 2xl:gap-12 max-w-[650px]">
                         <span className='flex flex-col w-1/2'>
                             <input className={`${InputBoxStyle}  w-full`} type="number" name="" id="TotalInstructors" placeholder='Total Instructors'
