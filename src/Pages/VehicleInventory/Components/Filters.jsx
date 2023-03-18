@@ -59,7 +59,7 @@ const FIlters = () => {
             <span className='bg-[#A1A3EF] absolute right-12 top-5 flex justify-center items-center rounded-[17px] sm:hidden cursor-pointer'
                 onClick={HideFilter}>
                 <img className='p-3 pointer-events-none'
-                    src={require('../../../Components/Header/Components/StudentHeader/RightSideAssets/CrossIcon.svg').default}
+                    src={require('../../../Components/Header/Components/StudentHeader/Components/RightSide/Assets/CrossIcon.svg').default}
                     alt="cross" />
             </span>
 

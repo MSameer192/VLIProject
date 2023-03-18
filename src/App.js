@@ -66,7 +66,7 @@ function App() {
     if (!UserType || UserType === "Student")
       setSocket(io(`${BaseUrl}/`))
 
-    else if (UserType === "Institute")
+    else if (UserType === "Institute" && InstituteUserType)
       setSocket(io(`${BaseUrl}/${UserType.toLowerCase()}/${InstituteUserType.toLowerCase()}`))
 
     else if (UserType !== "Student")
@@ -74,16 +74,15 @@ function App() {
 
   }, [UserType, InstituteUserType])
 
- 
+
   useSetLoginInfo()
 
- 
+
 
   const Home = !GetLocalStorage("UserInfo")?.User || UserInfo?.User === "Student"
     ? <LandingPage /> :
     GetLocalStorage("UserInfo")?.User === "Institute" || GetLocalStorage("UserInfo")?.User === "Admin" ?
       <InstituteDashboard /> : null
-
 
   return (
     <SocketContext.Provider value={Socket}>
@@ -121,7 +120,7 @@ function App() {
           <Route path='/Instructor/add' element={<AddInstructor />} />
           <Route path='/Instructor/update/:InstructorId' element={<UpdateInstructor />} />
 
- 
+
           <Route path='/vehicle/add' element={<AddVehicle />} />
           <Route path='/vehicle/update/:VehicleId' element={<UpdateVehicle />} />
           <Route path='/vehicle/inventory' element={<VehicleInventory />} />

@@ -1,6 +1,4 @@
 import React from 'react'
-import { useEffect } from 'react'
-import { useState } from 'react'
 import DropDown from '../../../../Components/CustomDropdown/DropDown'
  
 import ErrorIndicator from './Components/ErrorIndicator'

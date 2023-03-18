@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
-import InstituteTemplate from '../../../Components/InstituteTemplate/InstituteTemplate'
-import MyCourses from '../../../Components/MyCourses/MyCourses'
 import ClassScheduler from '../../../Components/Scheduler/Scheduler'
-import { TeacherButtons } from '../../../PageNames'
 
 const TeacherTimeTable = () => {
   const [Events, setEvents] = useState([])

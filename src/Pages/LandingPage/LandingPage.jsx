@@ -9,8 +9,10 @@ import SearchTiles from './SearchTiles/SearchTiles.jsx';
 import SpecialCourses from './SpecialCourses/SpecialCourses';
 import VehicleType from './VehicleType/VehicleType';
 import useCheckLogin from '../../Helpers/CustomHooks/CheckLogin';
-import { LoginRegister } from '../../Components/Header/Headers';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { OpenLoginSignUp } from '../../Actions/ToggleSignupA';
+
 const LandingPage = () => {
   useCheckLogin(false, [])
   const { UserInfo } = useSelector(Store => Store.LoginSignupReducer)
@@ -64,7 +66,7 @@ const LandingPage = () => {
           <img className='w-[35%] xl:w-1/2 relative xl:top-[40px] 2xl:top-[60px] hidden md:inline-block'
             src={require('./Assets/LandingPageCar.png')} alt="" />
         </div>
- 
+
       </div>
       <SearchTiles />
       <VehicleType />
@@ -78,4 +80,23 @@ const LandingPage = () => {
   )
 }
 
+function LoginRegister() {
+  const Dispatch = useDispatch();
+
+  return <nav id='RegisterPortion'
+    className='w-auto hidden lg:flex justify-center items-center gap-9 absolute right-7 top-24 z-20'>
+    <Link className='text-xs  xl:text-2xs no-underline Regularfont text-white'
+      onClick={() => Dispatch(OpenLoginSignUp("Sign In", true))}
+    >Login</Link>
+    <Link className={`text-center no-underline Regularfont text-white bg-[#EA52C6] rounded-[25px]
+                                  lg:py-3     xl:py-4         2xl:py-5
+                                  lg:px-7     xl:px-10        2xl:px-12 
+                      text-xs                 xl:text-2xs       `}
+      onClick={() => Dispatch(OpenLoginSignUp("Sign Up", true))}
+    >
+      Register
+    </Link>
+  </nav>
+
+}
 export default LandingPage

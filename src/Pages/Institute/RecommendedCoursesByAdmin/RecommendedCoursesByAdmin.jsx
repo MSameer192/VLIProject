@@ -1,8 +1,6 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { BaseUrl } from '../../../Actions/Base';
 import { GetRecommendedAdminCoursesA } from '../../../Actions/CourseA';
 import InstituteTemplate from '../../../Components/InstituteTemplate/InstituteTemplate';
 import useCheckLogin from '../../../Helpers/CustomHooks/CheckLogin';

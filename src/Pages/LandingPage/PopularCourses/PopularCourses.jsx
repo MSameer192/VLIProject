@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import './PopularCourses.css'
 const PopularCourses = () => {
-    const [PopularCoursesInfo, setPopularCourses] = useState([
+    const PopularCoursesInfo = [
         {
             CourseName: "Automotive",
             CourseDescription: "Lorem Ipsum is simply dummy text of the printing and typesetting",
@@ -23,7 +23,7 @@ const PopularCourses = () => {
             CourseDescription: "Lorem Ipsum is simply dummy text of the printing and typesetting",
             Price: 38000
         },
-    ])
+    ]
 
     return (
         <div className='relative flex flex-col justify-start items-center gap-5'>
@@ -115,7 +115,7 @@ function PopularCoursesTiles({ PopularCoursesInfo }) {
                                 </div>
 
                                 <span className='w-[102px] md:w-[145px] h-[35px] md:h-[50px] relative -top-[20px] md:-top-[40px] flex justify-center items-center bg-white  rounded-[14px] '>
-                                {/* PriceShadow */}
+                                    {/* PriceShadow */}
                                     <h4 className='text-center font-extralight text-[12px] md:text-4xs Regularfont'>PKR {value.Price}</h4>
                                 </span>
 
@@ -130,7 +130,7 @@ function PopularCoursesTiles({ PopularCoursesInfo }) {
                             <div className='flex justify-between  items-end w-full md:w-[100%] gap-16 mt-10 '>
                                 <div className='flex flex-col'>
                                     <span className='flex'>{[...new Array(5)].map(() => {
-                                        return <img className='w-6' src={require('../../CourseOverview/Assets/StarIcon.svg').default} alt=''/>
+                                        return <img className='w-6' src={require('../../CourseOverview/Assets/StarIcon.svg').default} alt='' />
                                     })}</span>
                                     <span className='SemiBold text-xs'><img src={require('./Assets/Thumb Icon.svg').default} alt="" /> 100%</span>
                                 </div>

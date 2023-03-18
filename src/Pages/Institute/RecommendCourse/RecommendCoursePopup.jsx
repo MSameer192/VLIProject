@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { SocketContext } from '../../../App'
 
 const RecommendCoursePopup = ({ CoursePK, setPopup }) => {
@@ -39,10 +39,10 @@ const AskForForward = ({ setPopup, setForward, CoursePK }) => {
                 Forward to Staff
             </button>
             <button
-                onClick={() => 
+                onClick={() =>
                     Navigate('/addcourse', { state: { CoursePK } })
                 }
-                
+
                 className='BrandingButton no-underline text-white text-3xs whitespace-nowrap w-2/5 max-w-[205px] py-4 px-2 rounded-lg' type='button'>
                 Fill requirements now
             </button>

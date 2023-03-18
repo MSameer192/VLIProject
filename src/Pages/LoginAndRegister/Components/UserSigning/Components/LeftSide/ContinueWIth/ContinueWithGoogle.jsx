@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import JwtDecode from 'jwt-decode';
-import { LoginWithGoogleAction, SignUpWithGoogleAction } from '../../../../../../Actions/UserA';
+import { LoginWithGoogleAction, SignUpWithGoogleAction } from '../../../../../../../Actions/UserA';
 
 
 const ContinueWithGoogle = () => {
     const [GoogleBtn, setGoogleBtn] = useState({});
-    const dispatch = useDispatch();
+    const Dispatch = useDispatch();
     const { AuthPageName } = useSelector(Store => Store.ToggleSignupReducer);
 
     useEffect(() => {
@@ -16,9 +16,9 @@ const ContinueWithGoogle = () => {
             function handleCredentialResponse(response) {
                 const Decoded = JwtDecode(response.credential);
                 if (AuthPageName === "Sign In")
-                    dispatch(LoginWithGoogleAction(Decoded, dispatch, AuthPageName))
+                    Dispatch(LoginWithGoogleAction(Decoded, Dispatch, AuthPageName))
                 else if (AuthPageName === "Sign Up")
-                    dispatch(SignUpWithGoogleAction(Decoded,dispatch, AuthPageName))
+                    Dispatch(SignUpWithGoogleAction(Decoded, Dispatch, AuthPageName))
             }
             function LoadButton() {
                 window?.google?.accounts?.id.initialize({
@@ -36,7 +36,8 @@ const ContinueWithGoogle = () => {
             LoadButton()
         }
 
-    }, [GoogleBtn, dispatch])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [GoogleBtn, Dispatch])
 
     return (
         <div id="buttonDiv"

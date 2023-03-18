@@ -4,8 +4,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { OpenLoginSignUp, ResetLoginSignUp } from '../../Actions/ToggleSignupA';
-import UserSigning from './Components/UserSigning';
-import InstituteSide from './Components/InstituteSide';
+import UserSigning from './Components/UserSigning/UserSigning';
+import InstituteSide from './Components/InstituteSide/InstituteSide';
 
 let TopLoginRegisterBtns = `absolute border-none   rounded-t-[28px]  cursor-pointer Boldfont hidden md:inline-block 
             -top-9   lg:-top-11 xl:-top-14 2xl:-top-16
@@ -43,25 +43,23 @@ const SignUp = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [Navigate, error, Done, Navigation])
 
+
     return (
 
         AuthPageName ?
-            <div className='bg-[#00000037] max-h-screen  fixed top-0 w-full z-50 overflow-scroll flex md:justify-center'
+            <div className='LightBg'
                 onClick={e => { Dispatch(OpenLoginSignUp(false, false)) }}
             >
 
-                <div className='h-fit bgGradient md:min-h-[auto] min-h-screen w-full md:w-[95%] flex flex-col justify-start items-start md:mt-28'
+                <div className='MainParent bgGradient'
                     onClick={(e) => e.stopPropagation()}
                 >
 
-                    <div className={`overflow-hidden w-full
-                                    hidden         md:block 
-                                    min-h-[100px]  md:min-h-[144px] lg:min-h-[224px] xl:min-h-[320px]
-                                    BG_Image`}>
+                    <div className="ImageContainer">
                         <div className='w-full h-80 bg-[#00000070]' > </div>
                     </div>
-                    <div className='relative lg:bg-white w-full flex flex-col justify-start  lg:justify-between lg:items-center h-fit min-h-full md:min-h-[auto] md:h-auto'>
-                     
+                    <div className='FormParent'>
+
                         {
                             AuthPageName === "Register"
                                 ? <InstituteSide />

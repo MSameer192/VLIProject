@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import CoursesSlider from '../../../Components/CourseSlider/CourseSlider'
-import { Tiles } from '../2.ClassG1Licensing/ClassG1Licensing'
 import CourseTiles from '../CourseTiles/CourseTiles'
 let ClassNames = `relative   duration-300 flex items-start
 w-[95%]                             lg:w-11/12                  xl:w-[90%]        

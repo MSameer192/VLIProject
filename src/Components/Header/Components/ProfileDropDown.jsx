@@ -1,11 +1,11 @@
-import React,{ useState } from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 
 
 import { useHideOnClickOutside } from '../../../Helpers/CustomHooks/Hide Elements/useOutsideChecker';
 
 
-function ProfileDropDown({ LinkStyle, DropDownOptions, setShowSidebar }) {
+function ProfileDropDown({ DropDownOptions, setShowSidebar }) {
     const [DropDownRef, setDropDownRef] = useState(null);
     const [RefBtn, setRefBtn] = useState(null);
     const { UserInfo } = useSelector((store) => store.LoginSignupReducer);
@@ -25,7 +25,7 @@ function ProfileDropDown({ LinkStyle, DropDownOptions, setShowSidebar }) {
 
     useHideOnClickOutside(DropDownRef, RefBtn, "active")
     return (
-        <span className={`flex ${LinkStyle} gap-5 relative cursor-pointer -order-1 lg:order-[0] DropDown`}
+        <span className={`flex HeaderRightSide-LinkStyle SemiBold gap-5 relative cursor-pointer -order-1 lg:order-[0] DropDown`}
             onClick={(e) => ToggleClass(e.target, "active")}
             ref={(e) => { setRefBtn(e) }}
         >

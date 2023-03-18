@@ -35,7 +35,6 @@ const FreeHours = ({ EnrollmentData, setEnrollmentData, Duration, INDEX }) => {
             return { ...value }
 
         })
-        // console.log(Free)
 
         setEnrollmentData({
             ...EnrollmentData, StudentData: {
@@ -117,6 +116,7 @@ const FreeHours = ({ EnrollmentData, setEnrollmentData, Duration, INDEX }) => {
     // console.log(EnrollmentData?.FreeHours, FreeTime)
     useEffect(() => {
         UpdateArr(EnrollmentData?.StudentData?.FreeHours)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [FreeTime])
     return (
 

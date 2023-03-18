@@ -16,16 +16,10 @@ let ClassNames = `relative   duration-300 flex items-start my-10
                     `
 const LicenseTypes = () => {
     const Dispatch = useDispatch()
-    const [ref, setref] = useState({});
-    const [Size, setSize] = useState(0);
     const [LicenseTypesState, setLicenseTypesState] = useState([]);
     const { LicenseTypes } = useSelector((state) => state.LicenseTypeReducer)
 
-    useEffect(() => {
-        window.addEventListener("resize", () => {
-            setSize(0)
-        })
-    }, [ref])
+   
     useEffect(() => {
         Dispatch(GetLicenseTypes())
     }, [Dispatch])

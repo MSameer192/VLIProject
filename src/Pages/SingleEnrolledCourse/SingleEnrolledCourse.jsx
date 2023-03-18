@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { GetSingleEnrolledCourse } from '../../Actions/CourseA';
-import useCheckLogin from '../../Helpers/CustomHooks/CheckLogin';
 import SEnrolledCourseInfo from './Components/EnrolledCourseInfo/EnrolledCourseInfo';
 
 const SEnrolledCourse = () => {

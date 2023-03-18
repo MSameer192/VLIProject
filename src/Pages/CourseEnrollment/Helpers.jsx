@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { EnrollIntoCourse } from "../../Actions/CourseA";
 import { CheckSchedule } from "./Payment/Components/Helper/CheckSchedule";
 
@@ -12,12 +11,12 @@ export const SubmitForm = (e, EnrollmentData, Err, setErr, Dispatch, Navigate) =
             Errors = { ...Errors, [key]: `${key} is required` }
         else
             Errors = { ...Errors, [key]: undefined }
- 
+
     }
 
     EnrollmentData?.StudentData?.FreeHours?.forEach((Value, index) => {
         if (Value.Start)
-            for (const [key, value] of Object.entries(Value.Start))
+            for (const [, value] of Object.entries(Value.Start))
                 if (value === "")
                     Errors = { ...Errors, FreeHours: `Please enter a valid value` }
                 else
@@ -28,12 +27,12 @@ export const SubmitForm = (e, EnrollmentData, Err, setErr, Dispatch, Navigate) =
 
     setErr({ ...Err, ...Errors })
     let CheckErr = false;
-    for (const [key, value] of Object.entries(Errors)) {
+    for (const [, value] of Object.entries(Errors)) {
 
         if (value === undefined)
             CheckErr = true
     }
- 
+
     if (!CheckErr)
         return
     Dispatch(EnrollIntoCourse(EnrollmentData, Navigate))

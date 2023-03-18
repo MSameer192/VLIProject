@@ -1,6 +1,6 @@
 import React from 'react'
-import StudentLeftSide from './LeftSide'
-import StudentRightSide from './RightSide'
+import StudentLeftSide from './Components/LeftSide/LeftSide'
+import StudentRightSide from './Components/RightSide/RightSide'
 
 const StudentHeader = ({setShowSidebar, ShowSidebar, setAuthPageName}) => {
     return (

@@ -1,10 +1,10 @@
 import React from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { LoginUser, SignUpUser } from '../../../Actions/UserA'
-import { SubmitButton } from '../LoginAndRegister'
-import SignInLeftSide from './UserSigning/LeftSide'
-import SigninRightSide from './UserSigning/RightSide'
+import { LoginUser, SignUpUser } from '../../../../Actions/UserA'
+import { SubmitButton } from '../../LoginAndRegister'
+import SignInLeftSide from './Components/LeftSide/LeftSide'
+import SigninRightSide from './Components/RightSide/RightSide'
 
 
 const UserSigning = ({ ScreenSize, TopLoginRegisterBtns }) => {
@@ -20,11 +20,15 @@ const UserSigning = ({ ScreenSize, TopLoginRegisterBtns }) => {
 
     const SubmitForm = (e) => {
         e.preventDefault();
-
-        if (AuthPageName === "Sign Up")
-            Dispatch(SignUpUser(Credentials, Dispatch, AuthPageName))
-        else
-            Dispatch(LoginUser(Credentials, Dispatch, AuthPageName))
+        window.grecaptcha?.ready(function () {
+            window.grecaptcha.execute(process.env.REACT_APP_GOOGLE_CAPTCHA_KEY).then(function (token) {
+                Credentials.Token = token
+                if (AuthPageName === "Sign Up")
+                    Dispatch(SignUpUser(Credentials, Dispatch, AuthPageName))
+                else
+                    Dispatch(LoginUser(Credentials, Dispatch, AuthPageName))
+            });
+        });
 
         return false
     }

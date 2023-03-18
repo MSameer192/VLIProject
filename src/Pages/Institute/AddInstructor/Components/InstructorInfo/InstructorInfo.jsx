@@ -1,5 +1,4 @@
 import React from 'react'
-import { BaseUrl } from '../../../../../Actions/Base'
 import ImagePreviewer from '../../../../../Components/ImagePreviewer/ImagePreviewer'
 import { DateInput } from '../../../../../Components/InputComps/DateComps'
 import { Input, InputWithImage, SelectList } from '../../../../../Components/InputComps/InputComps'

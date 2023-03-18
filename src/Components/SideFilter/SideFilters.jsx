@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { useEffect } from 'react'
 
-const SideFilters = ({ Title, FiltersArr, TitleStyle, WidthStyle, PositionAndIndex,OnClick }) => {
+const SideFilters = ({ Title, FiltersArr, TitleStyle, WidthStyle, PositionAndIndex, OnClick, Style }) => {
     const FilterRef = useRef();
 
     const HideFilter = (e) => {
@@ -34,12 +34,14 @@ const SideFilters = ({ Title, FiltersArr, TitleStyle, WidthStyle, PositionAndInd
     if (!WidthStyle)
         WidthStyle = "w-full  md:w-11/12"
     if (!PositionAndIndex)
-        PositionAndIndex = "fixed   sm:relative     z-30                    sm:z-0"
-    return (
-        <div className={`top-0 flex  justify-center items-center duration-200 overflow-hidden
-        ${WidthStyle} ${PositionAndIndex} cursor-auto
+        PositionAndIndex = "fixed   sm:relative     z-30  sm:z-0";
+    if (!Style)
+        Style = `top-0 flex  justify-center items-center duration-200 overflow-hidden
+        ${WidthStyle} ${PositionAndIndex} cursor-auto duration-100
         rounded-b-[70px]        sm:rounded-none 
-        SideBarBG`}
+        SideBarBG`
+    return (
+        <div className={Style}
 
             id="VehicleFilter"
             ref={FilterRef}>
@@ -47,7 +49,7 @@ const SideFilters = ({ Title, FiltersArr, TitleStyle, WidthStyle, PositionAndInd
             <span className='bg-[#A1A3EF] absolute right-12 top-5 flex justify-center items-center rounded-[17px] sm:hidden cursor-pointer'
                 onClick={HideFilter}>
                 <img className='p-3 pointer-events-none'
-                    src={require('../Header/Components/StudentHeader/RightSideAssets/CrossIcon.svg').default}
+                    src={require('../Header/Components/StudentHeader/Components/RightSide/Assets/CrossIcon.svg').default}
                     alt="cross" />
             </span>
 
@@ -58,7 +60,7 @@ const SideFilters = ({ Title, FiltersArr, TitleStyle, WidthStyle, PositionAndInd
                 </div>
 
                 <button type='button' className='bg-[#A1A3EF] text-white flex items-center justify-center p-4 text-4xs  outline-none border-none rounded-md whitespace-nowrap cursor-pointer relative'
-                onClick={OnClick}
+                    onClick={OnClick}
                 >
                     <img className='absolute left-3' src={require('./Search.svg').default} alt="" />
                     Apply Filters

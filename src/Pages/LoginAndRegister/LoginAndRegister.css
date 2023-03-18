@@ -1,18 +1,33 @@
 .BG_Image {
-    background-image: url('./Assets/Signup\ BG\ image.png');
-    background-position: center;
+  background-image: url("./Assets/Signup\ BG\ image.png");
+  background-position: center;
 }
 
 @media (min-width: 768px) {
-    .DropShadow {
-        box-shadow: 3px 3px 6px #00000037;
-    }
+  .DropShadow {
+    box-shadow: 3px 3px 6px #00000037;
+  }
 }
 
 .LeftBorders {
-   
-    border-radius: 45px;
-    border-color: red;
-    border-width: 2px;
-    border-style: dashed;
+  border-radius: 45px;
+  border-color: red;
+  border-width: 2px;
+  border-style: dashed;
+}
+.LightBg {
+  @apply bg-[#00000037] max-h-screen  fixed top-0 w-full z-50 overflow-scroll flex md:justify-center;
+}
+.MainParent {
+  @apply h-fit  md:min-h-[auto] min-h-screen w-full md:w-[95%] flex flex-col justify-start items-start md:mt-28;
+}
+
+.ImageContainer {
+  @apply overflow-hidden w-full
+    hidden         md:block 
+    min-h-[100px]  md:min-h-[144px] lg:min-h-[224px] xl:min-h-[320px]
+    BG_Image;
+}
+.FormParent {
+  @apply relative lg:bg-white w-full flex flex-col justify-start  lg:justify-between lg:items-center h-fit min-h-full md:min-h-[auto] md:h-auto;
 }

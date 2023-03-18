@@ -5,7 +5,10 @@ import StudentFilterArr from './FilterArr'
 
 const StudentFilter = ({ MaxHeight }) => {
     return (
-        <SideFilters WidthStyle={`${MaxHeight}  h-fit duration-100 w-full`} PositionAndIndex="absolute z-30 top-12"
+        <SideFilters
+            WidthStyle={`${MaxHeight} h-fit w-full`}
+            PositionAndIndex="absolute z-30 top-12"
+            CustomStyle
             Title="Filter Teachers" FiltersArr={StudentFilterArr} />
     )
 }

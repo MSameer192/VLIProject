@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { GetAdminCoursesA } from '../../../Actions/CourseA';
 
 
 
 const DashBoardAdminCourses = () => {
     const Dispatch = useDispatch();
-    const { AdminCourses } = useSelector(Store => Store.CourseReducer)
     useEffect(() => {
         Dispatch(GetAdminCoursesA())
     }, [Dispatch])

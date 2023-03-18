@@ -1,15 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect,useState } from 'react'
 import CoursesTiles from '../CourseTilesComponent/CoursesTiles';
 import "./SpecialCourses.css"
 const SpecialCourses = () => {
 
-    const [BackImageHeight,setBackImageHeight]=useState();
-    const [ApplyBackImgHeight,setApplyBackImgHeight]=useState()
-
-    useEffect(() => {
-        // setImgHeight(Img?.current?.clientHeight)
-    }, [])
-    const [SpecialCoursesInfo, setSpecialCoursesInfo] = useState([
+    const SpecialCoursesInfo = [
         {
             CourseName: "Automotive",
             CourseDescription: "Lorem Ipsum is simply dummy text of the printing and typesetting",
@@ -30,25 +24,18 @@ const SpecialCourses = () => {
             CourseDescription: "Lorem Ipsum is simply dummy text of the printing and typesetting",
             Price: 38000
         },
-    ])
-    useEffect(()=>{
-        window.addEventListener("resize", () => {
-            setApplyBackImgHeight(BackImageHeight?.offsetHeight+10+"px")
-        })
-        setApplyBackImgHeight(BackImageHeight?.offsetHeight+10+"px")
-    },[BackImageHeight])
-// console.log(BackImageHeight?.offsetHeight+10+"px",ApplyBackImgHeight)
+    ]
+    
     return (
         <div 
-        // style={{height:ApplyBackImgHeight}}
         className={`relative w-full flex justify-start items-center flex-col py-14 Boldfont gap-16`}>
             <img src={require('./Assets/SpecialCoursesBG.png')}
                 className='w-full absolute -z-10 top-0'
-                ref={(e)=>{setBackImageHeight(e)}}
                 alt="" />
             <h2 className='Reg text-white mx-2'>Here you will get the list of Special Courses</h2>
             <div className='w-full 2xl:w-4/5 flex gap-4 lg:gap-20 flex-col-reverse lg:flex-row'> 
-                <img src={require('./Assets/Special Course Img.svg').default}
+                <img 
+                src={require('./Assets/Special Course Img.svg').default}
                     className='lg:w-[50%]   xl:w-[70%] 2xl:w-[80%] '
                     alt="" />
                 <SpecialCoursesIntro />

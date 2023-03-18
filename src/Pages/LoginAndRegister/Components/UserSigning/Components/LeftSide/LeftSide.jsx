@@ -1,8 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { OpenLoginSignUp } from '../../../../Actions/ToggleSignupA';
-import ContinuesWith from './LeftSideComp/ContinuesWith';
-import { OtherOption } from './Mini Components/MiniComponents';
+import ContinuesWith from './ContinueWIth/ContinuesWith';
+import { OtherOption } from '../MiniComponents';
+import { OpenLoginSignUp } from '../../../../../../Actions/ToggleSignupA';
 
 const SignInLeftSide = ({ TopLoginRegisterBtns, ScreenSize }) => {
     const Dispatch = useDispatch()
@@ -56,7 +56,9 @@ const SignInLeftSide = ({ TopLoginRegisterBtns, ScreenSize }) => {
                     onClick={() => Dispatch(OpenLoginSignUp("Register", true))}
                     type="button"
                 >
-                    <img className='w-6 xl:w-10' src={require('../../Assets/Institute Icon.png')} alt="" />
+                    <img className='w-6 xl:w-10'
+                    src={require('../../../../Assets/Institute Icon.png')} alt=""
+                    />
                     <h5 className={` ${h4Style} inline-block`}>
 
                         {AuthPageName === "Sign Up" ? "Register" : "Continue"} as a Partner

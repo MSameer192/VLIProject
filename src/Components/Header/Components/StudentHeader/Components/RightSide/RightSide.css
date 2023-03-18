@@ -1,0 +1,20 @@
+.RightSideAndSideBar {
+  @apply flex flex-wrap  min-h-fit top-0 -left-12
+    mx-12               lg:mx-5     xl:mx-10    2xl:mx-16
+    gap-7               lg:gap-7    xl:gap-8    2xl:gap-11
+    p-10                lg:p-0
+    flex-col            lg:flex-row 
+    absolute            lg:static  
+    justify-start       lg:justify-end
+    rounded-b-[60px]    lg:rounded-none 
+    items-start         lg:items-center 
+    h-[80vh]            lg:h-full 
+    w-full              lg:w-auto;
+}
+.HeaderRightSide-LinkStyle {
+  @apply text-2xs text-white lg:text-black md:text-xs lg:text-3xs xl:text-2xs 2xl:text-[21px] hover:text-[#A1A3EF]  no-underline   bg-[#ffffff00] border-none cursor-pointer;
+}
+
+.CrossButton {
+  @apply p-3 rounded-xl border-none cursor-pointer bg-[#A1A3EF] flex items-center justify-center lg:hidden absolute right-2 top-2;
+}

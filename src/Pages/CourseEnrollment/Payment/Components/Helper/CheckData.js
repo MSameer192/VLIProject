@@ -31,7 +31,7 @@ export const CheckData = (EnrollmentData, Err, setErr) => {
 
     EnrollmentData?.StudentData?.FreeHours?.forEach((Value, index) => {
         if (Value.Start)
-            for (const [key, value] of Object.entries(Value.Start))
+            for (const [, value] of Object.entries(Value.Start))
                 if (value === "")
                     Errors = { ...Errors, FreeHours: `Please enter a valid value` }
                 else {

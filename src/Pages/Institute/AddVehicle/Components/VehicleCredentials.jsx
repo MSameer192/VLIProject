@@ -1,6 +1,4 @@
 import React from 'react'
-import { useEffect } from 'react';
-import { useState } from 'react';
 import ErrorIndicator from './Components/ErrorIndicator';
 
 let TextStyle = `w-60 font-normal whitespace-nowrap

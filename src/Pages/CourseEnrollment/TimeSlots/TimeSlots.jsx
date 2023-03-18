@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import './TimeSlots.css'
 import { useTimeSlotsHider } from '../../../Helpers/CustomHooks/Hide Elements/useTimeSlotsHidder';
 import { useState } from 'react';
@@ -31,7 +31,7 @@ const TimeSlots = ({ ShowTimeSlots, setShowTimeSlots, setEnrollmentData, Enrollm
         }
         setShowTimeSlots(false);
     }
-    
+
     return (
         ShowTimeSlots
             ? <div

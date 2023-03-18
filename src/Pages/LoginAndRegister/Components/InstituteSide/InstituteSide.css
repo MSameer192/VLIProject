@@ -1,0 +1,19 @@
+.InstituteSideParent {
+  @apply w-full md:bg-white pt-10  md:pt-0 flex items-start h-fit overflow-x-hidden pb-16 md:pb-4 xl:pb-8 relative;
+}
+
+.InstituteSide_InputStyles {
+  @apply text-black bg-[#F3F6F7] border-none rounded-lg  shadow-[3px_4px_4px_#00000040]
+    text-4xs    lg:text-2xs     xl:text-xs      2xl:text-base
+    py-[6px]                    xl:py-3
+    px-[8px]                    xl:px-[22px]    2xl:px-7;
+}
+
+
+
+.InstituteDocument_MainContainer {
+  @apply w-full xl:w-1/2 px-3 sm:px-6 md:px-8 lg:px-12 xl:px-14 2xl:px-16 flex md:py-8 flex-col gap-4 order-6 xl:order-1;
+}
+.InstituteDocument_Title {
+  @apply font-normal text-3xs sm:text-2xs md:text-xs lg:text-sm xl:text-base 2xl:text-[30px] w-[400px];
+}

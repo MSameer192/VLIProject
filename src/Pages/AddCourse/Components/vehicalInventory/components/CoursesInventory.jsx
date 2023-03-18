@@ -35,7 +35,6 @@ const CoursesInventory = ({ setSteps, CourseData, setCourseData }) => {
 
                     {AdminCourses?.map((value, index, arr) => {
 
-                        {/* console.log(arr[index].CoursePK) */}
 
                         return <CourseComp
                             key={value.CoursePK}

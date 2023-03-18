@@ -1,5 +1,5 @@
-import SearchIcon from './LeftSideAssets/SearchIcon.svg';
-import Logo from './LeftSideAssets/Logo.svg';
+import SearchIcon from './Assets/SearchIcon.svg';
+import Logo from './Assets/Logo.svg';
 import { Link } from 'react-router-dom';
 function StudentLeftSide({ setShowSidebar }) {
     return <nav
@@ -11,14 +11,14 @@ function StudentLeftSide({ setShowSidebar }) {
         }
     >
 
-        <img src={require("./LeftSideAssets/HamburgerIcon.svg").default}
+        <img src={require("./Assets/HamburgerIcon.svg").default}
             onClick={() => setShowSidebar(true)}
             className=' lg:hidden mx-2'
             alt="" />
         <Link to='/'>
 
             <picture className='flex justify-center items-center'>
-                <source media="(max-width:1023px)" srcSet={require("./LeftSideAssets/SmallScreenlogo.svg").default} />
+                <source media="(max-width:1023px)" srcSet={require("./Assets/SmallScreenlogo.svg").default} />
                 <source media="(min-width:1024px)" srcSet={Logo} />
                 <img
                     className="w-[150px] sm:w-[300px] lg:w-[275px] xl:w-auto"

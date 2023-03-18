@@ -11,7 +11,6 @@ const TopCards = () => {
         GetLocalStorage("UserInfo").InstituteUserType === "Admin"
             ? RecommendCourse
             : AddCourse;
-    console.log(CourseRoute)
     return (
         <div className='flex w-full gap-5'>
             <div className='flex w-[68%] gap-10'>

@@ -1,12 +1,9 @@
 import React from 'react'
 import "./LatestNews.css";
-import { Link } from 'react-router-dom'
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { Link } from 'react-router-dom' 
+
 const LatestNews = () => {
 
-  
-    
     return (
         <div className='mt-9 md:bg-[#F1FAFF] flex justify-center items-center flex-col gap-4 md:pb-32 md:px-3 lg:px-10 xl:px-20 w-full'>
             <div className='flex justify-center items-center flex-col gap-2'>

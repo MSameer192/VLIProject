@@ -7,7 +7,7 @@ import TeacherDashboard from './Teacher Dashboard/TeacherDashboard'
 
 const InstituteDashboardChild = () => {
   useCheckLogin(false, ["Institute", "Admin"], ["Staff", "Admin", "Instructor"])
-  console.log(GetLocalStorage("UserInfo").User === "Admin")
+
   return (
     <div className='mt-20 flex justify-center min-h-screen w-full'>
       {GetLocalStorage("UserInfo").InstituteUserType === "Instructor" ? <TeacherDashboard /> : null}
@@ -17,7 +17,7 @@ const InstituteDashboardChild = () => {
           ? <InsStaffAdminDashboard />
           : null
       }
-    </div>
+    </div> 
   )
 }
 const InstituteDashboard = () =>

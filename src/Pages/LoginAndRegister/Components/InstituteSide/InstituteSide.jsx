@@ -2,15 +2,15 @@ import React, { useEffect } from 'react'
 import { useRef } from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { ResetLoginSignUp } from '../../../Actions/ToggleSignupA'
-import { RegisterInstituteA } from '../../../Actions/UserA'
-import { SubmitButton } from '../LoginAndRegister'
-import InstituteDocuments from './InstituteSide/InstituteDocuments'
-import InstituteInfo from './InstituteSide/InstituteInfo'
-import InstituteTimings from './InstituteSide/InstituteTimings'
-import InstituteUserInfo from './InstituteSide/InstituteUserInfo'
-import { CenterORline } from './UserSigning'
-
+import { ResetLoginSignUp } from '../../../../Actions/ToggleSignupA'
+import { RegisterInstituteA } from '../../../../Actions/UserA'
+import { SubmitButton } from '../../LoginAndRegister'
+import InstituteDocuments from './Components/InstituteDocuments'
+import InstituteTimings from './Components/InstituteTimings'
+import InstituteUserInfo from './Components/InstituteUserInfo'
+import { CenterORline } from '../UserSigning/UserSigning'
+import InstituteInfo from './Components/InstituteInfo';
+import './InstituteSide.css'
 const InstituteSide = () => {
     const [LeftPosition, setLeftPosition] = useState();
     const { error } = useSelector((Store) => Store.LoginSignupReducer)
@@ -71,11 +71,11 @@ const InstituteSide = () => {
             Dispatch(ResetLoginSignUp(false))
     }, [Dispatch, Success])
     return (
-        <div className='w-full md:bg-white pt-10  md:pt-0 flex items-start h-fit overflow-x-hidden pb-16 md:pb-4 xl:pb-8 relative'>
+        <div className='InstituteSideParent'>
             <button type="button" className='p-3 md:hidden cursor-pointer rounded-xl border-none bg-[#A1A3EF] flex items-center justify-center absolute right-6 top-2 z-10'
                 onClick={() => Dispatch(ResetLoginSignUp(false))}
             >
-                <img className=' cursor-pointer' src={require('../Assets/CrossIcon.svg').default} alt="" />
+                <img className=' cursor-pointer' src={require('../../Assets/CrossIcon.svg').default} alt="" />
             </button>
             <form
                 style={{ left: `-${LeftPosition}%` }}
@@ -83,12 +83,20 @@ const InstituteSide = () => {
                 onSubmit={OnSubmit}>
 
                 <div className='w-[33.33%] flex flex-col xl:flex-row ' ref={DocumentRef} >
-                    <InstituteDocuments InstituteData={InstituteData} setInstituteData={setInstituteData} />
+
+
+                    <InstituteDocuments
+                        InstituteData={InstituteData} setInstituteData={setInstituteData} />
                     <CenterORline Visible={false} />
                     <InstituteInfo
-                        InstituteData={InstituteData} setInstituteData={setInstituteData} UserInfoRef={UserInfoRef} OnClick={OnClick}
+                        InstituteData={InstituteData} setInstituteData={setInstituteData}
+                        UserInfoRef={UserInfoRef} OnClick={OnClick}
                         Err={Err} setErr={setErr}
                     />
+
+
+
+
                     <span className='xl:hidden order-7 flex w-full items-center justify-center mt-20'>
                         <SubmitButton AuthPageName="Next" ButtonType="button" OnClickFun={() => {
                             OnClick(100, UserInfoRef, Arr)
@@ -96,7 +104,13 @@ const InstituteSide = () => {
                         }} />
 
                     </span>
+
+
                 </div>
+
+
+
+
 
 
                 <div className='w-[33.33%] items-start justify-start px-5' ref={UserInfoRef}>
@@ -104,9 +118,14 @@ const InstituteSide = () => {
                 </div>
 
 
+
+
                 <div className='w-[33.33%]  items-center justify-center hidden' ref={TimingRef}>
                     <InstituteTimings OnClick={OnClick} />
                 </div>
+
+
+
             </form>
 
         </div>

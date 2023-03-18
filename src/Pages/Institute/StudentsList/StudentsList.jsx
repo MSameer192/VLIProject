@@ -15,7 +15,7 @@ const StudentsListChild = () => {
     useEffect(() => {
         Dispatch(GetStudentsA())
     }, [Dispatch])
-    useCheckLogin(true,["Institute"],["Staff"])
+    useCheckLogin(true, ["Institute"], ["Staff", "Admin"])
     return (
         <div className='w-11/12 bg-white mt-16 rounded-[35px]'>
 

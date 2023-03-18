@@ -14,10 +14,10 @@ const Headers = ({ setAuthPageName }) => {
     const { UserInfo } = useSelector((store) => store.LoginSignupReducer);
     return (
 
-        <header className="relative flex flex-col justify-between items-center z-30  border-[6px]" onClick={(e) => e.stopPropagation()}>
+        <header className="Header" onClick={(e) => e.stopPropagation()}>
 
 
-            <div className='flex justify-between items-center fixed top-0 lg:bg-white  bg-[#321d6d]  w-full h-[80px]  '>
+            <div className='HeaderDataContainer'>
                 {
                     !GetLocalStorage("UserInfo")?.User || UserInfo?.User === "Student" ?
                         <>

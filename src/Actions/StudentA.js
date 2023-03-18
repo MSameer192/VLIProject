@@ -1,6 +1,6 @@
 import axios from "axios";
 import { BaseUrl } from "./Base";
-import { Credentials, Headers } from "./UserA";
+import { Credentials } from "./UserA";
 
 export const GetStudentsA = () => async (dispatch) => {
     try {
@@ -9,6 +9,7 @@ export const GetStudentsA = () => async (dispatch) => {
         })
 
         const { data } = await axios.get(`${BaseUrl}/api/Enrolled/students`, Credentials);
+        console.log(data)
         dispatch({
             type: "GetStudentsListSuccess",
             payload: data,
@@ -75,7 +76,7 @@ export const GetScheduleA = (EnrollmentId) => async (dispatch) => {
         dispatch({
             type: "GetTimeTableRequest"
         })
- 
+
         const { data } = await axios.post(`${BaseUrl}/api/timetable/${EnrollmentId}`, Credentials);
         dispatch({
             type: "GetTimeTableSuccess",

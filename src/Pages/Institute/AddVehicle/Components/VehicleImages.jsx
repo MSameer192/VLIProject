@@ -88,7 +88,7 @@ function ImageSelector({ Index, Name, setVehicleImagesState, VehicleImagesState 
                         </span>
                         <span className='flex absolute right-0 top-0 bg-violet-100 p-2 justify-center items-center rounded-full cursor-pointer' onClick={(e) => RemoveImage(e, VehicleImagesState, setVehicleImagesState, Index, Name)}>
                             <img className='pointer-events-none'
-                                src={require('../../../../Components/Header/Components/StudentHeader/RightSideAssets/CrossIcon.svg').default} alt="" />
+                                src={require('../../../../Components/Header/Components/StudentHeader/Components/RightSide/Assets/CrossIcon.svg').default} alt="" />
                         </span>
                     </>
             }

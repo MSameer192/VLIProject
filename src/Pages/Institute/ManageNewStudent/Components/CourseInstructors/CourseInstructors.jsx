@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ClassesIndicator from '../../../../../Components/ClassesIndicator/ClassesIndicator'
 import InstructorCardTemplate from './Components/InstructorCardTemplate'
 

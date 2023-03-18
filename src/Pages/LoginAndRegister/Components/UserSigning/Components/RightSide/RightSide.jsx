@@ -1,8 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { OpenLoginSignUp } from '../../../../Actions/ToggleSignupA';
-import { OnLogin, OnRegister } from './Mini Components/MiniComponents';
-import UserInput from './RightSideComp/UserInput';
+import { OpenLoginSignUp } from '../../../../../../Actions/ToggleSignupA';
+import { OnLogin, OnRegister } from '../MiniComponents';
+import UserInput from './UserInput';
 
 
 const SigninRightSide = ({ TopLoginRegisterBtns, Credentials, setCredentials }) => {
