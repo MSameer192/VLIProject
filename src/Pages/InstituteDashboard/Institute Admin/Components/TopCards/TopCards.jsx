@@ -107,23 +107,26 @@ const TopCards = () => {
 
                     </div>
                 </div>
+                {
+                    GetLocalStorage("UserInfo").User === "Admin" ?
+                        <div className='w-full AddCourseCard h-fit '>
+                            <div className='w-full text-white text-4xs py-4 px-10 AddCourseDiv '>Add a New E-Book</div>
+                            <div className='text-white px-10 py-5 pb-10 relative'>
+                                Want to publish an E-Book to Vehicle
+                                Learning innovation click on Create
+                                Course to publish
+                                <Link className='absolute bottom-2 right-3 flex items-center justify-center gap-4 no-underline text-white'
+                                    to={'/admin/Book/add'}>
+                                    <span className='text-6xs'>Publish e-book</span>
+                                    <span className='rounded-full bg-white shadow-[4px_6px_12px_#4e373a80] flex items-center justify-center    p-[10px] w-fit'>
+                                        <img src={require('./Assets/Add.svg').default} alt="" />
+                                    </span>
+                                </Link>
 
-                <div className='w-full AddCourseCard h-fit '>
-                    <div className='w-full text-white text-4xs py-4 px-10 AddCourseDiv '>Add a New E-Book</div>
-                    <div className='text-white px-10 py-5 pb-10 relative'>
-                        Want to publish an E-Book to Vehicle
-                        Learning innovation click on Create
-                        Course to publish
-                        <Link className='absolute bottom-2 right-3 flex items-center justify-center gap-4 no-underline text-white'
-                            to={'/admin/Book/add'}>
-                            <span className='text-6xs'>Publish e-book</span>
-                            <span className='rounded-full bg-white shadow-[4px_6px_12px_#4e373a80] flex items-center justify-center    p-[10px] w-fit'>
-                                <img src={require('./Assets/Add.svg').default} alt="" />
-                            </span>
-                        </Link>
-
-                    </div>
-                </div>
+                            </div>
+                        </div>
+                        : null
+                }
             </div>
         </div>
     )

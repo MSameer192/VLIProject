@@ -110,7 +110,7 @@ export const CourseReducer = createReducer({}, (builder) => {
 
 
 
-     
+
 
 
 
@@ -159,9 +159,9 @@ export const CourseReducer = createReducer({}, (builder) => {
         state.loading = false;
         state.error = action.payload;
     })
- 
- 
- 
+
+
+
     builder.addCase("FilterCoursesRequest", (state, action) => {
         state.loading = true
     })
@@ -174,9 +174,9 @@ export const CourseReducer = createReducer({}, (builder) => {
         state.loading = false;
         state.error = action.payload;
     })
-   
-   
-   
+
+
+
     builder.addCase("GetInstituteCoursesRequest", (state, action) => {
         state.loading = true
     })

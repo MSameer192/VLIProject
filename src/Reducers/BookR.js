@@ -49,6 +49,10 @@ export const BookReducer = createReducer(InitialState, (builder) => {
         state.loading = false;
         state.Books = action.payload;
     })
+    builder.addCase("FilterCarouselBooksSuccess", (state, action) => {
+        state.loading = false;
+        state.CarouselBooks = action.payload;
+    })
 
     builder.addCase('FilterBooksFailure', (state, action) => {
         state.loading = false;

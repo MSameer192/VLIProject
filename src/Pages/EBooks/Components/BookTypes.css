@@ -1,0 +1,15 @@
+.BooksTypesContainer {
+  border-bottom: 1px solid #a7a7a7;
+  @apply flex gap-44;
+}
+
+.BooksTypes {
+  border: none;
+  border-bottom: 5px solid #16323500;
+
+  @apply text-lg bg-[#ffffff00] cursor-pointer pb-4 duration-100;
+}
+
+.BooksTypesSelected {
+  border-bottom: 5px solid #163235;
+}

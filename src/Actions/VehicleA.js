@@ -1,6 +1,7 @@
 import axios from "axios";
+import { CheckLoginServer } from "../Helpers/CheckLogin";
 import { BaseUrl } from "./Base";
-import { Credentials, Headers } from "./UserA";
+
 const instance = axios.create({
     withCredentials: true,
     baseURL: BaseUrl
@@ -17,6 +18,7 @@ export const AddVehicleA = (VehicleData, Navigate) => async (dispatch) => {
         });
         Navigate('/vehicle/inventory')
     } catch (error) {
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "AddVehicleSuccess",
             payload: error
@@ -36,6 +38,7 @@ export const UpdateVehicleA = (VehicleData, Navigate) => async (dispatch) => {
         });
         Navigate('/vehicle/inventory')
     } catch (error) {
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "GetAllVehiclesSuccess",
             payload: error
@@ -56,6 +59,7 @@ export const GetVehicleA = () => async (dispatch) => {
         });
 
     } catch (error) {
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "GetAllVehiclesSuccess",
             payload: error
@@ -77,6 +81,7 @@ export const GetSingleVehicleA = (VehicleId) => async (dispatch) => {
         });
 
     } catch (error) {
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "GetSingleVehicleFailure",
             payload: error

@@ -40,7 +40,8 @@ const FIlter = () => {
     const AddClass = (e) => {
         e.target.classList.toggle("bg-white")
         e.target.classList.toggle("text-[#A1A3EF]")
-        FilterParentRef.current.classList.toggle("Max-Height-0")
+        FilterParentRef.current.classList.toggle("max-h-0")
+        FilterParentRef.current.classList.toggle("max-h-52")
     }
     return (
         <div className='flex flex-col relative left-1/2 -translate-x-1/2 justify-center items-center w-1/2 max-w-[1000px] gap-10 py-5'>
@@ -51,7 +52,7 @@ const FIlter = () => {
                 Filter
             </button>
 
-            <div className='flex gap-3 w-full items-center justify-center overflow-hidden max-h-52 h-fit duration-500 ease-in-out Max-Height-0'
+            <div className='flex gap-3 w-full items-center justify-center overflow-hidden  h-fit duration-500 ease-in-out max-h-[0px]'
                 ref={FilterParentRef}>
 
                 <SortBy setFilterValue={setFilterValue} FilterValue={FilterValue} SortOnChange={SortOnChange} />

@@ -1,4 +1,5 @@
 import axios from "axios"
+import { CheckLoginServer } from "../Helpers/CheckLogin"
 import { BaseUrl } from "./Base"
 
 export const AddInstructorA = (InstructorData, setSuccess) => async (dispatch) => {
@@ -15,7 +16,7 @@ export const AddInstructorA = (InstructorData, setSuccess) => async (dispatch) =
         })
         setSuccess(true)
     } catch (error) {
-
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "CreateInstructorFailure",
             payload: error
@@ -36,7 +37,7 @@ export const GetInstructorsA = (EnrollmentId) => async (dispatch) => {
         })
 
     } catch (error) {
-
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "GetInstructorsFailure",
             payload: error
@@ -57,7 +58,7 @@ export const GetInstituteInstructorsA = () => async (dispatch) => {
         })
 
     } catch (error) {
-
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "GetInstructorsFailure",
             payload: error
@@ -81,7 +82,7 @@ export const GetInstructorStudents = (InstructorId) => async (dispatch) => {
         })
 
     } catch (error) {
-
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "GetInstructorStudentsFailure",
             payload: error
@@ -103,7 +104,7 @@ export const GetSInstructorA = (InstructorId) => async (dispatch) => {
         })
 
     } catch (error) {
-
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "GetSInstructorFailure",
             payload: error

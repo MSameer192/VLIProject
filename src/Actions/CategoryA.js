@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { CheckLoginServer } from '../Helpers/CheckLogin';
 import { BaseUrl } from './Base';
 
 
@@ -8,7 +9,7 @@ export const GetVehicleTypes = () => async (dispatch) => {
         dispatch({
             type: "VehicleTypeRequest",
         })
-        
+
         const { data } = await axios.get(`${BaseUrl}/api/AllVehicleTypes`);
 
         dispatch({
@@ -16,6 +17,7 @@ export const GetVehicleTypes = () => async (dispatch) => {
             payload: data,
         })
     } catch (error) {
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "VehicleTypeError",
             payload: error
@@ -29,7 +31,7 @@ export const GetLicenseTypes = () => async (dispatch) => {
         dispatch({
             type: "LicenseTypeRequest",
         })
-        
+
         const { data } = await axios.get(`${BaseUrl}/api/licensetypes`);
 
         dispatch({
@@ -37,6 +39,7 @@ export const GetLicenseTypes = () => async (dispatch) => {
             payload: data,
         })
     } catch (error) {
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "LicenseTypeError",
             payload: error

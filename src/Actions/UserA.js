@@ -1,4 +1,5 @@
 import axios from "axios";
+import { CheckLoginServer } from "../Helpers/CheckLogin";
 import { DeleteLocalStorage, SetLocalStorage } from "../Helpers/LocalStorage/LocalStorage";
 import { BaseUrl } from "./Base";
 import { AgainOpenLoginSignUp, DoneLoginSignUp } from "./ToggleSignupA";
@@ -27,7 +28,7 @@ export const LoginUser = (UserData, Dispatch, PageName) => async (dispatch) => {
             payload: data.Notifications,
         })
         SetLocalStorage("UserInfo", { ...data.User, Notifications: data.Notifications })
-        // SetLocalStorage("UserInfo", data.User)
+
         Dispatch(DoneLoginSignUp(false))
     } catch (error) {
 
@@ -187,6 +188,7 @@ export const SetUser = (UserInfo) => (dispatch) => {
             })
 
     } catch (error) {
+        CheckLoginServer(error, dispatch)
         dispatch({
             type: "LoginError",
             payload: error,
@@ -210,6 +212,7 @@ export const LogOut = () => async (dispatch) => {
         })
 
     } catch (error) {
+        CheckLoginServer(error, dispatch)
         dispatch({
             type: "LoginError",
             payload: error,
@@ -232,6 +235,7 @@ export const GetWishList = () => async (dispatch) => {
         })
 
     } catch (error) {
+        CheckLoginServer(error, dispatch)
         dispatch({
             type: "GetWishListError",
             payload: error,
@@ -255,6 +259,7 @@ export const RemoveFromWishList = (WishId) => async (dispatch) => {
         })
 
     } catch (error) {
+        CheckLoginServer(error, dispatch)
         dispatch({
             type: "RemoveWishError",
             payload: error,
@@ -277,6 +282,7 @@ export const AddtoWishList = (InstitutetCourseId) => async (dispatch) => {
         })
 
     } catch (error) {
+        CheckLoginServer(error, dispatch)
         dispatch({
             type: "AddToWishListError",
             payload: error,

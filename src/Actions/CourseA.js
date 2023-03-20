@@ -1,4 +1,5 @@
 import axios from "axios"
+import { CheckLoginServer } from "../Helpers/CheckLogin"
 import { BaseUrl } from "./Base"
 import { Credentials } from "./UserA"
 const Headers = { headers: { "Content-Type": "application/json" }, withCredentials: true }
@@ -16,6 +17,7 @@ export const GetCourse = (InstituteCourseId) => async (dispatch) => {
         })
 
     } catch (error) {
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "CourseFailure",
             payload: error
@@ -39,7 +41,7 @@ export const GetLicenseTypeCourse = (LicenseTypeId) => async (dispatch) => {
         })
 
     } catch (error) {
-        console.log(error)
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "LicenceTypeCoursesFailure",
             payload: error
@@ -62,7 +64,7 @@ export const GetVehicleTypeCourse = (VehicleypeId) => async (dispatch) => {
         })
 
     } catch (error) {
-        console.log(error)
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "LicenceTypeCoursesFailure",
             payload: error
@@ -84,7 +86,7 @@ export const GetEnrollCourseInfo = (EnrollCourseId) => async (dispatch) => {
         })
 
     } catch (error) {
-        console.log(error)
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "EnrollCourseFailure",
             payload: error
@@ -106,7 +108,7 @@ export const EnrollIntoCourse = (EnrollmentData, Navigate) => async (dispatch) =
         })
         Navigate('/mycourses/enrolledcourses')
     } catch (error) {
-
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "BuyCoursefailure",
             payload: error
@@ -128,7 +130,7 @@ export const GetEnrolledCourses = () => async (dispatch) => {
         })
 
     } catch (error) {
-        console.log(error)
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "GetEnrolledCoursesFailure",
             payload: error
@@ -150,7 +152,7 @@ export const GetSingleEnrolledCourse = (EnrollmentId) => async (dispatch) => {
         })
 
     } catch (error) {
-
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "GetSEnrolledCoursesFailure",
             payload: error
@@ -172,7 +174,7 @@ export const GetSEnrolledCourse_ForInsA = (EnrollmentId) => async (dispatch) => 
         })
 
     } catch (error) {
-
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "GetSEnrolledCoursesFailure",
             payload: error
@@ -198,7 +200,7 @@ export const GetCourseProgress = (EnrollmentId) => async (dispatch) => {
         })
 
     } catch (error) {
-
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "GetSEnrolledCoursesFailure",
             payload: error
@@ -221,7 +223,7 @@ export const GetAdminCoursesA = () => async (dispatch) => {
         })
 
     } catch (error) {
-
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "GetAdminCoursesFailure",
             payload: error
@@ -255,7 +257,7 @@ export const GetRecommendedAdminCoursesA = () => async (dispatch) => {
         })
 
     } catch (error) {
-
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "GetAdminCoursesFailure",
             payload: error
@@ -290,7 +292,7 @@ export const GetAboutInfoA = (EnrollmentId) => async (dispatch) => {
         })
 
     } catch (error) {
-        console.log(error)
+        CheckLoginServer(error?.response?.data, dispatch);
         dispatch({
             type: "GetAboutClientFailure",
             payload: error
@@ -308,7 +310,7 @@ export const CreateCoursesA = (CourseFormData, setSuccess) => async (dispatch) =
         })
 
         const { data } = await axios.post(`${BaseUrl}/api/institute/course/add`, CourseFormData, Headers);
-        console.log(data)
+
         setSuccess(true)
         dispatch({
             type: "CreateCourseSuccess",
@@ -316,7 +318,7 @@ export const CreateCoursesA = (CourseFormData, setSuccess) => async (dispatch) =
         })
 
     } catch (error) {
-
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "CreateCourseFailure",
             payload: error
@@ -340,7 +342,7 @@ export const InstituteCoursesA = () => async (dispatch) => {
         })
 
     } catch (error) {
-
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "GetInstituteCoursesFailure",
             payload: error
@@ -365,7 +367,7 @@ export const DeleteInstituteCoursesA = (InstituteCourseId) => async (dispatch) =
         })
 
     } catch (error) {
-
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "GetInstituteCoursesFailure",
             payload: error

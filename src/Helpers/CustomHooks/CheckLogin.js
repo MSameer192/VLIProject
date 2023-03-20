@@ -11,7 +11,7 @@ const useCheckLogin = (Navigation, UserType, InstituteUserTypes) => {
     const { Authenticated } = useSelector((Store) => Store.LoginSignupReducer);
     let Institute = CheckInstitute(InstituteUserTypes, UserType)
     let User = CheckUser(UserType)
-
+    let AllowNotLogin = CheckAllowNotLogin(UserType)
     useEffect(() => {
 
         if (GetLocalStorage("UserInfo")) {
@@ -26,12 +26,16 @@ const useCheckLogin = (Navigation, UserType, InstituteUserTypes) => {
                     Navigate('/')
             }
         }
+        else if (!GetLocalStorage("UserInfo") && AllowNotLogin) {
+            return
+        }
+
         else if (!Authenticated || !GetLocalStorage("UserInfo")) {
             if (Navigation)
                 Navigate('/')
         }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [Dispatch, Navigate, Navigation, Institute, Authenticated])
 
 }
@@ -64,15 +68,24 @@ function CheckUser(UserTypes) {
     return checkUser
 }
 
+function CheckAllowNotLogin(UserTypes) {
+    let checkUser
+    UserTypes?.forEach(UserTypeName => {
+        if (UserTypeName === "User") checkUser = true
+    });
+
+    return checkUser
+}
+
 
 export const useSetLoginInfo = () => {
 
     const Dispatch = useDispatch();
     const { Authenticated } = useSelector((Store) => Store.LoginSignupReducer);
-     useEffect(() => {
+    useEffect(() => {
         if (GetLocalStorage("UserInfo")) {
-            Dispatch(SetUser(GetLocalStorage("UserInfo"))) 
-            Dispatch(GeneralEvent(GetLocalStorage("UserInfo").Notifications,"GetNotificationsSuccess"))
+            Dispatch(SetUser(GetLocalStorage("UserInfo")))
+            Dispatch(GeneralEvent(GetLocalStorage("UserInfo").Notifications, "GetNotificationsSuccess"))
         }
     }, [Dispatch])
 }

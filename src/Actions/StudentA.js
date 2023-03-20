@@ -1,4 +1,5 @@
 import axios from "axios";
+import { CheckLoginServer } from "../Helpers/CheckLogin";
 import { BaseUrl } from "./Base";
 import { Credentials } from "./UserA";
 
@@ -9,7 +10,7 @@ export const GetStudentsA = () => async (dispatch) => {
         })
 
         const { data } = await axios.get(`${BaseUrl}/api/Enrolled/students`, Credentials);
-        console.log(data)
+
         dispatch({
             type: "GetStudentsListSuccess",
             payload: data,
@@ -17,7 +18,7 @@ export const GetStudentsA = () => async (dispatch) => {
 
 
     } catch (error) {
-
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "GetStudentsListError",
             payload: error
@@ -39,7 +40,7 @@ export const GetClassScheduleA = (EnrollmentId) => async (dispatch) => {
 
 
     } catch (error) {
-
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "GetClassScheduleError",
             payload: error
@@ -61,7 +62,7 @@ export const CreateScheduleA = (Events) => async (dispatch) => {
 
 
     } catch (error) {
-
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "CreateScheduleError",
             payload: error
@@ -85,7 +86,7 @@ export const GetScheduleA = (EnrollmentId) => async (dispatch) => {
 
 
     } catch (error) {
-
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "GetTimeTableError",
             payload: error
@@ -102,7 +103,7 @@ export const GetSubscriptionStatus = (EnrollmentId) => async (dispatch) => {
             type: "SubscriptionRequest"
         })
         const { data } = await axios.get(`${BaseUrl}/api/Status/payment/${EnrollmentId}`, Credentials);
-        // console.log(data)
+
         dispatch({
             type: "SubscriptionSuccess",
             payload: data,
@@ -110,7 +111,7 @@ export const GetSubscriptionStatus = (EnrollmentId) => async (dispatch) => {
 
 
     } catch (error) {
-
+        CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
             type: "SubscriptionFailure",
             payload: error

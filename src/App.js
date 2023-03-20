@@ -46,6 +46,8 @@ import RecommendCourse from './Pages/Institute/RecommendCourse/RecommendCourse';
 import UpdateInstructor from './Pages/Institute/AddInstructor/UpdateInstructor';
 import RecommendedCoursesByAdmin from './Pages/Institute/RecommendedCoursesByAdmin/RecommendedCoursesByAdmin';
 import { BaseUrl } from './Actions/Base';
+import EBooks from './Pages/EBooks/EBooks';
+import { getCookie } from './Helpers/Cookies/Cookies';
 
 
 
@@ -78,7 +80,7 @@ function App() {
   useSetLoginInfo()
 
 
-
+  console.log(getCookie("token"))
   const Home = !GetLocalStorage("UserInfo")?.User || UserInfo?.User === "Student"
     ? <LandingPage /> :
     GetLocalStorage("UserInfo")?.User === "Institute" || GetLocalStorage("UserInfo")?.User === "Admin" ?
@@ -95,6 +97,7 @@ function App() {
 
         <Routes>
           <Route path='/' element={Home} />
+          <Route path='/Ebooks' element={<EBooks />} />
           <Route path='/course/:InstituteCourseId' element={<CourseOverview />} />
           <Route path='/license/category/:LicenseTypeId' element={<CourseCategory />} />
           <Route path='/vehicle/category/:VehicleTypeId' element={<CourseCategory />} />
