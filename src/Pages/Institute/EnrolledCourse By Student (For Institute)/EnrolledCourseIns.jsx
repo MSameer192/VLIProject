@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { GetSEnrolledCourse_ForInsA } from '../../../Actions/CourseA'
 import InstituteTemplate from '../../../Components/InstituteTemplate/InstituteTemplate'
+import LoadingSpinner from '../../../Components/LoadingSpinner/LoadingSpinner'
 import MyCourses from '../../../Components/MyCourses/MyCourses'
 import useCheckLogin from '../../../Helpers/CustomHooks/CheckLogin'
 import { InsEnrolledCourseButtons } from '../../../PageNames'
@@ -13,7 +14,7 @@ import CourseSubscription from './SubscriptionStatus/CourseSubscription'
 
 const EnrolledCourseInsChild = () => {
     const [ShowSubscription, setShowSubscription] = useState()
-    const { SEnrolledCourse } = useSelector(Store => Store.CourseReducer);
+    const { SEnrolledCourse, loading } = useSelector(Store => Store.CourseReducer);
     const { EnrollmentId } = useParams();
     const Dispatch = useDispatch();
 
@@ -25,25 +26,30 @@ const EnrolledCourseInsChild = () => {
 
     useCheckLogin(true, ["Institute"], ["Staff", "Admin"]);
     return (
-        <div className='flex flex-col items-center gap-24 relative'>
-            {ShowSubscription ? <CourseSubscription setShowSubscription={setShowSubscription} /> : null}
-            <div className='flex flex-col w-11/12 2xl:w-4/5'>
-                <EnrolledCourseInfo Course={SEnrolledCourse} setShowSubscription={setShowSubscription} />
+        loading
+            ? <LoadingSpinner />
+            : <div className='flex flex-col items-center gap-24 relative mb-20'>
+
+                {ShowSubscription ? <CourseSubscription setShowSubscription={setShowSubscription} /> : null}
+                <div className='flex flex-col w-11/12 2xl:w-4/5'>
+                    <EnrolledCourseInfo Course={SEnrolledCourse} setShowSubscription={setShowSubscription} />
+                </div>
+                <div className='flex items-center justify-center'>
+                    <SEnrolledCourseInfo SEnrolledCourse={SEnrolledCourse} />
+                </div>
             </div>
-            <div className='flex items-center justify-center'>
-                <SEnrolledCourseInfo SEnrolledCourse={SEnrolledCourse} />
-            </div>
-        </div>
     )
 }
 
 
 const EnrolledCourseInsPage = () =>
-    <MyCourses ButtonsInfo={InsEnrolledCourseButtons} PageName="EnrolledCourse" Component={EnrolledCourseInsChild} />
+    <MyCourses ButtonsInfo={InsEnrolledCourseButtons} PageName="EnrolledCourse"
+        HideFooter={true}
+        Component={EnrolledCourseInsChild} />
 
 const EnrolledCourseIns = () => {
 
-    return (<InstituteTemplate Element={EnrolledCourseInsPage} />)
+    return (<InstituteTemplate Element={EnrolledCourseInsPage} m_top="mt-0" />)
 }
 
 

@@ -54,7 +54,7 @@ export const InsEnrolledCourseButtons = {
             params:true
         },
         {
-            Link: '/enrolledcourse/EnrolledCourse',
+            Link: '/enrolledcourse',
             Id: "EnrolledCourse",
             Text: "Enrolled Course",
             params:true

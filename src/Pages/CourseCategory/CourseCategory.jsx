@@ -13,6 +13,7 @@ import { GetLicenseTypeCourse, GetVehicleTypeCourse } from '../../Actions/Course
 import Filter from './FIlter';
 import useCheckLogin from '../../Helpers/CustomHooks/CheckLogin';
 import useGetWishList from '../../Helpers/CustomHooks/useGetWishList';
+import LoadingSpinner from '../../Components/LoadingSpinner/LoadingSpinner';
 
 const CourseCategory = () => {
     const { LicenseTypeId, VehicleTypeId } = useParams()
@@ -33,6 +34,7 @@ const CourseCategory = () => {
     return (
 
         <div className='mt-20 overflow-hidden'>
+
 
             <IntroPart Courses={Courses} />
             <Filter />
@@ -71,7 +73,8 @@ const CourseCategory = () => {
                         : VehicleTypeId
                             ? <ClassG1Licensing Types={Courses} />
                             : null
-                    : null
+                    :
+                    <LoadingSpinner />
             }
 
 

@@ -21,7 +21,7 @@ const markers = [
 export default function GeoGraph() {
   return (
     <div className="w-[100%] h-[100%]">
-      <ComposableMap style={{ width: "100%", height: "100%" }}>
+      <ComposableMap style={{ width: "100%", height: "100%", fill: "#8787f9" }}>
         <Geographies geography={geoUrl}>
           {({ geographies }) =>
             geographies.map((geo) => (

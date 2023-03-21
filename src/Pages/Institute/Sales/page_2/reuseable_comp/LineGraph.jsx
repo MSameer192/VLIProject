@@ -23,7 +23,7 @@ function LineChart(props) {
         },
       }}
       data={data}
-      margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+      margin={{ top: 50, right: 25, bottom: 50, left: 60 }}
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",
@@ -32,10 +32,11 @@ function LineChart(props) {
         stacked: false,
         reverse: false,
       }}
-      yFormat=">-.5"
-      gridYValues={gridYValues}
+      yFormat=" >-.2f"
+      // yFormat=">-.5"
       axisTop={null}
       axisRight={null}
+      gridYValues={gridYValues}
       axisBottom={{
         orient: "bottom",
         tickSize: 0,

@@ -80,7 +80,7 @@ function App() {
   useSetLoginInfo()
 
 
-  console.log(getCookie("token"))
+
   const Home = !GetLocalStorage("UserInfo")?.User || UserInfo?.User === "Student"
     ? <LandingPage /> :
     GetLocalStorage("UserInfo")?.User === "Institute" || GetLocalStorage("UserInfo")?.User === "Admin" ?
@@ -136,8 +136,7 @@ function App() {
           <Route path='/Admin/course/recommend' element={<RecommendCourse />} />
           <Route path='/courses/recommended' element={<RecommendedCoursesByAdmin />} />
 
-          <Route path='/enrolledcourse/PaymentSetting/:EnrollmentId'
-            element={<MyCourses ButtonsInfo={InsEnrolledCourseButtons} PageName="PaymentSetting" Component={PaymentSettings} />} />
+          <Route path='/enrolledcourse/PaymentSetting/:EnrollmentId' element={<PaymentSettings />} />
 
           <Route path='/enrolledcourse/upcomingclasses/:EnrollmentId'
             element={<MyCourses ButtonsInfo={EnrolledCourseButtonsInfo} PageName="UpcomingClasses" Component={ClassesSchedule} />} />

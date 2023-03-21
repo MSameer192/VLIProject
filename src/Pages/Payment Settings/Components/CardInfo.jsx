@@ -13,6 +13,7 @@ export const CardInfo = () => {
             ButtonText="Edit payment information" />
     )
 }
+
 export const PackageDetails = () => {
     const Content = () => <h3 className={`text-[#4D4F5C] ${TextResponsiveStyle} SemiBold`}>12 hours Driving , 5 hours online , 4 hours in Class for 300 $</h3>
 
