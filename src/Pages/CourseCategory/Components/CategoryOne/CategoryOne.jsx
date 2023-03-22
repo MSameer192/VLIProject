@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import CoursesSlider from "../../../Components/CourseSlider/CourseSlider";
-import NoDataResponse from "../../../Components/NoDataResponse";
+import CoursesSlider from "../../../../Components/CourseSlider/CourseSlider";
+import NoDataResponse from "../../../../Components/NoDataResponse";
 import CourseTiles from "../CourseTiles/CourseTiles";
 
 let ClassNames = `relative   duration-300 flex items-start
@@ -12,7 +11,7 @@ let ClassNames = `relative   duration-300 flex items-start
                     justify-start   sm:justify-around   lg:justify-start
                     gap-7                               lg:gap-x-8 lg:gap-y-16
                     `;
-const ClassG1Licensing = ({ Types }) => {
+const CategoryOne = ({ Types }) => {
   const { LicenseTypeId } = useParams();
   const [CoursesInfo, setCoursesInfo] = useState([]);
   const Courses = Types?.Courses;
@@ -36,19 +35,20 @@ const ClassG1Licensing = ({ Types }) => {
         </div>
       ) : null}
 
-      {!CoursesInfo?.length || CoursesInfo?.length === 0 ? (
-        <NoDataResponse topText={"Top Text"} bottomText={"bottom text"} />
-      ) : (
-        <CoursesSlider
+      {!CoursesInfo?.length || CoursesInfo?.length === 0
+
+        ? <NoDataResponse topText={"Top Text"} bottomText={"bottom text"} />
+        
+        : <CoursesSlider
           CoursesInfo={CoursesInfo}
           ClassNames={ClassNames}
           CourseTiles={CourseTiles}
           NavigateBtnClass="G1Licensing"
           SwitchSize={"sm"}
         />
-      )}
+      }
     </div>
   );
 };
 
-export default ClassG1Licensing;
+export default CategoryOne;

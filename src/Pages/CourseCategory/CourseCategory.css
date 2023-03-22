@@ -4,7 +4,7 @@
 }
 
 .StatsBG {
-    background-image: url('./4.ClassG2Licensing/Assets/Class\ G2\ BG.png');
+    background-image: url('./Components/CategoryTwo/Assets/Class\ G2\ BG.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50%;
@@ -17,7 +17,7 @@
 }
 
 .ClassG2BG {
-    background-image: url('./4.ClassG2Licensing/Assets/Class\ G2\ BG.png');
+    background-image: url('./Components/CategoryTwo/Assets/Class\ G2\ BG.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

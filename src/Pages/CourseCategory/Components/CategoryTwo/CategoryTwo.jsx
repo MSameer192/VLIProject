@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import CoursesSlider from '../../../Components/CourseSlider/CourseSlider'
+import CoursesSlider from '../../../../Components/CourseSlider/CourseSlider'
 import CourseTiles from '../CourseTiles/CourseTiles'
 let ClassNames = `relative   duration-300 flex items-start
 w-[95%]                             lg:w-11/12                  xl:w-[90%]        
@@ -7,11 +7,11 @@ flex-nowrap     sm:flex-wrap
 justify-start   sm:justify-around   lg:justify-between
 gap-7                               lg:gap-x-8 lg:gap-y-16  
 `
-const ClassG2Licensing = ({ LicenseType, NextSubLicenseType }) => {
+const CategoryTwo = ({ LicenseType, NextSubLicenseType }) => {
     const [PopularCoursesInfo, setPopularCourses] = useState([])
 
-    const  Courses = LicenseType?.Courses
- 
+    const Courses = LicenseType?.Courses
+
     useEffect(() => {
         setPopularCourses(Courses)
     }, [Courses])
@@ -52,11 +52,12 @@ function LicenseType3Detail({ LicenseType }) {
 
 function BG() {
     return <div className='absolute -z-20 flex justify-center items-center h-full  min-w-full    border-black border-solid'>
-        <picture className=''>
-            <source className='relative -left-1/2' media="(max-width:639px)" srcSet={require("../../LandingPage/PopularCourses/Assets/Shape.svg").default} />
-            <img className='h-[125%] relative sm:static -left-[40%] -top-[20%] ' src={require('../4.ClassG2Licensing/Assets/Class G2 BG.png')} alt="" />
+        <picture>
+            <source className='relative -left-1/2' media="(max-width:639px)"
+                srcSet={require("../../../LandingPage/PopularCourses/Assets/Shape.svg").default} />
+            <img className='h-[125%] relative sm:static -left-[40%] -top-[20%] '
+                src={require('./Assets/Class G2 BG.png')} alt="" />
         </picture>
-
     </div>
 }
-export default ClassG2Licensing
+export default CategoryTwo

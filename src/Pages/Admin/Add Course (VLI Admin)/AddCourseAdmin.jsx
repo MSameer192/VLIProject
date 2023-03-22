@@ -52,7 +52,7 @@ const AddCourseAdminChild = () => {
                 text-4xs sm:text-3xs md:text-2xs lg:text-xs xl:text-sm 2xl:text-base
                 py-2    md:py-2                 xl:py-3     
                 px-3    md:px-4     lg:px-5     xl:px-6     2xl:px-7
-                BrandingButton`} type="submit">
+                BrandingButton`} type="button">
                     Preview Course
                 </button>
                 <button className={`rounded-2xl whitespace-nowrap

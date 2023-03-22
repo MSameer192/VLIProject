@@ -1,5 +1,5 @@
 import React from 'react'
-import { EbookImage, EbookInfo } from './EbookTile'
+import EbookTile from './EbookTile'
 
 const EbooksList = ({ BooksArr, Heading, ImgSrc }) => {
 
@@ -14,24 +14,17 @@ const EbooksList = ({ BooksArr, Heading, ImgSrc }) => {
                 </div>
 
 
-                <div>
-                    <div className='flex flex-wrap justify-center gap-2 w-4/5 EbooksContainerBg'>
-                        {
-                            BooksArr?.map(value => {
+                <div className='flex'>
 
-                                return <EbookImage key={value.BookId + "Image"} BookCover={value.BookCover} BookTitle={value.BookTitle} />
-                            })
-                        }
-                    </div>
-                    <div>
-                        {
-                            BooksArr?.map(value => {
 
-                                return <EbookInfo key={value.BookId + "Info"} Price={value.Price} />
-                            })
-                        }
-                    </div>
+                    {BooksArr?.map(value => {
+
+                        return <EbookTile BookTitle={value.BookTitle} BookCover={value.BookCover}
+                            Price={value.Price} />
+                    })}
                 </div>
+
+
             </div>
             : null
     )

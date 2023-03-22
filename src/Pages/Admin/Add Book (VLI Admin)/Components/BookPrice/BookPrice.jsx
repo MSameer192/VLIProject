@@ -1,7 +1,29 @@
 import React from 'react'
 import InputNumber from '../../../Components/InputNumber/InputNumber'
 
-const BookPrice = ({ setBookData, BookData }) => {
+const BookPrice = ({ setBookData, BookData, setErr, Err }) => {
+    const OnChange = e => {
+        const BookePrice = Number(e.target.value)
+        if (e.target.value === "") {
+            setBookData({ ...BookData, Price: e.target.value })
+            setErr({ ...Err, Price: "Price is required" })
+        }
+        else if (!isNaN(e.target.value)) {
+            if (BookePrice > 0) {
+                delete Err.Price
+                setErr(Err)
+                setBookData({ ...BookData, Price: parseFloat(e.target.value) })
+            }
+            else if (BookePrice < 0) {
+                setBookData({ ...BookData, Price: e.target.value })
+                setErr({ ...Err, Price: "Price must be greater than 0" })
+            }
+        }
+        else if (isNaN(e.target.value)) {
+            setBookData({ ...BookData, Price: e.target.value })
+            setErr({ ...Err, Price: "Price can only be in number" })
+        }
+    }
     return (
         <div className='DataInputContainer'>
 
@@ -17,7 +39,7 @@ const BookPrice = ({ setBookData, BookData }) => {
 
             <div className='Add_C_B_InputSideContainer max-w-[230px]'>
                 <InputNumber Id="price" Placeholder="200 $"
-                    OnChange={e => { setBookData({ ...BookData, Price: parseFloat(e.target.value) }) }}
+                    OnChange={OnChange}
                 />
             </div>
 

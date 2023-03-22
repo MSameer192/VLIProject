@@ -6,10 +6,10 @@ export function RatingBtns({ value }) {
     gap-3 md:gap-4 lg:gap-4 xl:gap-8 2xl:gap-10 `}>
         <div className='flex flex-col'>
             <span className='flex gap-1'>{[...new Array(5)].map((value, index) => {
-                return <img className='w-5' key={index + .6} src={require('../../CourseOverview/Assets/StarIcon.svg').default} alt='' />
+                return <img className='w-5' key={index + .6} src={require('../../../CourseOverview/Assets/StarIcon.svg').default} alt='' />
             })}</span>
             <span className='SemiBold text-2xs'>
-                <img className='w-5' src={require('../../LandingPage/PopularCourses/Assets/Thumb Icon.svg').default} alt="" /> 100%</span>
+                <img className='w-5' src={require('../../../LandingPage/PopularCourses/Assets/Thumb Icon.svg').default} alt="" /> 100%</span>
         </div>
         <span>
 

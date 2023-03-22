@@ -33,8 +33,6 @@ function InsStaffAdminDashboard() {
 
                 <RecentCourses setEdit={setEdit} setInstituteCourseId={setInstituteCourseId} />
 
-
-
               </div>
               <div className="flex flex-col">
                 <GeographyGraph />

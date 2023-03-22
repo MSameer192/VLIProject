@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { InstituteCoursesA } from "../../../../../Actions/CourseA";
 import { GeneralEvent } from "../../../../../Actions/Events/FilterA";
 import { SocketContext } from "../../../../../App";
+import LoadingSpinner from "../../../../../Components/LoadingSpinner/LoadingSpinner";
+import NoDataResponse from "../../../../../Components/NoDataResponse";
 import CoursesTiles from "./Components/CoursesTiles";
 
 function RecentCourses({ setInstituteCourseId, setEdit }) {
@@ -29,6 +31,7 @@ function RecentCourses({ setInstituteCourseId, setEdit }) {
     setEdit(true);
     setInstituteCourseId(Id);
   };
+
   return (
     <div className="bg-[#F7F7F7] p-4 box-border">
       <div className=" px-[42px] pt-5  border-2 ">
@@ -75,11 +78,25 @@ function RecentCourses({ setInstituteCourseId, setEdit }) {
         </div>
         {/* recent courses list */}
         <div className="bg-white  px-[21px] py-[37px]">
-          <CoursesTiles
-            Courses={Courses}
-            loading={loading}
-            OnClick={CourseEditClick}
-          />
+          {
+            loading ?
+              <LoadingSpinner />
+              : Courses?.length === 0 ?
+                <NoDataResponse
+                  topText="Sorry, courses aren't published yet!"
+                  bottomText="Admin/Institute can add courses by click on the 'Create Course' button from Dashboard."
+                />
+                :
+                <>
+
+                  <CoursesTiles
+                    Courses={Courses}
+                    loading={loading}
+                    OnClick={CourseEditClick}
+                  />
+                </>
+          }
+
         </div>
       </div>
     </div>

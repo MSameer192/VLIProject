@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { BaseUrl } from '../../../Actions/Base'
-import { OpenLoginSignUp } from '../../../Actions/ToggleSignupA';
-import { AddtoWishList, RemoveFromWishList } from '../../../Actions/UserA';
+import { BaseUrl } from '../../../../Actions/Base'
+import { OpenLoginSignUp } from '../../../../Actions/ToggleSignupA';
+import { AddtoWishList, RemoveFromWishList } from '../../../../Actions/UserA';
 
 
 function ImageAndPrice({ value, Image }) {
@@ -72,7 +72,7 @@ function ImagePortion({ Image, InstituteCourseId }) {
             >
                 {
                     !Wish
-                        ? <img className='h-6 relative -top-[2px] md:top-0 md:h-auto' src={require('../../LandingPage/PopularCourses/Assets/Favourite Icon.svg').default} alt=""
+                        ? <img className='h-6 relative -top-[2px] md:top-0 md:h-auto' src={require('../../../LandingPage/PopularCourses/Assets/Favourite Icon.svg').default} alt=""
                             onClick={AddToWishlist}
                         />
                         : <img className='h-6 relative -top-[2px] md:top-0 md:h-auto' src={require('../Assets/CarIcon.svg').default} alt=""

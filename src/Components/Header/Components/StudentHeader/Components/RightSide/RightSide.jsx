@@ -11,11 +11,11 @@ function StudentRightSide({ setShowSidebar, ShowSidebar }) {
 
     return <nav
         style={{ left: ShowSidebar ? "-48px" : "-2000px" }}
-        className={`RightSideAndSideBar SideBarBG`}
+        className="RightSideAndSideBar SideBarBG"
     >
         {/* Common */}
         <Link className="HeaderRightSide-LinkStyle SemiBold" to='/Ebooks'>E-Books</Link>
-        <Link className="HeaderRightSide-LinkStyle SemiBold" to='/Institutes'>Institutes</Link>
+        {/* <Link className="HeaderRightSide-LinkStyle SemiBold" to='/Institutes'>Institutes</Link> */}
         <Link className="HeaderRightSide-LinkStyle SemiBold relative" to='/Courses'> Courses
             <sub style={{ fontSize: 30, position: "absolute", bottom: "-17px", right: "-18px" }}>&#8963;</sub>
         </Link>

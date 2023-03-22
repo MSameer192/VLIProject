@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { GetStudentBooksA } from '../../Actions/BookA'
 import Footer from '../../Components/Footer/Footer'
 import useCheckLogin from '../../Helpers/CustomHooks/CheckLogin'
-import BookTile from '../Admin/E-Book list/Components/BookTile/BookTile'
 import BookTypes from './Components/BookTypes'
 import EbooksList from './Components/EbooksList/EbooksList'
 import BooksFilter from './Components/Filter/Filter'
@@ -18,7 +17,7 @@ const EBooks = () => {
   useEffect(() => {
     Dispatch(GetStudentBooksA())
   }, [Dispatch])
-console.log(document.cookie)
+
   useCheckLogin(true, ["Student", "User"])
   return (
     <div className='mt-20 flex items-center flex-col'>
@@ -42,7 +41,6 @@ console.log(document.cookie)
         ImgSrc={require('./Assets/Free.svg').default}
 
       />
-
 
 
       <Footer />

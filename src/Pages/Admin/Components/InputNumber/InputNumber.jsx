@@ -1,5 +1,5 @@
 import './InputNumber.css'
-const InputNumber = ({ Id, Placeholder, OnChange }) => {
+const InputNumber = ({ Id, Placeholder, OnChange,State }) => {
     const AddParentStyle = (e) => e.target.parentNode.style = "border:2px solid #A1A3EF";
     const RemoveParentStyle = (e) => e.target.parentNode.style = "border:2px solid #a1a4ef00";
 
@@ -13,6 +13,7 @@ const InputNumber = ({ Id, Placeholder, OnChange }) => {
 
         <label className='NumberTextContainer' htmlFor={Id}>
             <input type="text" id={Id} className='NumberText' placeholder={Placeholder}
+                value={State}
                 onFocus={AddParentStyle}
                 onBlur={RemoveParentStyle}
                 onChange={OnChangeFun}

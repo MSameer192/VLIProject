@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { GeneralEvent } from '../../Actions/Events/FilterA';
 import { SetSocketA } from '../../Actions/SocketA';
@@ -27,7 +27,6 @@ const useSetSocket = (Socket) => {
                 Dispatch(SetSocketA({ UserId: uuidV4(), Authenticated: false }))
 
         }
-
 
     }, [Socket, Authenticated, Dispatch, UserInfo, SocketUserId])
 }

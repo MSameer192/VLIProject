@@ -20,7 +20,18 @@ import '../Css/Course_E-Book_Inputs.css'
 import BookRating from './Components/BookRating/BookRating'
 const AddBookAdminChild = () => {
     const [BookData, setBookData] = useState({
-
+        BookTitle: "",
+        AurhorName: "",
+        E_BookCategory: "",
+        PossibleKeywords: "",
+        AboutBook: "",
+        BookRating: "",
+        BookCover: "",
+        BookType: "",
+        Copies: "",
+        Price: "",
+        DevliveryCharges: "",
+        PublishDate: ""
     });
     const [Err, setErr] = useState({})
     const [Success, setSuccess] = useState()
@@ -39,29 +50,29 @@ const AddBookAdminChild = () => {
                         <h2 className='text-sm font-normal'>Overview</h2>
                     </span>
                     <div className='flex w-full flex-col gap-7'>
-                        <EbookTitle setBookData={setBookData} BookData={BookData} />
-                        <AuthorName setBookData={setBookData} BookData={BookData} />
-                        <EBookCategory setBookData={setBookData} BookData={BookData} />
-                        <SearchTags setBookData={setBookData} BookData={BookData} />
-                        <AboutBook setBookData={setBookData} BookData={BookData} />
-                        <BookRating setBookData={setBookData} BookData={BookData}/>
-                        <BookCover setBookData={setBookData} BookData={BookData} />
-                        <BookType setBookData={setBookData} BookData={BookData} />
-                        <Copies setBookData={setBookData} BookData={BookData} />
-                        <BookPrice setBookData={setBookData} BookData={BookData} />
-                        <DeliveryCharges setBookData={setBookData} BookData={BookData} />
-                        <PublishDate setBookData={setBookData} BookData={BookData} />
+                        <EbookTitle setBookData={setBookData} BookData={BookData} Err={Err} setErr={setErr} />
+                        <AuthorName setBookData={setBookData} BookData={BookData} Err={Err} setErr={setErr} />
+                        <EBookCategory setBookData={setBookData} BookData={BookData} Err={Err} setErr={setErr} />
+                        <SearchTags setBookData={setBookData} BookData={BookData} Err={Err} setErr={setErr} />
+                        <AboutBook setBookData={setBookData} BookData={BookData} Err={Err} setErr={setErr} />
+                        <BookRating setBookData={setBookData} BookData={BookData} Err={Err} setErr={setErr} />
+                        <BookCover setBookData={setBookData} BookData={BookData} Err={Err} setErr={setErr} />
+                        <BookType setBookData={setBookData} BookData={BookData} Err={Err} setErr={setErr} />
+                        <Copies setBookData={setBookData} BookData={BookData} Err={Err} setErr={setErr} />
+                        <BookPrice setBookData={setBookData} BookData={BookData} Err={Err} setErr={setErr} />
+                        <DeliveryCharges setBookData={setBookData} BookData={BookData} Err={Err} setErr={setErr} />
+                        <PublishDate setBookData={setBookData} BookData={BookData} Err={Err} setErr={setErr} />
                     </div>
                 </div>
             </div>
             <div className='flex justify-center sm:justify-end w-[88%] gap-7 mt-12'>
-                <button type='button' className={`rounded-2xl whitespace-nowrap
+                {/* <button type='button' className={`rounded-2xl whitespace-nowrap
                 text-4xs sm:text-3xs md:text-2xs lg:text-xs xl:text-sm 2xl:text-base
                 py-2    md:py-2                 xl:py-3     
                 px-3    md:px-4     lg:px-5     xl:px-6     2xl:px-7
                 BrandingButton`}>
-                    Preview Course
-                </button>
+                    Preview Book
+                </button> */}
                 <button type='submit' className={`rounded-2xl whitespace-nowrap
                 text-4xs sm:text-3xs md:text-2xs lg:text-xs xl:text-sm 2xl:text-base
                 py-2    md:py-2                 xl:py-3     
@@ -82,7 +93,7 @@ const SubmitFormData = (e, BookData, Err, setErr, Dispatch, setSuccess) => {
     e.preventDefault();
     let Errors = {}
     e.preventDefault();
-    const CourseFormData = new FormData();
+    const EBookFormData = new FormData();
 
     for (let [key, value] of Object.entries(BookData)) {
         if (!value) Errors[key] = true
@@ -94,12 +105,12 @@ const SubmitFormData = (e, BookData, Err, setErr, Dispatch, setSuccess) => {
         return
 
 
-    CourseFormData.append("BookCover", BookData.BookCover);
+    EBookFormData.append("BookCover", BookData.BookCover);
     delete BookData.CourseThumbnail;
-    CourseFormData.append("VehicleInfo", JSON.stringify(BookData));
+    EBookFormData.append("BookInfo", JSON.stringify(BookData));
 
 
-    Dispatch(AddBookA(CourseFormData, setSuccess))
+    Dispatch(AddBookA(EBookFormData, setSuccess))
 }
 
 

@@ -5,11 +5,11 @@ import { useRef } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { FilterCourses } from '../../Actions/Events/FilterA';
-import { SocketContext } from '../../App';
+import { GeneralEvent } from '../../../../Actions/Events/GeneralEvent';
+import { SocketContext } from '../../../../App';
 
 import './Filter.css'
-const FIlter = () => {
+const Filter = () => {
     const [FilterValue, setFilterValue] = useState();
     const { Courses } = useSelector((Store) => Store.CourseReducer)
     const { LicenseTypeId } = useParams()
@@ -23,13 +23,13 @@ const FIlter = () => {
             Socket.emit("LicenseSortCourse", { LicenseTypeId: Courses?.LicenseTypeId, FilterValue: e.target.value })
         else
             Socket.emit("VehicleSortCourse", { VehicleTypeId: Courses?.VehicleTypeId, FilterValue: e.target.value })
-        Dispatch(FilterCourses(null, "LicenceTypeCoursesRequest"))
+        Dispatch(GeneralEvent(null, "LicenceTypeCoursesRequest"))
     }
 
     useEffect(() => {
 
         Socket?.on("ReceiveSortedCourse", data => {
-            Dispatch(FilterCourses(data, "LicenceTypeCoursesSuccess"))
+            Dispatch(GeneralEvent(data, "LicenceTypeCoursesSuccess"))
         })
     }, [Socket, Dispatch, Courses])
 
@@ -98,4 +98,4 @@ function FilterComp() {
     </div>
 
 }
-export default FIlter
+export default Filter

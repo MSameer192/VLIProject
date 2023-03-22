@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import CoursesSlider from '../../../Components/CourseSlider/CourseSlider'
+import CoursesSlider from '../../../../Components/CourseSlider/CourseSlider'
 import CourseTiles from '../CourseTiles/CourseTiles'
 let ClassNames = `relative   duration-300 flex items-start
 w-[95%]                             lg:w-11/12                  xl:w-[90%]        
@@ -8,7 +8,7 @@ flex-nowrap     sm:flex-wrap
 justify-start   sm:justify-around   lg:justify-between
 gap-7                               lg:gap-x-8 lg:gap-y-16  
 `
-const ClassGLicensing = ({ LicenseType }) => {
+const OtherCategories = ({ LicenseType }) => {
     const [PopularCoursesInfo, setPopularCourses] = useState([])
 
     const { Courses } = LicenseType?.Courses
@@ -26,4 +26,4 @@ const ClassGLicensing = ({ LicenseType }) => {
     )
 }
 
-export default ClassGLicensing
+export default OtherCategories

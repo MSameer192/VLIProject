@@ -21,7 +21,7 @@ const EbookListChild = () => {
                     {
                         Books.length > 0
                             ? Books.map((value) => {
-                                console.log(value)
+
                                 return <BookTile
                                     BookRating={value.BookRating}
                                     BookTitle={value.BookTitle}

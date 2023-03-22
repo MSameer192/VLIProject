@@ -1,4 +1,4 @@
-import { BaseUrl } from '../../../../Actions/Base'
+import { BaseUrl } from '../../../../../Actions/Base'
 
 export function Tiles({ Heading, Detail, IMG }) {
 
@@ -25,7 +25,7 @@ export function Tiles({ Heading, Detail, IMG }) {
         <div className='z-10 w-12 h-12 rounded-[24px] absolute right-3 bottom-3 bg-[#A1A3EF] cursor-pointer btnShadow'>
             <img
                 className='z-10 absolute left-[13px] top-[18px]  hover:'
-                src={require('../../../LandingPage/LicenseTypes/Assets/Arrow Icon.svg').default}
+                src={require('../../../../LandingPage/LicenseTypes/Assets/Arrow Icon.svg').default}
                 alt="" />
         </div>
     </div>

@@ -1,23 +1,36 @@
 import { useEffect, useState } from "react";
 
-export function Tags({ State, setState }) {
+export function Tags({ State, setState, Err, setErr }) {
     const [Tags, setTags] = useState([])
     const CreateTag = (e) => {
+
         const { value } = e.target;
-        if (e.key === "Backspace" && Tags.length > 0 && value === "") 
-            setTags(Tags.filter((value, index, arr) => index < (arr.length - 1)))
-        
+
+        if (e.key === "Backspace" && Tags.length > 0 && value === "") {
+            const NewTagsArr = Tags.filter((value, index, arr) => index < (arr.length - 1))
+            setTags(NewTagsArr);
+            if (NewTagsArr.length <= 0)
+                setErr({ ...Err, PossibleKeywords: "Please enter at least one keyword" })
+
+        }
         else if (e.key === "Enter" || e.key === " ") {
 
-            if (!value.trim()) return
+            if (!value.trim()) return;
+            else if (Tags.length >= 5) {
+                setErr({ ...Err, PossibleKeywords: "Maximum 5 keywords are allowed" })
+                return
+            }
             setTags([...Tags, value.trim()])
             e.target.value = ""
+            delete Err.PossibleKeywords
         }
+
     }
     useEffect(() => {
         setState({ ...State, PossibleKeywords: Tags })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [Tags])
+
 
     return <div className="w-full gap-[22px] px-3 py-2 bg-white min-h-[96px] flex flex-wrap">
         {Tags?.map(value =>
