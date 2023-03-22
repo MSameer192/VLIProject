@@ -28,8 +28,10 @@ const AboutBook = ({ BookData, setBookData, Err, setErr }) => {
 
             <span className=' max-w-[730px] Add_C_B_InputSideContainer'>
                 <textarea className='h-24 Add_C_BTextArea' name="" id="" cols="30" rows="10"
+                    value={BookData.AboutBook}
                     onChange={OnChange}
                 ></textarea>
+                <p className='text-[12px] h-6 text-[red]'>{Err.AboutBook ? Err.AboutBook : ""} </p>
                 <p className='text-[12px] text-[#070707] text-right'>100 characters</p>
             </span>
         </div>

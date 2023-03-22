@@ -45,6 +45,7 @@ const BookRating = ({ setBookData, BookData, Err, setErr }) => {
                     State={BookData.BookRating}
                     OnChange={OnChange}
                 />
+                
                 <p className='text-[12px] h-6 text-[red]'>{Err.BookRating ? Err.BookRating : ""} </p>
             </div>
 

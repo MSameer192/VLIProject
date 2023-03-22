@@ -39,8 +39,10 @@ const BookPrice = ({ setBookData, BookData, setErr, Err }) => {
 
             <div className='Add_C_B_InputSideContainer max-w-[230px]'>
                 <InputNumber Id="price" Placeholder="200 $"
+                    State={BookData.Price}
                     OnChange={OnChange}
                 />
+                <p className='text-[12px] h-6 text-[red]'>{Err.Price ? Err.Price : ""} </p>
             </div>
 
 

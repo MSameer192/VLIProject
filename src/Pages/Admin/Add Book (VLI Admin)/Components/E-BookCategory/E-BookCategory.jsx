@@ -4,7 +4,7 @@ import BookCategoryOptions from './BookCategoryOptions'
 
 const EBookCategory = ({ BookData, setBookData, Err, setErr }) => {
     const OnChange = target => {
-        if (target.value === "") {
+        if (target.value !== "") {
             delete Err.E_BookCategory
             setErr(Err)
             setBookData({ ...BookData, E_BookCategory: target.value })

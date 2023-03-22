@@ -27,6 +27,7 @@ const BookCover = ({ setBookData, BookData, Err, setErr }) => {
                     OnChange={OnChange}
                     ImgUrl={BookData?.BookCover}
                 />
+                <p className='text-[12px] h-6 text-[red]'>{Err.BookCover ? Err.BookCover : ""} </p>
             </div>
         </div>
     )

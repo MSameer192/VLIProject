@@ -38,6 +38,7 @@ const PublishDate = ({ setBookData, BookData, Err, setErr }) => {
                         <img className='w-6' src={require('./Assets/Date.svg').default} alt="" />
                     </label>
                 </span>
+                <p className='text-[12px] h-6 text-[red]'>{Err.PublishDate ? Err.PublishDate : ""} </p>
             </div>
 
 

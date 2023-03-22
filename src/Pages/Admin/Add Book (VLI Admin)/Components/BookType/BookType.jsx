@@ -33,6 +33,7 @@ const BookType = ({ setBookData, BookData, Err, setErr }) => {
                         onChange={OnChange}
                     />
                 </span>
+                <p className='text-[12px] h-6 text-[red]'>{Err.BookType ? Err.BookType : ""} </p>
             </div>
         </div>
     )

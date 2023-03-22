@@ -6,13 +6,13 @@ const EbookTitle = ({ BookData, setBookData, Err, setErr }) => {
             setErr({ ...Err, BookTitle: "Title is required" })
             setBookData({ ...BookData, BookTitle: e.target.value })
         }
-        else if (e.target.value.length < 20) {
+        else if (e.target.value.length < 100) {
             delete Err.BookTitle
             setErr(Err)
             setBookData({ ...BookData, BookTitle: e.target.value })
-        } else if (e.target.value.length >= 20) {
+        } else if (e.target.value.length >= 100) {
             setBookData({ ...BookData, BookTitle: e.target.value })
-            setErr({ ...Err, BookTitle: "Title cannot be more than 20 characters" })
+            setErr({ ...Err, BookTitle: "Title cannot be more than 100 characters" })
         }
 
     }

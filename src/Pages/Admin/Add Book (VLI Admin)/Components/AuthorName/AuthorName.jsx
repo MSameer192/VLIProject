@@ -3,16 +3,16 @@ import React from 'react'
 const AuthorName = ({ BookData, setBookData, Err, setErr }) => {
     const OnChange = e => {
         if (e.target.value === "") {
-            setErr({ ...Err, AurhorName: "Author Name is required" })
-            setBookData({ ...BookData, AurhorName: e.target.value })
+            setErr({ ...Err, AuthorName: "Author Name is required" })
+            setBookData({ ...BookData, AuthorName: e.target.value })
         }
         else if (e.target.value.length <= 50) {
-            delete Err.AurhorName
+            delete Err.AuthorName
             setErr(Err)
-            setBookData({ ...BookData, AurhorName: e.target.value })
+            setBookData({ ...BookData, AuthorName: e.target.value })
         } else if (e.target.value.length > 50) {
-            setBookData({ ...BookData, AurhorName: e.target.value })
-            setErr({ ...Err, AurhorName: "Author Name cannot be more than 50 characters" })
+            setBookData({ ...BookData, AuthorName: e.target.value })
+            setErr({ ...Err, AuthorName: "Author Name cannot be more than 50 characters" })
         }
 
     }
@@ -30,10 +30,10 @@ const AuthorName = ({ BookData, setBookData, Err, setErr }) => {
 
             <span className='max-w-[390px] Add_C_B_InputSideContainer '>
                 <textarea className='w-full h-14 Add_C_BTextArea' name="" id="" cols="30" rows="10"
-                    value={BookData.AurhorName}
+                    value={BookData.AuthorName}
                     onChange={OnChange}
                 ></textarea>
-                <p className='text-[12px] h-6 text-[red]'>{Err.AurhorName ? Err.AurhorName : ""} </p>
+                <p className='text-[12px] h-6 text-[red]'>{Err.AuthorName ? Err.AuthorName : ""} </p>
                 <p className='text-[12px] text-[#070707] text-right'>Maximum 50 Characters</p>
             </span>
         </div>

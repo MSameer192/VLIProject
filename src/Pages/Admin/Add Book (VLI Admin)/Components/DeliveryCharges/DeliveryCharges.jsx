@@ -44,6 +44,7 @@ const DeliveryCharges = ({ setBookData, BookData, Err, setErr }) => {
                     State={BookData.DevliveryCharges}
                     OnChange={OnChange}
                 />
+                   <p className='text-[12px] h-6 text-[red]'>{Err.DevliveryCharges ? Err.DevliveryCharges : ""} </p>
             </div>
 
 
