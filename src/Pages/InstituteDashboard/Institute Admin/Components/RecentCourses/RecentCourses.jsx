@@ -77,7 +77,7 @@ function RecentCourses({ setInstituteCourseId, setEdit }) {
           </div>
         </div>
         {/* recent courses list */}
-        <div className="bg-white  px-[21px] py-[37px]">
+        <div className="bg-white px-[21px] py-[37px]  flex flex-col items-center">
           {
             loading ?
               <LoadingSpinner />
@@ -86,15 +86,11 @@ function RecentCourses({ setInstituteCourseId, setEdit }) {
                   topText="Sorry, courses aren't published yet!"
                   bottomText="Admin/Institute can add courses by click on the 'Create Course' button from Dashboard."
                 />
-                :
-                <>
-
-                  <CoursesTiles
-                    Courses={Courses}
-                    loading={loading}
-                    OnClick={CourseEditClick}
-                  />
-                </>
+                : <CoursesTiles
+                  Courses={Courses}
+                  loading={loading}
+                  OnClick={CourseEditClick}
+                />
           }
 
         </div>

@@ -6,12 +6,12 @@ import TopCards from "./Components/TopCards/TopCards";
 import Popups from "./Components/Popups/Popups";
 import { GetLocalStorage } from "../../../Helpers/LocalStorage/LocalStorage";
 import DashBoardAdminCourses from "../Admin/AdminCourses";
-
+import './InsStaffAdminDashboard.css'
 function InsStaffAdminDashboard() {
   const [Edit, setEdit] = useState();
   const [InstituteCourseId, setInstituteCourseId] = useState();
   return (
-    <div className="w-full pl-5 pr-20 relative">
+    <div className="InsDashboardContainer">
       {
         GetLocalStorage("UserInfo").InstituteUserType === "Admin" && Edit
           ? <Popups setEdit={setEdit} Edit={Edit} InstituteCourseId={InstituteCourseId} />
@@ -25,16 +25,15 @@ function InsStaffAdminDashboard() {
 
 
 
-
         {
           GetLocalStorage("UserInfo").InstituteUserType === "Admin" ?
-            <div className="flex gap-5 my-[34px] w-full justify-between">
-              <div className="w-4/5">
+            <div className="CoursesGraphContainer">
+              <div className="w-full 3xl:w-4/5">
 
                 <RecentCourses setEdit={setEdit} setInstituteCourseId={setInstituteCourseId} />
 
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col items-end px-16">
                 <GeographyGraph />
                 <div>
 

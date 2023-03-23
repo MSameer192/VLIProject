@@ -54,18 +54,30 @@ const AddBookAdminChild = () => {
                             <h2 className='text-sm font-normal'>Overview</h2>
                         </span>
                         <div className='flex w-full flex-col gap-7'>
-                            <EbookTitle setBookData={setBookData} BookData={BookData} Err={Err} setErr={setErr} />
-                            <AuthorName setBookData={setBookData} BookData={BookData} Err={Err} setErr={setErr} />
-                            <EBookCategory setBookData={setBookData} BookData={BookData} Err={Err} setErr={setErr} />
-                            <SearchTags setBookData={setBookData} BookData={BookData} Err={Err} setErr={setErr} />
-                            <AboutBook setBookData={setBookData} BookData={BookData} Err={Err} setErr={setErr} />
-                            <BookRating setBookData={setBookData} BookData={BookData} Err={Err} setErr={setErr} />
-                            <BookCover setBookData={setBookData} BookData={BookData} Err={Err} setErr={setErr} />
-                            <BookType setBookData={setBookData} BookData={BookData} Err={Err} setErr={setErr} />
-                            <Copies setBookData={setBookData} BookData={BookData} Err={Err} setErr={setErr} />
-                            <BookPrice setBookData={setBookData} BookData={BookData} Err={Err} setErr={setErr} />
-                            <DeliveryCharges setBookData={setBookData} BookData={BookData} Err={Err} setErr={setErr} />
-                            <PublishDate setBookData={setBookData} BookData={BookData} Err={Err} setErr={setErr} />
+                            <EbookTitle setBookData={setBookData} BookData={BookData}
+                                Err={Err} setErr={setErr} />
+                            <AuthorName setBookData={setBookData} BookData={BookData}
+                                Err={Err} setErr={setErr} />
+                            <EBookCategory setBookData={setBookData} BookData={BookData}
+                                Err={Err} setErr={setErr} />
+                            <SearchTags setBookData={setBookData} BookData={BookData}
+                                Err={Err} setErr={setErr} />
+                            <AboutBook setBookData={setBookData} BookData={BookData}
+                                Err={Err} setErr={setErr} />
+                            <BookRating setBookData={setBookData} BookData={BookData}
+                                Err={Err} setErr={setErr} />
+                            <BookCover setBookData={setBookData} BookData={BookData}
+                                Err={Err} setErr={setErr} />
+                            <BookType setBookData={setBookData} BookData={BookData}
+                                Err={Err} setErr={setErr} />
+                            <Copies setBookData={setBookData} BookData={BookData}
+                                Err={Err} setErr={setErr} />
+                            <BookPrice setBookData={setBookData} BookData={BookData}
+                                Err={Err} setErr={setErr} />
+                            <DeliveryCharges setBookData={setBookData} BookData={BookData}
+                                Err={Err} setErr={setErr} />
+                            <PublishDate setBookData={setBookData} BookData={BookData}
+                                Err={Err} setErr={setErr} />
                         </div>
                     </div>
                 </div>

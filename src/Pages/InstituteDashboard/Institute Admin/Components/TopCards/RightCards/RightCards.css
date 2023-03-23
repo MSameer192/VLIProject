@@ -1,0 +1,32 @@
+.RightCardsContainer {
+  @apply flex gap-7 justify-center sm:justify-around
+    flex-col            xs:flex-row         2xl:flex-col
+    w-full                                  2xl:w-[29%] 
+    items-center        xs:items-end;
+}
+
+.RightCardsContainer > div {
+  background: linear-gradient(180deg, #b224ef 0%, #7579ff 100%);
+  @apply flex flex-col     xs:self-stretch  
+    max-w-[250px]          xs:max-w-none      sm:max-w-[620px]
+    w-11/12                                                       2xl:w-full;
+}
+
+.RightCardHeading {
+  background: #a561fe;
+  
+  @apply w-full text-white text-4xs py-4 px-10;
+}
+
+.RightCardHeading + div {
+  @apply text-white px-10 py-5 pb-10 relative;
+}
+
+.RightCardLink {
+  @apply absolute bottom-2 right-3 flex items-center justify-center gap-4 no-underline text-white;
+}
+
+
+.RightCardLink > .Img {
+  @apply rounded-full bg-white shadow-[4px_6px_12px_#4e373a80] flex items-center justify-center p-[10px] w-fit;
+}

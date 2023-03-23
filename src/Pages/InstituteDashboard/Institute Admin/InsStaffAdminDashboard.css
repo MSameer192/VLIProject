@@ -1,0 +1,8 @@
+.InsDashboardContainer {
+  @apply relative w-full pl-5
+   pr-2 sm:pr-8 md:pr-10 lg:pr-8 xl:pr-10 2xl:pr-0      3xl:pr-20;
+}
+.CoursesGraphContainer{
+    @apply flex gap-5 my-[34px] w-full justify-between
+            flex-col                                    3xl:flex-row
+}

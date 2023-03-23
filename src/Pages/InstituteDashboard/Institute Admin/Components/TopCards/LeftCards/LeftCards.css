@@ -1,0 +1,32 @@
+.LeftCardsContainer {
+  @apply flex items-center
+    w-full                                                          2xl:w-[68%] 
+    flex-col                md:flex-row 
+    flex-wrap                           lg:flex-nowrap 
+    gap-5       sm:gap-6    md:gap-7    lg:gap-8        xl:gap-9    2xl:gap-10;
+}
+.LeftCardsContainer > div {
+  @apply flex justify-around self-stretch
+    w-full                                      lg:w-1/2  
+    flex-col        xs:flex-row
+    items-center    sm:items-start 
+    gap-5           sm:gap-6        md:gap-7    lg:gap-8    xl:gap-9    2xl:gap-10;
+}
+
+.StaffCards {
+  @apply flex flex-col pb-[50px] pt-[58px] gap-3 min-w-[160px] max-w-[250px] px-5  rounded-md cursor-pointer items-center
+    w-full                      md:w-1/2  
+    self-auto       xs:self-stretch;
+}
+
+.ClickNoCard {
+  background: linear-gradient(137deg, #f9d324 0%, #ff564e 100%);
+}
+
+.CarCard {
+  background: linear-gradient(137deg, #e8ee48 0%, #0fd850 100%);
+}
+
+.InstructorCard {
+  background: linear-gradient(180deg, #b224ef 0%, #7579ff 100%);
+}

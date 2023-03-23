@@ -1,3 +1,10 @@
-.InsAdminCourseTilesBorder{
-    border-right: 1px solid #DCDCDC;
+.InsAdminCourseTilesBorder {
+  border-left: 1px solid #dcdcdc;
+}
+
+@media (max-width: 1024px) {
+  .InsAdminCourseTilesBorder {
+    border-left: none;
+    border-top: 1px solid #dcdcdc;
+  }
 }
