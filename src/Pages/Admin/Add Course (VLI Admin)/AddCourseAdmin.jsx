@@ -13,7 +13,15 @@ import '../Css/Course_E-Book_Inputs.css'
 import { CreateAdminCourseA } from '../../../Actions/AdminCourseA'
 import useCheckLogin from '../../../Helpers/CustomHooks/CheckLogin'
 const AddCourseAdminChild = () => {
-    const [CourseData, setCourseData] = useState({});
+    const [CourseData, setCourseData] = useState({
+        CourseName: "",
+        VehicleTypeFK: "",
+        LicenseTypeFK: "",
+        PossibleKeywords: "",
+        Description: "",
+        CourseThumbnail: ""
+    });
+    
     const [Err, setErr] = useState();
     const [Success, setSuccess] = useState();
     const [SubLicenseType, setSubLicenseType] = useState([]);
@@ -22,7 +30,6 @@ const AddCourseAdminChild = () => {
         Dispatch(GetLicenseTypes())
         Dispatch(GetVehicleTypes())
     }, [Dispatch])
-
 
     const OnSubmit = e => SubmitFormData(e, CourseData, SubLicenseType, Err, setErr, Dispatch, setSuccess);
     useCheckLogin(true, ["Admin"])
@@ -41,20 +48,21 @@ const AddCourseAdminChild = () => {
                         <CourseTitle setCourseData={setCourseData} CourseData={CourseData} />
                         <CourseCategory setCourseData={setCourseData} CourseData={CourseData}
                             SubLicenseType={SubLicenseType} setSubLicenseType={setSubLicenseType} />
-                        <SearchTags setCourseData={setCourseData} CourseData={CourseData} />
+                        <SearchTags setCourseData={setCourseData} CourseData={CourseData}
+                            Err={Err} setErr={setErr} />
                         <ShortDescription setCourseData={setCourseData} CourseData={CourseData} />
                         <CourseThumnail setCourseData={setCourseData} CourseData={CourseData} />
                     </div>
                 </div>
             </div>
             <div className='flex justify-center sm:justify-end w-[88%] gap-7 mt-12'>
-                <button className={`rounded-2xl whitespace-nowrap
+                {/* <button className={`rounded-2xl whitespace-nowrap
                 text-4xs sm:text-3xs md:text-2xs lg:text-xs xl:text-sm 2xl:text-base
                 py-2    md:py-2                 xl:py-3     
                 px-3    md:px-4     lg:px-5     xl:px-6     2xl:px-7
                 BrandingButton`} type="button">
                     Preview Course
-                </button>
+                </button> */}
                 <button className={`rounded-2xl whitespace-nowrap
                 text-4xs sm:text-3xs md:text-2xs lg:text-xs xl:text-sm 2xl:text-base
                 py-2    md:py-2                 xl:py-3     
@@ -79,12 +87,15 @@ const SubmitFormData = (e, CourseData, SubLicenseType, Err, setErr, Dispatch, se
     const CourseFormData = new FormData();
 
     for (let [key, value] of Object.entries(CourseData)) {
-        if (!value) Errors[key] = true
+        if (!value || value === "") Errors[key] = true
         else delete Errors[key]
     }
     if (SubLicenseType.length > 0 && !CourseData.SubLicenseTypeFK)
         Errors.SubLicenseTypeFK = true;
-
+    if (CourseData?.PossibleKeywords?.length <= 0)
+        Errors.PossibleKeywords = true;
+    else
+        delete Errors.PossibleKeywords
 
     setErr({ ...Err, ...Errors })
 
@@ -101,7 +112,7 @@ const SubmitFormData = (e, CourseData, SubLicenseType, Err, setErr, Dispatch, se
         delete CourseData.SubLicenseTypeFK;
     CourseFormData.append("VehicleInfo", JSON.stringify(CourseData));
 
-    
+
     Dispatch(CreateAdminCourseA(CourseFormData, setSuccess))
 }
 

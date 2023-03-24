@@ -1,19 +1,24 @@
 import React, { useRef } from 'react'
 import { useEffect } from 'react'
 
-const SideFilters = ({ Title, FiltersArr, TitleStyle, WidthStyle, PositionAndIndex, OnClick, Style }) => {
+const SideFilters = ({ Title, FiltersArr, TitleStyle, WidthStyle, PositionAndIndex, OnClick, Style, ShowOnSmall }) => {
     const FilterRef = useRef();
 
     const HideFilter = (e) => {
         if (e.currentTarget === e.target) {
-            e.target.parentNode.style.height = "0px"
-            e.target.parentNode.style.minHeight = "0px"
+            let CheckClass = e.target.classList.contains("max-h-[0px]");
+            if (!CheckClass)
+                e.target.classList.add("max-h-[0px]")
         }
     }
     window.addEventListener("resize", () => {
         const VehicleFilter = document.getElementById("VehicleFilter")
 
-        if (window.innerWidth >= 640) {
+        const Condition = !ShowOnSmall
+            ? window.innerWidth >= 640 //to hide on small screen
+            : window.innerWidth <= 640 || window.innerWidth >= 640 //to show on small screen
+
+        if (Condition) {
             VehicleFilter.style.minHeight = "auto"
             VehicleFilter.style.height = "auto"
             VehicleFilter.style.display = "flex"
@@ -36,7 +41,7 @@ const SideFilters = ({ Title, FiltersArr, TitleStyle, WidthStyle, PositionAndInd
     if (!PositionAndIndex)
         PositionAndIndex = "fixed   sm:relative     z-30  sm:z-0";
     if (!Style)
-        Style = `top-0 flex  justify-center items-center duration-200 overflow-hidden
+        Style = Style + `top-0 flex  justify-center items-center duration-200 overflow-hidden
         ${WidthStyle} ${PositionAndIndex} cursor-auto duration-100
         rounded-b-[70px]        sm:rounded-none 
         SideBarBG`

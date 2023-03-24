@@ -15,15 +15,24 @@ import TeacherFilter from "./Components/TeacherFilter";
 import "./InstructorsList.css";
 
 const InstructorsListChild = () => {
-  const { Instructors, loading } = useSelector(
-    (Store) => Store.InstructorReducer
-  );
+  const { Instructors, loading } = useSelector(Store => Store.InstructorReducer);
+  const [FilterOpen, setFilterOpen] = useState()
   const [MaxHeight, setMaxHeight] = useState("max-h-[0px]");
   const Dispatch = useDispatch();
   useEffect(() => {
     Dispatch(GetInstituteInstructorsA());
   }, [Dispatch]);
   useCheckLogin(true, ["Institute"], ["Staff", "Admin"]);
+  const OnClick = () => {
+    if (!FilterOpen) {
+      setFilterOpen(true);
+      setMaxHeight("max-h-[1000px]");
+    }
+    else if (FilterOpen) {
+      setFilterOpen(false);
+      setMaxHeight("max-h-[0px]");
+    }
+  }
 
   return (
     <div className="w-11/12 bg-white mt-16 rounded-[35px]">
@@ -37,6 +46,7 @@ const InstructorsListChild = () => {
           </Link>
           <span
             className="InstructorPageBtns  relative"
+            onClick={OnClick}
             onMouseEnter={() => setMaxHeight("max-h-[1000px]")}
             onMouseLeave={() => setMaxHeight("max-h-[0px]")}
           >
@@ -89,10 +99,7 @@ const InstructorsListChild = () => {
               );
 
               const ImageUrl = `${BaseUrl}/Instructors/images?url=${value?.Instructor?.ProfileImage}`;
-              console.log(
-                value?.Instructor?.TimeTable,
-                !Status ? "free" : Status
-              );
+
               return (
                 <InstructorRowTemplate
                   key={value.Instructor.InstructorId}

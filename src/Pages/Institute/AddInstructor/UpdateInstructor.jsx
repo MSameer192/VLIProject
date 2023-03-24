@@ -5,13 +5,14 @@ import InstructorInfo from './Components/InstructorInfo/InstructorInfo'
 import InstructorTop from './Components/InstructorTop/InstructorTop'
 import './AddInstructor.css'
 import { useState } from 'react'
-import { AddInstructorA, GetSInstructorA } from '../../../Actions/InstructorA'
+import { AddInstructorA, GetSInstructorA, UpdateInstructorA } from '../../../Actions/InstructorA'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { GetLicenseTypes } from '../../../Actions/CategoryA'
 import InstructorPopup from './Components/Popup/InstructorPopup'
 import { useParams } from 'react-router-dom'
 import { BaseUrl } from '../../../Actions/Base'
+import LoadingSpinner from '../../../Components/LoadingSpinner/LoadingSpinner'
 
 const UpdateInstructorChild = () => {
     const { InstructorId } = useParams()
@@ -53,7 +54,8 @@ const UpdateInstructorChild = () => {
 
 
     useEffect(() => {
-        if (Object.entries(SInstructor).length > 0)
+        if (Object.entries(SInstructor).length > 0) {
+
             setInstructorData({
                 ...InstructorData, ...SInstructor,
                 ProfileImage: `${BaseUrl}/api/images/Instructors?url=${SInstructor?.ProfileImage}`,
@@ -61,6 +63,7 @@ const UpdateInstructorChild = () => {
                 TrainerPermitImage: `${BaseUrl}/aps/image/Instructors?url=${SInstructor?.TrainerPermitImage}`,
                 SpecialLicenseImage: `${BaseUrl}/api/images/Instructors?url=${SInstructor?.SpecialLicenseImage}`,
             })
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [SInstructor])
 
@@ -75,10 +78,11 @@ const UpdateInstructorChild = () => {
             setErr(error?.response?.data)
 
     }, [error])
- 
+
     return (
         !loading ?
-            <form className='bg-[#F7F7F7] w-full flex flex-col items-center py-10 gap-10' onSubmit={SubmitForm}>
+            <form className='bg-[#F7F7F7] w-full flex flex-col items-center py-10 gap-10'
+                onSubmit={SubmitForm}>
                 <div className="Intsructor-InputContainer">
                     <InstructorTop />
                     <div className='flex w-full justify-center px-7'>
@@ -93,13 +97,15 @@ const UpdateInstructorChild = () => {
                 </button>
                 {Success ? <InstructorPopup /> : null}
             </form>
-            : <h1 className='mt-20 ml-20'>Loading</h1>
+            : <LoadingSpinner />
     )
 }
 
 
 const SubmitInstructorData = (e, Dispatch, setSuccess, InstructorData, Err, setErr) => {
     e.preventDefault();
+    delete InstructorData.Password
+
     let Errors = {}
     const InstructorFormData = new FormData();
     let InstructorDataNoImage = {}
@@ -111,6 +117,7 @@ const SubmitInstructorData = (e, Dispatch, setSuccess, InstructorData, Err, setE
     }
 
     setErr({ ...Err, ...Errors })
+    console.log({ ...Err, ...Errors })
     if (Object.entries(Errors).length > 0)
         return
 
@@ -121,7 +128,7 @@ const SubmitInstructorData = (e, Dispatch, setSuccess, InstructorData, Err, setE
 
     InstructorFormData.append("IntructorInfo", JSON.stringify(InstructorDataNoImage))
 
-    Dispatch(AddInstructorA(InstructorFormData, setSuccess))
+    Dispatch(UpdateInstructorA(InstructorFormData, setSuccess))
 }
 
 const UpdateInstructor = () => (<InstituteTemplate Element={UpdateInstructorChild} />)

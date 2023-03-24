@@ -37,7 +37,7 @@ const AddVehicleChild = () => {
     useCheckLogin(true, ["Institute"], ["Admin", "Staff"]);
 
     return (
-        !loading ? <div className='bg-[#F7F7F7] mt-20 flex flex-col items-center ml-0 sm:ml-24 w-full sm:w-[calc(100%-96px)]'>
+        !loading ? <div className='bg-[#F7F7F7] flex flex-col items-center w-full py-10'>
             <Steps />
             <form className='flex flex-col items-center w-full' onSubmit={SubmitForm}>
                 <VehicleInfo

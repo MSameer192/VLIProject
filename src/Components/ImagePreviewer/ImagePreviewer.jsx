@@ -25,6 +25,7 @@ function ImagePreviewer({ Id, PreviewStyle, BrowseBtnStyle, ContainerStyle, OnCh
             setImage(ImgUrl)
         // else SetImagePreview(setImage, Image)
     }, [ImgUrl, Image])
+
     return <div className={ContainerStyle}>
         <div className={`bg-[#F3F6F7] border-[#C8C8C8]  border-[3px] border-dashed rounded-xl flex justify-center overflow-hidden items-center ${PreviewStyle}   max-h-[162px] min-w-[130px]`}>
             {Image && <img className="w-full border-none outline-none border-[0px]" src={Image} alt="instructor" />}

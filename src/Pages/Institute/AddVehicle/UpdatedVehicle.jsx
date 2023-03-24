@@ -13,6 +13,7 @@ import { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import { SubmitUpdateVehicleForm } from './Helpers/OnSubmit'
 import InstituteTemplate from '../../../Components/InstituteTemplate/InstituteTemplate'
+import LoadingSpinner from '../../../Components/LoadingSpinner/LoadingSpinner'
 
 const UpdateVehicleChild = () => {
     const Dispatch = useDispatch();
@@ -53,7 +54,7 @@ const UpdateVehicleChild = () => {
 
     const SubmitForm = (e) => SubmitUpdateVehicleForm(e, VehicleData, VehicleImagesState, VehicleErrors, setVehicleErrors, Dispatch, Navigate);
     return (
-        !loading ? <div className='bg-[#F7F7F7] mt-20 flex flex-col items-center ml-0 sm:ml-24 w-full sm:w-[calc(100%-96px)]'>
+        !loading ? <div className='bg-[#F7F7F7] flex flex-col items-center w-full py-10'>
             <Steps />
             <form className='flex flex-col items-center w-full' onSubmit={SubmitForm}>
                 <VehicleInfo
@@ -76,7 +77,7 @@ const UpdateVehicleChild = () => {
                 </button>
             </form>
         </div>
-            : <h1 className='mt-20'>Loading</h1>
+            : <LoadingSpinner />
     )
 }
 
@@ -84,7 +85,7 @@ const UpdateVehicleChild = () => {
 
 const UpdatedVehicle = () => {
     return (
-        <InstituteTemplate Element={UpdateVehicleChild} />
+        <InstituteTemplate Element={UpdateVehicleChild}  />
     )
 }
 

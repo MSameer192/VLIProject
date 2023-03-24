@@ -10,8 +10,9 @@ import PackageInstallments from './components/PackageInstallments.jsx';
 
 // css
 import './CourseSelection.css'
+import { PackagesDone } from "./Helpers/PackagesDone";
 
-const CoursePricing = ({ Steps, setSteps, CourseData, setCourseData, StepsIndicator, PageNo }) => {
+const CoursePricing = ({ Steps, setSteps, CourseData, setCourseData, StepsIndicator, PageNo, Err, setErr }) => {
 
     const [Packages, setPackages] = useState([]);
 
@@ -19,6 +20,11 @@ const CoursePricing = ({ Steps, setSteps, CourseData, setCourseData, StepsIndica
         setCourseData({ ...CourseData, Packages: Packages })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [Packages])
+
+    const OnClick = (e) =>
+        PackagesDone(e, CourseData, setErr, Err, setSteps)
+
+    // console.log(document.getElementsByClassName("grecaptcha-badge"))
     return (
         <>
             <div className={`addCoursesMainContainer ${Steps !== PageNo ? "hidden" : ""}`}>
@@ -34,7 +40,10 @@ const CoursePricing = ({ Steps, setSteps, CourseData, setCourseData, StepsIndica
                                 <CourseSelctionNoteArea />
 
 
-                                <CreateCoursePackage setPackages={setPackages} Packages={Packages}
+                                <CreateCoursePackage
+                                    Err={Err} setErr={setErr}
+                                    setPackages={setPackages}
+                                    Packages={Packages}
                                 />
 
                                 <div className="installmantTable">
@@ -48,22 +57,29 @@ const CoursePricing = ({ Steps, setSteps, CourseData, setCourseData, StepsIndica
 
 
                                 </div>
-                                <div className="courseCVDiv gap-[15%]">
+                                <div className="courseCVDiv gap-[15%]" >
                                     <div className="courseCVDivHeading">
                                         <h6 className="font-normal">Course Curriculum</h6>
                                         <p>You can attach or write Curriculum for your Course here</p>
                                     </div>
 
-                                    <div className="max-w-[675px]">
-                                        <RichTextEditor KeyName="CourseCurriculum" setData={setCourseData} Data={CourseData} />
+                                    <div className="max-w-[675px]" id="CourseCurriculum">
+                                        <RichTextEditor KeyName="CourseCurriculum"
+                                            setData={setCourseData} Data={CourseData}
+                                            Errors={Err} setErrors={setErr}
+                                        />
+                                        <h3 className="text-[red] font-normal text-3xs">
+                                            {Err?.CourseCurriculum}
+                                        </h3>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <center>
                             <button className="SaveAndContinueBtn cursor-pointer" type="button"
-                                onClick={e => { setSteps(3); e.stopPropagation(); }}
-                            >Save & Continue</button>
+                                onClick={OnClick}
+                            >Save & Continue
+                            </button>
                         </center>
                     </div>
                 </div>
@@ -72,4 +88,5 @@ const CoursePricing = ({ Steps, setSteps, CourseData, setCourseData, StepsIndica
     );
 
 }
+
 export default CoursePricing;

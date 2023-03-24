@@ -1,11 +1,16 @@
 // react States
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
+import { CheckInput } from "../Helpers/InputCheckers";
 
 // css
 import "../Pricing.css";
 
-const CourseDescription = ({ CourseData, setCourseData }) => {
-
+const CourseDescription = ({ CourseDetailsData, setCourseDetailsData, CourseDetailsErr, setCourseDetailsErr }) => {
+    const [TextLength, setTextLengthc] = useState({})
+    const OnChangeCheck = (e, Key, MaxLength, MinLength, Name) => {
+        CheckInput(e, Key, MaxLength, MinLength, Name, true, CourseDetailsData, setCourseDetailsData, CourseDetailsErr, setCourseDetailsErr, TextLength, setTextLengthc)
+    }
+    console.log(TextLength)
     return (
         <div className="addCourse2Main">
             <div className="col5Descriptions">
@@ -16,10 +21,13 @@ const CourseDescription = ({ CourseData, setCourseData }) => {
                     </div>
                     <div className="col-7">
                         <textarea className="addCourse2Texterea1 resize-none"
-                            onChange={e => setCourseData({ ...CourseData, ShortDescription: e.target.value })}
-                            value={CourseData?.ShortDescription}
+                            onChange={e => OnChangeCheck(e, "ShortDescription", 50, 0, "Short Description")}
+                            value={CourseDetailsData?.ShortDescription}
                         ></textarea>
-                        <p className="addCourse2Texterea1WordsCount">0 / 50 characters</p>
+                        <h3 className="font-normal text-[red] h-3">{CourseDetailsErr.ShortDescription}</h3>
+                        <p className="addCourse2Texterea1WordsCount">
+                            {!TextLength?.ShortDescription ? 0 : TextLength?.ShortDescription}  / 50 characters
+                        </p>
                     </div>
                 </div>
             </div>
@@ -31,11 +39,13 @@ const CourseDescription = ({ CourseData, setCourseData }) => {
                     </div>
                     <div className="col-7">
                         <textarea className="addCourse2Texterea1 addCourse2Texterea2 resize-none"
-                            onChange={e => setCourseData({ ...CourseData, LongDescription: e.target.value })}
-                            value={CourseData?.LongDescription}>
-
+                            onChange={e => OnChangeCheck(e, "LongDescription", 1500, 0, "Long Description")}
+                            value={CourseDetailsData?.LongDescription}>
                         </textarea>
-                        <p className="addCourse2Texterea1WordsCount">0 / 1500 characters</p>
+                        <h3 className="font-normal text-[red] h-3">{CourseDetailsErr.LongDescription}</h3>
+                        <p className="addCourse2Texterea1WordsCount">
+                            {!TextLength?.LongDescription ? 0 : TextLength?.LongDescription} / 1500 characters
+                        </p>
                     </div>
                 </div>
             </div>

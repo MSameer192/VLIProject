@@ -44,7 +44,7 @@ const FIlters = () => {
         Socket?.on("FilteredInsVehicles", (data) => {
             Dispatch(GeneralEvent(data, "GetAllVehiclesSuccess"))
         })
-    }, [Socket, Dispatch]) 
+    }, [Socket, Dispatch])
     return (
         <div className={`top-0 flex  justify-center items-center duration-200 overflow-hidden
         w-full                  sm:w-full       md:w-11/12
@@ -66,8 +66,8 @@ const FIlters = () => {
             <div className={`flex flex-col w-11/12 sm:w-full max-w-[400px]  bg-white px-10 py-10 gap-16`}>
                 <h4 className='text-2xs font-normal Boldfont'> Filter</h4>
                 <div className='flex flex-col gap-9'>
-                    <VehicleTypeF onChange={e => setFilterVal({ VehicelTypeFK: e.target.value })} />
-                    <LicenseTypeF onChange={e => setFilterVal({ LicenseTypeFK: e.target.value })} />
+                    {/* <VehicleTypeF onChange={e => setFilterVal({ VehicelTypeFK: e.target.value })} />
+                    <LicenseTypeF onChange={e => setFilterVal({ LicenseTypeFK: e.target.value })} /> */}
                     <SortByDateF onChange={e => setFilterVal({ Date: e.target.value })} />
                     <AlphabeticalF onChange={e => setFilterVal({ Model: e.target.value })} />
                 </div>

@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { GetLicenseTypes } from '../../../Actions/CategoryA'
 import InstructorPopup from './Components/Popup/InstructorPopup'
+import LoadingSpinner from '../../../Components/LoadingSpinner/LoadingSpinner'
 
 const AddInstructorChild = () => {
     const { error, loading } = useSelector(Store => Store.InstructorReducer)
@@ -52,9 +53,11 @@ const AddInstructorChild = () => {
             setErr(error?.response?.data)
 
     }, [error])
+    console.log(Success)
     return (
         !loading ?
-            <form className='bg-[#F7F7F7] w-full flex flex-col items-center py-10 gap-10' onSubmit={SubmitForm}>
+            <form className='bg-[#F7F7F7] w-full flex flex-col items-center py-10 gap-10'
+                onSubmit={SubmitForm}>
                 <div className="Intsructor-InputContainer">
                     <InstructorTop />
                     <div className='flex w-full justify-center px-7'>
@@ -69,7 +72,7 @@ const AddInstructorChild = () => {
                 </button>
                 {Success ? <InstructorPopup /> : null}
             </form>
-            : <h1 className='mt-20 ml-20'>Loading</h1>
+            : <LoadingSpinner />
     )
 }
 
@@ -80,13 +83,14 @@ const SubmitInstructorData = (e, Dispatch, setSuccess, InstructorData, Err, setE
     const InstructorFormData = new FormData();
     let InstructorDataNoImage = {}
     for (let [key, value] of Object.entries(InstructorData)) {
-        if (!value || (value && `${value}`.trim() === "")) 
+        if (!value || (value && `${value}`.trim() === ""))
             Errors[key] = true
-        
+
         else delete Errors[key]
     }
 
     setErr({ ...Err, ...Errors })
+    console.log({ ...Err, ...Errors })
     if (Object.entries(Errors).length > 0)
         return
 
@@ -94,7 +98,7 @@ const SubmitInstructorData = (e, Dispatch, setSuccess, InstructorData, Err, setE
         if (key.indexOf("Image") > -1) InstructorFormData.append(key, value)
         else InstructorDataNoImage = { ...InstructorDataNoImage, [key]: value }
     }
-
+    console.log("Success Start")
     InstructorFormData.append("IntructorInfo", JSON.stringify(InstructorDataNoImage))
 
     Dispatch(AddInstructorA(InstructorFormData, setSuccess))

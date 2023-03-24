@@ -1,10 +1,7 @@
 // react States
-import React from "react";
-
+import React, { useEffect, useState } from "react";
 // Images
 import descriptionAddCourse2 from "./Assets/descriptionAddCourse2.png";
-
-
 // components
 import CourseDescription from './components/CourseDescription.jsx';
 import SyllabusDescription from './components/SyllabusDescription.jsx';
@@ -16,8 +13,17 @@ import "./Pricing.css";
 
 // import axios from "axios";
 const CourseDetails = ({ Steps, setSteps, CourseData, setCourseData, StepsIndicator, PageNo }) => {
-
-
+    const [CourseDetailsData, setCourseDetailsData] = useState({
+        ShortDescription: "",
+        LongDescription: "",
+        CourseSyllabus: [{ CourseDescription: "" }],
+        ClassSchedule: [{ ClassDescription: "", ClassNumber: "", WeekNumber: "" }],
+    });
+    const [CourseDetailsErr, setCourseDetailsErr] = useState({})
+    useEffect(() => {
+        setCourseData({ ...CourseData, ...CourseDetailsData, })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [CourseDetailsData])
     return (
         <div className={`addCoursesMainContainer ${Steps !== PageNo ? "hidden" : ""}`}>
 
@@ -34,9 +40,13 @@ const CourseDetails = ({ Steps, setSteps, CourseData, setCourseData, StepsIndica
                                 <h6>Description</h6>
                             </center>
 
-                            <CourseDescription CourseData={CourseData} setCourseData={setCourseData} />
+                            <CourseDescription
+                                CourseDetailsData={CourseDetailsData} setCourseDetailsData={setCourseDetailsData}
+                                CourseDetailsErr={CourseDetailsErr} setCourseDetailsErr={setCourseDetailsErr}
+                            />
 
-                            <SyllabusDescription CourseData={CourseData} setCourseData={setCourseData} />
+                            <SyllabusDescription
+                                CourseDetailsData={CourseDetailsData} setCourseDetailsData={setCourseDetailsData} />
 
                             <div className="col5Descriptions" style={{ marginLeft: '50px' }}>
                                 <div className="row">
@@ -47,7 +57,7 @@ const CourseDetails = ({ Steps, setSteps, CourseData, setCourseData, StepsIndica
                                 </div>
                             </div>
 
-                            <WeeklyCourseModule CourseData={CourseData} setCourseData={setCourseData} />
+                            <WeeklyCourseModule CourseDetailsData={CourseDetailsData} setCourseDetailsData={setCourseDetailsData} />
 
                             <div className="col5Descriptions" style={{ marginLeft: '50px' }}>
                                 <div className="row">
@@ -57,7 +67,7 @@ const CourseDetails = ({ Steps, setSteps, CourseData, setCourseData, StepsIndica
                                     </div>
                                     <div className="col-7">
                                         <input className="addCourse2Texterea1 addCourse2Texterea3" placeholder="How to enroll for the Course?"
-                                            onChange={e => setCourseData({ ...CourseData, Possible_FAQs: [e.target.value] })}
+                                            onChange={e => setCourseDetailsData({ ...CourseDetailsData, Possible_FAQs: [e.target.value] })}
                                         />
                                         <p className="addCourse2Texterea1WordsCount">
                                             <button className="addCourse2AddFAQBtn" type="button">Add FAQ's</button>

@@ -60,9 +60,9 @@ const SideBar = () => {
         <Car IconName="vehicle" PageName={PageName} />
       </NavLink>
 
-      <NavLink className={({ isActive }) => Classes(isActive, "invoice")} to="/invoice"
-        onClick={() => OnClick("invoice")}>
-        <Invoices IconName="invoice" PageName={PageName} />
+      <NavLink className={({ isActive }) => Classes(isActive, "books")} to="/admin/books/list"
+        onClick={() => OnClick("books")}>
+        <Invoices IconName="books" PageName={PageName} />
       </NavLink>
 
       <NavLink className={({ isActive }) => Classes(isActive, "customer")} to="/customer"

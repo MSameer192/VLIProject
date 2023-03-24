@@ -7,8 +7,30 @@ export const AddInstructorA = (InstructorData, setSuccess) => async (dispatch) =
         dispatch({
             type: "CreateInstructorRequest"
         })
-
+        console.log("Success Start")
         const { data } = await axios.post(`${BaseUrl}/api/Instructor/add`, InstructorData, { withCredentials: true })
+        console.log("Success End")
+        dispatch({
+            type: "CreateInstructorSuccess",
+            payload: data
+        })
+        setSuccess(true)
+    } catch (error) {
+        CheckLoginServer(error?.response?.data, dispatch)
+        dispatch({
+            type: "CreateInstructorFailure",
+            payload: error
+        })
+    }
+}
+
+export const UpdateInstructorA = (InstructorData, setSuccess) => async (dispatch) => {
+    try {
+        dispatch({
+            type: "CreateInstructorRequest"
+        })
+
+        const { data } = await axios.put(`${BaseUrl}/api/Instructor/update`, InstructorData, { withCredentials: true })
 
         dispatch({
             type: "CreateInstructorSuccess",

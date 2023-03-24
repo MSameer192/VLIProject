@@ -1,5 +1,5 @@
 // react States
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 
 
 
@@ -19,8 +19,8 @@ const PackageInstallments = ({ Packages, setPackages }) => {
     const [SPackage, setSPackage] = useState({})
 
     const OpenInstallmentWindow = (value, index) => {
-        handleEditInstallment()
         setSPackage({ ...value, Index: index })
+        handleEditInstallment()
     }
 
 
@@ -44,12 +44,14 @@ const PackageInstallments = ({ Packages, setPackages }) => {
                                     {value?.DrivingHours} Hours Driving, {value?.InClassHours} Hours In Class, {value?.OnlineHours}
                                     Hours Online for {value?.TotalFee}$
                                 </td>
-                                
+
                                 <td className=" w-">{value.Installments}</td>
                                 <td className="w-[19%] max-w-[246px]">{value.InstallmentSchedule}, {value.TotalFee}$,
                                     {parseFloat(Number(value.TotalFee) / Number(value.Installments)).toFixed(2)}$
                                 </td>
-                                <td className="statusAddCourseTableBtn" onClick={() => OpenInstallmentWindow(value, index)}>
+                                <td className="statusAddCourseTableBtn"
+                                    onClick={() => OpenInstallmentWindow(value, index)}
+                                >
                                     <img src={require('./Assets/Edit.svg').default} alt="" />
                                 </td>
                             </tr>
@@ -59,6 +61,7 @@ const PackageInstallments = ({ Packages, setPackages }) => {
 
                     </tbody>
                 </table>
+                
             </div>
 
             <InstallmentUpdate SPackage={SPackage} setSPackage={setSPackage} Packages={Packages} setPackages={setPackages}
@@ -72,7 +75,6 @@ const InstallmentUpdate = ({ SPackage, setSPackage, Packages, setPackages, handl
     const OnInstallmentChange = (e, name) => setSPackage({ ...SPackage, [name]: e.target.value })
 
     const onScheduleChange = e => setSPackage({ ...SPackage, InstallmentSchedule: e.target.value })
-
 
     const OnSave = (Save) => {
         if (Save) {
@@ -113,23 +115,25 @@ const InstallmentUpdate = ({ SPackage, setSPackage, Packages, setPackages, handl
 
             <br />
 
-            <div className="secinstallmentPopupflex">
+            <div className="secinstallmentPopupflex hidden">
                 <div className="flex items-center">
                     <span>Total Amount</span>
-                    <input type="text" className="text-base py-2 px-3 text-center" value={SPackage.TotalFee}
+                    <input type="text" className="text-base py-2 px-3 text-center"
+                        value={`${SPackage.TotalFee}`}
                         onChange={e => OnInstallmentChange(e, "TotalFee")} />
                 </div>
                 <div className="flex items-center">
                     <span>Payment</span>
-                    <input type="text" className="text-base py-2 px-3 text-center" value={SPackage.Installments}
+                    <input type="text" className="text-base py-2 px-3 text-center"
+                        value={`${SPackage.Installments}`}
                         onChange={e => OnInstallmentChange(e, "Installments")}
                     />
                 </div>
             </div>
             <p>{SPackage?.Installments} payments will be proceessed {SPackage?.InstallmentSchedule} in the amount of </p>
             <center className="installmentPopupButtons">
-                <button onClick={() => OnSave(true)}>Save</button>
-                <button onClick={() => OnSave()}>Cancel</button>
+                <button type="button" onClick={() => OnSave(true)}>Save</button>
+                <button type="button" onClick={() => OnSave()}>Cancel</button>
             </center>
         </div>
     </div>

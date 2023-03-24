@@ -7,21 +7,21 @@ import addCOursePricingPlus from "../Assets/addCOursePricingPlus.png";
 // css
 import "../Pricing.css";
 
-const SyllabusDescription = ({ CourseData, setCourseData }) => {
- 
+const SyllabusDescription = ({ CourseDetailsData, setCourseDetailsData }) => {
+
     const OnChange = (e, Index, value) => {
-        let NewCourseDes = [...CourseData?.CourseSyllabus];
-        
+        let NewCourseDes = [...CourseDetailsData?.CourseSyllabus];
+
         NewCourseDes[Index].CourseDescription = e.target.value;
-        setCourseData({ ...CourseData, CourseSyllabus: [...NewCourseDes] })
+        setCourseDetailsData({ ...CourseDetailsData, CourseSyllabus: [...NewCourseDes] })
     }
     const AddTopic = () => {
         let NewTopic = { CourseDescription: "" }
-        setCourseData({ ...CourseData, CourseSyllabus: [...CourseData?.CourseSyllabus, NewTopic] })
+        setCourseDetailsData({ ...CourseDetailsData, CourseSyllabus: [...CourseDetailsData?.CourseSyllabus, NewTopic] })
     }
     const RemoveTopic = (index) => {
-        CourseData?.CourseSyllabus.splice(index, 1)
-        setCourseData({ ...CourseData, CourseSyllabus: [...CourseData?.CourseSyllabus] })
+        CourseDetailsData?.CourseSyllabus.splice(index, 1)
+        setCourseDetailsData({ ...CourseDetailsData, CourseSyllabus: [...CourseDetailsData?.CourseSyllabus] })
     }
     return (
         <div className="packageTable">
@@ -34,9 +34,9 @@ const SyllabusDescription = ({ CourseData, setCourseData }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {CourseData?.CourseSyllabus.map((value, index, arr) => {
-                 
-                        return <tr key={index }>
+                    {CourseDetailsData?.CourseSyllabus?.map((value, index, arr) => {
+
+                        return <tr key={index}>
                             <td>{index + 1}</td>
                             <td style={{ textAlign: 'start' }}>
                                 <input type="text" placeholder="" value={value?.CourseDescription}

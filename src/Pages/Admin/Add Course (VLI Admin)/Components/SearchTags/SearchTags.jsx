@@ -1,7 +1,7 @@
 import { Tags } from "../../../Components/Tags/Tags"
 
 
-const SearchTags = ({ setCourseData, CourseData }) => {
+const SearchTags = ({ setCourseData, CourseData, Err, setErr }) => {
     return (
         <div className='DataInputContainer'>
             <span className='Admin_HeadingContainer'>
@@ -15,7 +15,7 @@ const SearchTags = ({ setCourseData, CourseData }) => {
 
             <div className="max-w-[730px] Add_C_B_InputSideContainer">
                 <div className="h-fit">
-                    <Tags setState={setCourseData} State={CourseData} />
+                    <Tags setState={setCourseData} State={CourseData}  Err={Err} setErr={setErr} />
                 </div>
                 <p className="text-right text-[12px]">
                     Maximum 5

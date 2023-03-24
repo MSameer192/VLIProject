@@ -1,23 +1,23 @@
 // react States
-import React, { Component } from "react";
+import React from "react";
 import addCOursePricingPlus from '../../CourseDetails/Assets/addCOursePricingPlus.png'
 // css
 import "../Pricing.css";
 
-const WeeklyCourseModule = ({ CourseData, setCourseData }) => {
+const WeeklyCourseModule = ({ CourseDetailsData, setCourseDetailsData }) => {
 
     const OnChange = (e, Index, key) => {
-        let NewWeeklyModule = [...CourseData?.ClassSchedule]; 
+        let NewWeeklyModule = [...CourseDetailsData?.ClassSchedule];
         NewWeeklyModule[Index][key] = e.target.value;
-        setCourseData({ ...CourseData, ClassSchedule: [...NewWeeklyModule] })
+        setCourseDetailsData({ ...CourseDetailsData, ClassSchedule: [...NewWeeklyModule] })
     }
     const AddTopic = () => {
         let NewClass = { ClassDescription: "", WeekNumber: "", ClassNumber: '' }
-        setCourseData({ ...CourseData, ClassSchedule: [...CourseData?.ClassSchedule, NewClass] })
+        setCourseDetailsData({ ...CourseDetailsData, ClassSchedule: [...CourseDetailsData?.ClassSchedule, NewClass] })
     }
     const RemoveTopic = (index) => {
-        CourseData?.ClassSchedule.splice(index, 1)
-        setCourseData({ ...CourseData, ClassSchedule: [...CourseData?.ClassSchedule] })
+        CourseDetailsData?.ClassSchedule.splice(index, 1)
+        setCourseDetailsData({ ...CourseDetailsData, ClassSchedule: [...CourseDetailsData?.ClassSchedule] })
     }
 
     return (
@@ -34,7 +34,7 @@ const WeeklyCourseModule = ({ CourseData, setCourseData }) => {
                 <tbody>
 
 
-                    {CourseData?.ClassSchedule?.map((value, index, arr) => {
+                    {CourseDetailsData?.ClassSchedule?.map((value, index, arr) => {
 
                         return <tr key={index + "a"}>
 

@@ -10,8 +10,13 @@ const RichTextEditor = ({ Errors, setErrors, Data, setData, KeyName }) => {
     const [Description, setDescription] = useState();
 
     useEffect(() => {
-        if (Errors)
-            setErrors({ ...Errors, Description: DescriptionErr })
+        if (DescriptionErr)
+            if (Errors)
+                setErrors({ ...Errors, [KeyName]: DescriptionErr })
+            else if (!DescriptionErr) {
+                delete Errors[KeyName]
+                setErrors({ ...Errors })
+            }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [DescriptionErr])
 

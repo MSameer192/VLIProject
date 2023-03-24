@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import InstituteTemplate from '../../Components/InstituteTemplate/InstituteTemplate';
 import useCheckLogin from '../../Helpers/CustomHooks/CheckLogin';
 import CoursePricing from './Components/CourseSelection/CourseSelection';
-
 import StepsIndicator from './Components/Steps Indicator/Steps Indicator';
 import CourseSelection from './Components/vehicalInventory/CourseSelection'
 import CourseDetails from './Components/CourseDetails/CourseDetails'
@@ -21,7 +20,8 @@ const AddCourseChild = () => {
         ClassSchedule: [{ ClassDescription: "", ClassNumber: "", WeekNumber: "" }],
         Instructors: [],
         Possible_FAQs: [""]
-    })
+    });
+    const [Err, setErr] = useState();
     const [Steps, setSteps] = useState(1);
 
     const Dispatch = useDispatch()
@@ -39,13 +39,30 @@ const AddCourseChild = () => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location])
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [Steps])
 
 
     return (
         <form onSubmit={SubmitForm} onClick={e => e.stopPropagation()}>
             <CourseSelection Steps={Steps} CourseData={CourseData} setCourseData={setCourseData} setSteps={setSteps} StepsIndicator={StepsIndicator} PageNo={1} />
-            <CoursePricing Steps={Steps} CourseData={CourseData} setCourseData={setCourseData} setSteps={setSteps} StepsIndicator={StepsIndicator} PageNo={2} />
-            <CourseDetails Steps={Steps} CourseData={CourseData} setCourseData={setCourseData} setSteps={setSteps} StepsIndicator={StepsIndicator} PageNo={3} />
+
+            <CoursePricing
+                Steps={Steps} setSteps={setSteps}
+                CourseData={CourseData} setCourseData={setCourseData}
+                Err={Err} setErr={setErr}
+                StepsIndicator={StepsIndicator} PageNo={2}
+            />
+
+
+
+            <CourseDetails
+                Steps={Steps} setSteps={setSteps}
+                CourseData={CourseData} setCourseData={setCourseData}
+                Err={Err} setErr={setErr}
+                StepsIndicator={StepsIndicator} PageNo={3}
+            />
 
             <SelectVehicle Steps={Steps} CourseData={CourseData} setCourseData={setCourseData} setSteps={setSteps} StepsIndicator={StepsIndicator} PageNo={4} />
 

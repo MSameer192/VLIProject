@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 export function Tags({ State, setState, Err, setErr }) {
     const [Tags, setTags] = useState([])
+
     const CreateTag = (e) => {
 
         const { value } = e.target;
@@ -22,7 +23,7 @@ export function Tags({ State, setState, Err, setErr }) {
             }
             setTags([...Tags, value.trim()])
             e.target.value = ""
-            delete Err.PossibleKeywords
+            delete Err?.PossibleKeywords
         }
 
     }
@@ -30,14 +31,20 @@ export function Tags({ State, setState, Err, setErr }) {
         setState({ ...State, PossibleKeywords: Tags })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [Tags])
+    const ONCLICK = (e) => {
+        if (e.target === e.currentTarget) {
+            const TagsInput = document.getElementById("TagsInput");
+            TagsInput.focus()
+        }
+    }
 
-
-    return <div className="w-full gap-[22px] px-3 py-2 bg-white min-h-[96px] flex flex-wrap">
+    return <div className="w-full px-3 py-2 bg-white min-h-[96px] flex flex-wrap cursor-text" onClick={ONCLICK}>
         {Tags?.map(value =>
-            <span className="text-2xs h-fit px-[10px] py-[2px] bg-[#F5F5F5] w-fit text-[#C8C8C8] shadow-[4px_5px_6px_#00000029]" key={value}>
+            <span className="text-2xs mr-[22px] mb-[22px] break-all h-fit px-[10px] py-[2px] bg-[#F5F5F5] w-fit text-[#C8C8C8] shadow-[4px_5px_6px_#00000029]" key={value}>
                 {value}
             </span>
         )}
-        <input type="text" className="text-2xs h-fit border-none outline-none" onKeyDown={CreateTag} />
+        <textarea name="" id="TagsInput" className="text-2xs  border-none bg-[#ffffff00] outline-none  flex-grow resize-none" onKeyDown={CreateTag} ></textarea>
+
     </div>
 }
