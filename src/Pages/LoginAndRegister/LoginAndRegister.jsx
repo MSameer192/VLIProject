@@ -44,7 +44,6 @@ const SignUp = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [Navigate, error, Done, Navigation])
 
-    console.log(loading)
     return (
 
         AuthPageName ?
@@ -76,7 +75,7 @@ const SignUp = () => {
 
                     </div>
                     : <div className='h-screen w-screen bg-white flex justify-center items-center'>
-                    <LoadingSpinner />
+                        <LoadingSpinner />
                     </div>
                 }
             </div>

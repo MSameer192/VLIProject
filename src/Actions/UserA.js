@@ -15,8 +15,11 @@ export const LoginUser = (UserData, Dispatch, PageName) => async (dispatch) => {
             Headers,
 
         );
+        if (data.User.StudentInfos.Schedule)
+            data.User.StudentInfos.Schedule = JSON.parse(data.User.StudentInfos.Schedule)
 
-        data.User.PhoneNumber = "";
+        if (data.User.StudentInfos.FreeHours)
+            data.User.StudentInfos.FreeHours = JSON.parse(data.User.StudentInfos.FreeHours);
 
         dispatch({
             type: "LoginSuccess",
@@ -31,7 +34,7 @@ export const LoginUser = (UserData, Dispatch, PageName) => async (dispatch) => {
 
         Dispatch(DoneLoginSignUp(false))
     } catch (error) {
-
+        console.log(error)
         Dispatch(AgainOpenLoginSignUp(PageName))
         dispatch({
             type: "LoginError",

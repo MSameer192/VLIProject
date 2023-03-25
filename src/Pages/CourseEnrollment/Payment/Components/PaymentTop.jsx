@@ -12,8 +12,8 @@ const PaymentTop = ({ setInstallment, Installment, Err, setErr, EnrollmentData }
         }
         setErr({ ...Err, PaymentTypeErr: undefined })
         setInstallment(PaymentType)
-        
-    } 
+
+    }
 
     return (
         <div className=' flex flex-col items-center gap-4 bg-[#F6F5F5] w-full pt-4 pb-20'>
@@ -43,7 +43,7 @@ const PaymentTop = ({ setInstallment, Installment, Err, setErr, EnrollmentData }
                 </span>
                 <div className='flex items-center flex-col gap-5'>
 
-                    <PayIn Data={"Pay Full Payment 260 $"}
+                    <PayIn Data={`Pay Full Payment ${EnrollmentData?.Package?.TotalFee ? EnrollmentData?.Package?.TotalFee : 0} $`}
                         BorderColor={Installment === "Full" ? "border-[#A1A3EF] bg-white" : "border-[#707070]"}
                         OnClick={() => OnClick("Full")} />
 

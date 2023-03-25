@@ -29,6 +29,7 @@ const FreeHours = ({ EnrollmentData, setEnrollmentData, Duration, INDEX }) => {
     const UpdateArr = (FreeHours) => {
         let Free = FreeHours.map((value, index) => {
             if (index === INDEX) {
+                console.log()
                 value[`${Duration}`] = FreeTime[`${Duration}`]
                 return value
             }

@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { useEffect } from 'react'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -42,8 +43,14 @@ export const usePageLoadCheckers = (location, EnrollmentData, setEnrollmentData)
 
     //This would fill all the fields with information previously enterd by user, automatically, when page is loaded
     useEffect(() => {
+        const WriteableUserInfo = JSON.parse(JSON.stringify(UserInfo))
         if (EnrollmentData?.StudentData?.FirstName === "")
-            setEnrollmentData({ ...EnrollmentData, StudentData: { ...EnrollmentData.StudentData, ...UserInfo, ...UserInfo?.StudentInfos } })
+            setEnrollmentData({
+                ...EnrollmentData, StudentData: {
+                    ...EnrollmentData.StudentData, ...WriteableUserInfo, ...WriteableUserInfo?.StudentInfos,
+                    DOB: dayjs(new Date(WriteableUserInfo?.StudentInfos?.DOB)).format('YYYY-MM-DD')
+                }
+            })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [EnrollmentData, UserInfo])
 

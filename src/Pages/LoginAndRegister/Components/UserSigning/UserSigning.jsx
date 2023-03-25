@@ -25,8 +25,8 @@ const UserSigning = ({ ScreenSize, TopLoginRegisterBtns }) => {
                 Credentials.Token = token
                 if (AuthPageName === "Sign Up")
                     Dispatch(SignUpUser(Credentials, Dispatch, AuthPageName))
-                else
-                    Dispatch(LoginUser(Credentials, Dispatch, AuthPageName))
+                else{
+                    Dispatch(LoginUser(Credentials, Dispatch, AuthPageName))}
             });
         });
 

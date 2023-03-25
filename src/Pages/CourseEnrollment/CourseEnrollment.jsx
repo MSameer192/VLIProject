@@ -8,11 +8,12 @@ import UserInfo from './UserInfo/UserInfo'
 import Footer from '../../Components/Footer/Footer'
 import TimeSlots from './TimeSlots/TimeSlots'
 import useCheckLogin from '../../Helpers/CustomHooks/CheckLogin'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useRef } from 'react'
 import { SubmitForm } from './Helpers'
 import { usePageLoadCheckers } from './Helpers/PageLoadCheckers'
 import { useLocation, useNavigate } from 'react-router-dom'
+import LoadingSpinner from '../../Components/LoadingSpinner/LoadingSpinner'
 
 
 const CourseEnrollment = () => {
@@ -20,7 +21,7 @@ const CourseEnrollment = () => {
     const Dispatch = useDispatch()
 
     const [ShowTimeSlots, setShowTimeSlots] = useState(false);
-
+    const { loading } = useSelector(Store => Store.CourseReducer)
     const [EnrollmentData, setEnrollmentData] = useState({
         StudentData: {
             FirstName: "",
@@ -45,32 +46,34 @@ const CourseEnrollment = () => {
     const Navigate = useNavigate()
     const PackageRef = useRef(null);
     usePageLoadCheckers(location, EnrollmentData, setEnrollmentData)
-    console.log(EnrollmentData?.StudentData?.Schedule)
+
     return (
-        <div className='mt-20'>
-            <TopPart />
+        !loading ?
+            <div className='mt-20'>
+                <TopPart />
 
-            <TimeSlots ShowTimeSlots={ShowTimeSlots} setShowTimeSlots={setShowTimeSlots}
-                setEnrollmentData={setEnrollmentData} EnrollmentData={EnrollmentData} Err={Err} setErr={setErr} />
+                <TimeSlots ShowTimeSlots={ShowTimeSlots} setShowTimeSlots={setShowTimeSlots}
+                    setEnrollmentData={setEnrollmentData} EnrollmentData={EnrollmentData} Err={Err} setErr={setErr} />
 
-            <EnrollmentSteps />
+                <EnrollmentSteps />
 
-            <form onSubmit={(e) => SubmitForm(e, EnrollmentData, Err, setErr, Dispatch, Navigate)} >
+                <form onSubmit={(e) => SubmitForm(e, EnrollmentData, Err, setErr, Dispatch, Navigate)} >
 
-                <UserInfo setEnrollmentData={setEnrollmentData} EnrollmentData={EnrollmentData} PackageRef={PackageRef}
-                    Err={Err} setErr={setErr} setShowTimeSlots={setShowTimeSlots} />
+                    <UserInfo setEnrollmentData={setEnrollmentData} EnrollmentData={EnrollmentData} PackageRef={PackageRef}
+                        Err={Err} setErr={setErr} setShowTimeSlots={setShowTimeSlots} />
 
-                <Packages setEnrollmentData={setEnrollmentData} EnrollmentData={EnrollmentData} PackageRef={PackageRef}
-                    setErr={setErr} Err={Err}
-                />
+                    <Packages setEnrollmentData={setEnrollmentData} EnrollmentData={EnrollmentData} PackageRef={PackageRef}
+                        setErr={setErr} Err={Err}
+                    />
 
-                <Payment Package={EnrollmentData?.Package} EnrollmentData={EnrollmentData}
-                    Err={Err} setErr={setErr}
-                />
+                    <Payment Package={EnrollmentData?.Package} EnrollmentData={EnrollmentData}
+                        Err={Err} setErr={setErr}
+                    />
 
-            </form>
-            <Footer FooterBgColor='#F6F5F5' />
-        </div>
+                </form>
+                <Footer FooterBgColor='#F6F5F5' />
+            </div>
+            : <LoadingSpinner />
     )
 }
 

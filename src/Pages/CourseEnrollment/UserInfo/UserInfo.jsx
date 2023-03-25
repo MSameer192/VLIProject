@@ -25,7 +25,7 @@ const UserInfo = ({ EnrollmentData, setEnrollmentData, PackageRef, Err, setShowT
 
         if (e.target.value !== "") {
             delete Err?.[Key]
-            setErr({ ...Err});
+            setErr({ ...Err });
         } else {
             setErr({ ...Err, [Key]: `${Key} is required` });
         }
@@ -43,10 +43,10 @@ const UserInfo = ({ EnrollmentData, setEnrollmentData, PackageRef, Err, setShowT
                 />
 
                 <ContactAndOtherInfo
-                    EnrollmentData={EnrollmentData} Err={Err} setShowTimeSlots={setShowTimeSlots} OnChange={OnChange}
+                    EnrollmentData={EnrollmentData} Err={Err} setShowTimeSlots={setShowTimeSlots}
+                    OnChange={OnChange}
                     Styling={Styling}
                 />
-
 
                 <FreeHours
                     EnrollmentData={EnrollmentData} setEnrollmentData={setEnrollmentData} Styling={Styling} Err={Err}

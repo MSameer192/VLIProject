@@ -5,7 +5,7 @@ import Gender from './ContactAndOtherInfoComp/Gender';
 const ContactAndOtherInfo = ({ Styling, EnrollmentData, setEnrollmentData, Err, setShowTimeSlots, OnChange }) => {
     const { InputTypeTextStyle, DivStyle, HeadingStyle } = Styling;
 
-    
+
     return (
         <>
             <div className={DivStyle}>
@@ -41,7 +41,7 @@ const ContactAndOtherInfo = ({ Styling, EnrollmentData, setEnrollmentData, Err, 
                 <h4 className='font-normal text-[red]'> {Err?.Schedule ? Err?.Schedule : null}</h4>
 
                 <button type='button' id='Schedule' className='text-base bg-[#A1A3EF] px-5 py-2 text-white border-none rounded-xl cursor-pointer'
-                    onClick={() =>  setShowTimeSlots(true) }>
+                    onClick={() => setShowTimeSlots(true)}>
                     Create Schedule
                 </button>
             </div>

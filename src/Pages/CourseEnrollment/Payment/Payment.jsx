@@ -16,6 +16,7 @@ const Payment = ({ Package, EnrollmentData, Err, setErr }) => {
         if (Success)
             Navigate('/mycourses/enrolledcourses')
     }, [Success, Navigate])
+
     return (
         <div className='flex flex-col items-center' >
             <PaymentTop setInstallment={setInstallment} Installment={Installment} Err={Err} setErr={setErr} EnrollmentData={EnrollmentData} />
@@ -38,8 +39,6 @@ const Payment = ({ Package, EnrollmentData, Err, setErr }) => {
                     />
                     : null}
 
-
-                {/* <Input /> */}
             </div>
         </div>
     )

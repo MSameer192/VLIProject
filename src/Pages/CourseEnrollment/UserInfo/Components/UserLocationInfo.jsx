@@ -15,7 +15,7 @@ const UserLocationInfo = ({ Styling, setEnrollmentData, EnrollmentData, Err, OnC
                         onFocus={AddParentStyle}
                         onBlur={RemoveParentStyle}
                         value={EnrollmentData?.StudentData?.Address}
-                        onChange={(e) => OnChange(e, "Address")}
+                        onChange={e => OnChange(e, "Address")}
                     />
                     <img className='ml-4' src={require('../Assets/LocationIcon.svg').default} alt="" />
                 </span>
@@ -29,7 +29,7 @@ const UserLocationInfo = ({ Styling, setEnrollmentData, EnrollmentData, Err, OnC
 
                 <input className={InputTypeTextStyle} type="number" placeholder='0546' id='PostalCode' required
                     value={EnrollmentData?.StudentData?.PostalCode}
-                    onChange={(e) => OnChange(e, "PostalCode")}
+                    onChange={e => OnChange(e, "PostalCode")}
                 />
             </div>
 
@@ -39,7 +39,7 @@ const UserLocationInfo = ({ Styling, setEnrollmentData, EnrollmentData, Err, OnC
                 <h4 className='font-normal text-[red]'> {Err?.Province ? Err?.Province : null}</h4>
                 <input className={InputTypeTextStyle} type="text" placeholder='Ontario' id='Province' required
                     value={EnrollmentData?.StudentData?.Province}
-                    onChange={(e) => OnChange(e, "Province")}
+                    onChange={e => OnChange(e, "Province")}
                 />
             </div>
 
@@ -53,7 +53,7 @@ const UserLocationInfo = ({ Styling, setEnrollmentData, EnrollmentData, Err, OnC
                         onFocus={AddParentStyle}
                         onBlur={RemoveParentStyle}
                         value={EnrollmentData?.StudentData?.City}
-                        onChange={(e) => OnChange(e, "City")}
+                        onChange={e => OnChange(e, "City")}
                     />
                     <img className='ml-4' src={require('../Assets/CityIcon.svg').default} alt="" />
                 </span>
