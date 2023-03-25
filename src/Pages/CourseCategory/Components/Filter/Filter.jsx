@@ -46,8 +46,8 @@ const Filter = () => {
     return (
         <div className='flex flex-col relative left-1/2 -translate-x-1/2 justify-center items-center w-1/2 max-w-[1000px] gap-10 py-5'>
 
-            <button type='button' className={`text-xs bg-[#A1A3EF] border-none px-8 py-2 text-white rounded-xl 
-            cursor-pointer w-fit duration-300`}
+            <button type='button' className="text-xs bg-[#A1A3EF] border-none px-8 py-2 text-white rounded-xl 
+            cursor-pointer w-fit duration-300"
                 onClick={AddClass}>
                 Filter
             </button>

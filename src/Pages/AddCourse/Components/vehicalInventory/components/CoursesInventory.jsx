@@ -18,7 +18,6 @@ const CoursesInventory = ({ setSteps, CourseData, setCourseData }) => {
     }, [Dispatch])
 
     const OnClick = (e, CoursePK) => {
-        console.log(CoursePK)
         if (e.target === e.currentTarget) {
             setSteps(2);
             setCourseData({ ...CourseData, CourseFK: CoursePK })

@@ -7,11 +7,9 @@ import CourseDescription from './components/CourseDescription.jsx';
 import SyllabusDescription from './components/SyllabusDescription.jsx';
 import WeeklyCourseModule from './components/WeeklyCourseModule.jsx';
 
-
 // css
 import "./Pricing.css";
 
-// import axios from "axios";
 const CourseDetails = ({ Steps, setSteps, CourseData, setCourseData, StepsIndicator, PageNo }) => {
     const [CourseDetailsData, setCourseDetailsData] = useState({
         ShortDescription: "",
@@ -19,11 +17,13 @@ const CourseDetails = ({ Steps, setSteps, CourseData, setCourseData, StepsIndica
         CourseSyllabus: [{ CourseDescription: "" }],
         ClassSchedule: [{ ClassDescription: "", ClassNumber: "", WeekNumber: "" }],
     });
+
     const [CourseDetailsErr, setCourseDetailsErr] = useState({})
     useEffect(() => {
         setCourseData({ ...CourseData, ...CourseDetailsData, })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [CourseDetailsData])
+
     return (
         <div className={`addCoursesMainContainer ${Steps !== PageNo ? "hidden" : ""}`}>
 
@@ -46,7 +46,9 @@ const CourseDetails = ({ Steps, setSteps, CourseData, setCourseData, StepsIndica
                             />
 
                             <SyllabusDescription
-                                CourseDetailsData={CourseDetailsData} setCourseDetailsData={setCourseDetailsData} />
+                                CourseDetailsData={CourseDetailsData} setCourseDetailsData={setCourseDetailsData}
+                                CourseDetailsErr={CourseDetailsErr} setCourseDetailsErr={setCourseDetailsErr}
+                            />
 
                             <div className="col5Descriptions" style={{ marginLeft: '50px' }}>
                                 <div className="row">
@@ -57,7 +59,9 @@ const CourseDetails = ({ Steps, setSteps, CourseData, setCourseData, StepsIndica
                                 </div>
                             </div>
 
-                            <WeeklyCourseModule CourseDetailsData={CourseDetailsData} setCourseDetailsData={setCourseDetailsData} />
+                            <WeeklyCourseModule CourseDetailsData={CourseDetailsData} setCourseDetailsData={setCourseDetailsData}
+                                CourseDetailsErr={CourseDetailsErr} setCourseDetailsErr={setCourseDetailsErr}
+                            />
 
                             <div className="col5Descriptions" style={{ marginLeft: '50px' }}>
                                 <div className="row">

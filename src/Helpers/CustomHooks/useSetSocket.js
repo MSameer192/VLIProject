@@ -12,20 +12,15 @@ const useSetSocket = (Socket) => {
 
     useEffect(() => {
 
-
         if (!SocketUserId) {
 
-            if (Authenticated && GetLocalStorage('UserInfo')) {
+            if (Authenticated && GetLocalStorage('UserInfo'))
                 Dispatch(SetSocketA({ UserId: UserInfo.UserId, Authenticated: true }));
-
-            }
 
             else if (GetLocalStorage('UserInfo'))
                 return
 
-            else
-                Dispatch(SetSocketA({ UserId: uuidV4(), Authenticated: false }))
-
+            else Dispatch(SetSocketA({ UserId: uuidV4(), Authenticated: false }));
         }
 
     }, [Socket, Authenticated, Dispatch, UserInfo, SocketUserId])

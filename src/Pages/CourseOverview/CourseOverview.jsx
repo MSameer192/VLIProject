@@ -16,15 +16,19 @@ import useGetWishList from '../../Helpers/CustomHooks/useGetWishList'
 import { useRef } from 'react'
 import NavigationButtons from './NavigationButtons'
 import { SelectInView } from './Helpers/SelectInView'
+import LoadingSpinner from '../../Components/LoadingSpinner/LoadingSpinner'
 const CourseOverview = () => {
     const { InstituteCourseId } = useParams();
-    const { loading, CourseInfo } = useSelector((Store) => Store.CourseReducer)
+    const { loading: LoginLoading } = useSelector((Store) => Store.LoginSignupReducer);
+    const { loading, CourseInfo } = useSelector(Store => Store.CourseReducer);
+    const { UserInfo } = useSelector(Store => Store.LoginSignupReducer);
+
     const [DivElement, setDivElement] = useState(document.getElementById("PolygonDivHeight"));
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(GetCourse(InstituteCourseId))
-    }, [InstituteCourseId, dispatch])
+    }, [InstituteCourseId, dispatch, UserInfo])
 
 
     useEffect(() => {
@@ -36,7 +40,7 @@ const CourseOverview = () => {
 
     }, [DivElement])
     useGetWishList()
-    useCheckLogin(false,["Student"]);
+    useCheckLogin(false, ["Student"]);
     const InstructorRef = useRef();
     const CourseSyllabusRef = useRef();
     const VehicleDetailRef = useRef();
@@ -49,7 +53,7 @@ const CourseOverview = () => {
     window.addEventListener('resize', GetInView, false);
 
     return (
-        !loading ? <div className='mt-[80px] relative'>
+        !loading   ? <div className='mt-[80px] relative'>
 
 
             <CourseIntro CourseInfo={CourseInfo} />
@@ -66,7 +70,9 @@ const CourseOverview = () => {
                 <Footer />
             </div>
         </div>
-            : <h1 className='mt-20'>Loading</h1>
+            : <div className='mt-20'>
+                <LoadingSpinner />
+            </div>
     )
 }
 

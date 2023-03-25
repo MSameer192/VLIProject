@@ -12,12 +12,15 @@ export function BuyCourse({ CourseInfo }) {
     const Dispatch = useDispatch();
 
     const NavigateToEnrollment = () => {
-        if (CourseInfo?.Enrolled)
+
+        if (Authenticated && CourseInfo?.Enrolled)
             Navigate('/mycourses/enrolledcourses')
+
         else if (Authenticated)
             Navigate('/Enrollment/Course', { state: { InstituteCourseId: CourseInfo?.InstituteCourseId } })
 
-        else Dispatch(OpenLoginSignUp("Sign In", false))
+        else
+            Dispatch(OpenLoginSignUp("Sign In", false))
 
     }
 

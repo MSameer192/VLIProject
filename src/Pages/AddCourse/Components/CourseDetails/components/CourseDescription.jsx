@@ -10,7 +10,7 @@ const CourseDescription = ({ CourseDetailsData, setCourseDetailsData, CourseDeta
     const OnChangeCheck = (e, Key, MaxLength, MinLength, Name) => {
         CheckInput(e, Key, MaxLength, MinLength, Name, true, CourseDetailsData, setCourseDetailsData, CourseDetailsErr, setCourseDetailsErr, TextLength, setTextLengthc)
     }
-    console.log(TextLength)
+
     return (
         <div className="addCourse2Main">
             <div className="col5Descriptions">

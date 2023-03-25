@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { OpenLoginSignUp, ResetLoginSignUp } from '../../Actions/ToggleSignupA';
 import UserSigning from './Components/UserSigning/UserSigning';
 import InstituteSide from './Components/InstituteSide/InstituteSide';
+import LoadingSpinner from '../../Components/LoadingSpinner/LoadingSpinner';
 
 let TopLoginRegisterBtns = `absolute border-none   rounded-t-[28px]  cursor-pointer Boldfont hidden md:inline-block 
             -top-9   lg:-top-11 xl:-top-14 2xl:-top-16
@@ -16,8 +17,8 @@ let TopLoginRegisterBtns = `absolute border-none   rounded-t-[28px]  cursor-poin
 
 
 const SignUp = () => {
-    const { error } = useSelector((Store) => Store.LoginSignupReducer);
-    const { AuthPageName, Navigation, Done } = useSelector((Store) => Store.ToggleSignupReducer)
+    const { error, loading } = useSelector((Store) => Store.LoginSignupReducer);
+    const { AuthPageName, Navigation, Done, } = useSelector((Store) => Store.ToggleSignupReducer)
 
     const Navigate = useNavigate()
     const Dispatch = useDispatch()
@@ -43,33 +44,41 @@ const SignUp = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [Navigate, error, Done, Navigation])
 
-
+    console.log(loading)
     return (
 
         AuthPageName ?
             <div className='LightBg'
                 onClick={e => { Dispatch(OpenLoginSignUp(false, false)) }}
             >
+                {!loading ?
 
-                <div className='MainParent bgGradient'
-                    onClick={(e) => e.stopPropagation()}
-                >
 
-                    <div className="ImageContainer">
-                        <div className='w-full h-80 bg-[#00000070]' > </div>
+                    <div className='MainParent bgGradient'
+                        onClick={(e) => e.stopPropagation()}
+                    >
+
+
+                        <div className="ImageContainer">
+                            <div className='w-full h-80 bg-[#00000070]' > </div>
+                        </div>
+                        <div className='FormParent'>
+
+                            {
+                                AuthPageName === "Register"
+                                    ? <InstituteSide />
+                                    : <UserSigning ScreenSize={ScreenSize} TopLoginRegisterBtns={TopLoginRegisterBtns} />
+                            }
+
+
+                        </div>
+
+
                     </div>
-                    <div className='FormParent'>
-
-                        {
-                            AuthPageName === "Register"
-                                ? <InstituteSide />
-                                : <UserSigning ScreenSize={ScreenSize} TopLoginRegisterBtns={TopLoginRegisterBtns} />
-                        }
-
-
+                    : <div className='h-screen w-screen bg-white flex justify-center items-center'>
+                    <LoadingSpinner />
                     </div>
-                </div>
-
+                }
             </div>
             : null
 

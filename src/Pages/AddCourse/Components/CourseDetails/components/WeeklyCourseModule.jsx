@@ -4,7 +4,7 @@ import addCOursePricingPlus from '../../CourseDetails/Assets/addCOursePricingPlu
 // css
 import "../Pricing.css";
 
-const WeeklyCourseModule = ({ CourseDetailsData, setCourseDetailsData }) => {
+const WeeklyCourseModule = ({ CourseDetailsData, setCourseDetailsData, CourseDetailsErr, setCourseDetailsErr }) => {
 
     const OnChange = (e, Index, key) => {
         let NewWeeklyModule = [...CourseDetailsData?.ClassSchedule];

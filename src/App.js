@@ -48,6 +48,7 @@ import RecommendedCoursesByAdmin from './Pages/Institute/RecommendedCoursesByAdm
 import { BaseUrl } from './Actions/Base';
 import EBooks from './Pages/EBooks/EBooks';
 import { getCookie } from './Helpers/Cookies/Cookies';
+import DevExtremeScheduler from './Components/DevExtremeScheduler/DevExtremeScheduler';
 
 
 
@@ -97,6 +98,7 @@ function App() {
 
         <Routes>
           <Route path='/' element={Home} />
+          <Route path='/s' element={<DevExtremeScheduler />} />
           <Route path='/Ebooks' element={<EBooks />} />
           <Route path='/course/:InstituteCourseId' element={<CourseOverview />} />
           <Route path='/license/category/:LicenseTypeId' element={<CourseCategory />} />
