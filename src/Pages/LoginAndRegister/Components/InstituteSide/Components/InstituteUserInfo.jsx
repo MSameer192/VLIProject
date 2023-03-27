@@ -97,7 +97,7 @@ const InstituteUserInfo = ({ OnSuccess, TimingRef, InstituteData, setInstituteDa
 
 const InputTemplate = ({ value, OnChange, type, placeholder, id, Err }) => {
     return <div className='w-full outline-none'>
-        <h5 className='font-normal text-[#ff6a6a] h-5'>{Err} </h5>
+        <h5 className='font-normal text-[#ff6a6a] text-6xs h-[14px]'>{Err} </h5>
         <input className="InstituteSide_InputStyles" type={type} name="" id={id} placeholder={placeholder}
             onChange={OnChange}
             value={value}

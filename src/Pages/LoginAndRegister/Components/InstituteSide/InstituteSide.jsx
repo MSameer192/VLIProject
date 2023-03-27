@@ -61,7 +61,7 @@ const InstituteSide = () => {
 
     const OnSubmit = e => SubmitFormData(e, Dispatch, InstituteData, setSuccess, setErr, Err);
 
-    const OnClick = (Pos, EleRef) => {
+    const OnClick = (Pos, NextRef, CurrentRef) => {
         const KeyNamesArr = [
             { key: "InstituteName", Name: "Institute Name" },
             { key: "Address", Name: "Address", },
@@ -75,17 +75,17 @@ const InstituteSide = () => {
 
         let CheckErrs = ValidateInstituteInfo(InstituteData, setErr, Err, KeyNamesArr)
         if (!CheckErrs) {
-            EleRef.current.style.display = "flex"
+            NextRef.current.style.display = "flex"
             setLeftPosition(Pos)
         }
     }
 
     useEffect(() => {
-        if (Err.InstituteName) {
+        if (Err?.InstituteName) {
             setLeftPosition(0)
         }
     }, [Err])
-   
+
     return (
         !loading
             ? <div className='InstituteSideParent'>

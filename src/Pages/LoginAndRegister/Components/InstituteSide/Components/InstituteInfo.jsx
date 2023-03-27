@@ -48,7 +48,7 @@ const InstituteInfo = ({ UserInfoRef, InstituteData, setInstituteData, OnClick, 
                             onChange={e => OnChange(e, "InstituteName", "Institute Name")}
 
                         />
-                        <h6 className='text-5xs text-[red] font-normal'>
+                        <h6 className='text-6xs text-[red] font-normal h-[14px]'>
                             {Err.InstituteName}
                         </h6>
                     </span>
@@ -64,9 +64,9 @@ const InstituteInfo = ({ UserInfoRef, InstituteData, setInstituteData, OnClick, 
                             onChange={e => OnChange(e, "WebsiteUrl")}
                         />
 
-                        {/* <h6 className='text-5xs text-[red] font-normal'>
-                            {Err.WebsiteUrl ? "Institute Name  is required" : Err.InstituteName}
-                        </h6> */}
+                        <h6 className='text-6xs text-[red] font-normal h-[14px]'>
+
+                        </h6>
 
                     </span>
 
@@ -79,7 +79,7 @@ const InstituteInfo = ({ UserInfoRef, InstituteData, setInstituteData, OnClick, 
                             onChange={e => OnChange(e, "Address", "Address")}
                         />
 
-                        <h6 className='text-5xs text-[red] font-normal'>
+                        <h6 className='text-6xs text-[red] font-normal h-[14px]'>
                             {Err.Address}
                         </h6>
 
@@ -96,7 +96,7 @@ const InstituteInfo = ({ UserInfoRef, InstituteData, setInstituteData, OnClick, 
                                 value={InstituteData.TotalInstructors}
                                 onChange={e => OnChange(e, "TotalInstructors", "Total Instructors")}
                             />
-                            <h6 className='text-5xs text-[red] font-normal'>
+                            <h6 className='text-6xs text-[red] font-normal h-[14px]'>
                                 {Err.TotalInstructors}
                             </h6>
                         </span>
@@ -108,7 +108,7 @@ const InstituteInfo = ({ UserInfoRef, InstituteData, setInstituteData, OnClick, 
                                 value={InstituteData.TotalVehicles}
                                 onChange={e => OnChange(e, "TotalVehicles", "Total Vehicles")}
                             />
-                            <h6 className='text-5xs text-[red] font-normal'>
+                            <h6 className='text-6xs text-[red] font-normal h-[14px]'>
                                 {Err.TotalVehicles}
                             </h6>
                         </span>

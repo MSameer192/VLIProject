@@ -36,7 +36,7 @@ const InstituteDocuments = ({ InstituteData, setInstituteData, Err, setErr }) =>
 
                         </div>
 
-                        <h5 className='font-normal text-6xs text-[red] mb-1'>
+                        <h5 className='font-normal text-6xs text-[red] mb-1 h-[14px]'>
                             {Err?.[value.ImageName]}
                         </h5>
 

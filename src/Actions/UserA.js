@@ -154,9 +154,10 @@ export const RegisterInstituteA = (UserData, cb) => async (dispatch) => {
             payload: data.Notifications,
         })
         SetLocalStorage("UserInfo", { ...data.User, Notifications: data.Notifications })
+        
         cb()
     } catch (error) {
-        console.log((error?.response?.data))
+
         dispatch({
             type: "RegisterInstituteError",
             payload: (error?.response?.data) ? (error?.response?.data) : {}
