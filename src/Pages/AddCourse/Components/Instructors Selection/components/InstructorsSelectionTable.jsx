@@ -25,7 +25,6 @@ const InstructorsSelectionTable = ({ CourseData, setCourseData }) => {
         else if (!e.target.checked) {
             let RemovedInstructor = NewInstrucorList.filter(({ InstructorFK }) => InstructorFK !== value.Instructor.InstructorId)
             setCourseData({ ...CourseData, Instructors: [...RemovedInstructor] })
-            console.log(RemovedInstructor)
         }
 
     }

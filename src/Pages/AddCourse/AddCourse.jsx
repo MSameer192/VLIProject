@@ -21,6 +21,7 @@ const AddCourseChild = () => {
         Instructors: [],
         Possible_FAQs: [""]
     });
+
     const [Err, setErr] = useState();
     const [Steps, setSteps] = useState(1);
 
@@ -45,6 +46,7 @@ const AddCourseChild = () => {
 
 
     return (
+
         <form onSubmit={SubmitForm} onClick={e => e.stopPropagation()}>
             <CourseSelection Steps={Steps} CourseData={CourseData} setCourseData={setCourseData} setSteps={setSteps} StepsIndicator={StepsIndicator} PageNo={1} />
 
@@ -77,6 +79,7 @@ const SubmitCourseData = (e, Dispatch, CourseData, setSuccess) => {
     e.preventDefault();
     const CourseFormData = new FormData()
     CourseFormData.append("CourseData", JSON.stringify(CourseData))
+    // setSuccess(true)
     Dispatch(CreateCoursesA(CourseFormData, setSuccess))
 }
 

@@ -11,6 +11,7 @@ import VehicalInventoryAdminNote from './components/VehicalInventoryAdminNote.js
 import './vehicalInventory.css'
 
 import Filters from "./components/VehicleFilter/Filters";
+import { useSelector } from "react-redux";
 
 
 const CourseSelection = ({ Steps, setSteps, CourseData, setCourseData, StepsIndicator, PageNo }) => {

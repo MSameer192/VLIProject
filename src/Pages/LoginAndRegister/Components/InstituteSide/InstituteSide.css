@@ -3,7 +3,7 @@
 }
 
 .InstituteSide_InputStyles {
-  @apply text-black bg-[#F3F6F7] border-none rounded-lg  shadow-[3px_4px_4px_#00000040]
+  @apply text-black bg-[#F3F6F7] border-none rounded-lg  shadow-[3px_4px_4px_#00000040] w-full
     text-4xs    lg:text-2xs     xl:text-xs      2xl:text-base
     py-[6px]                    xl:py-3
     px-[8px]                    xl:px-[22px]    2xl:px-7;

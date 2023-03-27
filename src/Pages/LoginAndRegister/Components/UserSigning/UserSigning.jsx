@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { LoginUser, SignUpUser } from '../../../../Actions/UserA'
+import LoadingSpinner from '../../../../Components/LoadingSpinner/LoadingSpinner'
 import { SubmitButton } from '../../LoginAndRegister'
 import SignInLeftSide from './Components/LeftSide/LeftSide'
 import SigninRightSide from './Components/RightSide/RightSide'
@@ -15,8 +16,12 @@ const UserSigning = ({ ScreenSize, TopLoginRegisterBtns }) => {
         FirstName: "",
         LastName: ""
     });
-    const { AuthPageName } = useSelector((Store) => Store.ToggleSignupReducer)
     const Dispatch = useDispatch()
+
+    const { loading } = useSelector((Store) => Store.LoginSignupReducer);
+    const { AuthPageName } = useSelector((Store) => Store.ToggleSignupReducer);
+    
+
 
     const SubmitForm = (e) => {
         e.preventDefault();
@@ -25,18 +30,20 @@ const UserSigning = ({ ScreenSize, TopLoginRegisterBtns }) => {
                 Credentials.Token = token
                 if (AuthPageName === "Sign Up")
                     Dispatch(SignUpUser(Credentials, Dispatch, AuthPageName))
-                else{
-                    Dispatch(LoginUser(Credentials, Dispatch, AuthPageName))}
+                else {
+                    Dispatch(LoginUser(Credentials, Dispatch, AuthPageName))
+                }
             });
         });
 
         return false
     }
+
     return (
+        !loading ?
+            <form className='flex w-full flex-col items-center h-fit' onSubmit={SubmitForm}>
 
-        <form className='flex w-full flex-col items-center h-fit' onSubmit={SubmitForm}>
-
-            <div className={`flex
+                <div className={`flex
             w-[97%]             md:w-full
             min-h-fit           md:min-h-[auto]
             h-fit               md:h-auto
@@ -44,26 +51,27 @@ const UserSigning = ({ ScreenSize, TopLoginRegisterBtns }) => {
             flex-col-reverse    md:flex-row  
                                 md:bg-white `}>
 
-                <SignInLeftSide
-                    TopLoginRegisterBtns={TopLoginRegisterBtns}
-                    ScreenSize={ScreenSize} />
+                    <SignInLeftSide
+                        TopLoginRegisterBtns={TopLoginRegisterBtns}
+                        ScreenSize={ScreenSize} />
 
-                <CenterORline />
-                <SigninRightSide
-                    TopLoginRegisterBtns={TopLoginRegisterBtns}
-                    setCredentials={setCredentials}
-                    Credentials={Credentials}
-                />
+                    <CenterORline />
+                    <SigninRightSide
+                        TopLoginRegisterBtns={TopLoginRegisterBtns}
+                        setCredentials={setCredentials}
+                        Credentials={Credentials}
+                    />
 
-                {/* For Mobile View only */}
-                <div className='flex md:hidden mt-16  h-[12%]  flex-col text-white Boldfont justify-between items-center '>
-                    <h2>Sign Up For Free</h2>
-                    <p className='text-center'>"Lorem Ipsum is simply  dummy <br />text
-                        of the printing" </p>
+                    {/* For Mobile View only */}
+                    <div className='flex md:hidden mt-16  h-[12%]  flex-col text-white Boldfont justify-between items-center '>
+                        <h2>Sign Up For Free</h2>
+                        <p className='text-center'>"Lorem Ipsum is simply  dummy <br />text
+                            of the printing" </p>
+                    </div>
                 </div>
-            </div>
-            <SubmitButton ButtonType="submit" AuthPageName={AuthPageName} />
-        </form>
+                <SubmitButton ButtonType="submit" AuthPageName={AuthPageName} />
+            </form>
+            : <LoadingSpinner />
     )
 }
 

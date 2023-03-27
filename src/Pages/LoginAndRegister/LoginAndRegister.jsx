@@ -50,34 +50,30 @@ const SignUp = () => {
             <div className='LightBg'
                 onClick={e => { Dispatch(OpenLoginSignUp(false, false)) }}
             >
-                {!loading ?
 
 
-                    <div className='MainParent bgGradient'
-                        onClick={(e) => e.stopPropagation()}
-                    >
+                <div className='MainParent bgGradient'
+                    onClick={(e) => e.stopPropagation()}
+                >
 
 
-                        <div className="ImageContainer">
-                            <div className='w-full h-80 bg-[#00000070]' > </div>
-                        </div>
-                        <div className='FormParent'>
+                    <div className="ImageContainer">
+                        <div className='w-full h-80 bg-[#00000070]' > </div>
+                    </div>
+                    <div className='FormParent'>
 
-                            {
-                                AuthPageName === "Register"
-                                    ? <InstituteSide />
-                                    : <UserSigning ScreenSize={ScreenSize} TopLoginRegisterBtns={TopLoginRegisterBtns} />
-                            }
-
-
-                        </div>
+                        {
+                            AuthPageName === "Register"
+                                ? <InstituteSide />
+                                : <UserSigning ScreenSize={ScreenSize} TopLoginRegisterBtns={TopLoginRegisterBtns} />
+                        }
 
 
                     </div>
-                    : <div className='h-screen w-screen bg-white flex justify-center items-center'>
-                        <LoadingSpinner />
-                    </div>
-                }
+
+
+                </div>
+
             </div>
             : null
 

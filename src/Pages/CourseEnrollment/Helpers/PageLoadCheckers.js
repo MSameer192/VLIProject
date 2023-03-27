@@ -12,8 +12,6 @@ export const usePageLoadCheckers = (location, EnrollmentData, setEnrollmentData)
     const { UserInfo } = useSelector((Store) => Store.LoginSignupReducer);
     const { EnrollCourseInfo } = useSelector((Store) => Store.CourseReducer)
 
-
-
     // This would navigate user to home if user tries to enter previous url.
     useEffect(() => {
 
@@ -26,10 +24,8 @@ export const usePageLoadCheckers = (location, EnrollmentData, setEnrollmentData)
     }, [location, Navigate, Loaded])
 
 
-
-
-
-    // This would get the Information of the course to be enrolled and make sure that it is requested multiple times.
+    // This would get the Information of the course to be enrolled and make sure that it is 
+    // requested multiple times.
     useEffect(() => {
 
         if (!EnrollCourseInfo && location?.state?.InstituteCourseId && Loaded)
@@ -41,16 +37,21 @@ export const usePageLoadCheckers = (location, EnrollmentData, setEnrollmentData)
 
 
 
-    //This would fill all the fields with information previously enterd by user, automatically, when page is loaded
+    // This would fill all the fields with information previously enterd by user, automatically, 
+    // when page is loaded
     useEffect(() => {
-        const WriteableUserInfo = JSON.parse(JSON.stringify(UserInfo))
-        if (EnrollmentData?.StudentData?.FirstName === "")
-            setEnrollmentData({
-                ...EnrollmentData, StudentData: {
-                    ...EnrollmentData.StudentData, ...WriteableUserInfo, ...WriteableUserInfo?.StudentInfos,
-                    DOB: dayjs(new Date(WriteableUserInfo?.StudentInfos?.DOB)).format('YYYY-MM-DD')
-                }
-            })
+        if (UserInfo) {
+            const WriteableUserInfo = JSON.parse(JSON.stringify(UserInfo))
+            if (EnrollmentData?.StudentData?.FirstName === "")
+                setEnrollmentData({
+                    ...EnrollmentData, StudentData: {
+                        ...EnrollmentData.StudentData, ...WriteableUserInfo, ...WriteableUserInfo?.StudentInfos,
+                        DOB: dayjs(new Date(WriteableUserInfo?.StudentInfos?.DOB)).format('YYYY-MM-DD')
+                    }
+                })
+
+
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [EnrollmentData, UserInfo])
 

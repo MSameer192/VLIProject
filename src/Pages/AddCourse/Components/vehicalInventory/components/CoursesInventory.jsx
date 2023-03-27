@@ -4,15 +4,15 @@ import React, { useState, useEffect } from "react";
 // Images
 import addCourseVehical1 from "../../Description/Assets/addCourseVehical1.png";
 
-
 import '../../CourseSelection/CourseSelection.css'
 import '../vehicalInventory.css'
 import { useDispatch, useSelector } from "react-redux";
 import { GetAdminCoursesA } from "../../../../../Actions/CourseA";
+import LoadingSpinner from "../../../../../Components/LoadingSpinner/LoadingSpinner";
 
 const CoursesInventory = ({ setSteps, CourseData, setCourseData }) => {
     const Dispatch = useDispatch();
-    const { AdminCourses } = useSelector(Store => Store.CourseReducer)
+    const { AdminCourses, loading } = useSelector(Store => Store.CourseReducer)
     useEffect(() => {
         Dispatch(GetAdminCoursesA())
     }, [Dispatch])
@@ -24,30 +24,33 @@ const CoursesInventory = ({ setSteps, CourseData, setCourseData }) => {
         }
         e.stopPropagation()
     }
+    
     return (
-        <div className="mainContainer1White addCourseFirstPage vehicleInventrory"
-        >
-            <div className="addCourse3Main" style={{ marginTop: '-100px' }}
+        !loading
+            ? <div className="mainContainer1White addCourseFirstPage vehicleInventrory"
             >
-                <div className="row"
-                    onClick={e => e.stopPropagation()}>
+                <div className="addCourse3Main" style={{ marginTop: '-100px' }}
+                >
+                    <div className="row"
+                        onClick={e => e.stopPropagation()}>
 
-                    {AdminCourses?.map((value, index, arr) => {
+                        {AdminCourses?.map((value, index, arr) => {
 
 
-                        return <CourseComp
-                            key={value.CoursePK}
-                            VehicleType={value?.VehicleType?.VehicleTypeName}
-                            LicenseType={value?.LicenseType?.LicenseTypeName}
-                            CourseName={value.CourseName}
-                            Description={value.Description}
-                            OnClick={(e) => OnClick(e, arr[index].CoursePK, value.CoursePK)}
-                        />
-                    }
-                    )}
+                            return <CourseComp
+                                key={value.CoursePK}
+                                VehicleType={value?.VehicleType?.VehicleTypeName}
+                                LicenseType={value?.LicenseType?.LicenseTypeName}
+                                CourseName={value.CourseName}
+                                Description={value.Description}
+                                OnClick={(e) => OnClick(e, arr[index].CoursePK, value.CoursePK)}
+                            />
+                        }
+                        )}
+                    </div>
                 </div>
             </div>
-        </div>
+            : <LoadingSpinner />
     )
 }
 

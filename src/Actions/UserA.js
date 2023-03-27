@@ -15,10 +15,10 @@ export const LoginUser = (UserData, Dispatch, PageName) => async (dispatch) => {
             Headers,
 
         );
-        if (data.User.StudentInfos.Schedule)
+        if (data?.User?.StudentInfos?.Schedule)
             data.User.StudentInfos.Schedule = JSON.parse(data.User.StudentInfos.Schedule)
 
-        if (data.User.StudentInfos.FreeHours)
+        if (data?.User?.StudentInfos?.FreeHours)
             data.User.StudentInfos.FreeHours = JSON.parse(data.User.StudentInfos.FreeHours);
 
         dispatch({
@@ -156,7 +156,7 @@ export const RegisterInstituteA = (UserData, cb) => async (dispatch) => {
         SetLocalStorage("UserInfo", { ...data.User, Notifications: data.Notifications })
         cb()
     } catch (error) {
-
+        console.log((error?.response?.data))
         dispatch({
             type: "RegisterInstituteError",
             payload: (error?.response?.data) ? (error?.response?.data) : {}
