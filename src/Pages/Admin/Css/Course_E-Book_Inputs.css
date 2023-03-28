@@ -17,7 +17,7 @@
 }
 
 .Add_C_BTextArea {
-    @apply w-full border-none shadow-[5px_4px_6px_#00000029] resize-none p-2
+    @apply w-full border-none shadow-[5px_4px_6px_#00000029] resize-none p-2 min-h-[96px]
 }
 
 

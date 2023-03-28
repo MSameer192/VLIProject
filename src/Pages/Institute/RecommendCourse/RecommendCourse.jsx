@@ -4,6 +4,7 @@ import { GetAdminCoursesA } from '../../../Actions/CourseA'
 
 import InstituteTemplate from '../../../Components/InstituteTemplate/InstituteTemplate'
 import LoadingSpinner from '../../../Components/LoadingSpinner/LoadingSpinner'
+import NoDataResponse from '../../../Components/NoDataResponse'
 import useCheckLogin from '../../../Helpers/CustomHooks/CheckLogin'
 import { CourseComp } from '../../AddCourse/Components/vehicalInventory/components/CoursesInventory'
 import RecommendCoursePopup from './RecommendCoursePopup'
@@ -24,7 +25,7 @@ const RecommendCourseChild = () => {
             <div className='flex flex-wrap relative'
                 onClick={e => e.stopPropagation()}>
                 {Popup ? <RecommendCoursePopup CoursePK={CoursePK} setPopup={setPopup} /> : null}
-                {AdminCourses?.map((value) => {
+                {AdminCourses?.length > 0 ? AdminCourses?.map((value) => {
 
                     const OnClick = (e) => {
                         setCoursePK(value.CoursePK)
@@ -39,7 +40,12 @@ const RecommendCourseChild = () => {
                         Description={value.Description}
                         OnClick={OnClick}
                     />
-                })}
+                })
+                    : <div className='flex justify-center items-center min-h-[70vh] w-[calc(100%_-_80px)]'>
+                        <NoDataResponse topText="No Course found" bottomText="VlI admin will add course tamplates for you" />
+                    </div>
+
+                }
 
             </div>
             : <LoadingSpinner />

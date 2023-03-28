@@ -123,9 +123,12 @@ export const SignUpUser = (UserData, Dispatch, PageName) => async (dispatch) => 
             type: "GetNotificationsSuccess",
             payload: data.Notifications,
         })
+
         SetLocalStorage("UserInfo", { ...data.User, Notifications: data.Notifications })
+
         Dispatch(DoneLoginSignUp(false))
     } catch (error) {
+
         Dispatch(AgainOpenLoginSignUp(PageName))
         dispatch({
             type: "SignUpError",
@@ -154,7 +157,7 @@ export const RegisterInstituteA = (UserData, cb) => async (dispatch) => {
             payload: data.Notifications,
         })
         SetLocalStorage("UserInfo", { ...data.User, Notifications: data.Notifications })
-        
+
         cb()
     } catch (error) {
 

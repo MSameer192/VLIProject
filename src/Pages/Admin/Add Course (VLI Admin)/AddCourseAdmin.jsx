@@ -21,7 +21,7 @@ const AddCourseAdminChild = () => {
         Description: "",
         CourseThumbnail: ""
     });
-    
+
     const [Err, setErr] = useState();
     const [Success, setSuccess] = useState();
     const [SubLicenseType, setSubLicenseType] = useState([]);
@@ -45,13 +45,25 @@ const AddCourseAdminChild = () => {
                         <h2 className='text-sm font-normal'>Overview</h2>
                     </span>
                     <div className='flex w-full flex-col gap-7'>
-                        <CourseTitle setCourseData={setCourseData} CourseData={CourseData} />
-                        <CourseCategory setCourseData={setCourseData} CourseData={CourseData}
+                        <CourseTitle
+                            setCourseData={setCourseData} CourseData={CourseData}
+                            setErr={setErr} Err={Err}
+                        />
+
+                        <CourseCategory
+                            setCourseData={setCourseData} CourseData={CourseData}
                             SubLicenseType={SubLicenseType} setSubLicenseType={setSubLicenseType} />
-                        <SearchTags setCourseData={setCourseData} CourseData={CourseData}
-                            Err={Err} setErr={setErr} />
-                        <ShortDescription setCourseData={setCourseData} CourseData={CourseData} />
-                        <CourseThumnail setCourseData={setCourseData} CourseData={CourseData} />
+                        <SearchTags
+                            setCourseData={setCourseData} CourseData={CourseData}
+                            Err={Err} setErr={setErr}
+                        />
+                        <ShortDescription
+                            setCourseData={setCourseData} CourseData={CourseData}
+                            Err={Err} setErr={setErr}
+                        />
+                        <CourseThumnail
+                            setCourseData={setCourseData} CourseData={CourseData}
+                        />
                     </div>
                 </div>
             </div>

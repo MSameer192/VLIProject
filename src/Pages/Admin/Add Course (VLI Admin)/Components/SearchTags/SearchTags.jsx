@@ -15,8 +15,9 @@ const SearchTags = ({ setCourseData, CourseData, Err, setErr }) => {
 
             <div className="max-w-[730px] Add_C_B_InputSideContainer">
                 <div className="h-fit">
-                    <Tags setState={setCourseData} State={CourseData}  Err={Err} setErr={setErr} />
+                    <Tags setState={setCourseData} State={CourseData} Err={Err} setErr={setErr} />
                 </div>
+                <p className='text-[14px] text-[red] font-normal h-[14px]'>{Err?.PossibleKeywords} </p>
                 <p className="text-right text-[12px]">
                     Maximum 5
                 </p>

@@ -9,6 +9,7 @@ import '../vehicalInventory.css'
 import { useDispatch, useSelector } from "react-redux";
 import { GetAdminCoursesA } from "../../../../../Actions/CourseA";
 import LoadingSpinner from "../../../../../Components/LoadingSpinner/LoadingSpinner";
+import NoDataResponse from "../../../../../Components/NoDataResponse";
 
 const CoursesInventory = ({ setSteps, CourseData, setCourseData }) => {
     const Dispatch = useDispatch();
@@ -24,7 +25,7 @@ const CoursesInventory = ({ setSteps, CourseData, setCourseData }) => {
         }
         e.stopPropagation()
     }
-    
+
     return (
         !loading
             ? <div className="mainContainer1White addCourseFirstPage vehicleInventrory"
@@ -34,7 +35,7 @@ const CoursesInventory = ({ setSteps, CourseData, setCourseData }) => {
                     <div className="row"
                         onClick={e => e.stopPropagation()}>
 
-                        {AdminCourses?.map((value, index, arr) => {
+                        {AdminCourses?.length > 0 ? AdminCourses?.map((value, index, arr) => {
 
 
                             return <CourseComp
@@ -46,7 +47,11 @@ const CoursesInventory = ({ setSteps, CourseData, setCourseData }) => {
                                 OnClick={(e) => OnClick(e, arr[index].CoursePK, value.CoursePK)}
                             />
                         }
-                        )}
+                        )
+                            : <div className='flex justify-center items-center min-h-[80vh] w-[calc(100%_-_80px)]'>
+                                <NoDataResponse topText="No Course found" bottomText="VlI admin will add course tamplates for you" />
+                            </div>
+                        }
                     </div>
                 </div>
             </div>

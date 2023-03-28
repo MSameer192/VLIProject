@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { GetStudentBooksA } from '../../Actions/BookA'
 import Footer from '../../Components/Footer/Footer'
+import { LoginRegister } from '../../Components/Header/Headers'
 import useCheckLogin from '../../Helpers/CustomHooks/CheckLogin'
 import BookTypes from './Components/BookTypes'
 import EbooksList from './Components/EbooksList/EbooksList'
@@ -22,7 +23,7 @@ const EBooks = () => {
   return (
     <div className='mt-20 flex items-center flex-col'>
       <Top />
-
+      {<LoginRegister />}
 
       <BooksFilter />
 

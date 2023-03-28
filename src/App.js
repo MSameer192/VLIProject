@@ -83,7 +83,10 @@ function App() {
   const Home = !GetLocalStorage("UserInfo")?.User || UserInfo?.User === "Student"
     ? <LandingPage /> :
     GetLocalStorage("UserInfo")?.User === "Institute" || GetLocalStorage("UserInfo")?.User === "Admin" ?
-      <InstituteDashboard /> : null
+      <InstituteDashboard /> :
+      <LandingPage />
+
+
 
   return (
     <SocketContext.Provider value={Socket}>

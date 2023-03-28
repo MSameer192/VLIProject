@@ -20,7 +20,7 @@ const UserSigning = ({ ScreenSize, TopLoginRegisterBtns }) => {
 
     const { loading } = useSelector((Store) => Store.LoginSignupReducer);
     const { AuthPageName } = useSelector((Store) => Store.ToggleSignupReducer);
-    
+
 
 
     const SubmitForm = (e) => {

@@ -12,6 +12,10 @@ export function Tags({ State, setState, Err, setErr }) {
             setTags(NewTagsArr);
             if (NewTagsArr.length <= 0)
                 setErr({ ...Err, PossibleKeywords: "Please enter at least one keyword" })
+            else if (NewTagsArr.length < 5) {
+                delete Err?.PossibleKeywords
+                setErr(Err)
+            }
 
         }
         else if (e.key === "Enter" || e.key === " ") {
@@ -24,6 +28,7 @@ export function Tags({ State, setState, Err, setErr }) {
             setTags([...Tags, value.trim()])
             e.target.value = ""
             delete Err?.PossibleKeywords
+            setErr({ Err })
         }
 
     }
