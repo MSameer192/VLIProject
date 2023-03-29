@@ -3,7 +3,17 @@ import { useSelector } from 'react-redux';
 import DropDown from '../../../../../Components/CustomDropdown/DropDown'
 import DropDownOptions from '../../../../../Components/CustomDropdown/DropDownOption';
 import { LicenseTypeOptions, VehicleTypeOptions } from './DropDownArr/DropDownArr'
-const CourseCategory = ({ setCourseData, CourseData, SubLicenseType, setSubLicenseType }) => {
+const CourseCategory = ({ setCourseData, CourseData, SubLicenseType, setSubLicenseType, Err, setErr }) => {
+    
+    const OnChange = (target, Key, Name) => {
+        if (target.value !== "") {
+            delete Err?.[Key]
+            setErr(Err)
+            setCourseData({ ...CourseData, [Key]: target.value })
+        }
+        else if (target.value === "")
+            setErr({ ...Err, [Key]: `${Name} is required` })
+    }
 
     const { LicenseTypes } = useSelector(Store => Store.LicenseTypeReducer)
 
@@ -47,12 +57,17 @@ const CourseCategory = ({ setCourseData, CourseData, SubLicenseType, setSubLicen
                             styles="bg-white border-none" TextStyle="text-6xs sm:text-5xs md:text-4xs xl:text-3xs"
                             SelectValueStyle="px-3 sm:px-4 md:px-2 lg:px-6 xl:px-7 2xl:px-[30px]"
                             StateValue={CourseData?.VehicleTypeName}
-                            onChange={(target, Text) =>
+
+
+                            onChange={(target, Text) => {
+                                OnChange(target, "VehicleTypeFK", "Vehicle type")
                                 setCourseData({ ...CourseData, "VehicleTypeFK": target.value, VehicleTypeName: Text })
+                            }
                             }
 
                             DropDownOptions={VehicleTypeOptions}
                         />
+                        <p className='text-[14px] text-[red] font-normal h-[14px]'>{Err?.VehicleTypeFK} </p>
                     </span>
                     <div className='flex flex-col gap-5  max-w-[360px]  sm:gap-3 w-full'>
                         <span className='flex flex-col max-w-[360px] gap-[6px] sm:gap-3 w-full'>
@@ -64,13 +79,19 @@ const CourseCategory = ({ setCourseData, CourseData, SubLicenseType, setSubLicen
                                 SelectValueStyle="px-3 sm:px-4 md:px-2 lg:px-6 xl:px-7 2xl:px-[30px]"
                                 DropDownOptions={LicenseTypeOptions}
                                 StateValue={CourseData?.LicenseTypeName}
-                                onChange={(target, Text) =>
+                                onChange={(target, Text) => {
+                                    OnChange(target, "LicenseTypeFK", "License type")
                                     setCourseData({
                                         ...CourseData, "LicenseTypeFK": target.value, LicenseTypeName: Text,
                                         SubLicenseTypeFK: undefined,
                                         SubLicenseTypeName: undefined
-                                    })}
+                                    })
+                                }}
                             />
+
+
+
+                            <p className='text-[14px] text-[red] font-normal h-[14px]'>{Err?.LicenseTypeFK} </p>
                         </span>
                         {SubLicenseType?.length > 0
                             ? <span className='flex flex-col max-w-[360px] gap-[6px] sm:gap-3 w-full'>
@@ -82,10 +103,12 @@ const CourseCategory = ({ setCourseData, CourseData, SubLicenseType, setSubLicen
                                     SelectValueStyle="px-3 sm:px-4 md:px-2 lg:px-6 xl:px-7 2xl:px-[30px]"
                                     DropDownOptions={SubLicenseTypeOptions}
                                     StateValue={CourseData?.SubLicenseTypeName}
-                                    onChange={(target, Text) =>
+                                    onChange={(target, Text) => {
+                                        OnChange(target, "SubLicenseTypeFK", "SubLicense type")
                                         setCourseData({ ...CourseData, "SubLicenseTypeFK": target.value, SubLicenseTypeName: Text })
-                                    }
+                                    }}
                                 />
+                                <p className='text-[14px] text-[red] font-normal h-[14px]'>{Err?.SubLicenseTypeFK} </p>
                             </span>
                             : null}
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export function Tags({ State, setState, Err, setErr }) {
     const [Tags, setTags] = useState([])
@@ -28,7 +28,7 @@ export function Tags({ State, setState, Err, setErr }) {
             setTags([...Tags, value.trim()])
             e.target.value = ""
             delete Err?.PossibleKeywords
-            setErr({ Err })
+            setErr(Err)
         }
 
     }
@@ -42,7 +42,7 @@ export function Tags({ State, setState, Err, setErr }) {
             TagsInput.focus()
         }
     }
-
+    // console.log(React.Children)
     return <div className="w-full px-3 py-2 bg-white min-h-[96px] flex flex-wrap cursor-text" onClick={ONCLICK}>
         {Tags?.map(value =>
             <span className="text-2xs mr-[22px] mb-[22px] break-all h-fit px-[10px] py-[2px] bg-[#F5F5F5] w-fit text-[#C8C8C8] shadow-[4px_5px_6px_#00000029]" key={value}>

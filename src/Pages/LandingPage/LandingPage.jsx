@@ -13,9 +13,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { OpenLoginSignUp } from '../../Actions/ToggleSignupA';
 
-const LandingPage = () => {
+const LandingPage = ({ children }) => {
   useCheckLogin(false, [])
   const { UserInfo } = useSelector(Store => Store.LoginSignupReducer)
+
   return (
     <>
       <div className='w-full bgGradient absolute rounded-b-[300px] h-[745px] -z-10'>

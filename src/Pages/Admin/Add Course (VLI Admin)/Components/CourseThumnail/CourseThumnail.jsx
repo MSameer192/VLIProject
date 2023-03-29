@@ -1,7 +1,16 @@
 import React from 'react'
 import './CourseThumnail.css';
 import ImagePreviewer from '../../../../../Components/ImagePreviewer/ImagePreviewer'
-const CourseThumnail = ({ setCourseData, CourseData }) => {
+const CourseThumnail = ({ setCourseData, CourseData, setErr, Err }) => {
+    const OnChange = e => {
+        if (e.target.files.length > 0) {
+            delete Err.CourseThumbnail
+            setErr(Err)
+            setCourseData({ ...CourseData, "CourseThumbnail": e.target.files[0] })
+        }
+        else if (e.target.files.length <= 0)
+            setErr({ ...Err, CourseThumbnail: "Course thumbnail is required" })
+    }
     return (
         <div className='DataInputContainer'>
             <span className='Admin_HeadingContainer'>
@@ -13,11 +22,12 @@ const CourseThumnail = ({ setCourseData, CourseData }) => {
                 </p>
             </span>
 
-            <div className='flex gap-6'>
- 
+            <div className='flex flex-col gap-6'>
+
                 <ImagePreviewer Id="CourseThumbnail"
-                    OnChange={e => setCourseData({ ...CourseData, "CourseThumbnail": e.target.files[0] })}
+                    OnChange={OnChange}
                 />
+                <p className='text-[14px] text-[red] font-normal h-[14px]'>{Err?.CourseThumbnail} </p>
             </div>
         </div>
     )

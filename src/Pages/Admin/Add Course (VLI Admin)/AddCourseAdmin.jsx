@@ -12,7 +12,7 @@ import { GetLicenseTypes, GetVehicleTypes } from '../../../Actions/CategoryA'
 import '../Css/Course_E-Book_Inputs.css'
 import { CreateAdminCourseA } from '../../../Actions/AdminCourseA'
 import useCheckLogin from '../../../Helpers/CustomHooks/CheckLogin'
-const AddCourseAdminChild = () => {
+const AddCourseAdminChild = ({ children }) => {
     const [CourseData, setCourseData] = useState({
         CourseName: "",
         VehicleTypeFK: "",
@@ -21,8 +21,8 @@ const AddCourseAdminChild = () => {
         Description: "",
         CourseThumbnail: ""
     });
-
     const [Err, setErr] = useState();
+
     const [Success, setSuccess] = useState();
     const [SubLicenseType, setSubLicenseType] = useState([]);
     const Dispatch = useDispatch()
@@ -37,6 +37,12 @@ const AddCourseAdminChild = () => {
 
     }, [])
 
+    React.Children.map(this?.props?.children, (child) => {
+        console.log(child); // "value1"
+        return child;
+    })
+    // console.log(React.Children.toArray(this?.props?.children))
+    
     return (
         <form className='flex flex-col gap-9 bg-[#F7F7F7] py-10 items-center' onSubmit={OnSubmit}>
             <div className='flex justify-center items-center bg-[#F0F0F7] w-11/12 lg:w-[95%] xl:w-[88%] py-4 px-4 mx-4 sm:mx-8 md:mx-12 lg:mx-16 xl:mx-20 2xl:mx-[90px]'>
@@ -52,7 +58,9 @@ const AddCourseAdminChild = () => {
 
                         <CourseCategory
                             setCourseData={setCourseData} CourseData={CourseData}
-                            SubLicenseType={SubLicenseType} setSubLicenseType={setSubLicenseType} />
+                            SubLicenseType={SubLicenseType} setSubLicenseType={setSubLicenseType}
+                            Err={Err} setErr={setErr}
+                        />
                         <SearchTags
                             setCourseData={setCourseData} CourseData={CourseData}
                             Err={Err} setErr={setErr}
@@ -63,6 +71,7 @@ const AddCourseAdminChild = () => {
                         />
                         <CourseThumnail
                             setCourseData={setCourseData} CourseData={CourseData}
+                            Err={Err} setErr={setErr}
                         />
                     </div>
                 </div>
@@ -99,15 +108,17 @@ const SubmitFormData = (e, CourseData, SubLicenseType, Err, setErr, Dispatch, se
     const CourseFormData = new FormData();
 
     for (let [key, value] of Object.entries(CourseData)) {
-        if (!value || value === "") Errors[key] = true
+        if (!value || value === "") Errors[key] = `${key} is required`;
         else delete Errors[key]
     }
-    if (SubLicenseType.length > 0 && !CourseData.SubLicenseTypeFK)
-        Errors.SubLicenseTypeFK = true;
-    if (CourseData?.PossibleKeywords?.length <= 0)
-        Errors.PossibleKeywords = true;
+    if (CourseData.PossibleKeywords.length <= 0)
+        Errors = { ...Errors, PossibleKeywords: `Possible Keyword is required` };
     else
-        delete Errors.PossibleKeywords
+        delete Errors?.PossibleKeywords;
+
+    if (SubLicenseType.length > 0 && !CourseData.SubLicenseTypeFK)
+        Errors.SubLicenseTypeFK = `SubLicense type is required`;
+
 
     setErr({ ...Err, ...Errors })
 
