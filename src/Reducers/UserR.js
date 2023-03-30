@@ -14,6 +14,7 @@ export const LoginSignupReducer = createReducer(VehicleTypeInitialState, (builde
         state.loading = false;
         state.UserInfo = action.payload;
         state.Authenticated = action.Auth;
+        state.error = {};
     })
     builder.addCase("LoginError", (state, action) => {
         state.loading = false;
@@ -30,6 +31,7 @@ export const LoginSignupReducer = createReducer(VehicleTypeInitialState, (builde
         state.loading = false;
         state.UserInfo = action.payload;
         state.Authenticated = action.Auth;
+        state.error = {}
     })
     builder.addCase("SignUpError", (state, action) => {
         state.loading = false;
@@ -38,6 +40,7 @@ export const LoginSignupReducer = createReducer(VehicleTypeInitialState, (builde
     })
 
 
+    // Register
     builder.addCase("RegisterInstituteRequest", (state, action) => {
         state.loading = true;
     })

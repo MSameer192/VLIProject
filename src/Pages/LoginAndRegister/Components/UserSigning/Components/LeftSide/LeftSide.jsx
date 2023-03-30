@@ -44,27 +44,33 @@ const SignInLeftSide = ({ TopLoginRegisterBtns, ScreenSize }) => {
 
             <ContinuesWith ButtonStyle={ButtonStyle} h4Style={h4Style} ContinueHeading={ContinueHeading} />
 
-            <div className='w-full flex flex-col gap-2 md:gap-3 xl:gap-6 mb-4 md:mb-20 items-center '>
+            <div className='w-full flex flex-col gap-2 md:gap-3 xl:gap-6 mb-4 md:mb-20 items-center'>
 
                 <OtherOption MobileDisplay={"inline"} DesktopDisplay={"hidden"} AuthPageName={AuthPageName} />
 
-                <h4 className='text-3xs md:text-base xl:text-[30px] font-normal text-white md:text-black w-full text-center md:text-left'>
-                    Partner {AuthPageName}
-                </h4>
+                {
+                    AuthPageName === "Sign Up" ?
+                        <>
 
-                <button className={`w-full ${ButtonStyle} justify-start py-2 px-0 bg-white `}
-                    onClick={() => Dispatch(OpenLoginSignUp("Register", true))}
-                    type="button"
-                >
-                    <img className='w-6 xl:w-10'
-                    src={require('../../../../Assets/Institute Icon.png')} alt=""
-                    />
-                    <h5 className={` ${h4Style} inline-block`}>
+                            <h4 className='text-3xs md:text-base xl:text-[30px] font-normal text-white md:text-black w-full text-center md:text-left'>
+                                Partner Sign Up
+                            </h4>
 
-                        {AuthPageName === "Sign Up" ? "Register" : "Continue"} as a Partner
-                    </h5>
-                </button>
+                            <button className={`w-full ${ButtonStyle} justify-start py-2 px-0 bg-white `}
+                                onClick={() => Dispatch(OpenLoginSignUp("Register", true))}
+                                type="button"
+                            >
+                                <img className='w-6 xl:w-10'
+                                    src={require('../../../../Assets/Institute Icon.png')} alt=""
+                                />
+                                <h5 className={` ${h4Style} inline-block`}>
+                                    Register as a Partner
+                                </h5>
+                            </button>
 
+                        </>
+                        : null
+                }
             </div>
 
         </div>)
