@@ -66,7 +66,11 @@ const AddCourseChild = () => {
                 StepsIndicator={StepsIndicator} PageNo={3}
             />
 
-            <SelectVehicle Steps={Steps} CourseData={CourseData} setCourseData={setCourseData} setSteps={setSteps} StepsIndicator={StepsIndicator} PageNo={4} />
+            <SelectVehicle
+                Steps={Steps} setSteps={setSteps}
+                CourseData={CourseData} setCourseData={setCourseData}
+                StepsIndicator={StepsIndicator} PageNo={4}
+            />
 
             <InstructorsSelection Steps={Steps} CourseData={CourseData} setCourseData={setCourseData} setSteps={setSteps} StepsIndicator={StepsIndicator} PageNo={5} Success={Success}
             />

@@ -1,15 +1,13 @@
 // react States
 import React, { useState, useEffect } from "react";
 
-// Images
-import addCourseVehical1 from "../../Description/Assets/addCourseVehical1.png";
-
 import '../../CourseSelection/CourseSelection.css'
 import '../vehicalInventory.css'
 import { useDispatch, useSelector } from "react-redux";
 import { GetAdminCoursesA } from "../../../../../Actions/CourseA";
 import LoadingSpinner from "../../../../../Components/LoadingSpinner/LoadingSpinner";
 import NoDataResponse from "../../../../../Components/NoDataResponse";
+import { BaseUrl } from "../../../../../Actions/Base";
 
 const CoursesInventory = ({ setSteps, CourseData, setCourseData }) => {
     const Dispatch = useDispatch();
@@ -44,6 +42,7 @@ const CoursesInventory = ({ setSteps, CourseData, setCourseData }) => {
                                 LicenseType={value?.LicenseType?.LicenseTypeName}
                                 CourseName={value.CourseName}
                                 Description={value.Description}
+                                Image={value.CourseThumbnail}
                                 OnClick={(e) => OnClick(e, arr[index].CoursePK, value.CoursePK)}
                             />
                         }
@@ -60,7 +59,7 @@ const CoursesInventory = ({ setSteps, CourseData, setCourseData }) => {
 }
 
 
-export const CourseComp = ({ VehicleType, LicenseType, CourseName, Description, OnClick }) => {
+export const CourseComp = ({ VehicleType, LicenseType, CourseName, Description, OnClick, Image }) => {
     const [Select, setSelect] = useState(false);
 
     const onclick = (e) => {
@@ -81,7 +80,6 @@ export const CourseComp = ({ VehicleType, LicenseType, CourseName, Description, 
         ModifiedCourseName = ModifiedCourseName?.split("")?.slice(0, 30).join('') + "...";
 
 
-
     return <div className="col-3 aspect-[159_/_217] max-h-[440px] RecommendedCourses" >
         <div className="vehicalBox addCourseFIrstVehicalBox" onClick={(e) => setSelect(!Select)}>
             <div className="vehicalImgConainer">
@@ -91,17 +89,21 @@ export const CourseComp = ({ VehicleType, LicenseType, CourseName, Description, 
                         : null}
 
                 </div>
-                <center>
-                    <img src={addCourseVehical1} alt="addCourseVehical1" />
-                </center>
+                <div className="flex justify-center items-center h-[160px] overflow-hidden">
+                    <img src={`${BaseUrl}/api/Thumbnail/course?url=${Image}`} alt="addCourseVehical1" />
+                </div>
                 <div className="vehicleInventoryPictureWaterPrints">
                     <div className="waterPrintsGreen">LType {LicenseType}</div>
                     <div className="waterPrintsGreen">VType {VehicleType}</div>
                 </div>
             </div>
-            <div className="vehicleInventoryContent">
-                <h6 className="font-normal ">{ModifiedCourseName}</h6>
-                <p className=" break-all w-full aspect-[257_/_95] h-[95px]">{ModifiedDescription}</p>
+            <div>
+                <h3 className="font-normal text-3xs px-4 pt-4 m-0">
+                    {ModifiedCourseName}
+                </h3>
+                <p className="text-[#333333] text-4xs break-all w-full aspect-[257_/_95] h-[95px] mb-9 mx-2 px-4 pt-1">
+                    {ModifiedDescription}
+                </p>
             </div>
             <center>
                 <button className="vehicalSelectBtn cursor-pointer" type="button" onClick={e => onclick(e)}>

@@ -38,6 +38,7 @@ const RecommendCourseChild = () => {
                         LicenseType={value?.LicenseType?.LicenseTypeName}
                         CourseName={value.CourseName}
                         Description={value.Description}
+                        Image={value.CourseThumbnail}
                         OnClick={OnClick}
                     />
                 })

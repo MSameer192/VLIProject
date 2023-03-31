@@ -5,6 +5,7 @@ import LoadingSpinner from '../../Components/LoadingSpinner/LoadingSpinner'
 import MyCourses from '../../Components/MyCourses/MyCourses'
 import NoDataResponse from '../../Components/NoDataResponse'
 import useCheckLogin from '../../Helpers/CustomHooks/CheckLogin'
+import useScrollToTop from '../../Helpers/CustomHooks/ScrollToTop'
 import { MyCoursesButtonsInfo } from '../../PageNames'
 import EnrolledCourseInfo from './Component/EnrolledCourseInfo/EnrolledCourseInfo'
 
@@ -23,6 +24,8 @@ const EnrolledCoursesChild = () => {
     }, [Dispatch, Authenticated])
     useCheckLogin(true, ["Student"]);
 
+    useScrollToTop()
+
     return (
         <div className='flex flex-col items-center gap-10 '>
             {
@@ -37,7 +40,7 @@ const EnrolledCoursesChild = () => {
                                 : <NoDataResponse topText="You are not enrolled in any courses." />
                         }
                     </div>
-                    : <LoadingSpinner />
+                    : <LoadingSpinner Height="screen" Width="screen" Position="fixed" Top="20" Bg="white" />
             }
             <Ponits />
         </div>

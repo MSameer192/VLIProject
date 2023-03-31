@@ -40,8 +40,10 @@ const UserSigning = ({ ScreenSize, TopLoginRegisterBtns }) => {
         }
 
         window.grecaptcha?.ready(function () {
-            if ((AuthPageName === "Sign Up" && TermsAgreed) || AuthPageName === "Sign In")
+            if ((AuthPageName === "Sign Up" && TermsAgreed) || AuthPageName === "Sign In") {
+                console.log("Loading")
                 Dispatch(GoogleReCapthcaLoading(AuthPageName))
+            }
             window.grecaptcha.execute(process.env.REACT_APP_GOOGLE_CAPTCHA_KEY)
                 .then(function (token) {
 

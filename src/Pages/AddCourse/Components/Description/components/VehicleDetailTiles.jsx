@@ -3,13 +3,12 @@ import React, { Component, useEffect, useRef, useState } from "react";
 
 // Images
 import idCardIcon from "../Assets/idCardIcon.png";
-import addCourseVehical1 from "../Assets/addCourseVehical1.png";
-
 
 
 
 import { GetVehicleA } from "../../../../../Actions/VehicleA";
 import { useDispatch, useSelector } from "react-redux";
+import { BaseUrl } from "../../../../../Actions/Base";
 
 const VehicleDetailTiles = ({ CourseData, setCourseData, setSteps }) => {
 
@@ -29,12 +28,18 @@ const VehicleDetailTiles = ({ CourseData, setCourseData, setSteps }) => {
             <div className="row">
                 {
                     Vehicles?.length > 0
-                        ? Vehicles?.map(value =>
-                            <VehicleTile
+                        ? Vehicles?.map(value => {
+                            console.log(value)
+                            return <VehicleTile
                                 key={value.VehicleId}
-                                AddVehicle={AddVehicle} Model={value.Model}
-                                Year={value.Year} PlateNumber={value.PlateNumber}
-                                Description={value.Description} VehicleId={value.VehicleId} />)
+                                Image={value.VehicleImages?.[0]?.VehicleImageLink}
+                                OnClick={AddVehicle}
+                                Model={value.Model}
+                                Year={value.Year}
+                                PlateNumber={value.PlateNumber}
+                                Description={value.Description}
+                                VehicleId={value.VehicleId} />
+                        })
                         : null
                 }
 
@@ -43,7 +48,7 @@ const VehicleDetailTiles = ({ CourseData, setCourseData, setSteps }) => {
     )
 }
 
-const VehicleTile = ({ AddVehicle, Model, Year, PlateNumber, Description, VehicleId }) => {
+const VehicleTile = ({ OnClick, Model, Year, PlateNumber, Description, VehicleId, Image }) => {
     const PRef = useRef()
     const [DescText, setDescText] = useState();
     useEffect(() => {
@@ -53,14 +58,14 @@ const VehicleTile = ({ AddVehicle, Model, Year, PlateNumber, Description, Vehicl
         if (PRef.current?.innerText)
             setDescText(PRef.current?.innerText)
     }, [])
- 
+    console.log(`${BaseUrl}/api/Vehicleimage?url=${Image}`, Image)
     return <div className="col-3" >
         <div ref={PRef} className="hidden"></div>
         <div className="vehicalBox">
             <div className="vehicalImgConainer">
-                <center>
-                    <img src={addCourseVehical1} alt="addCourseVehical1" />
-                </center>
+                <div className="flex items-center justify-center overflow-hidden h-[240px]">
+                    <img src={`${BaseUrl}/api/Vehicleimage?url=${Image}`} alt="Vehicle" />
+                </div>
             </div>
             <span className="vehicalDetail">
                 <span className="vehicalName">{Model}</span>
@@ -74,9 +79,9 @@ const VehicleTile = ({ AddVehicle, Model, Year, PlateNumber, Description, Vehicl
             <p className="discOfVehical h-14 ">{DescText}</p>
             <hr className="vehicalHr" />
             <center>
-                <button className="vehicalSelectBtn cursor-pointer" type="button" onClick={() => AddVehicle(VehicleId)}>
+                <button className="vehicalSelectBtn cursor-pointer" type="button" onClick={() => OnClick(VehicleId)}>
                     Select Vehicle
-                </button> 
+                </button>
             </center>
         </div>
     </div>

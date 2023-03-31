@@ -11,21 +11,22 @@ const EnrolledCourseInfo = ({ Course, setShowSubscription }) => {
     // console.log(Course)
     return (
         <div className={`flex  border-[#D6D6D6] border-[1px] border-solid py-7 mt-28 gap-8 items-center
+        justify-between
                         px-5            md:px-10  bg-white
-                        flex-col        lg:flex-row
+                        flex-col        lg:flex-row min-h-[205px]
                         `}
         >
 
 
-            <div className='flex gap-5 flex-col xl:flex-row justify-around items-center w-full'>
+            <div className='flex gap-5 flex-col xl:flex-row justify-between items-center  w-[72%]'>
 
                 <EnrolledCourseDetails InstituteCourse={Course?.CoursePackage?.InstituteCourse} />
                 <EnrolledCourseHrs CoursePackage={Course?.CoursePackage} />
             </div>
 
+            <hr className='w-3/5 lg:w-0  h-0 lg:min-h-[150px]' />
 
-            <hr className='w-3/5 lg:w-0  h-0 lg:min-h-[150px] ' />
-            <span className="flex flex-col items-center justify-center gap-3 w-full sm:w-1/4">
+            <span className="flex flex-col items-end justify-center gap-3 w-full sm:w-1/4">
                 {UserInfo?.User === "Student" ?
                     <Link
                         to={`/enrolledcourse/coursemodule/${Course?.EnrollmentId}`}

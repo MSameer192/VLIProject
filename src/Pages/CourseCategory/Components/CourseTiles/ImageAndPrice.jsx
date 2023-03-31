@@ -61,7 +61,7 @@ function ImagePortion({ Image, InstituteCourseId }) {
 
     return !loading
         ? <div className='w-full flex justify-center relative m-8 mb-0  rounded-[20px]' >
-            <span className='w-[90%] rounded-[20px] flex justify-center items-center min-h-[250px]'>
+            <span className='w-[90%] rounded-[20px] flex justify-center items-center h-[185px] overflow-hidden'>
                 <img className='w-full' src={`${BaseUrl}/api/LicenseType/Image?url=${Image}`} alt="Courseimg" />
             </span>
             <span className={`w-8 h-8 flex justify-center items-center bg-white absolute  rounded-[16px] cursor-pointer

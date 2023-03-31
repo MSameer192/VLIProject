@@ -7,7 +7,7 @@ const EnrolledCourseHrs = ({ CoursePackage }) => {
 
 
     return (
-        <span className='flex'>
+        <span className='flex w-[32%]'>
 
             <span className='flex flex-col gap-3 items-center'>
                 <button className={`${ButtonBorders} bg-[#A1A3EF] rounded-l-md`}>Driving</button>

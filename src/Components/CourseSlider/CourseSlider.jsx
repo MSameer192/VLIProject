@@ -49,7 +49,7 @@ const CoursesSlider = ({ CoursesInfo, CourseTiles, NavigateBtnClass, ClassNames,
 
                 let Class = NavigateBtnClass
                 if (index === 0) { Class = NavigateBtnClass } else { Class = NavigateBtnClass + "Remove" }
-
+               
                 return (
                     <span key={index} className={`w-5 h-5 rounded-[28px] bg-[#A1A3EF] cursor-pointer NavigateButton_DropShadow ${Class}`}
                         onClick={(e) => { Btn(e, Btns, NavigateBtnClass, setBtns); setSize(index); }}
