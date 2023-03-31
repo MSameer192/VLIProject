@@ -11,10 +11,10 @@ const UserInput = ({ AuthPageName, Credentials, setCredentials }) => {
 
     return (
         <div className='flex flex-col gap-3 sm:gap-6 w-full '>
+            {AuthPageName !== "Sign Up" ? <h4 className='text-[red] font-normal'>  {error.LoginError} </h4> : null}
 
             <Name AuthPageName={AuthPageName} InputBoxStyle={InputBoxStyle} Credentials={Credentials} setCredentials={setCredentials} error={error} />
 
-            <h4 className='text-[red] font-normal'>  {AuthPageName !== "Sign Up" ? error.LoginError : null} </h4>
 
 
             <span className='flex flex-col'>
@@ -59,7 +59,7 @@ const UserInput = ({ AuthPageName, Credentials, setCredentials }) => {
 function Name({ AuthPageName, InputBoxStyle, Credentials, setCredentials, error }) {
     return (
         AuthPageName === "Sign Up"
-            ? <span className='flex gap-12 w-full'>
+            ? <span className='flex gap-2 xs:gap-3 sm:gap-4 md:gap-6 lg:gap-8 xl:gap-10 2xl:gap-12 w-full'>
 
                 <span className='flex flex-col'>
                     <h4 className='text-[red] font-normal'>  {AuthPageName === "Sign Up" ? error.FirstName : null} </h4>

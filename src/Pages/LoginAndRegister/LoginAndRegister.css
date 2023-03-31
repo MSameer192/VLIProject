@@ -16,18 +16,21 @@
   border-style: dashed;
 }
 .LightBg {
-  @apply bg-[#00000037] max-h-screen  fixed top-0 w-full z-50 overflow-scroll flex md:justify-center;
+  @apply fixed top-0 z-50 flex max-h-screen w-full overflow-scroll bg-[#00000037] md:justify-center;
 }
 .MainParent {
-  @apply h-fit  md:min-h-[auto] min-h-screen w-full md:w-[95%] flex flex-col justify-start items-start md:mt-28;
+  @apply flex   h-fit w-full flex-col items-start justify-start
+    min-h-screen md:min-h-[calc(100vh_-_112px)] md:w-[95%]
+    md:mt-12 lg:mt-16 xl:mt-20 2xl:mt-24 3xl:mt-28 
+  ;
 }
 
 .ImageContainer {
-  @apply overflow-hidden w-full
-    hidden         md:block 
-    min-h-[100px]  md:min-h-[144px] lg:min-h-[224px] xl:min-h-[320px]
-    BG_Image;
+  @apply  hidden 
+    min-h-[100px]         w-full
+    overflow-hidden  md:block md:min-h-[144px] lg:min-h-[130px]
+    xl:min-h-[320px];
 }
 .FormParent {
-  @apply relative lg:bg-white w-full flex flex-col justify-start  lg:justify-between lg:items-center h-fit min-h-full md:min-h-[auto] md:h-auto;
+  @apply relative flex h-fit min-h-full w-full flex-col  justify-start md:h-auto md:min-h-[auto] lg:items-center lg:justify-between lg:bg-white;
 }

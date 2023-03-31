@@ -27,8 +27,14 @@ function StudentRightSide({ setShowSidebar, ShowSidebar }) {
         {
             !UserInfo?.UserName ?
                 <>
-                    <button className="HeaderRightSide-LinkStyle SemiBold lg:hidden" type="button" onClick={() => Dispatch(OpenLoginSignUp("Sign In", true))} >Login</button>
-                    <button className="HeaderRightSide-LinkStyle SemiBold lg:hidden" type="button" onClick={() => Dispatch(OpenLoginSignUp("Sign Up", true))} >Sign up</button>
+                    <button className="HeaderRightSide-LinkStyle SemiBold lg:hidden" type="button" onClick={() => {
+                        setShowSidebar(false);
+                        Dispatch(OpenLoginSignUp("Sign In", true))
+                    }}>Login</button>
+                    <button className="HeaderRightSide-LinkStyle SemiBold lg:hidden" type="button" onClick={() => {
+                        setShowSidebar(false);
+                        Dispatch(OpenLoginSignUp("Sign Up", true))
+                    }}>Sign up</button>
                 </>
                 : null
 

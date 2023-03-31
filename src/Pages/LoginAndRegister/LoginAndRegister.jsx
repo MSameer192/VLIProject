@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import { OpenLoginSignUp, ResetLoginSignUp } from '../../Actions/ToggleSignupA';
 import UserSigning from './Components/UserSigning/UserSigning';
 import InstituteSide from './Components/InstituteSide/InstituteSide';
-import LoadingSpinner from '../../Components/LoadingSpinner/LoadingSpinner';
 
 let TopLoginRegisterBtns = `absolute border-none   rounded-t-[28px]  cursor-pointer Boldfont hidden md:inline-block 
             -top-9   lg:-top-11 xl:-top-14 2xl:-top-16
@@ -57,9 +56,12 @@ const SignUp = () => {
                 >
 
 
-                    <div className="ImageContainer">
-                        <div className='w-full h-80 bg-[#00000070]' > </div>
-                    </div>
+                    {!loading
+                        ? <div className="ImageContainer BG_Image">
+                            <div className='w-full h-80 bg-[#000000cc] ' > </div>
+                        </div>
+                        : null
+                    }
                     <div className='FormParent'>
 
                         {
@@ -84,7 +86,7 @@ const SignUp = () => {
 
 export function SubmitButton({ AuthPageName, ButtonType, OnClickFun }) {
 
-    return <span className='relative  flex justify-center w-[60%] xl:w-4/5 max-w-[575px] md:mt-5 lg:mt-9 2xl:mt-0'>
+    return <span className='relative  flex justify-center w-[60%] xl:w-4/5 max-w-[575px] mt-16'>
         <img
             className='absolute w-[150px] lg:w-[180px] xl:w-auto -top-[90px] lg:-top-[109px] xl:-top-[111px] left-[50%] -translate-x-1/2 pointer-events-none'
             src={require("./Assets/Sign up Avater.png")} alt="" />

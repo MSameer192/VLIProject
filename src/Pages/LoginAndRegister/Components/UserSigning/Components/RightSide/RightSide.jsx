@@ -13,9 +13,9 @@ const SigninRightSide = ({ TopLoginRegisterBtns, Credentials, setCredentials }) 
 
     return (
         <div className={`flex flex-col relative justify-start 
-                        w-full  md:w-1/2
-                        px-10               xl:px-16    2xl:px-24
-                        py-4                xl:py-8     2xl:py-14 pb-5
+                        w-full  md:w-1/2 pb-5
+                        px-3 xs:px-6 sm:px-9 md:px-12 lg:px-14      xl:px-16    2xl:px-24
+                        py-4                xl:py-8     2xl:py-14 
                         gap-2               xl:gap-4 `}
         >
             <h4 className=' font-normal w-full text-3xs md:text-xs lg:text-base xl:text-[30px] text-white md:text-black'>

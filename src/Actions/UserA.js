@@ -43,6 +43,16 @@ export const LoginUser = (UserData, Dispatch, PageName) => async (dispatch) => {
 
     }
 }
+export const GoogleReCapthcaLoading = (PageName) => (dispatch) => {
+    try {
+        if (PageName === "Sign Up")
+            dispatch({ type: "SignUpRequest" })
+        else if (PageName === "Sign In")
+            dispatch({ type: "LoginSuccess" })
+    } catch (error) {
+
+    }
+}
 export const SignUpWithGoogleAction = (SignUpInfo, Dispatch, PageName) => async (dispatch) => {
 
 

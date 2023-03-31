@@ -27,7 +27,9 @@ const CourseCategory = () => {
     const ParentRef = useRef()
     useCheckLogin(true, ["Student", "User"])
     useGetWishList()
-
+    // useEffect(() => {
+    //     window.scroll(0, 0)
+    // }, [])
     return (
 
         <div className='mt-20 overflow-hidden' ref={ParentRef}>
@@ -43,9 +45,8 @@ const CourseCategory = () => {
                         <Footer />
                     </>
                     :
-                    <LoadingSpinner />
+                    <LoadingSpinner Height="[85vh]" Width="[99%]" Top="20" Left="0" />
             }
-
 
         </div>
 

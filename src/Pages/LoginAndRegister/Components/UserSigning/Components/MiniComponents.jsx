@@ -28,14 +28,27 @@ export function OtherOption({ MobileDisplay, AuthPageName, DesktopDisplay }) {
 
 export function OnRegister({ MobileDisplay, AuthPageName, DesktopDisplay, Credentials }) {
 
-    const [TermsAgreed, setTermsAgreed] = useContext(TermsContext)
-    
+    const [TermsAgreed, setTermsAgreed, CheckBoxRef] = useContext(TermsContext)
+    const OnClick = (e) => {
+        setTermsAgreed(e.target.checked)
+        const CheckErrorLabel = CheckBoxRef.current.classList.contains("outline-[red]");
+
+        if (e.target.checked && CheckErrorLabel) {
+            CheckBoxRef.current.classList.remove("outline-[red]");
+            CheckBoxRef.current.classList.add("outline-[#707070]");
+
+        } else if (!e.target.checked && !CheckErrorLabel) {
+            CheckBoxRef.current.classList.add("outline-[red]");
+            CheckBoxRef.current.classList.remove("outline-[#707070]");
+        }
+    }
     return <>
         <OtherOption MobileDisplay={MobileDisplay} Credentials={Credentials} DesktopDisplay={DesktopDisplay} AuthPageName={AuthPageName} />
         <span className={`flex items-center gap-[6px] xl:gap-4`}>
-            <input className='border-[#707070] border-[1px] border-solid h-4 md:h-6 w-4 md:w-6 z-[1]' type="checkbox" name="" id=""
+            <input className='outline-[#707070] outline-1 outline h-4 md:h-6 w-4 md:w-6 z-[1]' type="checkbox" name="" id=""
                 checked={TermsAgreed}
-                onChange={(e) => setTermsAgreed(e.target.checked)}
+                onChange={OnClick}
+                ref={CheckBoxRef}
             />
             <p className='text-6xs md:text-2xs xl:text-xs 2xl:text-base text-white md:text-black'>
                 I agree to the Terms and Conditions

@@ -1,7 +1,9 @@
 import React, { createContext } from 'react'
+import { useRef } from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { LoginUser, SignUpUser } from '../../../../Actions/UserA'
+import { ResetLoginSignUp } from '../../../../Actions/ToggleSignupA'
+import { GoogleReCapthcaLoading, LoginUser, SignUpUser } from '../../../../Actions/UserA'
 import LoadingSpinner from '../../../../Components/LoadingSpinner/LoadingSpinner'
 import { SubmitButton } from '../../LoginAndRegister'
 import SignInLeftSide from './Components/LeftSide/LeftSide'
@@ -16,22 +18,39 @@ const UserSigning = ({ ScreenSize, TopLoginRegisterBtns }) => {
         FirstName: "",
         LastName: ""
     });
-    const [TermsAgreed, setTermsAgreed] = useState(false)
+    const [TermsAgreed, setTermsAgreed] = useState(false);
+    const CheckBoxRef = useRef()
     const Dispatch = useDispatch()
 
     const { loading } = useSelector((Store) => Store.LoginSignupReducer);
     const { AuthPageName } = useSelector((Store) => Store.ToggleSignupReducer);
 
-
+    console.log(TermsAgreed)
 
     const SubmitForm = (e) => {
 
+        const CheckErrorLabel = CheckBoxRef.current.classList.contains("outline-[red]");
         e.preventDefault();
+        if (AuthPageName === "Sign Up" && TermsAgreed && CheckErrorLabel) {
+            CheckBoxRef.current.classList.remove("outline-[red]");
+            CheckBoxRef.current.classList.add("outline-[#707070]");
+
+        }
+        else if (AuthPageName === "Sign Up" && !TermsAgreed && !CheckErrorLabel) {
+            CheckBoxRef.current.classList.add("outline-[red]");
+            CheckBoxRef.current.classList.remove("outline-[#707070]");
+            return
+        }
+        console.log(AuthPageName === "Sign Up", !TermsAgreed, !CheckErrorLabel)
         window.grecaptcha?.ready(function () {
+            if ((AuthPageName === "Sign Up" && TermsAgreed) || AuthPageName === "Sign In")
+                Dispatch(GoogleReCapthcaLoading(AuthPageName))
             window.grecaptcha.execute(process.env.REACT_APP_GOOGLE_CAPTCHA_KEY).then(function (token) {
                 Credentials.Token = token
                 if (AuthPageName === "Sign Up" && TermsAgreed)
                     Dispatch(SignUpUser(Credentials, Dispatch, AuthPageName))
+
+
                 else if (AuthPageName === "Sign In")
                     Dispatch(LoginUser(Credentials, Dispatch, AuthPageName))
 
@@ -42,18 +61,22 @@ const UserSigning = ({ ScreenSize, TopLoginRegisterBtns }) => {
     }
 
     return (
-        <TermsContext.Provider value={[TermsAgreed, setTermsAgreed]}>
+        <TermsContext.Provider value={[TermsAgreed, setTermsAgreed, CheckBoxRef]}>
 
             {!loading ?
-                <form className='flex w-full flex-col items-center h-fit' onSubmit={SubmitForm}>
-
+                <form className='flex w-full flex-col items-center h-fit md:bg-white pb-5 relative' onSubmit={SubmitForm}>
+                    <button type="button" className='p-3 md:hidden cursor-pointer rounded-xl border-none bg-[#A1A3EF] flex items-center justify-center absolute right-6 top-2 z-10'
+                        onClick={() => Dispatch(ResetLoginSignUp(false))}
+                    >
+                        <img className=' cursor-pointer' src={require('../../Assets/CrossIcon.svg').default} alt="" />
+                    </button>
                     <div className={`flex
-            w-[97%]             md:w-full
+            w-[99%]             md:w-full 
             min-h-fit           md:min-h-[auto]
             h-fit               md:h-auto
             justify-around      md:justify-start
             flex-col-reverse    md:flex-row  
-                                md:bg-white `}>
+                                 `}>
 
                         <SignInLeftSide
                             TopLoginRegisterBtns={TopLoginRegisterBtns}
@@ -75,7 +98,7 @@ const UserSigning = ({ ScreenSize, TopLoginRegisterBtns }) => {
                     </div>
                     <SubmitButton ButtonType="submit" AuthPageName={AuthPageName} />
                 </form>
-                : <LoadingSpinner />}
+                : <LoadingSpinner Position="static" Height="[80vh]" Width="[99%]" Top="20" Left="0" Bg="white" />}
         </TermsContext.Provider>
     )
 }

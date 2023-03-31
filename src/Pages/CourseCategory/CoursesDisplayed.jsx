@@ -44,6 +44,7 @@ const CoursesDisplayed = () => {
             : VehicleTypeId
                 ? <CategoryOne Types={Courses} />
                 : null
+                
     )
 }
 

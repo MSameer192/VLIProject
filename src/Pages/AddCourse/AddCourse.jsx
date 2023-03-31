@@ -79,7 +79,6 @@ const SubmitCourseData = (e, Dispatch, CourseData, setSuccess) => {
     e.preventDefault();
     const CourseFormData = new FormData()
     CourseFormData.append("CourseData", JSON.stringify(CourseData))
-    // setSuccess(true)
     Dispatch(CreateCoursesA(CourseFormData, setSuccess))
 }
 
