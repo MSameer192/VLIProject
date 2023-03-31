@@ -34,13 +34,12 @@ const CourseCategory = () => {
 
         <div className='mt-20 overflow-hidden' ref={ParentRef}>
 
-
-            <IntroPart Courses={Courses} />
-            <Filter />
-
             {
                 !loading ?
+
                     <>
+                        <IntroPart Courses={Courses} />
+                        <Filter />
                         <CoursesDisplayed />
                         <Footer />
                     </>

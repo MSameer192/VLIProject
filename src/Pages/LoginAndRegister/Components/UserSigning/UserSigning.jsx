@@ -25,36 +25,35 @@ const UserSigning = ({ ScreenSize, TopLoginRegisterBtns }) => {
     const { loading } = useSelector((Store) => Store.LoginSignupReducer);
     const { AuthPageName } = useSelector((Store) => Store.ToggleSignupReducer);
 
-    console.log(TermsAgreed)
-
     const SubmitForm = (e) => {
-
-        const CheckErrorLabel = CheckBoxRef.current.classList.contains("outline-[red]");
         e.preventDefault();
+        const CheckErrorLabel = CheckBoxRef?.current?.classList?.contains("outline-[red]");
         if (AuthPageName === "Sign Up" && TermsAgreed && CheckErrorLabel) {
-            CheckBoxRef.current.classList.remove("outline-[red]");
-            CheckBoxRef.current.classList.add("outline-[#707070]");
+            CheckBoxRef?.current?.classList?.remove("outline-[red]");
+            CheckBoxRef?.current?.classList?.add("outline-[#707070]");
 
         }
         else if (AuthPageName === "Sign Up" && !TermsAgreed && !CheckErrorLabel) {
-            CheckBoxRef.current.classList.add("outline-[red]");
-            CheckBoxRef.current.classList.remove("outline-[#707070]");
+            CheckBoxRef?.current?.classList?.add("outline-[red]");
+            CheckBoxRef?.current?.classList?.remove("outline-[#707070]");
             return
         }
-        console.log(AuthPageName === "Sign Up", !TermsAgreed, !CheckErrorLabel)
+
         window.grecaptcha?.ready(function () {
             if ((AuthPageName === "Sign Up" && TermsAgreed) || AuthPageName === "Sign In")
                 Dispatch(GoogleReCapthcaLoading(AuthPageName))
-            window.grecaptcha.execute(process.env.REACT_APP_GOOGLE_CAPTCHA_KEY).then(function (token) {
-                Credentials.Token = token
-                if (AuthPageName === "Sign Up" && TermsAgreed)
-                    Dispatch(SignUpUser(Credentials, Dispatch, AuthPageName))
+            window.grecaptcha.execute(process.env.REACT_APP_GOOGLE_CAPTCHA_KEY)
+                .then(function (token) {
 
+                    Credentials.Token = token
 
-                else if (AuthPageName === "Sign In")
-                    Dispatch(LoginUser(Credentials, Dispatch, AuthPageName))
+                    if (AuthPageName === "Sign Up" && TermsAgreed)
+                        Dispatch(SignUpUser(Credentials, Dispatch, AuthPageName))
 
-            });
+                    else if (AuthPageName === "Sign In")
+                        Dispatch(LoginUser(Credentials, Dispatch, AuthPageName))
+
+                });
         });
 
         return false

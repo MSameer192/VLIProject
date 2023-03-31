@@ -53,10 +53,9 @@ function DevExtremeScheduler() {
     }
     return (
         <>
-            <div style={{ height: "600px", border: "10px solid black", overflow: "scroll", marginTop: "100px" }}>
+            <div className='h-[calc(100vh_-_250px)] max-h-[1350px]' style={{overflow: "scroll", marginTop: "100px" }}>
                 <Scheduler id="scheduler"
                     dataSource={Data}
-
                     currentView='workWeek'
                     // views={["week"]}
                     startDayHour={9}
@@ -72,7 +71,7 @@ function DevExtremeScheduler() {
 
                 </Scheduler>
             </div>
-           
+
         </>
     );
 }

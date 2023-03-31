@@ -1,4 +1,5 @@
 import ClassesIndicator from "../../Components/ClassesIndicator/ClassesIndicator";
+import DevExtremeScheduler from "../DevExtremeScheduler/DevExtremeScheduler";
 import Timetable from "./TimeTable/Timetable";
 
 function ClassScheduler({ Name, TopBtn, BottomComp, setEvents, Events }) {
@@ -22,7 +23,7 @@ function ClassScheduler({ Name, TopBtn, BottomComp, setEvents, Events }) {
             <p className="text-center text-[#4D4F5C] lg:relative top-5 text-3xs md:text-2xs lg:text-xs xl:text-base whitespace-nowrap">
               Sep 4 - Sep 10
             </p>
-           
+
             <div>{TopBtn && <TopBtn />} </div>
 
           </div>
@@ -32,7 +33,7 @@ function ClassScheduler({ Name, TopBtn, BottomComp, setEvents, Events }) {
 
         <div className="w-full overflow-x-scroll">
           <div className="min-w-[700px] w-full">
-            <Timetable Events={Events} setEvents={setEvents} />
+            <DevExtremeScheduler Events={Events} setEvents={setEvents} />
           </div>
         </div>
         {BottomComp && <BottomComp />}
