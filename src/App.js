@@ -47,8 +47,7 @@ import UpdateInstructor from './Pages/Institute/AddInstructor/UpdateInstructor';
 import RecommendedCoursesByAdmin from './Pages/Institute/RecommendedCoursesByAdmin/RecommendedCoursesByAdmin';
 import { BaseUrl } from './Actions/Base';
 import EBooks from './Pages/EBooks/EBooks';
-import { getCookie } from './Helpers/Cookies/Cookies';
-import DevExtremeScheduler from './Components/DevExtremeScheduler/DevExtremeScheduler';
+import Page404 from './Pages/Page404/Page404';
 
 
 
@@ -86,8 +85,6 @@ function App() {
       <InstituteDashboard /> :
       <LandingPage />
 
-
-
   return (
     <SocketContext.Provider value={Socket}>
       <BrowserRouter>
@@ -99,7 +96,6 @@ function App() {
 
         <Routes>
           <Route path='/' element={Home} />
-          <Route path='/s' element={<DevExtremeScheduler />} />
           <Route path='/Ebooks' element={<EBooks />} />
           <Route path='/course/:InstituteCourseId' element={<CourseOverview />} />
           <Route path='/license/category/:LicenseTypeId' element={<CourseCategory />} />
@@ -160,6 +156,7 @@ function App() {
           <Route path='/admin/addcourse' element={<AddCourseAdmin />} />
           <Route path='/admin/Book/add' element={<AddBookAdmin />} />
           <Route path='/admin/books/list' element={<EbookList />} />
+          <Route path='*' element={<Page404 />} />
         </Routes>
 
       </BrowserRouter>

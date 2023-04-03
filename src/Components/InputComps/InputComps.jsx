@@ -4,7 +4,6 @@ const Container = "w-full md:w-[45%] flex flex-col max-w-[600px] gap-3";
 const TextStyle = "text-3xs md:text-2xs xl:text-xs";
 const ResponsiveInpuyStyle = "text-5xs md:text-4xs lg:text-3xs";
 
-
 export const Input = ({ Label, Placeholder, Id, onChange, Err, State }) => {
     const Border = "border-[#E2E2E2] border-[1px] border-solid"
     return <div className={Container}>
@@ -59,7 +58,8 @@ export const InputWithImage = ({ Label, Placeholder, Id, onChange, Err, Src, Sta
 }
 export const SelectList = ({ Label, Id, onChange, OptionsArr, defaultValue, Text, Err, State }) => {
 
-    const Border = "border-[#E2E2E2] border-[1px] border-solid"
+    const Border = "border-[#E2E2E2] border-[1px] border-solid";
+    
     return <div className={Container}>
         <label htmlFor={Id} className={TextStyle}>{Label}</label>
 
@@ -74,9 +74,8 @@ export const SelectList = ({ Label, Id, onChange, OptionsArr, defaultValue, Text
             id={Id}
             value={State}
             onChange={onChange}
-      
         >
-            <option disabled   value={defaultValue}>{Text}</option>
+            <option disabled value="">{Text}</option>
 
             {OptionsArr ? <OptionsArr /> : null}
 

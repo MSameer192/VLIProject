@@ -24,7 +24,8 @@ const TeacherFilterArr = () => {
             </span>
             <span className='flex flex-col w-full'>
                 <h4 className='text-[#22232B] text-4xs font-normal text-left'>Filter by Alphabetic Order</h4>
-                <DropDown Label="A to Z" Name="AlphabeticalOrder" TextStyle="text-left text-[#22232B] text-5xs TeacherFilterFieldsBorder"
+                <DropDown Label="A to Z" Name="AlphabeticalOrder" 
+                TextStyle="text-left text-[#22232B] text-5xs TeacherFilterFieldsBorder"
                     styles="w-full min-w-[275px]"
                     IconSrc={IconSrc}
                 />

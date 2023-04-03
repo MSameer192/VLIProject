@@ -1,6 +1,6 @@
 .InputHeadings {
     @apply font-normal  text-4xs                        md:text-3xs   lg:text-[19px]  xl:text-2xs
-                        text-center     sm:text-start
+                        text-center     sm:text-start;
 }
 
 .InputDetails {

@@ -9,12 +9,13 @@ import { CreateScheduleA, GetClassScheduleA } from "../../../Actions/StudentA";
 import { useParams } from "react-router-dom";
 import { GetAboutInfoA } from "../../../Actions/CourseA";
 import useCheckLogin from '../../../Helpers/CustomHooks/CheckLogin'
-import ClassScheduler from "../../../Components/Scheduler/Scheduler";
+import StudentScheduleTimeTable from "./Components/StudentPreferreTimeTable/StudentPreferreTimeTable";
+import LoadingSpinner from "../../../Components/LoadingSpinner/LoadingSpinner";
 
 function ManageNewStudentChild() {
   const Dispatch = useDispatch();
   const { EnrollmentId } = useParams();
-  const { Student, ScheduleTimeTable } = useSelector(Store => Store.StudentReducer);
+  const { Student, ScheduleTimeTable, loading } = useSelector(Store => Store.StudentReducer);
   const [Events, setEvents] = useState([]);
   const [StudentPrefrredTimeTable, setStudentPrefrredTimeTable] = useState([])
   const [OneInstructor, setOneInstructor] = useState();
@@ -22,13 +23,13 @@ function ManageNewStudentChild() {
     InstructorType: "",
     Show: false
   })
-  // console.log(ShowSlider)
-  const [Instructors, setInstructors] = useState({
-    "Driving": { InstructorFK: "" },
-    "Online": { InstructorFK: "" },
-    "InClass": { InstructorFK: "" }
-  })
 
+  const [Instructors, setInstructors] = useState([undefined, undefined, undefined])
+  const ClassType = [
+    { id: 1, text: "Driving" },
+    { id: 2, text: "Online" },
+    { id: 3, text: "InClass" },
+  ]
   useEffect(() => {
     if (EnrollmentId) {
       Dispatch(GetClassScheduleA(EnrollmentId))
@@ -38,32 +39,61 @@ function ManageNewStudentChild() {
 
   useCheckLogin(true, ["Institute"], ["Staff", "Admin"])
   useEffect(() => {
-    if (ScheduleTimeTable)
-      setStudentPrefrredTimeTable([...ScheduleTimeTable?.map(value => value)])
+    if (ScheduleTimeTable) {
+      const EditAble = JSON.parse(JSON.stringify(ScheduleTimeTable))
+      setStudentPrefrredTimeTable(
+
+        [...EditAble.map(value => {
+
+          value.startDate = new Date(value.start)
+          value.endDate = new Date(value.end)
+          value.allDay = false
+          value.description = ""
+          value.text = ""
+          return value
+        })]
+      )
+    }
   }, [ScheduleTimeTable])
 
-
   return (
-    <div className="w-full flex flex-col items-center pt-16">
-      <ClientInfo Student={Student} />
-      <CourseInstructors ShowSlider={ShowSlider} setShowSlider={setShowSlider} Instructors={Instructors}
-        setOneInstructor={setOneInstructor} OneInstructor={OneInstructor} />
+    !loading ?
+      <div className="w-full flex flex-col items-center pt-16">
+        <ClientInfo Student={Student} />
+        <CourseInstructors ShowSlider={ShowSlider} setShowSlider={setShowSlider}
+          Instructors={Instructors}
+          setOneInstructor={setOneInstructor} OneInstructor={OneInstructor}
+        />
 
-      {StudentPrefrredTimeTable.length > 0 ? <ClassScheduler Events={StudentPrefrredTimeTable} setEvents={() => { }} /> : null}
+        <StudentScheduleTimeTable
+          Events={StudentPrefrredTimeTable}
+          setEvents={setStudentPrefrredTimeTable}
+        />
 
-      <StudentTimeTable StudentInfo={Student} Events={Events} setEvents={setEvents}
-        SubmitSchedule={() => SubmitData(Events, Dispatch, Instructors, OneInstructor, EnrollmentId)}
-      />
- 
-      {ShowSlider?.Show
-        ? <InstructorSlider
-          setInstructors={setInstructors} Instructors={Instructors}
-          ShowSlider={ShowSlider} setShowSlider={setShowSlider} InstructorType={ShowSlider?.InstructorType}
-          Events={Events} setEvents={setEvents} SubmitSchedule={() => SubmitData(Events, Dispatch, Instructors, OneInstructor)}
-        /> : null}
+        <StudentTimeTable
+          StudentInfo={Student}
+          Events={Events} setEvents={setEvents}
+          Resources={[
+            { fieldExpr: "InstructorFK", dataSource: [...Instructors] },
+            { fieldExpr: "ClassType", dataSource: [...ClassType] },
+          ]
+          }
+          Edit={true}
+          SubmitSchedule={() => SubmitData(Events, Dispatch, Instructors, OneInstructor, EnrollmentId)}
+        />
 
 
-    </div>
+        {ShowSlider?.Show
+          ? <InstructorSlider
+            setInstructors={setInstructors} Instructors={Instructors}
+            ShowSlider={ShowSlider} setShowSlider={setShowSlider} InstructorType={ShowSlider?.InstructorType}
+            Events={Events} setEvents={setEvents}
+            SubmitSchedule={() => SubmitData(Events, Dispatch, Instructors, OneInstructor)}
+          /> : null}
+
+
+      </div>
+      : <LoadingSpinner Bg="white" Width="full" Height="screen" Left="0" />
 
   );
 }

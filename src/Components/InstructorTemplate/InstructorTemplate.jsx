@@ -6,8 +6,10 @@ export const InstructorRowTemplate = ({ index, FirstName, LastName, Status, crea
 
     return <tr onClick={OnClick} className={TrStyle}>
         <td className="px-3 text-start">{++index}</td>
-        <td className="text-center">
-            <img className="addCourseinstructorImg" src={ImgUrl} alt={FirstName+"img"} />
+        <td className="">
+            <div className="ProfileImageContainer">
+                <img className="w-full absolute" src={ImgUrl} alt={FirstName + "img"} />
+            </div>
         </td>
         <td className="text-center">{FirstName} {LastName}</td>
         <td className="text-center">{Email}</td>

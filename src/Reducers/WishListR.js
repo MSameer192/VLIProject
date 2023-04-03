@@ -8,6 +8,7 @@ export const WishListReducer = createReducer({}, (builder) => {
 
     builder.addCase("GetWishListSuccess", (state, action) => {
         state.loading = false;
+        state.error = {};
         state.WishList = action.payload
     })
     builder.addCase("GetWishListError", (state, action) => {
@@ -22,6 +23,7 @@ export const WishListReducer = createReducer({}, (builder) => {
 
     builder.addCase("RemoveWishSuccess", (state, action) => {
         state.loading = false;
+        state.error = {};
         state.WishList = action.payload
     })
     builder.addCase("RemoveWishError", (state, action) => {
@@ -37,6 +39,7 @@ export const WishListReducer = createReducer({}, (builder) => {
 
     builder.addCase("AddToWishListSuccess", (state, action) => {
         state.loading = false;
+        state.error = {};
         state.WishList = action.payload
     })
     builder.addCase("AddToWishListError", (state, action) => {

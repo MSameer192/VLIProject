@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom';
 import { GetScheduleA } from '../../Actions/StudentA';
 import ClassScheduler from '../../Components/Scheduler/Scheduler'
+import useCheckLogin from '../../Helpers/CustomHooks/CheckLogin';
+import { GetLocalStorage } from '../../Helpers/LocalStorage/LocalStorage';
 const ClassesSchedule = () => {
     const { EnrollmentId } = useParams()
     const { UserInfo } = useSelector(Store => Store.LoginSignupReducer);
@@ -16,10 +18,15 @@ const ClassesSchedule = () => {
     useEffect(() => {
         setEvents(Schedule)
     }, [Schedule])
+
+    useCheckLogin(true, ["Student", "Institute"], ["Admin", "Staff"]);
+
     return (
         <div>
             {Events.length >= 0
-                ? <ClassScheduler Name={UserInfo.FirstName + UserInfo.LastName} Events={Events} setEvents={setEvents} />
+                ? <ClassScheduler Name={UserInfo?.FirstName + UserInfo?.LastName} Events={Events} setEvents={setEvents}
+                    Edit={GetLocalStorage("UserInfo").User === "Institute"}
+                />
                 : null
             }
 

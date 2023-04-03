@@ -10,6 +10,7 @@ export const NotificationReducer = createReducer(NotificationInitialState, (buil
     })
     builder.addCase("GetNotificationsSuccess", (state, action) => {
         state.loading = true;
+        state.error = {}
         state.Notifications = action.payload;
     })
 })

@@ -9,6 +9,7 @@ export const AdminCourseReducer = createReducer({}, (builder) => {
     builder.addCase("Admin_AddCourseSuccess", (state, action) => {
         state.loading = false;
         state.ACourseInfo = action.payload;
+        state.error = {};
     })
 
     builder.addCase('Admin_AddCourseFailure', (state, action) => {

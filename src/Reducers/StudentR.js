@@ -15,6 +15,7 @@ export const StudentReducer = createReducer(StudentInitialState, (builder) => {
 
     builder.addCase("GetStudentsListSuccess", (state, action) => {
         state.loading = false;
+        state.error = {}
         state.Students = action.payload;
     })
 
@@ -32,6 +33,7 @@ export const StudentReducer = createReducer(StudentInitialState, (builder) => {
 
     builder.addCase("GetAboutClientSuccess", (state, action) => {
         state.loading = false;
+        state.error = {}
         state.CourseProgress = action.CourseProgress;
         state.CoursePackage = action.CoursePackage;
         state.Student = action.Student;
@@ -53,6 +55,7 @@ export const StudentReducer = createReducer(StudentInitialState, (builder) => {
 
     builder.addCase("GetClassScheduleSuccess", (state, action) => {
         state.loading = false;
+        state.error = {};
         state.Schedule = action.payload;
     })
 
@@ -69,6 +72,7 @@ export const StudentReducer = createReducer(StudentInitialState, (builder) => {
 
     builder.addCase("CreateScheduleSuccess", (state, action) => {
         state.loading = false;
+        state.error = {}
         state.Schedule = action.payload;
     })
 
@@ -84,6 +88,7 @@ export const StudentReducer = createReducer(StudentInitialState, (builder) => {
 
     builder.addCase("GetTimeTableSuccess", (state, action) => {
         state.loading = false;
+        state.error = {}
         state.Schedule = action.payload;
     })
 
@@ -91,14 +96,15 @@ export const StudentReducer = createReducer(StudentInitialState, (builder) => {
         state.loading = false;
         state.error = action.payload;
     })
-   
+
     builder.addCase("SubscriptionRequest", (state, action) => {
         state.loading = true
     });
 
     builder.addCase("SubscriptionSuccess", (state, action) => {
         state.loading = false;
-        state.Subscription  = action.payload;
+        state.error = {}
+        state.Subscription = action.payload;
     })
 
     builder.addCase('SubscriptionFailure', (state, action) => {

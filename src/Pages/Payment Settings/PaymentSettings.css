@@ -1,30 +1,46 @@
-.PaymentPageContainer{
-    @apply flex flex-wrap w-full  
-    px-8        sm:px-10        md:px-12        lg:px-14        xl:px-16        2xl:px-20 
-    gap-10      sm:gap-12       md:gap-14       lg:gap-16       xl:gap-20       2xl:gap-24
-    pt-10       sm:pt-12        md:pt-14        lg:pt-16        xl:pt-20        2xl:pt-24
+.PaymentPageContainer {
+  @apply flex w-full flex-wrap  justify-center
+
+    gap-10              px-8                pt-10 
+
+    sm:gap-12           sm:px-10            sm:pt-12 
+
+    md:gap-14           md:px-12            md:pt-14    
+
+    lg:gap-16           lg:px-14            lg:pt-16
+
+    xl:gap-20           xl:px-16            xl:pt-20    
+
+    2xl:gap-24          2xl:px-20           2xl:pt-24;
 }
 
+.PaymentTemplateContainer {
+  @apply flex w-[45%]  max-w-[700px] flex-col justify-between rounded-3xl bg-[white]      
+        pb-4 
+        shadow-[2px_3px_6px_#00000029]  
 
-.PaymentTemplateContainer{
-    @apply flex flex-col  justify-between max-w-[700px] bg-[white] shadow-[2px_3px_6px_#00000029] rounded-3xl w-[45%]
-    px-4    sm:px-4     md:px-6     lg:px-6     xl:px-10    2xl:px-11
-    pt-6    sm:pt-7     md:pt-8     lg:pt-9     xl:pt-10    2xl:pt-11
-    gap-4   sm:gap-5    md:gap-6    lg:gap-7    xl:gap-8    2xl:gap-9
-    pb-4 
-    
+    gap-4           px-4            pt-6
+
+    sm:gap-5        sm:px-4         sm:pt-7  
+
+    md:gap-6        md:px-6         md:pt-8   
+
+    lg:gap-7        lg:px-6         lg:pt-9  
+
+    xl:gap-8        xl:px-10        xl:pt-10   
+
+    2xl:gap-9       2xl:px-11       2xl:pt-11;
 }
 .PaymentActionBorder {
-    border-top: 1px solid #707070;
+  border-top: 1px solid #707070;
 }
 
 @media (max-width: 1000px) {
-    .PaymentPageContainer {
-        flex-direction: column;
-    }
+  .PaymentPageContainer {
+    flex-direction: column;
+  }
 
-    .PaymentTemplateContainer {
-        width: 100%;
-        /* max-width: 700px; */
-    }
+  .PaymentTemplateContainer {
+    width: 100%;
+  }
 }

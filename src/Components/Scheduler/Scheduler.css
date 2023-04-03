@@ -1,0 +1,7 @@
+.TimeTableContainer {
+  /* scrollbar-width: none; */
+  @apply mt-5 flex w-full items-start justify-center mb-5;
+}
+.TimeTableContainer::-webkit-scrollbar {
+  display: none;
+}

@@ -49,7 +49,8 @@ const SideFilters = ({ Title, FiltersArr, TitleStyle, WidthStyle, PositionAndInd
         <div className={Style}
 
             id="VehicleFilter"
-            ref={FilterRef}>
+            ref={FilterRef}
+            onClick={(e) => e.stopPropagation()}>
 
             <span className='bg-[#A1A3EF] absolute right-12 top-5 flex justify-center items-center rounded-[17px] sm:hidden cursor-pointer'
                 onClick={HideFilter}>

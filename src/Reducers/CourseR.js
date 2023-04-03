@@ -9,6 +9,7 @@ export const CourseReducer = createReducer({}, (builder) => {
 
     builder.addCase("CourseSuccess", (state, action) => {
         state.loading = false;
+        state.error = {}
         state.CourseInfo = action.payload;
     })
 
@@ -25,6 +26,7 @@ export const CourseReducer = createReducer({}, (builder) => {
 
     builder.addCase("GetAdminCoursesSuccess", (state, action) => {
         state.loading = false;
+        state.error = {}
         state.AdminCourses = action.payload;
     })
 
@@ -45,6 +47,7 @@ export const CourseReducer = createReducer({}, (builder) => {
 
     builder.addCase("BuyCourseSuccess", (state, action) => {
         state.loading = false;
+        state.error = {}
         state.CourseInfo = action.payload;
     })
 
@@ -63,6 +66,7 @@ export const CourseReducer = createReducer({}, (builder) => {
 
     builder.addCase("EnrollCourseSuccess", (state, action) => {
         state.loading = false;
+        state.error = {}
         state.EnrollCourseInfo = action.payload;
     })
 
@@ -81,6 +85,7 @@ export const CourseReducer = createReducer({}, (builder) => {
 
     builder.addCase("GetEnrolledCoursesSuccess", (state, action) => {
         state.loading = false;
+        state.error = {}
         state.EnrolledCourses = action.payload;
     })
 
@@ -100,6 +105,7 @@ export const CourseReducer = createReducer({}, (builder) => {
 
     builder.addCase("GetSEnrolledCoursesSuccess", (state, action) => {
         state.loading = false;
+        state.error = {}
         state.SEnrolledCourse = action.payload;
     })
 
@@ -121,6 +127,7 @@ export const CourseReducer = createReducer({}, (builder) => {
 
     builder.addCase("LicenceTypeCoursesSuccess", (state, action) => {
         state.loading = false;
+        state.error = {}
         state.Courses = action.payload;
     })
     builder.addCase("LicenceTypeCoursesFailure", (state, action) => {
@@ -137,6 +144,7 @@ export const CourseReducer = createReducer({}, (builder) => {
 
     builder.addCase("EnrolledCourseProgressSuccess", (state, action) => {
         state.loading = false;
+        state.error = {}
         state.CourseProgress = action.payload;
     })
     builder.addCase("EnrolledCourseProgressFailure", (state, action) => {
@@ -153,6 +161,7 @@ export const CourseReducer = createReducer({}, (builder) => {
 
     builder.addCase("CreateCourseSuccess", (state, action) => {
         state.loading = false;
+        state.error = {}
         state.Course = action.payload;
     })
     builder.addCase("CreateCourseFailure", (state, action) => {
@@ -168,6 +177,7 @@ export const CourseReducer = createReducer({}, (builder) => {
 
     builder.addCase("FilterCoursesSuccess", (state, action) => {
         state.loading = false;
+        state.error = {}
         state.AdminCourses = action.payload;
     })
     builder.addCase("FilterCoursesFailure", (state, action) => {
@@ -183,6 +193,7 @@ export const CourseReducer = createReducer({}, (builder) => {
 
     builder.addCase("GetInstituteCoursesSuccess", (state, action) => {
         state.loading = false;
+        state.error = {}
         state.Courses = action.payload;
     })
     builder.addCase("GetInstituteCoursesFailure", (state, action) => {

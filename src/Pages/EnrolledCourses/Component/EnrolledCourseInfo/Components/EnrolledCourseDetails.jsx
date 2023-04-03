@@ -17,10 +17,10 @@ const EnrolledCourseDetails = ({ InstituteCourse }) => {
 
 function CorseDetailsText({ InstituteCourse }) {
     let Description = InstituteCourse?.Course?.Description;
-    if (Description.length >= 220)
+    if (Description?.length >= 220)
         Description = Description.split("").slice(0, 215).join('') + "...";
     let CourseName = InstituteCourse?.Course?.CourseName
-    if (CourseName.length >= 40)
+    if (CourseName?.length >= 40)
         CourseName = CourseName.split("").slice(0, 37).join("") + "..."
 
     return <span className='flex flex-col    gap-2 sm:gap-5 md:gap-8 lg:gap-11 xl:gap-14 2xl:gap-16 justify-between items-center'>

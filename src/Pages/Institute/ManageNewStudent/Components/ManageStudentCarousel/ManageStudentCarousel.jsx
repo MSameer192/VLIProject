@@ -26,23 +26,45 @@ const CourseSlider = ({ Instructors: InstructorState, InstructorType, setInstruc
     useEffect(() => {
         if (EnrollmentId)
             Dispatch(GetInstructorsA(EnrollmentId))
-    }, [Dispatch,EnrollmentId])
+    }, [Dispatch, EnrollmentId])
     const { Student } = useSelector(Store => Store.StudentReducer)
- 
-    return (
-        <div style={{
-            backgroundColor: '#454545b3', height: '100vh', paddingTop: '50px', width: "100vw", position: "fixed",
-            left: "0px", top: "80px", zIndex: "30", overflowY: "scroll"
-        }}>
+    const SelectInstructor = (e, value, Src, Name) => {
+        const InstructorTypes = ["Driving", "Online", "InClass"];
+        let Index = InstructorTypes.indexOf(InstructorType);
 
-            <div>
+        InstructorState[Index] = {
+
+            id: value?.Instructor?.InstructorId,
+            InstructorImage: Src,
+            InstructorName: Name,
+            text: Name,
+            InstructorType,
+            LicenseTypeName: value?.Instructor?.LicenseType?.LicenseTypeName,
+            Email: value?.Email,
+            PhoneNumber: value?.PhoneNumber,
+            InstructorFK: value?.Instructor?.InstructorId
+        }
+        setInstructors([...InstructorState,]);
+
+
+        setShowSlider({ Show: false, InstructorType: "" })
+    }
+    console.log(InstructorState)
+    return (
+        <div className="border-[red] border-[10px] border-solid" >
+
+            <div style={{
+                backgroundColor: '#454545b3', paddingTop: '50px', position: "fixed",
+                zIndex: "30", overflowY: "scroll",
+            }} className=" h-[calc(100vh_-_80px)] w-screen mt-20 top-0 left-0">
                 <div className="slide hi-slide">
                     <div className="hi-prev "></div>
                     <div className="hi-next "></div>
                     <ul>
                         {Instructors?.map(value => {
- 
-                            const Src = `${BaseUrl}/Instructors/images?url${value?.Instructor?.ProfileImage}`
+
+                            const Src = `${BaseUrl}/api/images/Instructors?url=${value?.Instructor?.ProfileImage}`
+
                             const Name = value?.FirstName + " " + value?.LastName
                             return <li key={value?.Instructor?.InstructorId}>
                                 <div className="studenCarouselBoxes">
@@ -55,13 +77,16 @@ const CourseSlider = ({ Instructors: InstructorState, InstructorType, setInstruc
                                         <div className="managingStudentCarouselTxt">
                                             <p>{Name}</p>
                                             <center>
-                                                <button className="cauraselInstructorTxt">Instructor</button>
+                                                <button className="cauraselInstructorTxt">
+                                                    Instructor
+                                                </button>
                                             </center>
                                             <hr className="vehicalHr" style={{ marginBottom: '7px' }} />
                                             <div className="infoCaurasel">
                                                 <img src={studenInstCarIcon} alt="studenInstCarIcon" />
                                                 <span>
-                                                    {value?.Instructor?.LicenseType?.LicenseTypeName}
+                                                    Type
+                                                    {` ${value?.Instructor?.LicenseType?.LicenseTypeName}`}
                                                 </span>
                                                 <br />
                                             </div>
@@ -73,19 +98,9 @@ const CourseSlider = ({ Instructors: InstructorState, InstructorType, setInstruc
                                             </div>
                                             <hr className="vehicalHr" style={{ marginTop: '12px' }} />
                                             <center>
-                                                <button className="vehicalSelectBtn cursor-pointer" onClick={() => {
-                                                    setInstructors({
-                                                        ...InstructorState, [InstructorType]:
-                                                        {
-                                                            InstructorFK: value?.Instructor?.InstructorId,
-                                                            InstructorImage: Src,
-                                                            InstructorName: Name,
-                                                            InstructorData: value
-                                                        }
-                                                    });
-
-                                                    setShowSlider({ Show: false, InstructorType: "" })
-                                                }}
+                                                <button className="vehicalSelectBtn cursor-pointer" onClick={(e) =>
+                                                    SelectInstructor(e, value, Src, Name)
+                                                }
                                                 >
                                                     Select Instructor
                                                 </button>
@@ -102,17 +117,15 @@ const CourseSlider = ({ Instructors: InstructorState, InstructorType, setInstruc
                 <SchedulerCompleted Student={Student} Events={Events} setEvents={setEvents} SubmitSchedule={SubmitSchedule} />
             </div>
             {/********************************** Calender Ends *****************************************/}
-        </div>
+        </div >
     );
 }
 
 const SchedulerCompleted = ({ Student, Events, setEvents, SubmitSchedule }) => {
-    const SaveBtn = () =>
-        <button type="button" className='BrandingButton rounded-[28px] text-base px-6 py-3 mb-5 hover:bg-white   hover:text-black hover:border-[#A1A3EF] hover:border-[2px] hover:border-solid duration-200' onClick={() => SubmitSchedule()}>
-            Save & Continue
-        </button>
 
-    return <ClassScheduler Name={Student?.FirstName + " " + Student?.LastName} BottomComp={SaveBtn}
+
+    return <ClassScheduler
+        Name={Student?.FirstName + " " + Student?.LastName}
         setEvents={setEvents} Events={Events}
     />
 }

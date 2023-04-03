@@ -1,13 +1,11 @@
 import ClassesIndicator from "../../Components/ClassesIndicator/ClassesIndicator";
-import DevExtremeScheduler from "../DevExtremeScheduler/DevExtremeScheduler";
 import Timetable from "./TimeTable/Timetable";
-
-function ClassScheduler({ Name, TopBtn, BottomComp, setEvents, Events }) {
-
+import './Scheduler.css'
+function ClassScheduler({ Name, TopBtn, BottomComp, setEvents, Events, Edit, Resources }) {
 
   return (
-    <div className="flex justify-center items-center   mt-5 w-full">
-      <div className="flex flex-col justify-center items-center w-full sm:w-[87%] gap-7  bg-white px-3 sm:px-4 md:px-5 lg:px-6 xl:px-7 2xl:px-8">
+    <div className="TimeTableContainer">
+      <div className="flex flex-col justify-start items-center w-full sm:w-[87%] gap-7 bg-white px-3 sm:px-4 md:px-5 lg:px-6 xl:px-7 2xl:px-8 h-fit">
 
         <div className="flex justify-between w-full">
           <h3 className="text-xs font-normal text-[#4D4F5C]">{Name}</h3>
@@ -33,7 +31,7 @@ function ClassScheduler({ Name, TopBtn, BottomComp, setEvents, Events }) {
 
         <div className="w-full overflow-x-scroll">
           <div className="min-w-[700px] w-full">
-            <DevExtremeScheduler Events={Events} setEvents={setEvents} />
+            <Timetable Events={Events} setEvents={setEvents} Edit={Edit} Resources={Resources} />
           </div>
         </div>
         {BottomComp && <BottomComp />}

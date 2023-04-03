@@ -23,7 +23,7 @@ const AboutClientChild = () => {
   useCheckLogin(true, ["Institute"], ["Staff", "Admin", "Instructor"]);
   return (
     loading
-      ? <LoadingSpinner />
+      ? <LoadingSpinner Bg="white" Position="fixed" Width="full" Left="0" Height="screen" />
       : <div className="flex justify-start items-center py-16 flex-col px-3 sm:bg-[#F8F8F8] w-full gap-16 sm:gap-16 md:gap-20 lg:gap-24 xl:gap-28 2xl:gap-32">
         <ClientInfo Student={Student} />
         {CoursePackage ? (

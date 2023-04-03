@@ -15,6 +15,7 @@ export const InstructorReducer = createReducer(InstructorInitialState, (builder)
 
     builder.addCase("CreateInstructorSuccess", (state, action) => {
         state.loading = false;
+        state.error = {}
         state.Instructor = action.payload;
     })
 
@@ -31,6 +32,7 @@ export const InstructorReducer = createReducer(InstructorInitialState, (builder)
 
     builder.addCase("GetInstructorsSuccess", (state, action) => {
         state.loading = false;
+        state.error = {}
         state.Instructors = action.payload;
     })
 
@@ -47,6 +49,7 @@ export const InstructorReducer = createReducer(InstructorInitialState, (builder)
 
     builder.addCase("GetInstructorStudentsSuccess", (state, action) => {
         state.loading = false;
+        state.error = {}
         state.Students = action.payload;
     })
 
@@ -63,6 +66,7 @@ export const InstructorReducer = createReducer(InstructorInitialState, (builder)
 
     builder.addCase("GetSInstructorSuccess", (state, action) => {
         state.loading = false;
+        state.error = {}
         state.SInstructor = action.payload;
     })
 

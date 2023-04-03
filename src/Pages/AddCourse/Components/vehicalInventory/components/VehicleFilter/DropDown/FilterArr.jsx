@@ -29,7 +29,10 @@ const FilterArr = ({ FiltersObj, setFiltersObj, Filters, setFilters }) => {
             </span>
             <span className='flex flex-col gap-[18px]'>
                 <h3 className='font-normal text-4xs border-[#0000001a]'>Sort by Date Modified</h3>
-                <DropDown Label="New to Old" TextStyle="text-5xs" styles="VehicleFilterBorder"
+                <DropDown
+                    Label="New to Old"
+                    TextStyle="text-5xs"
+                    styles="VehicleFilterBorder"
                     DropDownOptions={DateModifiedArr}
                     StateValue={FiltersObj?.createdAt}
                     onChange={(target, Text) => OnChange(target, Text, "createdAt")}

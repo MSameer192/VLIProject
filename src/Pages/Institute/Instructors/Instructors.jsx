@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { BaseUrl } from "../../../Actions/Base";
-import {
-  GetInstituteInstructorsA,
-  GetInstructorsA,
-} from "../../../Actions/InstructorA";
+import { GetInstituteInstructorsA, } from "../../../Actions/InstructorA";
 import InstituteTemplate from "../../../Components/InstituteTemplate/InstituteTemplate";
 import { InstructorRowTemplate } from "../../../Components/InstructorTemplate/InstructorTemplate";
 import LoadingSpinner from "../../../Components/LoadingSpinner/LoadingSpinner";
@@ -16,14 +13,15 @@ import "./InstructorsList.css";
 
 const InstructorsListChild = () => {
   const { Instructors, loading } = useSelector(Store => Store.InstructorReducer);
-  const [FilterOpen, setFilterOpen] = useState()
+  const [FilterOpen, setFilterOpen] = useState();
   const [MaxHeight, setMaxHeight] = useState("max-h-[0px]");
   const Dispatch = useDispatch();
   useEffect(() => {
     Dispatch(GetInstituteInstructorsA());
   }, [Dispatch]);
   useCheckLogin(true, ["Institute"], ["Staff", "Admin"]);
-  const OnClick = () => {
+  const OnClick = (e) => {
+    e.stopPropagation()
     if (!FilterOpen) {
       setFilterOpen(true);
       setMaxHeight("max-h-[1000px]");
@@ -80,6 +78,7 @@ const InstructorsListChild = () => {
           </thead>
           <tbody>
             {Instructors?.map((value, index) => {
+
               const { ClientsTraining, Status, StudentsTraining } =
                 value.Instructor;
               const PaymentOrClientsColor =
@@ -98,7 +97,7 @@ const InstructorsListChild = () => {
                 </Link>
               );
 
-              const ImageUrl = `${BaseUrl}/Instructors/images?url=${value?.Instructor?.ProfileImage}`;
+              const ImageUrl = `${BaseUrl}/api/images/Instructors?url=${value?.Instructor?.ProfileImage}`;
 
               return (
                 <InstructorRowTemplate
@@ -111,9 +110,7 @@ const InstructorsListChild = () => {
                   Status={!Status ? "free" : Status}
                   createdAt={value.Instructor.createdAt}
                   ClientsTraining={value.Instructor.ClientsTraining}
-                  PaymentOrUnderClients={
-                    !StudentsTraining ? "free" : StudentsTraining
-                  }
+                  PaymentOrUnderClients={!StudentsTraining ? "free" : StudentsTraining}
                   ImgUrl={ImageUrl}
                   PaymentOrClientsColor={PaymentOrClientsColor}
                   StatusColor={StatusColor}

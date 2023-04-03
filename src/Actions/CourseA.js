@@ -273,15 +273,9 @@ export const GetAboutInfoA = (EnrollmentId) => async (dispatch) => {
         })
         const { data } = await axios.get(`${BaseUrl}/api/student/${EnrollmentId}`, Headers)
         let StudentInfo = { ...data.User };
-        // delete StudentInfo?.StudentInfo
+
         StudentInfo.StudentInfo.DOB = new Date(StudentInfo?.StudentInfo?.DOB).toLocaleDateString();
 
-
-        data.ScheduleTimetable = [...data.ScheduleTimetable.map(value => {
-            value.start = new Date(value.start)
-            value.end = new Date(value.end)
-            return value
-        })]
 
         dispatch({
             type: "GetAboutClientSuccess",

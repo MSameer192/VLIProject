@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { BaseUrl } from "../../../../../../Actions/Base";
 import { DeleteInstituteCoursesA } from "../../../../../../Actions/CourseA";
-import { GetLocalStorage } from "../../../../../../Helpers/LocalStorage/LocalStorage";
 import ButtonsSide from "./ButtonsSide/ButtonsSide";
 import ContentSide from "./ContentSide/ContentSide";
 
@@ -21,7 +20,6 @@ const CoursesTiles = ({ Courses, OnClick, loading }) => {
         : value?.Publish === "Rejected"
           ? "bg-[#eb2e2e] text-[#ec1010]"
           : "bg-[#FF9C46] text-[#FF9C46]"
-    console.log(`${BaseUrl}/api/Thumbnail/course?url=${value.CourseThumbnail}`, value)
     return (
       <div
         key={value?.InstituteCourseId}

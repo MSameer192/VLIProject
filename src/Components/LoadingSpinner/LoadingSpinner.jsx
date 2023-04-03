@@ -23,8 +23,8 @@ function LoadingSpinner({ Dashboard, Width, Height, Top, Left, Position, Bg }) {
   if (!Bg)
     Bg = "[#ffffff00]"
   return (
-    <div className={`h-${Height} w-${Width} bg-${Bg} flex justify-center items-center z-30 ${Position} top-${Top} left-0 left-${Left}`}>
-      <div className="w-full text-center my-10">
+    <div className={`h-${Height} w-${Width} bg-${Bg} flex justify-center items-center z-30 ${Position} top-${Top} left-${Left} z-50`}>
+      <div className="w-full text-center my-10 relative -top-20">
         <div className="lds-dual-ring mx-auto"></div>
       </div>
     </div>

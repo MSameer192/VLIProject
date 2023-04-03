@@ -22,12 +22,6 @@ import jQuery from "jquery";
             istWidth = 220; secWidth = 260; thirdWidth = 314; fourthWidth = 260; fifthWidth = 220; istHeight = 390; secHeight = 438; thirdHeight = 518; fourthHeight = 438; fifthHeight = 390;
             
             states = [
-                // { $zIndex: 1, width: 190, height: 418, top: 35, left: 110, $opacity: 0.7 },
-                // { $zIndex: 2, width: 230, height: 418, top: 35, left: 110, $opacity: 0.7 },
-                // { $zIndex: 3, width: 284, height: 488, top: 0, left: 263, $opacity: 1 },
-                // { $zIndex: 2, width: 230, height: 418, top: 35, left: 470, $opacity: 0.7 },
-                // { $zIndex: 1, width: 190, height: 418, top: 35, left: 470, $opacity: 0.7 },
-    
                 { $zIndex: 1, width: istWidth, height: istHeight, top: 59, left: 0, $opacity: 0.4 },
                 { $zIndex: 2, width: secWidth, height: secHeight, top: 35, left: 110, $opacity: 0.7 },
                 { $zIndex: 3, width: thirdWidth, height: thirdHeight, top: 0, left: 263, $opacity: 1 },
@@ -40,7 +34,7 @@ import jQuery from "jquery";
         var $lis = $ele.find('li');
         var timer = null;
 
-        // 事件
+
         $ele.find('.hi-next').on('click', function() {
             next();
         });

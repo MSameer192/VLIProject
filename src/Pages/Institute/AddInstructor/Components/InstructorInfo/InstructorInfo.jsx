@@ -2,7 +2,7 @@ import React from 'react'
 import ImagePreviewer from '../../../../../Components/ImagePreviewer/ImagePreviewer'
 import { DateInput } from '../../../../../Components/InputComps/DateComps'
 import { Input, InputWithImage, SelectList } from '../../../../../Components/InputComps/InputComps'
-import { GenderOptions, LicenseTypesOption } from '../OptionsArr/OptionsArr'
+import { GenderOptions, LicenseTypesOption } from '../OptionsArr/OptionsArr';
 import './InstructorInfo.css'
 const InstructorInfo = ({ InstructorData, setInstructorData, Err, setErr }) => {
     const OnChange = (e, Name, file) => {
@@ -13,8 +13,8 @@ const InstructorInfo = ({ InstructorData, setInstructorData, Err, setErr }) => {
             setErr({ ...Err, [Name]: undefined })
         }
     }
- 
- 
+
+
     return (
         <div className='flex flex-col md:flex-row flex-wrap w-full justify-between gap-10 gap-y-6  sm:w-full md:w-[95%] lg:w-[85%]'>
             <Input Label="First name" Placeholder="John" Id="FirstName" Err={Err?.FirstName}
@@ -66,21 +66,22 @@ const InstructorInfo = ({ InstructorData, setInstructorData, Err, setErr }) => {
                 onChange={e => OnChange(e, "PhoneNumber")}
             />
 
-            <Input Label="Guardian Phone Number" Placeholder="123-456-789" Id="GuardianPhoneNumber" Err={Err?.GuardianPhoneNumber}
+            <Input Label="Guardian Phone Number" Placeholder="123-456-789" Id="GuardianPhoneNumber"
+                Err={Err?.GuardianPhoneNumber}
                 State={InstructorData.GuardianPhoneNumber}
                 onChange={e => OnChange(e, "GuardianPhoneNumber")}
             />
 
-
-            <SelectList Label="Gender" Id="Gender" defaultValue="Gender" Text="Gender" Err={Err?.Gender}
+            <SelectList Label="Gender" Id="Gender" defaultValue="" Text="Gender" Err={Err?.Gender}
                 OptionsArr={GenderOptions}
                 State={InstructorData.Gender}
                 onChange={e => OnChange(e, "Gender")}
             />
 
-            <SelectList Label="License Type" Id="LicenseType" defaultValue="License Type" Text="License Type" Err={Err?.Gender}
+            <SelectList Label="License Type" Id="LicenseType"
+                defaultValue="" Text="License Type" Err={Err?.Gender}
                 OptionsArr={LicenseTypesOption}
-                State={InstructorData.LicenseType}
+                State={InstructorData.Speciality}
                 onChange={e => OnChange(e, "Speciality")}
             />
             <Input Label="License Number" Placeholder="PQ512654" Id="LicenseNumber" Err={Err?.LicenseNumber}

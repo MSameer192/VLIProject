@@ -30,28 +30,21 @@ const CourseInstructors = ({ ShowSlider, setShowSlider, Instructors, OneInstruct
 
                 <InstructorCardTemplate
                     InstructorType="Driving"
-                    Instructors={Instructors}
+                    Instructor={Instructors[0]}
                     OnClick={() => OnClick("Driving")}
-                    Src={Instructors["Driving"]?.InstructorImage}
-                    Name={Instructors["Driving"]?.InstructorName}
                 />
                 {!OneInstructor
                     ? <>
 
                         <InstructorCardTemplate
                             InstructorType="Online"
-                            Instructors={Instructors}
+                            Instructor={Instructors[1]}
                             OnClick={() => OnClick("Online")}
-                            Src={Instructors["Online"]?.InstructorImage}
-                            Name={Instructors["Online"]?.InstructorName}
-
                         />
                         <InstructorCardTemplate
-                            InstructorType="In Class"
-                            Instructors={Instructors}
+                            InstructorType="InClass"
+                            Instructor={Instructors[2]}
                             OnClick={() => OnClick("InClass")}
-                            Src={Instructors["InClass"]?.InstructorImage}
-                            Name={Instructors["InClass"]?.InstructorName}
                         />
                     </>
                     : null

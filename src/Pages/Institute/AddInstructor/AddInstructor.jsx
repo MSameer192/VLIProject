@@ -11,6 +11,7 @@ import { useEffect } from 'react'
 import { GetLicenseTypes } from '../../../Actions/CategoryA'
 import InstructorPopup from './Components/Popup/InstructorPopup'
 import LoadingSpinner from '../../../Components/LoadingSpinner/LoadingSpinner'
+import { ScrollElement } from '../../../Helpers/ScrolltoElement'
 
 const AddInstructorChild = () => {
     const { error, loading } = useSelector(Store => Store.InstructorReducer)
@@ -24,9 +25,9 @@ const AddInstructorChild = () => {
         Email: "",
         PhoneNumber: "",
         GuardianPhoneNumber: "",
-        Gender: "Gender",
+        Gender: "",
         DOB: "",
-        Speciality: "License Type",
+        Speciality: "",
         LicenseNumber: "",
         LicenseExpiry: "",
         SpecialLicenseNumber: "",
@@ -53,7 +54,7 @@ const AddInstructorChild = () => {
             setErr(error?.response?.data)
 
     }, [error])
-    console.log(Success)
+
     return (
         !loading ?
             <form className='bg-[#F7F7F7] w-full flex flex-col items-center py-10 gap-10'
@@ -88,9 +89,10 @@ const SubmitInstructorData = (e, Dispatch, setSuccess, InstructorData, Err, setE
 
         else delete Errors[key]
     }
+    Errors = { ...Err, ...Errors }
+    setErr({ ...Errors });
 
-    setErr({ ...Err, ...Errors })
-    console.log({ ...Err, ...Errors })
+    ScrollElement(Errors)
     if (Object.entries(Errors).length > 0)
         return
 
@@ -98,7 +100,7 @@ const SubmitInstructorData = (e, Dispatch, setSuccess, InstructorData, Err, setE
         if (key.indexOf("Image") > -1) InstructorFormData.append(key, value)
         else InstructorDataNoImage = { ...InstructorDataNoImage, [key]: value }
     }
-    console.log("Success Start")
+
     InstructorFormData.append("IntructorInfo", JSON.stringify(InstructorDataNoImage))
 
     Dispatch(AddInstructorA(InstructorFormData, setSuccess))

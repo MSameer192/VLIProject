@@ -16,7 +16,7 @@ export const VehicleTypeArr = ({ Name, onChange, StateValue }) => {
     )
 }
 export const LicenseTypeArr = ({ Name, onChange, StateValue }) => {
-    const { LicenseTypes } = useSelector((Store) => Store.LicenseTypeReducer)
+    const { LicenseTypes } = useSelector(Store => Store.LicenseTypeReducer);
     const Dispatch = useDispatch();
     useEffect(() => {
         Dispatch(GetLicenseTypes())
@@ -24,7 +24,13 @@ export const LicenseTypeArr = ({ Name, onChange, StateValue }) => {
 
     return (
         LicenseTypes?.map((value) =>
-            <DropDownOptions key={value.LicenseTypeId} ID={value.LicenseTypeId} Text={value.LicenseTypeName} Name={Name} onChange={onChange} StateValue={StateValue} />
+            <DropDownOptions key={value.LicenseTypeId}
+                ID={value.LicenseTypeId}
+                Text={value.LicenseTypeName}
+                Name={Name}
+                onChange={onChange}
+                StateValue={StateValue}
+            />
         )
     )
 }
@@ -39,7 +45,7 @@ export const DateModifiedArr = ({ Name, onChange, StateValue }) => {
     )
 }
 
-export  const AlphabeticalOrderList = ({ Name, onChange, StateValue }) => {
+export const AlphabeticalOrderList = ({ Name, onChange, StateValue }) => {
     const arr = ["A to Z", "Z to A"]
     return (
         arr.map(value =>

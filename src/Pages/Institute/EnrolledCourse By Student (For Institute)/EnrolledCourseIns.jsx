@@ -27,7 +27,7 @@ const EnrolledCourseInsChild = () => {
     useCheckLogin(true, ["Institute"], ["Staff", "Admin"]);
     return (
         loading
-            ? <LoadingSpinner />
+            ? <LoadingSpinner Position="fixed" Bg="white" />
             : <div className='flex flex-col items-center gap-24 relative mb-20'>
 
                 {ShowSubscription ? <CourseSubscription setShowSubscription={setShowSubscription} /> : null}

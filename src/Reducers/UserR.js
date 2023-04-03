@@ -31,7 +31,7 @@ export const LoginSignupReducer = createReducer(VehicleTypeInitialState, (builde
         state.loading = false;
         state.UserInfo = action.payload;
         state.Authenticated = action.Auth;
-        state.error = {}
+        state.error = {};
     })
     builder.addCase("SignUpError", (state, action) => {
         state.loading = false;

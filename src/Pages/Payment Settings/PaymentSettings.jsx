@@ -6,7 +6,7 @@ import { CardInfo, Invoice, PackageDetails, Reimbustment } from './Components/Ca
 import './PaymentSettings.css'
 const PaymentSettingsChild = () => {
     return (
-        <div className={`PaymentPageContainer`}
+        <div className="PaymentPageContainer"
         >
             <CardInfo />
             <PackageDetails />

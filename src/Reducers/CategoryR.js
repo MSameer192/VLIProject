@@ -13,6 +13,7 @@ export const VehicleTypeReducer = createReducer(VehicleTypeInitialState, (builde
     })
     builder.addCase("VehicleTypeSuccess", (state, action) => {
         state.loading = false;
+        state.error = {}
         state.VehicleTypes = action.payload;
     })
     builder.addCase("VehicleTypeError", (state, action) => {
@@ -34,6 +35,7 @@ export const LicenseTypeReducer = createReducer(LicenseTypeInitialState, (builde
 
     builder.addCase("LicenseTypeSuccess", (state, action) => {
         state.loading = true;
+        state.error = {}
         state.LicenseTypes = action.payload;
     })
     builder.addCase("LicenseTypeError", (state, action) => {

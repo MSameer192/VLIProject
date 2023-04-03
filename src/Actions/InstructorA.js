@@ -7,9 +7,8 @@ export const AddInstructorA = (InstructorData, setSuccess) => async (dispatch) =
         dispatch({
             type: "CreateInstructorRequest"
         })
-        console.log("Success Start")
         const { data } = await axios.post(`${BaseUrl}/api/Instructor/add`, InstructorData, { withCredentials: true })
-        console.log("Success End")
+
         dispatch({
             type: "CreateInstructorSuccess",
             payload: data

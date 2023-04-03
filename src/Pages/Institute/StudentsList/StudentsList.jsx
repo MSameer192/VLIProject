@@ -14,7 +14,7 @@ const StudentsListChild = () => {
   const { Students, loading } = useSelector((Store) => Store?.StudentReducer);
   const [MaxHeight, setMaxHeight] = useState("max-h-[0px]");
   const Dispatch = useDispatch();
-  const Navigate = useNavigate();
+
   useEffect(() => {
     Dispatch(GetStudentsA());
   }, [Dispatch]);
