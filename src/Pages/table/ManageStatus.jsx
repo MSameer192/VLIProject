@@ -5,144 +5,145 @@ import deleteIcon from "./table-icons/deleteIconTable.svg";
 
 function ManageStatusChild() {
   return (
-    <div className="w-[58%] pb-[70px] bg-white rounded-[19px] tableContainer">
-      <div className="w-full pl-[70px] pr-[69px] pt-[20px] flex justify-between tableContainerTop">
-        <p className="text-[#C4C4C4] text-[1.1vw] leading-[21px] tableSubHeading">
+    <div className="tableContainer w-[58%] rounded-[19px] bg-white pb-[70px]">
+      <div className="tableContainerTop flex w-full justify-between pl-[70px] pr-[69px] pt-[20px]">
+        <p className="tableSubHeading text-[1.1vw] leading-[21px] text-[#C4C4C4]">
           09 Aug 2022
         </p>
+
         <CancelIcon
           style={{ height: "30px", width: "30px" }}
-          className="w-[3vw] h-[2.7vw] text-[#A1A3EF] cancelIconTable"
+          className="cancelIconTable h-[2.7vw] w-[3vw] text-[#A1A3EF]"
         />
       </div>
-      <div className="text-center -mt-4">
-        <h5 className="text-[1.14vw] font-medium tableHeading">
+      <div className="-mt-4 text-center">
+        <h5 className="tableHeading text-[1.14vw] font-medium">
           Manage Available Status
         </h5>
-        <p className="text-[1.1vw] font-normal tableSubHeading mt-1">
+        <p className="tableSubHeading mt-1 text-[1.1vw] font-normal">
           Schedule Test
         </p>
       </div>
       {/* ......... */}
 
-      <div className="w-[100%] px-[40px] tableItself mt-[30px]">
-        <table className="table-auto mx-auto w-full">
+      <div className="tableItself mt-[30px] w-[100%] px-[40px]">
+        <table className="mx-auto w-full table-auto">
           <thead>
             <tr>
-              <th className="px-4 py-2 text-[1.1vw] font-normal tableHeadText">
+              <th className="tableHeadText px-4 py-2 text-[1.1vw] font-normal">
                 Type
               </th>
-              <th className="px-4 py-2 text-[1.1vw] font-normal tableHeadText">
+              <th className="tableHeadText px-4 py-2 text-[1.1vw] font-normal">
                 From
               </th>
-              <th className="px-4 py-2 text-[1.1vw] font-normal tableHeadText">
+              <th className="tableHeadText px-4 py-2 text-[1.1vw] font-normal">
                 To
               </th>
-              <th className="px-4 py-2 text-[1.1vw] font-normal tableHeadText">
+              <th className="tableHeadText px-4 py-2 text-[1.1vw] font-normal">
                 Current Status
               </th>
-              <th className="px-4 py-2 text-[1.1vw] font-normal tableHeadText">
+              <th className="tableHeadText px-4 py-2 text-[1.1vw] font-normal">
                 Actions
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr className="border border-grey-light">
-              <td className=" flex items-center text-center pt-[23px] pb-[41px] justify-around">
+            <tr className="border-grey-light border">
+              <td className=" flex items-center justify-around pt-[23px] pb-[41px] text-center">
                 <input
                   type="radio"
                   name="radioFortable"
-                  className="w-[2.4vw] h-[1.4vw] tableRadioBtn"
+                  className="tableRadioBtn h-[1.4vw] w-[2.4vw]"
                 />
-                <span className="text-[0.9vw] tableText">Hourly</span>
+                <span className="tableText text-[0.9vw]">Hourly</span>
               </td>
               <td className="px-4 py-2 text-center">
-                <div className="text-[0.9vw] tableText">9 Sept, 2022</div>
-                <div className="text-[0.9vw] tableText">09:00 AM</div>
+                <div className="tableText text-[0.9vw]">9 Sept, 2022</div>
+                <div className="tableText text-[0.9vw]">09:00 AM</div>
               </td>
               <td className="px-4 py-2 text-center">
-                <div className="text-[0.9vw] tableText">9 Sept, 2022</div>
-                <div className="text-[0.9vw] tableText">05:00 PM</div>
+                <div className="tableText text-[0.9vw]">9 Sept, 2022</div>
+                <div className="tableText text-[0.9vw]">05:00 PM</div>
               </td>
               <td className="px-4 py-2 text-center">
-                <span className="text-[0.9vw] tableText">Unavailable</span>
+                <span className="tableText text-[0.9vw]">Unavailable</span>
               </td>
-              <td className="px-4 py-2 text-center flex justify-center">
+              <td className="flex justify-center px-4 py-2 text-center">
                 <img
                   src={editIcon}
-                  className="w-[1vw] h-fit mr-2 tableActionIcon"
+                  className="tableActionIcon mr-2 h-fit w-[1vw]"
                   alt=""
                 />
                 <img
                   src={deleteIcon}
-                  className="w-[1vw] h-[1vw] tableActionIcon"
+                  className="tableActionIcon h-[1vw] w-[1vw]"
                   alt=""
                 />
               </td>
             </tr>
-            <tr className="border border-grey-light">
-              <td className=" flex items-center text-center pt-[23px] pb-[41px] justify-around">
+            <tr className="border-grey-light border">
+              <td className=" flex items-center justify-around pt-[23px] pb-[41px] text-center">
                 <input
                   type="radio"
                   name="radioFortable"
-                  className="w-[2.4vw] h-[1.4vw] tableRadioBtn"
+                  className="tableRadioBtn h-[1.4vw] w-[2.4vw]"
                 />
-                <span className="text-[0.9vw] tableText">Weekly</span>
+                <span className="tableText text-[0.9vw]">Weekly</span>
               </td>
               <td className="px-4 py-2 text-center">
-                <div className="text-[0.9vw] tableText">9 Sept, 2022</div>
-                <div className="text-[0.9vw] tableText">09:00 AM</div>
+                <div className="tableText text-[0.9vw]">9 Sept, 2022</div>
+                <div className="tableText text-[0.9vw]">09:00 AM</div>
               </td>
               <td className="px-4 py-2 text-center">
-                <div className="text-[0.9vw] tableText">9 Sept, 2022</div>
-                <div className="text-[0.9vw] tableText">05:00 PM</div>
+                <div className="tableText text-[0.9vw]">9 Sept, 2022</div>
+                <div className="tableText text-[0.9vw]">05:00 PM</div>
               </td>
               <td className="px-4 py-2 text-center">
-                <span className="text-[0.9vw] tableText">Unavailable</span>
+                <span className="tableText text-[0.9vw]">Unavailable</span>
               </td>
-              <td className="px-4 py-2 text-center flex justify-center">
+              <td className="flex justify-center px-4 py-2 text-center">
                 <img
                   src={editIcon}
-                  className="w-[1vw] h-fit mr-2 tableActionIcon"
+                  className="tableActionIcon mr-2 h-fit w-[1vw]"
                   alt=""
                 />
                 <img
                   src={deleteIcon}
-                  className="w-[1vw] h-[1vw] tableActionIcon"
+                  className="tableActionIcon h-[1vw] w-[1vw]"
                   alt=""
                 />
               </td>
             </tr>
-            <tr className="border border-grey-light">
-              <td className=" flex items-center text-center pt-[23px] pb-[41px] justify-around">
+            <tr className="border-grey-light border">
+              <td className=" flex items-center justify-around pt-[23px] pb-[41px] text-center">
                 <input
                   type="radio"
                   name="radioFortable"
-                  className="w-[2.4vw] h-[1.4vw] tableRadioBtn"
+                  className="tableRadioBtn h-[1.4vw] w-[2.4vw]"
                 />
-                <span className="text-[0.9vw] tableText">Daily</span>
+                <span className="tableText text-[0.9vw]">Daily</span>
               </td>
 
               <td className="px-4 py-2 text-center">
-                <div className="text-[0.9vw] tableText">9 Sept, 2022</div>
-                <div className="text-[0.9vw] tableText">09:00 AM</div>
+                <div className="tableText text-[0.9vw]">9 Sept, 2022</div>
+                <div className="tableText text-[0.9vw]">09:00 AM</div>
               </td>
               <td className="px-4 py-2 text-center">
-                <div className="text-[0.9vw] tableText">9 Sept, 2022</div>
-                <div className="text-[0.9vw] tableText">05:00 PM</div>
+                <div className="tableText text-[0.9vw]">9 Sept, 2022</div>
+                <div className="tableText text-[0.9vw]">05:00 PM</div>
               </td>
               <td className="px-4 py-2 text-center">
-                <span className="text-[0.9vw] tableText">Unavailable</span>
+                <span className="tableText text-[0.9vw]">Unavailable</span>
               </td>
-              <td className="px-4 py-2 text-center flex justify-center">
+              <td className="flex justify-center px-4 py-2 text-center">
                 <img
                   src={editIcon}
-                  className="w-[1vw] h-fit mr-2 tableActionIcon"
+                  className="tableActionIcon mr-2 h-fit w-[1vw]"
                   alt=""
                 />
                 <img
                   src={deleteIcon}
-                  className="w-[1vw] h-[1vw] tableActionIcon"
+                  className="tableActionIcon h-[1vw] w-[1vw]"
                   alt=""
                 />
               </td>
@@ -161,7 +162,7 @@ const ManageStatus = ({ m_top }) => {
 
   return (
     <div
-      className={`flex flex-col items-center ml-0 ${m_top} sm:ml-24 w-full sm:w-[calc(100%-96px)]`}
+      className={`ml-0 flex flex-col items-center ${m_top} w-full sm:ml-24 sm:w-[calc(100%-96px)]`}
     >
       <ManageStatusChild />
     </div>
