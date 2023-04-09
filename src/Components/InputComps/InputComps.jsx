@@ -7,18 +7,17 @@ const ResponsiveInpuyStyle = "text-5xs md:text-4xs lg:text-3xs";
 export const Input = ({ Label, Placeholder, Id, onChange, Err, State }) => {
     const Border = "border-[#E2E2E2] border-[1px] border-solid"
     return <div className={Container}>
-
-        <label htmlFor={Id} className={TextStyle}>{Label}</label>
-
-        <h4 className="text-4xs text-[red] text-right font-normal">
-            {Err
-                ? CheckString(Err)
-                    ? Err
-                    : `${Label} is required`
-                : null
-            }
-        </h4>
-
+        <div className="flex justify-between items-center">
+            <label htmlFor={Id} className={TextStyle}>{Label}</label>
+            <h4 className="text-4xs text-[red] text-right font-normal">
+                {Err
+                    ? CheckString(Err)
+                        ? Err
+                        : `${Label} is required`
+                    : null
+                }
+            </h4>
+        </div>
         <input id={Id} type="text" placeholder={Placeholder}
             className={`py-2 px-4  rounded-md ${Border} shadow-[4px_5px_6px_#00000029] ${ResponsiveInpuyStyle}`}
             value={State}
@@ -59,7 +58,7 @@ export const InputWithImage = ({ Label, Placeholder, Id, onChange, Err, Src, Sta
 export const SelectList = ({ Label, Id, onChange, OptionsArr, defaultValue, Text, Err, State }) => {
 
     const Border = "border-[#E2E2E2] border-[1px] border-solid";
-    
+
     return <div className={Container}>
         <label htmlFor={Id} className={TextStyle}>{Label}</label>
 

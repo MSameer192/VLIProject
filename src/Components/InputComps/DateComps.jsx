@@ -11,11 +11,13 @@ export const DateInput = ({ Err, onChange, State }) => {
     const ShowDate = (e) => e.target.parentElement.previousElementSibling.showPicker()
 
     return <div className={DivStyle}>
-        <label htmlFor='DOB' className={HeadingStyle}>Date of Birth (DD/MM//YYYY)</label>
 
-        <h4 className='font-normal text-[red]'> {Err ? Err : null}</h4>
+        <div className='flex'>
+            <label htmlFor='DOB' className={HeadingStyle}>Date of Birth (MM/DD/YYYY)</label>
+            <h4 className='font-normal text-[red]'> {Err ? Err : null}</h4>
+        </div>
 
-        <span className={ExceptionSpanStyle}> 
+        <span className={ExceptionSpanStyle}>
 
             <input className={`${ExceptionInputStyle} RemoveDateIcon`} type="date" placeholder='DD/MM/YYYY' id='DOB' required
                 onFocus={AddParentStyle}

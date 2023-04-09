@@ -21,7 +21,7 @@ const SigninRightSide = ({ TopLoginRegisterBtns, Credentials, setCredentials }) 
             <h4 className=' font-normal w-full text-3xs md:text-xs lg:text-base xl:text-[30px] text-white md:text-black'>
                 {AuthPageName === "Sign Up" ? "Register " : AuthPageName + " "}
 
-                With E-Mail
+                With Email
             </h4>
             <button type='button' className={`${TopLoginRegisterBtns} ${SignInbtnColor} -left-[1px] `}
                 onClick={() => Dispatch(OpenLoginSignUp("Sign In", true))}

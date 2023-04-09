@@ -10,7 +10,7 @@ const SignInLeftSide = ({ TopLoginRegisterBtns, ScreenSize }) => {
 
 
     let SignUpbtnColor = AuthPageName === "Sign Up" ? " bg-white text-[#A1A3EF] " : " bg-[#EAEFF4] text-black ";
-    let ContinueHeading = ScreenSize > 768 ? `Client ${AuthPageName}` : `or ${AuthPageName} with`
+    let ContinueHeading = ScreenSize > 768 ? `Client ${AuthPageName}` : `${AuthPageName} with`
 
 
     let ButtonStyle = `flex items-center gap-5 justify-center

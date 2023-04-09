@@ -48,6 +48,7 @@ import RecommendedCoursesByAdmin from './Pages/Institute/RecommendedCoursesByAdm
 import { BaseUrl } from './Actions/Base';
 import EBooks from './Pages/EBooks/EBooks';
 import Page404 from './Pages/Page404/Page404';
+import TermsCondition from './Pages/TermsCondition/TermsCondition';
 
 
 
@@ -97,6 +98,7 @@ function App() {
         <Routes>
           <Route path='/' element={Home} />
           <Route path='/Ebooks' element={<EBooks />} />
+          <Route path='/terms-condition' element={<TermsCondition/> } />
           <Route path='/course/:InstituteCourseId' element={<CourseOverview />} />
           <Route path='/license/category/:LicenseTypeId' element={<CourseCategory />} />
           <Route path='/vehicle/category/:VehicleTypeId' element={<CourseCategory />} />

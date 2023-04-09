@@ -1,7 +1,8 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { useDispatch } from "react-redux"
 import { OpenLoginSignUp } from "../../../../../Actions/ToggleSignupA"
 import { TermsContext } from "../UserSigning"
+import { Link } from "react-router-dom"
 
 export function OtherOption({ MobileDisplay, AuthPageName, DesktopDisplay }) {
     const Dispatch = useDispatch()
@@ -51,7 +52,7 @@ export function OnRegister({ MobileDisplay, AuthPageName, DesktopDisplay, Creden
                 ref={CheckBoxRef}
             />
             <p className='text-6xs md:text-2xs xl:text-xs 2xl:text-base text-white md:text-black'>
-                I agree to the Terms and Conditions
+                I agree to the <Link to='/termscondition' className="text-xs">Terms and Conditions</Link>
             </p>
         </span>
     </>
