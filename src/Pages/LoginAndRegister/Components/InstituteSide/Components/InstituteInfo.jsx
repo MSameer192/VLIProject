@@ -2,7 +2,7 @@ import React from 'react'
 import { SubmitButton } from '../../../LoginAndRegister';
 import { ValidateInstituteInfo } from '../Helpers/FieldsValidations';
 
-const InstituteInfo = ({ UserInfoRef, InstituteData, setInstituteData, OnClick, Err, setErr }) => {
+const InstituteInfo = ({ UserInfoRef, InstituteData, setInstituteData, OnClick, Err, setErr, setPrevious }) => {
 
     const OnChange = (e, Key, Name) => {
 
@@ -118,9 +118,11 @@ const InstituteInfo = ({ UserInfoRef, InstituteData, setInstituteData, OnClick, 
 
 
                 </div>
-                <span className='hidden xl:flex w-full items-center justify-center'>
+                <span className='hidden xl:flex w-full items-center justify-center' onClick={()=>{setPrevious(true)}}>
                     <SubmitButton AuthPageName="Next" ButtonType="button" OnClickFun={OnClickFun} />
                 </span>
+
+                
             </div>
 
         </>

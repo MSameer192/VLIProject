@@ -83,8 +83,12 @@ const InstituteSide = () => {
     useEffect(() => {
         if (Err?.InstituteName) {
             setLeftPosition(0)
-        }
+            setPrevious(false)
+        } 
     }, [Err])
+
+    const [previous, setPrevious] = useState(false);
+    console.log(previous);
 
     return (
         !loading
@@ -99,39 +103,48 @@ const InstituteSide = () => {
                     className='min-w-[300%] flex items-start relative left-0 duration-300'
                     onSubmit={OnSubmit}>
 
-                    <div className='w-[33.33%] flex flex-col xl:flex-row' ref={DocumentRef} >
+                    {previous === false &&
+                        <div className='w-[33.33%] flex flex-col xl:flex-row' ref={DocumentRef} >
 
 
-                        <InstituteDocuments
-                            InstituteData={InstituteData}
-                            setInstituteData={setInstituteData}
-                            setErr={setErr} Err={Err}
-                        />
-                        <CenterORline Visible={false} />
-                        <InstituteInfo
-                            InstituteData={InstituteData} setInstituteData={setInstituteData}
-                            UserInfoRef={UserInfoRef} OnClick={OnClick}
-                            Err={Err} setErr={setErr}
-
-                        />
-
-
-                        <span className='xl:hidden order-7 flex w-full items-center justify-center mt-20'>
-                            <SubmitButton AuthPageName="Next" ButtonType="button" OnClickFun={() => {
-                                OnClick(100, UserInfoRef);
-                                DocumentRef.current.style.height = "0px";
-                            }} />
-
-                        </span>
-
-                    </div>
+                            <InstituteDocuments
+                                InstituteData={InstituteData}
+                                setInstituteData={setInstituteData}
+                                setErr={setErr} Err={Err}
+                            />
+                            <CenterORline Visible={false} />
 
 
 
-                    <div className='w-[33.33%] items-start justify-start px-5' ref={UserInfoRef}>
-                        <InstituteUserInfo OnSuccess={OnClick} TimingRef={TimingRef} Success={Success} setInstituteData={setInstituteData} InstituteData={InstituteData} Err={Err} setErr={setErr} />
-                    </div>
+                            <InstituteInfo
+                                InstituteData={InstituteData} setInstituteData={setInstituteData}
+                                UserInfoRef={UserInfoRef} OnClick={OnClick}
+                                Err={Err} setErr={setErr}
+                                setPrevious={setPrevious}
 
+                            />
+
+
+
+                            <div className='xl:hidden order-7 flex w-full items-center justify-center mt-20' >
+                                <SubmitButton AuthPageName="Next" OnClickFun={() => {
+                                    OnClick(100, UserInfoRef);
+                                    DocumentRef.current.style.height = "0px";
+                                }} />
+                            </div>
+                        </div>
+
+
+                    }
+
+
+                    {
+                        previous &&
+                        <div className='w-[33.33%] items-start justify-start px-5' ref={UserInfoRef}>
+                            <InstituteUserInfo OnSuccess={OnClick} TimingRef={TimingRef} Success={Success} setInstituteData={setInstituteData} InstituteData={InstituteData} Err={Err} setErr={setErr} previous={previous} setPrevious={setPrevious} />
+                        </div>
+
+                    }
 
 
 

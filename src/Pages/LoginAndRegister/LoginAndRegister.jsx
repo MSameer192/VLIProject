@@ -101,4 +101,11 @@ export function SubmitButton({ AuthPageName, ButtonType, OnClickFun }) {
         </button>
     </span>
 }
+
+
+
+
+
+
+
 export default SignUp

@@ -44,7 +44,6 @@ const InstituteDocuments = ({ InstituteData, setInstituteData, Err, setErr }) =>
                 )
             }
 
-            <div></div>
 
         </div>
     )

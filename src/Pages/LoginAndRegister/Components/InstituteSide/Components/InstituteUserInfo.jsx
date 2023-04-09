@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { SubmitButton } from '../../../LoginAndRegister'
 
-const InstituteUserInfo = ({ OnSuccess, TimingRef, InstituteData, setInstituteData, Success, Err, setErr }) => {
+const InstituteUserInfo = ({ OnSuccess, TimingRef, InstituteData, setInstituteData, Success, Err, setErr, setPrevious }) => {
 
     const DivRef = useRef()
 
@@ -91,6 +91,7 @@ const InstituteUserInfo = ({ OnSuccess, TimingRef, InstituteData, setInstituteDa
                 />
             </div>
             <SubmitButton AuthPageName="Register" ButtonType="submit" />
+            <div className='mt-5' onClick={()=>{setPrevious(false)}} style={{cursor: 'pointer' }}>Back</div>
         </div>
     )
 }
@@ -104,4 +105,4 @@ const InputTemplate = ({ value, OnChange, type, placeholder, id, Err }) => {
         />
     </div>
 }
-export default InstituteUserInfo
+export default InstituteUserInfo;
