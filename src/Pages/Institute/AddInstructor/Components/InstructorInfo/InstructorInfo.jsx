@@ -5,6 +5,8 @@ import { Input, InputWithImage, SelectList } from '../../../../../Components/Inp
 import { GenderOptions, LicenseTypesOption } from '../OptionsArr/OptionsArr';
 import './InstructorInfo.css'
 const InstructorInfo = ({ InstructorData, setInstructorData, Err, setErr }) => {
+    
+    
     const OnChange = (e, Name, file) => {
         let Data = e.target.files?.length > 0 ? e.target.files[0] : e.target.value
         setInstructorData({ ...InstructorData, [Name]: Data })

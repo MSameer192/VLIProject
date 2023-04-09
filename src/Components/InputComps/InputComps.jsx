@@ -5,21 +5,23 @@ const TextStyle = "text-3xs md:text-2xs xl:text-xs";
 const ResponsiveInpuyStyle = "text-5xs md:text-4xs lg:text-3xs";
 
 export const Input = ({ Label, Placeholder, Id, onChange, Err, State }) => {
-    const Border = "border-[#E2E2E2] border-[1px] border-solid"
+    const Border = `border-${Err ? CheckString(Err) ? Err : '[red]' : '[#E2E2E2]'} border-[1px] border-solid`
+
     return <div className={Container}>
         <div className="flex justify-between items-center">
             <label htmlFor={Id} className={TextStyle}>{Label}</label>
-            <h4 className="text-4xs text-[red] text-right font-normal">
+            {/* <h4 className="text-4xs text-[red] text-right font-normal">
                 {Err
                     ? CheckString(Err)
                         ? Err
                         : `${Label} is required`
                     : null
                 }
-            </h4>
+            </h4> */}
         </div>
         <input id={Id} type="text" placeholder={Placeholder}
-            className={`py-2 px-4  rounded-md ${Border} shadow-[4px_5px_6px_#00000029] ${ResponsiveInpuyStyle}`}
+            className={`py-2 px-4  rounded-md ${Border} ${Err ? CheckString(Err) ? Err : `shadow-[4px_5px_6px_#c2373759]` : 'shadow-[4px_5px_6px_#00000029]'}  ${ResponsiveInpuyStyle}`}
+            // style={{border: '1px solid red'}}
             value={State}
             onChange={onChange} />
 
@@ -32,20 +34,23 @@ export const InputWithImage = ({ Label, Placeholder, Id, onChange, Err, Src, Sta
 
     const AddParentStyle = (e) => e.target.parentNode.style = "border:2px solid black";
     const RemoveParentStyle = (e) => e.target.parentNode.style = ""
+    const Border = `border-${Err ? CheckString(Err) ? Err : '[red]' : '[#E2E2E2]'} border-[1px] border-solid`
 
     return <div className={Container}>
-        <label htmlFor={Id} className={TextStyle}>{Label}</label>
 
-        <h4 className="text-4xs text-[red] text-right font-normal">  {Err
-            ? CheckString(Err)
-                ? Err
-                : `${Label} is required`
-            : null
-        }</h4>
+        <div className="flex justify-between">
+            <label htmlFor={Id} className={TextStyle}>{Label}</label>
 
-        <span className='flex py-2 px-4 rounded-md w-full border-[#E2E2E2] border-[1px] border-solid shadow-[4px_5px_6px_#00000029]'>
+            {/* <h4 className="text-4xs text-[red] text-right font-normal">  {Err
+                ? CheckString(Err)
+                    ? Err
+                    : `${Label} is required`
+                : null
+            }</h4> */}
+        </div>
+        <span className={`flex py-2 px-4 rounded-md w-full ${Border} ${Err ? CheckString(Err) ? Err : `shadow-[4px_5px_6px_#c2373759]` : 'shadow-[4px_5px_6px_#00000029]'}`}>
             <input id={Id} type="text" placeholder={Placeholder}
-                className={`w-full border-none outline-none ${ResponsiveInpuyStyle}`}
+                className={`w-full border-none outline-none ${ResponsiveInpuyStyle}`} 
                 onFocus={AddParentStyle}
                 onBlur={RemoveParentStyle}
                 value={State}
@@ -57,19 +62,20 @@ export const InputWithImage = ({ Label, Placeholder, Id, onChange, Err, Src, Sta
 }
 export const SelectList = ({ Label, Id, onChange, OptionsArr, defaultValue, Text, Err, State }) => {
 
-    const Border = "border-[#E2E2E2] border-[1px] border-solid";
+    const Border = `border-${Err ? CheckString(Err) ? Err : '[red]' : '[#E2E2E2]'} border-[1px] border-solid`
 
     return <div className={Container}>
         <label htmlFor={Id} className={TextStyle}>{Label}</label>
 
-        <h4 className="text-4xs text-[red] text-right font-normal">  {Err
+        {/* <h4 className="text-4xs text-[red] text-right font-normal">  {Err
             ? CheckString(Err)
                 ? Err
                 : `${Label} is required`
             : null
-        }</h4>
+        }</h4> */}
 
-        <select className={`flex py-2 px-4 rounded-md w-full ${Border} shadow-[4px_5px_6px_#00000029] ${ResponsiveInpuyStyle}`}
+        <select 
+        className={`flex py-2 px-4 rounded-md w-full ${Border} ${Err ? CheckString(Err) ? Err : `shadow-[4px_5px_6px_#c2373759]` : 'shadow-[4px_5px_6px_#00000029]'} ${ResponsiveInpuyStyle}`}
             id={Id}
             value={State}
             onChange={onChange}

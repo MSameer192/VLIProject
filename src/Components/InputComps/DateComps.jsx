@@ -19,7 +19,7 @@ export const DateInput = ({ Err, onChange, State }) => {
 
         <span className={ExceptionSpanStyle}>
 
-            <input className={`${ExceptionInputStyle} RemoveDateIcon`} type="date" placeholder='DD/MM/YYYY' id='DOB' required
+            <input className={`${ExceptionInputStyle} RemoveDateIcon`} type="date" placeholder='DD/MM/YYYY' id='DOB'
                 onFocus={AddParentStyle}
                 onBlur={RemoveParentStyle}
                 value={State}
