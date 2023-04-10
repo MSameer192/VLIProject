@@ -7,22 +7,23 @@ import ShortDescription from './Components/ShortDescription/ShortDescription'
 import CourseThumnail from './Components/CourseThumnail/CourseThumnail'
 import AddCoursePopup from './Components/AddCoursePopup/AddCoursePopup'
 import InstituteTemplate from '../../../Components/InstituteTemplate/InstituteTemplate'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { GetLicenseTypes, GetVehicleTypes } from '../../../Actions/CategoryA'
 import '../Css/Course_E-Book_Inputs.css'
 import { CreateAdminCourseA } from '../../../Actions/AdminCourseA'
 import useCheckLogin from '../../../Helpers/CustomHooks/CheckLogin'
+import LoadingSpinner from '../../../Components/LoadingSpinner/LoadingSpinner'
 const AddCourseAdminChild = ({ children }) => {
     const [CourseData, setCourseData] = useState({
         CourseName: "",
         VehicleTypeFK: "",
         LicenseTypeFK: "",
-        PossibleKeywords: "",
+        PossibleKeywords: [],
         Description: "",
         CourseThumbnail: ""
     });
     const [Err, setErr] = useState();
-
+    const { loading } = useSelector(Store => Store.AdminCourseReducer)
     const [Success, setSuccess] = useState();
     const [SubLicenseType, setSubLicenseType] = useState([]);
     const Dispatch = useDispatch()
@@ -37,64 +38,51 @@ const AddCourseAdminChild = ({ children }) => {
 
     }, [])
 
-    React.Children.map(this?.props?.children, (child) => {
-        console.log(child); // "value1"
-        return child;
-    })
-    // console.log(React.Children.toArray(this?.props?.children))
-    
-    return (
-        <form className='flex flex-col gap-9 bg-[#F7F7F7] py-10 items-center' onSubmit={OnSubmit}>
-            <div className='flex justify-center items-center bg-[#F0F0F7] w-11/12 lg:w-[95%] xl:w-[88%] py-4 px-4 mx-4 sm:mx-8 md:mx-12 lg:mx-16 xl:mx-20 2xl:mx-[90px]'>
-                <div className='flex flex-col py-4 gap-16 w-full sm:w-11/12 md:w-[87%] lg:w-5/6 xl:w-4/5 2xl:w-3/4 '>
-                    <span className='AddCourse_HeadingContainer '>
-                        <h2 className='text-sm font-normal'>Overview</h2>
-                    </span>
-                    <div className='flex w-full flex-col gap-7'>
-                        <CourseTitle
-                            setCourseData={setCourseData} CourseData={CourseData}
-                            setErr={setErr} Err={Err}
-                        />
 
-                        <CourseCategory
-                            setCourseData={setCourseData} CourseData={CourseData}
-                            SubLicenseType={SubLicenseType} setSubLicenseType={setSubLicenseType}
-                            Err={Err} setErr={setErr}
-                        />
-                        <SearchTags
-                            setCourseData={setCourseData} CourseData={CourseData}
-                            Err={Err} setErr={setErr}
-                        />
-                        <ShortDescription
-                            setCourseData={setCourseData} CourseData={CourseData}
-                            Err={Err} setErr={setErr}
-                        />
-                        <CourseThumnail
-                            setCourseData={setCourseData} CourseData={CourseData}
-                            Err={Err} setErr={setErr}
-                        />
+    return (
+        !loading ?
+            <form className='flex flex-col gap-9 bg-[#F7F7F7] py-10 items-center' onSubmit={OnSubmit}>
+                <div className='flex justify-center items-center bg-[#F0F0F7] w-11/12 lg:w-[95%] xl:w-[88%] py-4 px-4 mx-4 sm:mx-8 md:mx-12 lg:mx-16 xl:mx-20 2xl:mx-[90px]'>
+                    <div className='flex flex-col py-4 gap-16 w-full sm:w-11/12 md:w-[87%] lg:w-5/6 xl:w-4/5 2xl:w-3/4 '>
+                        <span className='AddCourse_HeadingContainer '>
+                            <h2 className='text-sm font-normal'>Overview</h2>
+                        </span>
+                        <div className='flex w-full flex-col gap-7'>
+                            <CourseTitle
+                                setCourseData={setCourseData} CourseData={CourseData}
+                                setErr={setErr} Err={Err}
+                            />
+
+                            <CourseCategory
+                                setCourseData={setCourseData} CourseData={CourseData}
+                                SubLicenseType={SubLicenseType} setSubLicenseType={setSubLicenseType}
+                                Err={Err} setErr={setErr}
+                            />
+                            <SearchTags
+                                setCourseData={setCourseData} CourseData={CourseData}
+                                Err={Err} setErr={setErr}
+                            />
+                            <ShortDescription
+                                setCourseData={setCourseData} CourseData={CourseData}
+                                Err={Err} setErr={setErr}
+                            />
+                            <CourseThumnail
+                                setCourseData={setCourseData} CourseData={CourseData}
+                                Err={Err} setErr={setErr}
+                            />
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className='flex justify-center sm:justify-end w-[88%] gap-7 mt-12'>
-                {/* <button className={`rounded-2xl whitespace-nowrap
-                text-4xs sm:text-3xs md:text-2xs lg:text-xs xl:text-sm 2xl:text-base
-                py-2    md:py-2                 xl:py-3     
-                px-3    md:px-4     lg:px-5     xl:px-6     2xl:px-7
-                BrandingButton`} type="button">
-                    Preview Course
-                </button> */}
-                <button className={`rounded-2xl whitespace-nowrap
-                text-4xs sm:text-3xs md:text-2xs lg:text-xs xl:text-sm 2xl:text-base
-                py-2    md:py-2                 xl:py-3     
-                px-3    md:px-4     lg:px-5     xl:px-6     2xl:px-7
-                BrandingButton`} type="submit">
-                    Save & Continue
-                </button>
-            </div>
+                <div className='flex justify-center sm:justify-end w-[88%] gap-7 mt-12'>
 
-            {Success ? <AddCoursePopup /> : null}
-        </form>
+                    <button className="Admin_SubmitButton BrandingButton" type="submit">
+                        Save & Continue
+                    </button>
+                </div>
+
+                {Success ? <AddCoursePopup /> : null}
+            </form>
+            : <LoadingSpinner Width="full" Height="screen" Left="0" Position="fixed" Bg="white" />
     )
 }
 const AddCourseAdmin = () => <InstituteTemplate Element={AddCourseAdminChild} />

@@ -48,6 +48,7 @@ import RecommendedCoursesByAdmin from './Pages/Institute/RecommendedCoursesByAdm
 import { BaseUrl } from './Actions/Base';
 import EBooks from './Pages/EBooks/EBooks';
 import Page404 from './Pages/Page404/Page404';
+import CoursesTeaching from './Pages/Institute/AboutInstructor';
 
 
 
@@ -135,20 +136,20 @@ function App() {
           <Route path='/Admin/course/recommend' element={<RecommendCourse />} />
           <Route path='/courses/recommended' element={<RecommendedCoursesByAdmin />} />
 
-          <Route path='/enrolledcourse/PaymentSetting/:EnrollmentId' element={<PaymentSettings />} />
+          <Route path='/enrolledcourse/PaymentSetting/:EnrollmentId'
+            element={<PaymentSettings />} />
 
           <Route path='/enrolledcourse/upcomingclasses/:EnrollmentId'
-            element={<MyCourses ButtonsInfo={EnrolledCourseButtonsInfo} PageName="UpcomingClasses" Component={ClassesSchedule} />} />
+            element={<ClassesSchedule />} />
 
 
-          <Route path='/enrolledcourse/manage/:EnrollmentId'
-            element={<MyCourses ButtonsInfo={InsEnrolledCourseButtons} PageName="PaymentSetting" Component={ManageNewStudent} />} />
+          <Route path='/enrolledcourse/manage/:EnrollmentId' element={<ManageNewStudent />} />
 
-
+          <Route path='/Courses/teaching/:InstructorId' element={<CoursesTeaching />} />
+          <Route path='/About/Instructor/:InstructorId' element={<TeacherTimetable />} />
 
           <Route path='/teacher/CourseModule/:EnrollmentId' element={<CourseModule />} />
 
-          <Route path='/teacher/UpcomingClasses' element={<TeacherTimetable />} />
           <Route path='/teacher/CourseProgress/:EnrollmentId' element={<CourseProgressInstructor />} />
           <Route path='/teacher/AboutStudent/:EnrollmentId' element={<TeacherAboutStudent />} />
 

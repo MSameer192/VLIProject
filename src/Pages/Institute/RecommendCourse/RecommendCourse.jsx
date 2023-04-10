@@ -26,18 +26,22 @@ const RecommendCourseChild = () => {
                 onClick={e => e.stopPropagation()}>
                 {Popup ? <RecommendCoursePopup CoursePK={CoursePK} setPopup={setPopup} /> : null}
                 {AdminCourses?.length > 0 ? AdminCourses?.map((value) => {
-
+                    const Added = value?.InstituteCourse?.[0]?.InstituteFK
                     const OnClick = (e) => {
-                        setCoursePK(value.CoursePK)
-                        setPopup(true)
-                        e.stopPropagation()
+                        if (!Added) {
+                            setCoursePK(value.CoursePK)
+                            setPopup(true)
+                            e.stopPropagation()
+                        }
                     }
+
                     return <CourseComp key={value.CoursePK}
                         CourseFK={value.CoursePK}
                         VehicleType={value?.VehicleType?.VehicleTypeName}
                         LicenseType={value?.LicenseType?.LicenseTypeName}
                         CourseName={value.CourseName}
                         Description={value.Description}
+                        Added={Added}
                         Image={value.CourseThumbnail}
                         OnClick={OnClick}
                     />

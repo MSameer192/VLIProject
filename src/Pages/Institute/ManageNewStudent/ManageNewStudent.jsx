@@ -11,6 +11,8 @@ import { GetAboutInfoA } from "../../../Actions/CourseA";
 import useCheckLogin from '../../../Helpers/CustomHooks/CheckLogin'
 import StudentScheduleTimeTable from "./Components/StudentPreferreTimeTable/StudentPreferreTimeTable";
 import LoadingSpinner from "../../../Components/LoadingSpinner/LoadingSpinner";
+import MyCourses from "../../../Components/MyCourses/MyCourses";
+import { InsEnrolledCourseButtons } from "../../../PageNames";
 
 function ManageNewStudentChild() {
   const Dispatch = useDispatch();
@@ -26,9 +28,9 @@ function ManageNewStudentChild() {
 
   const [Instructors, setInstructors] = useState([undefined, undefined, undefined])
   const ClassType = [
-    { id: 1, text: "Driving" },
-    { id: 2, text: "Online" },
-    { id: 3, text: "InClass" },
+    { id: "Driving", text: "Driving" },
+    { id: "Online", text: "Online" },
+    { id: "InClass", text: "InClass" },
   ]
   useEffect(() => {
     if (EnrollmentId) {
@@ -93,7 +95,7 @@ function ManageNewStudentChild() {
 
 
       </div>
-      : <LoadingSpinner Bg="white" Width="full" Height="screen" Left="0" />
+      : <LoadingSpinner Bg="white" Width="full" Height="screen" Left="0" Position="fixed" />
 
   );
 }
@@ -106,40 +108,33 @@ function ManageNewStudentChild() {
 
 const SubmitData = (Events, Dispatch, Instructors, OneInstructor, EnrollmentId) => {
 
-  const NewEvents = [...Events.map((EventValue,) => {
-    // console.log(EventValue?.ClassType)
-    for (const [key, value] of Object.entries(Instructors)) {
-      console.log(EventValue?.InstructorFK, value?.InstructorFK)
-      if (!OneInstructor) {
-        if (key === EventValue?.ClassType)
-          EventValue.InstructorFK = value?.InstructorFK;
-      }
-      else if (OneInstructor) {
-        if (key === "Driving")
-          EventValue.InstructorFK = value?.InstructorFK;
-      }
-
-    }
-    return EventValue
-  })]
   let AssignedInstructors = []
 
-  for (const [key, value] of Object.entries(Instructors)) {
-    if (!OneInstructor)
-      AssignedInstructors.push({ InstructorFK: value?.InstructorFK, EnrollmentFK: EnrollmentId });
+  // for (const [key, value] of Object.entries(Instructors)) {
+  //   if (!OneInstructor)
+  //     AssignedInstructors.push({ InstructorFK: value?.InstructorFK, EnrollmentFK: EnrollmentId });
 
-    else if (OneInstructor) {
-      if (key === "Driving")
-        AssignedInstructors.push({ InstructorFK: value?.InstructorFK, EnrollmentFK: EnrollmentId });
-    }
-  }
+  //   else if (OneInstructor) {
+  //     if (key === "Driving")
+  //       AssignedInstructors.push({ InstructorFK: value?.InstructorFK, EnrollmentFK: EnrollmentId });
+  //   }
+  // }
+  Instructors.forEach(element => {
+    if (!OneInstructor && element?.InstructorFK)
+      AssignedInstructors.push({ InstructorFK: element?.InstructorFK, EnrollmentFK: EnrollmentId });
 
-
-  Dispatch(CreateScheduleA({ Events: NewEvents, AssignedInstructors }))
+    else if (OneInstructor && element.InstructorType === "Driving" && element?.InstructorFK)
+      AssignedInstructors.push({ InstructorFK: element?.InstructorFK, EnrollmentFK: EnrollmentId });
+  });
+  Events = Events.map(value => {
+    value.EnrollmentFK = EnrollmentId
+    return value
+  })
+  Dispatch(CreateScheduleA({ Events: Events, AssignedInstructors }))
 }
 
+const ManageNewStudentPage = () => <MyCourses ButtonsInfo={InsEnrolledCourseButtons} PageName="PaymentSetting" Component={ManageNewStudentChild}  />
 
-
-const ManageNewStudent = () => <InstituteTemplate Element={ManageNewStudentChild} m_top="mt-0" bg="bg-[#F0F0F7]" />
+const ManageNewStudent = () => <InstituteTemplate Element={ManageNewStudentPage} m_top="mt-0" bg="bg-[#F0F0F7]" />
 
 export default ManageNewStudent;

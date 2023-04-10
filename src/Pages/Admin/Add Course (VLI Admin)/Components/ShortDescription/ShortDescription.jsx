@@ -7,7 +7,7 @@ const ShortDescription = ({ setCourseData, CourseData, Err, setErr }) => {
             setCourseData({ ...CourseData, Description: e.target.value })
         }
         else if (e.target.value.length < 100) {
-            delete Err.Description
+            delete Err?.Description
             setErr(Err)
             setCourseData({ ...CourseData, Description: e.target.value })
         } else if (e.target.value.length >= 100) {
@@ -30,7 +30,9 @@ const ShortDescription = ({ setCourseData, CourseData, Err, setErr }) => {
 
             <span className='max-w-[780px] Add_C_B_InputSideContainer'>
                 <textarea className='h-28 Add_C_BTextArea' name="" id="" cols="30" rows="10"
-                    onChange={OnChange}></textarea>
+                    onChange={OnChange}
+                    value={CourseData.Description}
+                    ></textarea>
                 <p className='text-[14px] text-[red] font-normal h-[14px]'>{Err?.Description} </p>
                 <p className='text-[12px] text-[#070707] text-right'>100 characters</p>
             </span>

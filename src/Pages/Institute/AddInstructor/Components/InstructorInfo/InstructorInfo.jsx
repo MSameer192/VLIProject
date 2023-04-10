@@ -5,7 +5,7 @@ import { Input, InputWithImage, SelectList } from '../../../../../Components/Inp
 import { GenderOptions, LicenseTypesOption } from '../OptionsArr/OptionsArr';
 import './InstructorInfo.css'
 const InstructorInfo = ({ InstructorData, setInstructorData, Err, setErr }) => {
-    const OnChange = (e, Name, file) => {
+    const OnChange = (e, Name) => {
         let Data = e.target.files?.length > 0 ? e.target.files[0] : e.target.value
         setInstructorData({ ...InstructorData, [Name]: Data })
         if (Err?.[Name]) {
@@ -14,10 +14,10 @@ const InstructorInfo = ({ InstructorData, setInstructorData, Err, setErr }) => {
         }
     }
 
-
     return (
         <div className='flex flex-col md:flex-row flex-wrap w-full justify-between gap-10 gap-y-6  sm:w-full md:w-[95%] lg:w-[85%]'>
-            <Input Label="First name" Placeholder="John" Id="FirstName" Err={Err?.FirstName}
+            <Input Label="First name" Placeholder="John" Id="FirstName"
+                Err={Err?.FirstName}
                 State={InstructorData.FirstName}
                 onChange={e => OnChange(e, "FirstName")}
             />
@@ -41,7 +41,6 @@ const InstructorInfo = ({ InstructorData, setInstructorData, Err, setErr }) => {
             <Input Label="Province" Placeholder="Ontario" Id="Province" Err={Err?.Province}
                 State={InstructorData.Province}
                 onChange={e => OnChange(e, "Province")}
-
             />
 
             <InputWithImage Label="City" Placeholder="Toronto" Id="City" Err={Err?.City}
@@ -49,14 +48,15 @@ const InstructorInfo = ({ InstructorData, setInstructorData, Err, setErr }) => {
                 onChange={e => OnChange(e, "City")}
                 Src={require('./Assets/City.svg').default}
             />
-
             <DateInput
                 State={InstructorData.DOB}
                 onChange={e => OnChange(e, "DOB")}
-
             />
 
-            <Input Label="Email Address" Placeholder="abc@gmail.com" Id="Email" Err={Err?.Email}
+            <Input Label="Email Address"
+                Placeholder="abc@gmail.com"
+                Id="Email"
+                Err={Err?.Email}
                 State={InstructorData.Email}
                 onChange={e => OnChange(e, "Email")}
             />

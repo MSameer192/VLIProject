@@ -26,12 +26,11 @@ function InsStaffAdminDashboard() {
 
 
         {
-          GetLocalStorage("UserInfo").InstituteUserType === "Admin" ?
+          GetLocalStorage("UserInfo").InstituteUserType === "Admin" ||
+            GetLocalStorage("UserInfo").InstituteUserType === "Staff" ?
             <div className="CoursesGraphContainer">
               <div className="w-full 3xl:w-4/5">
-
                 <RecentCourses setEdit={setEdit} setInstituteCourseId={setInstituteCourseId} />
-
               </div>
               <div className="flex flex-col items-end px-16">
                 <GeographyGraph />

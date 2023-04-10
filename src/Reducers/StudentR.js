@@ -81,6 +81,10 @@ export const StudentReducer = createReducer(StudentInitialState, (builder) => {
         state.error = action.payload;
     })
 
+
+
+
+    
     // 
     builder.addCase("GetTimeTableRequest", (state, action) => {
         state.loading = true

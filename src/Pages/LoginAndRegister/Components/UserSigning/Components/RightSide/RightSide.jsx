@@ -7,7 +7,8 @@ import UserInput from './UserInput';
 
 const SigninRightSide = ({ TopLoginRegisterBtns, Credentials, setCredentials }) => {
     const Dispatch = useDispatch()
-    const { AuthPageName } = useSelector((Store) => Store.ToggleSignupReducer)
+    const { AuthPageName } = useSelector((Store) => Store.ToggleSignupReducer);
+
     let SignInbtnColor = AuthPageName === "Sign Up" ? "bg-[#EAEFF4] text-black" : "bg-white text-[#A1A3EF]";
     let Gap = AuthPageName === "Sign Up" ? "gap-4 xl:gap-7" : "gap-2 xl:gap-4";
 

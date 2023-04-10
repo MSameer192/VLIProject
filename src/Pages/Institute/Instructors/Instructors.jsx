@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BaseUrl } from "../../../Actions/Base";
 import { GetInstituteInstructorsA, } from "../../../Actions/InstructorA";
 import InstituteTemplate from "../../../Components/InstituteTemplate/InstituteTemplate";
@@ -14,6 +14,7 @@ import "./InstructorsList.css";
 const InstructorsListChild = () => {
   const { Instructors, loading } = useSelector(Store => Store.InstructorReducer);
   const [FilterOpen, setFilterOpen] = useState();
+  const Navigate = useNavigate()
   const [MaxHeight, setMaxHeight] = useState("max-h-[0px]");
   const Dispatch = useDispatch();
   useEffect(() => {
@@ -98,6 +99,7 @@ const InstructorsListChild = () => {
               );
 
               const ImageUrl = `${BaseUrl}/api/images/Instructors?url=${value?.Instructor?.ProfileImage}`;
+              const OnRowClick = () => Navigate(`/Courses/teaching/${value.Instructor.InstructorId}`)
 
               return (
                 <InstructorRowTemplate
@@ -115,6 +117,7 @@ const InstructorsListChild = () => {
                   PaymentOrClientsColor={PaymentOrClientsColor}
                   StatusColor={StatusColor}
                   LastComp={Edit}
+                  OnClick={OnRowClick}
                 />
               );
             })}

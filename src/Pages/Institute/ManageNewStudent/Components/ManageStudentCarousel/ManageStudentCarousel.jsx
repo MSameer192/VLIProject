@@ -49,7 +49,7 @@ const CourseSlider = ({ Instructors: InstructorState, InstructorType, setInstruc
 
         setShowSlider({ Show: false, InstructorType: "" })
     }
-    console.log(InstructorState)
+
     return (
         <div className="border-[red] border-[10px] border-solid" >
 

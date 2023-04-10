@@ -6,14 +6,14 @@ import './MyCourses.css'
 import MyCoursesButtons from './MyCoursesButtons';
 
 
-const MyCourses = ({ Component, ButtonsInfo, PageName, FooterBgColor, Z_Index, HideFooter }) => {
+const MyCourses = ({ Component, ButtonsInfo, PageName, FooterBgColor, Z_Index, HideFooter, Param }) => {
   let Id = window.location.href.split("/mycourses/");
   const [Name, setName] = useState()
   const [Ele, setEle] = useState(document.getElementById(Id[1]));
   const { EnrollmentId } = useParams();
   const [ButtonsInfoState, setButtonsInfoState] = useState(ButtonsInfo);
   const [CheckButtonsInfo, setCheckButtonsInfo] = useState(false)
-
+  const [Params, setParams] = useState()
   useEffect(() => {
     if (!Ele)
       setEle(document.getElementById(Id[1]))
@@ -21,7 +21,12 @@ const MyCourses = ({ Component, ButtonsInfo, PageName, FooterBgColor, Z_Index, H
 
   const EnrolledCoursesRef = useRef();
 
-
+  useEffect(() => {
+    if (Param)
+      setParams(Param);
+    else
+      setParams(EnrollmentId)
+  }, [Param, EnrollmentId])
   const OnClickMethod = (Element) => {
 
     let Ele = Element.parentNode?.childNodes
@@ -35,12 +40,12 @@ const MyCourses = ({ Component, ButtonsInfo, PageName, FooterBgColor, Z_Index, H
 
   useEffect(() => {
     const ButtonsInfoCopy = [...ButtonsInfo.ButtonsInfo]
-    if ((EnrollmentId && ButtonsInfo) && !CheckButtonsInfo) {
+    if ((Params && ButtonsInfo) && !CheckButtonsInfo) {
       setCheckButtonsInfo(true);
       ButtonsInfo?.ButtonsInfo?.forEach((value, index) => {
         if (value.params)
-          ButtonsInfoCopy[index] = { ...value, Link: value.Link + "/" + EnrollmentId }
-       
+          ButtonsInfoCopy[index] = { ...value, Link: value.Link + "/" + Params }
+
       })
       setButtonsInfoState({ ...ButtonsInfo, ButtonsInfo: [...ButtonsInfoCopy] })
 
@@ -48,7 +53,7 @@ const MyCourses = ({ Component, ButtonsInfo, PageName, FooterBgColor, Z_Index, H
     else if (!ButtonsInfoState)
       setButtonsInfoState(ButtonsInfo)
 
-  }, [EnrollmentId, ButtonsInfo, ButtonsInfoState, CheckButtonsInfo])
+  }, [Params, ButtonsInfo, ButtonsInfoState, CheckButtonsInfo])
 
   useEffect(() => {
     if (Ele)

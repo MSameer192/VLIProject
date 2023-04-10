@@ -3,7 +3,7 @@ import { createReducer } from '@reduxjs/toolkit';
 const VehicleTypeInitialState = {
     loading: false,
     UserInfo: {},
-    error: {}
+    error: ""
 }
 export const LoginSignupReducer = createReducer(VehicleTypeInitialState, (builder) => {
     //Login

@@ -1,11 +1,23 @@
 import { CheckString } from "../../Helpers/TypeChecker/CheckString";
 
-const Container = "w-full md:w-[45%] flex flex-col max-w-[600px] gap-3";
-const TextStyle = "text-3xs md:text-2xs xl:text-xs";
-const ResponsiveInpuyStyle = "text-5xs md:text-4xs lg:text-3xs";
 
-export const Input = ({ Label, Placeholder, Id, onChange, Err, State }) => {
-    const Border = "border-[#E2E2E2] border-[1px] border-solid"
+
+
+export const Input = ({ Label, Placeholder, Id, onChange, Err, State, Container, TextStyle, ResponsiveInpuyStyle, type }) => {
+
+    if (!Container)
+        Container = "w-full md:w-[45%] flex flex-col max-w-[600px] gap-3";
+
+    if (!TextStyle)
+        TextStyle = "text-3xs md:text-2xs xl:text-xs";
+
+    if (!ResponsiveInpuyStyle)
+        ResponsiveInpuyStyle = "text-5xs md:text-4xs lg:text-3xs";
+
+    const Border = "border-[#E2E2E2] border-[1px] border-solid";
+    if (!type)
+        type = "text"
+
     return <div className={Container}>
 
         <label htmlFor={Id} className={TextStyle}>{Label}</label>
@@ -19,7 +31,9 @@ export const Input = ({ Label, Placeholder, Id, onChange, Err, State }) => {
             }
         </h4>
 
-        <input id={Id} type="text" placeholder={Placeholder}
+        <input id={Id}
+            type={type}
+            placeholder={Placeholder}
             className={`py-2 px-4  rounded-md ${Border} shadow-[4px_5px_6px_#00000029] ${ResponsiveInpuyStyle}`}
             value={State}
             onChange={onChange} />
@@ -27,9 +41,16 @@ export const Input = ({ Label, Placeholder, Id, onChange, Err, State }) => {
     </div>
 }
 
+export const InputWithImage = ({ Label, Placeholder, Id, onChange, Err, Src, State, Container, TextStyle, ResponsiveInpuyStyle }) => {
 
+    if (!Container)
+        Container = "w-full md:w-[45%] flex flex-col max-w-[600px] gap-3";
 
-export const InputWithImage = ({ Label, Placeholder, Id, onChange, Err, Src, State }) => {
+    if (!TextStyle)
+        TextStyle = "text-3xs md:text-2xs xl:text-xs";
+
+    if (!ResponsiveInpuyStyle)
+        ResponsiveInpuyStyle = "text-5xs md:text-4xs lg:text-3xs";
 
     const AddParentStyle = (e) => e.target.parentNode.style = "border:2px solid black";
     const RemoveParentStyle = (e) => e.target.parentNode.style = ""
@@ -56,10 +77,19 @@ export const InputWithImage = ({ Label, Placeholder, Id, onChange, Err, Src, Sta
         </span>
     </div>
 }
-export const SelectList = ({ Label, Id, onChange, OptionsArr, defaultValue, Text, Err, State }) => {
+
+export const SelectList = ({ Label, Id, onChange, OptionsArr, defaultValue, Text, Err, State, Container, TextStyle, ResponsiveInpuyStyle }) => {
+    if (!Container)
+        Container = "w-full md:w-[45%] flex flex-col max-w-[600px] gap-3";
+
+    if (!TextStyle)
+        TextStyle = "text-3xs md:text-2xs xl:text-xs";
+
+    if (!ResponsiveInpuyStyle)
+        ResponsiveInpuyStyle = "text-5xs md:text-4xs lg:text-3xs";
 
     const Border = "border-[#E2E2E2] border-[1px] border-solid";
-    
+
     return <div className={Container}>
         <label htmlFor={Id} className={TextStyle}>{Label}</label>
 

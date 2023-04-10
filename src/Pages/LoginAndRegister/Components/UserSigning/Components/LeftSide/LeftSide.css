@@ -1,0 +1,22 @@
+.SignUpSigninPageButtons {
+  @apply flex max-w-[625px] cursor-pointer
+    items-center justify-center
+    gap-5 
+    rounded-lg  border-[1px]  border-[#FEFEFE]
+    font-normal 
+
+    md:px-6     md:py-2 
+
+    lg:px-10 
+
+    xl:px-16    xl:py-3 
+
+    2xl:px-20;
+  @apply lg:min-w-[400px];
+}
+
+.SignUpSigninPageButtonText{
+    @apply text-left font-normal  whitespace-nowrap 
+    text-4xs md:text-[19px] lg:text-xs   xl:text-base  2xl:text-[30px]
+    w-auto   md:w-[220px]   lg:w-[250px] xl:w-[290px]  2xl:w-[350px]
+}

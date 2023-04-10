@@ -15,7 +15,7 @@ function ImagePreviewer({ Id, PreviewStyle, BrowseBtnStyle, ContainerStyle, OnCh
     }
 
     if (!PreviewStyle)
-        PreviewStyle = "w-52 h-36 ";
+        PreviewStyle = "w-52 h-36";
     if (!BrowseBtnStyle)
         BrowseBtnStyle = "text-3xs bg-[#F3F6F7]"
     if (!ContainerStyle)

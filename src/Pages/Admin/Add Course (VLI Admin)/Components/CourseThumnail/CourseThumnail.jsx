@@ -4,7 +4,7 @@ import ImagePreviewer from '../../../../../Components/ImagePreviewer/ImagePrevie
 const CourseThumnail = ({ setCourseData, CourseData, setErr, Err }) => {
     const OnChange = e => {
         if (e.target.files.length > 0) {
-            delete Err.CourseThumbnail
+            delete Err?.CourseThumbnail
             setErr(Err)
             setCourseData({ ...CourseData, "CourseThumbnail": e.target.files[0] })
         }
@@ -26,6 +26,7 @@ const CourseThumnail = ({ setCourseData, CourseData, setErr, Err }) => {
 
                 <ImagePreviewer Id="CourseThumbnail"
                     OnChange={OnChange}
+                    ImgUrl={CourseData.CourseThumbnail}
                 />
                 <p className='text-[14px] text-[red] font-normal h-[14px]'>{Err?.CourseThumbnail} </p>
             </div>

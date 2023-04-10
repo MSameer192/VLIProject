@@ -9,27 +9,40 @@ import useCheckLogin from '../../../Helpers/CustomHooks/CheckLogin'
 import { TeacherButtons } from '../../../PageNames'
 import ClientInfo from '../CourseProgress (Institute)/Components/ClientInfo'
 import CourseProgressIns from '../CourseProgress (Institute)/Components/CourseProgressIns'
+import LoadingSpinner from '../../../Components/LoadingSpinner/LoadingSpinner'
 
 const TeacgerAboutStudentChild = () => {
     const { EnrollmentId } = useParams();
     const Dispatch = useDispatch()
-    const { Student, CoursePackage, CourseProgress } = useSelector(Store => Store.StudentReducer);
-    // console.log(EnrollmentId,Student, CoursePackage, CourseProgress)
+    const { Student, CoursePackage, CourseProgress, loading } = useSelector(Store => Store.StudentReducer);
+
     useEffect(() => {
         if (EnrollmentId)
             Dispatch(GetAboutInfoA(EnrollmentId))
     }, [Dispatch, EnrollmentId])
     useCheckLogin(true, ["Institute"], ["Instructor"])
     return (
-        <div className='flex justify-start items-center py-16 flex-col px-3 sm:bg-[#F8F8F8] w-full gap-16 sm:gap-16 md:gap-20 lg:gap-24 xl:gap-28 2xl:gap-32'>
-            <ClientInfo Student={Student} />
-            {CoursePackage ? <CourseProgressIns CoursePackage={CoursePackage} CourseProgress={CourseProgress} /> : null}
-        </div>
+        !loading
+            ? <div className='flex justify-start items-center py-16 flex-col px-3 sm:bg-[#F8F8F8] w-full gap-16 sm:gap-16 md:gap-20 lg:gap-24 xl:gap-28 2xl:gap-32' >
+                <ClientInfo Student={Student} />
+                {
+                    CoursePackage
+                        ? <CourseProgressIns CoursePackage={CoursePackage} CourseProgress={CourseProgress} />
+                        : null
+                }
+            </div>
+            : <LoadingSpinner />
     )
 }
+
+
+
+
 const TeacgerAboutStudentChildPage = () =>
     <MyCourses ButtonsInfo={TeacherButtons} PageName="AboutStudent" FooterBgColor="bg-[red]" Z_Index="z-10" HideFooter={true}
         Component={TeacgerAboutStudentChild} />
+
+
 
 const TeacgerAboutStudent = () =>
     <>

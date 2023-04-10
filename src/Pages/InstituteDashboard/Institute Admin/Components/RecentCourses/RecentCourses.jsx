@@ -80,7 +80,7 @@ function RecentCourses({ setInstituteCourseId, setEdit }) {
         <div className="bg-white px-[21px] py-[37px]  flex flex-col items-center">
           {
             loading ?
-              <LoadingSpinner />
+              <LoadingSpinner Position="fixed" Left="0" Bg="white" Height="screen" Width="full" />
               : Courses?.length === 0 ?
                 <NoDataResponse
                   topText="Sorry, courses aren't published yet!"
@@ -88,7 +88,7 @@ function RecentCourses({ setInstituteCourseId, setEdit }) {
                 />
                 : <CoursesTiles
                   Courses={Courses}
-                  loading={loading}
+           
                   OnClick={CourseEditClick}
                 />
           }

@@ -97,3 +97,20 @@ export const TeacherButtons = {
         },
     ]
 }
+
+export const TeacherInfoButtons = {
+    ButtonsInfo: [
+        {
+            Link: '/Courses/teaching',
+            Id: "CoursesTeaching",
+            Text: "Courses Teaching",
+            params:true
+        },
+        {
+            Link: '/About/Instructor',
+            Id: "AboutInstructor",
+            Text: "About Instructor",
+            params:true
+        },
+    ]
+}

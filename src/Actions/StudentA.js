@@ -64,7 +64,7 @@ export const CreateScheduleA = (Events) => async (dispatch) => {
     } catch (error) {
         CheckLoginServer(error?.response?.data, dispatch)
         dispatch({
-            type: "CreateScheduleError",
+            type: "CreateScheduleFailure",
             payload: error
         })
 
@@ -78,7 +78,7 @@ export const GetScheduleA = (EnrollmentId) => async (dispatch) => {
             type: "GetTimeTableRequest"
         })
 
-        const { data } = await axios.post(`${BaseUrl}/api/timetable/${EnrollmentId}`, Credentials);
+        const { data } = await axios.get(`${BaseUrl}/api/timetable/${EnrollmentId}`, Credentials);
         dispatch({
             type: "GetTimeTableSuccess",
             payload: data,

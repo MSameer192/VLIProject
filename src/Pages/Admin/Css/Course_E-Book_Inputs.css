@@ -1,51 +1,58 @@
 .InputHeadings {
-    @apply font-normal  text-4xs                        md:text-3xs   lg:text-[19px]  xl:text-2xs
-                        text-center     sm:text-start;
+  @apply text-center  text-4xs                        font-normal   sm:text-start  md:text-3xs
+                        lg:text-[19px]     xl:text-2xs;
 }
 
 .InputDetails {
-    @apply text-[#707070]   text-6xs                          md:text-5xs xl:text-4xs
-                              text-center     sm:text-start 
-                              max-w-full      sm:max-w-[280px]
+  @apply max-w-full text-center 
+    text-6xs         text-[#707070]        
+               sm:max-w-[280px] sm:text-start
+    md:text-5xs  
+    xl:text-4xs;
 }
 
-
-
-
 .Add_C_B_InputSideContainer {
-    @apply flex flex-col gap-4 w-11/12 sm:w-[72%]
+  @apply flex w-11/12 flex-col gap-4 sm:w-[72%];
 }
 
 .Add_C_BTextArea {
-    @apply w-full border-none shadow-[5px_4px_6px_#00000029] resize-none p-2 min-h-[96px]
+  @apply min-h-[96px] w-full resize-none border-none p-2 shadow-[5px_4px_6px_#00000029];
 }
-
 
 .Add_C_B_HeadingContainer {
-    @apply flex w-full px-6;
-    border-bottom: 1px solid #E5E5E5;
+  @apply flex w-full px-6;
+  border-bottom: 1px solid #e5e5e5;
 }
-
 
 .DataInputContainer {
-    @apply flex  flex-col sm:flex-row items-center sm:items-start
-    gap-4   sm:gap-7   md:gap-10   lg:gap-[52px]   xl:gap-16  2xl:gap-[70px]
+  @apply flex  flex-col items-center gap-4 sm:flex-row
+    sm:items-start   sm:gap-7   md:gap-10   lg:gap-[52px]   xl:gap-16  2xl:gap-[70px];
 }
 
-
-.DataInputContainer>.Admin_HeadingContainer {
-    @apply flex flex-col gap-2 w-full sm:w-[22%]
+.DataInputContainer > .Admin_HeadingContainer {
+  @apply flex w-full flex-col gap-2 sm:w-[22%];
 }
-
-
-
-
-
 
 .OnAddPopup-BG {
-    @apply fixed h-screen w-screen bg-[#00000029] -left-0 -top-0 z-30 flex justify-center items-center
+  @apply fixed -left-0 -top-0 z-30 flex h-screen w-screen items-center justify-center bg-[#00000029];
 }
 
-.OnAddPopup-Container{
-    @apply flex flex-col gap-20 items-center w-[350px] h-56 bg-white relative py-[22px] rounded-[20px]
+.OnAddPopup-Container {
+  @apply relative flex h-56 w-[350px] flex-col items-center gap-20 rounded-[20px] bg-white py-[22px];
+}
+
+.Admin_SubmitButton {
+  @apply whitespace-nowrap rounded-2xl
+     
+    py-2        px-3        text-4xs
+                        
+                            sm:text-3xs                 
+
+    md:py-2     md:px-4     md:text-2xs    
+
+                lg:px-5     lg:text-xs
+
+    xl:py-3     xl:px-6     xl:text-sm     
+
+    2xl:px-7                2xl:text-base;
 }

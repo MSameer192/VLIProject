@@ -5,7 +5,9 @@ import { GetScheduleA } from '../../Actions/StudentA';
 import ClassScheduler from '../../Components/Scheduler/Scheduler'
 import useCheckLogin from '../../Helpers/CustomHooks/CheckLogin';
 import { GetLocalStorage } from '../../Helpers/LocalStorage/LocalStorage';
-const ClassesSchedule = () => {
+import MyCourses from '../../Components/MyCourses/MyCourses';
+import { EnrolledCourseButtonsInfo } from '../../PageNames';
+const ClassesScheduleChild = () => {
     const { EnrollmentId } = useParams()
     const { UserInfo } = useSelector(Store => Store.LoginSignupReducer);
     const { Schedule } = useSelector(Store => Store.StudentReducer);
@@ -13,18 +15,26 @@ const ClassesSchedule = () => {
     const Dispatch = useDispatch()
     useEffect(() => {
         if (EnrollmentId)
-            Dispatch(GetScheduleA())
+            Dispatch(GetScheduleA(EnrollmentId))
     }, [Dispatch, EnrollmentId])
+
     useEffect(() => {
-        setEvents(Schedule)
+        const EditableSchedule = JSON.parse(JSON.stringify(Schedule))
+        setEvents(EditableSchedule.map(Value => {
+            Value.endDate = new Date(Value.endDate)
+            Value.startDate = new Date(Value.startDate)
+            return Value
+        }))
     }, [Schedule])
+
 
     useCheckLogin(true, ["Student", "Institute"], ["Admin", "Staff"]);
 
     return (
         <div>
             {Events.length >= 0
-                ? <ClassScheduler Name={UserInfo?.FirstName + UserInfo?.LastName} Events={Events} setEvents={setEvents}
+                ? <ClassScheduler Name={UserInfo?.FirstName + " " + UserInfo?.LastName}
+                    Events={Events} setEvents={setEvents}
                     Edit={GetLocalStorage("UserInfo").User === "Institute"}
                 />
                 : null
@@ -33,5 +43,7 @@ const ClassesSchedule = () => {
         </div>
     )
 }
+
+const ClassesSchedule = () => <MyCourses ButtonsInfo={EnrolledCourseButtonsInfo} PageName="UpcomingClasses" Component={ClassesSchedule} />
 
 export default ClassesSchedule

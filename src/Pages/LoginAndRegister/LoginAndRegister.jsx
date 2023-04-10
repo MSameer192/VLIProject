@@ -70,7 +70,6 @@ const SignUp = () => {
                                 : <UserSigning ScreenSize={ScreenSize} TopLoginRegisterBtns={TopLoginRegisterBtns} />
                         }
 
-
                     </div>
 
 

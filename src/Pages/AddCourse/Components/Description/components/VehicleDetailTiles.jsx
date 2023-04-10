@@ -29,7 +29,7 @@ const VehicleDetailTiles = ({ CourseData, setCourseData, setSteps }) => {
                 {
                     Vehicles?.length > 0
                         ? Vehicles?.map(value => {
-                            console.log(value)
+
                             return <VehicleTile
                                 key={value.VehicleId}
                                 Image={value.VehicleImages?.[0]?.VehicleImageLink}
@@ -58,7 +58,7 @@ const VehicleTile = ({ OnClick, Model, Year, PlateNumber, Description, VehicleId
         if (PRef.current?.innerText)
             setDescText(PRef.current?.innerText)
     }, [])
-    console.log(`${BaseUrl}/api/Vehicleimage?url=${Image}`, Image)
+
     return <div className="col-3" >
         <div ref={PRef} className="hidden"></div>
         <div className="vehicalBox">

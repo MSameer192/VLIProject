@@ -16,8 +16,8 @@ const CoursesInventory = ({ setSteps, CourseData, setCourseData }) => {
         Dispatch(GetAdminCoursesA())
     }, [Dispatch])
 
-    const OnClick = (e, CoursePK) => {
-        if (e.target === e.currentTarget) {
+    const OnClick = (e, CoursePK, Added) => {
+        if (e.target === e.currentTarget && !Added) {
             setSteps(2);
             setCourseData({ ...CourseData, CourseFK: CoursePK })
         }
@@ -34,7 +34,7 @@ const CoursesInventory = ({ setSteps, CourseData, setCourseData }) => {
                         onClick={e => e.stopPropagation()}>
 
                         {AdminCourses?.length > 0 ? AdminCourses?.map((value, index, arr) => {
-
+                            const Added = value?.InstituteCourse?.[0]?.InstituteFK
 
                             return <CourseComp
                                 key={value.CoursePK}
@@ -43,7 +43,8 @@ const CoursesInventory = ({ setSteps, CourseData, setCourseData }) => {
                                 CourseName={value.CourseName}
                                 Description={value.Description}
                                 Image={value.CourseThumbnail}
-                                OnClick={(e) => OnClick(e, arr[index].CoursePK, value.CoursePK)}
+                                Added={Added}
+                                OnClick={e => OnClick(e, arr[index].CoursePK, Added)}
                             />
                         }
                         )
@@ -59,14 +60,8 @@ const CoursesInventory = ({ setSteps, CourseData, setCourseData }) => {
 }
 
 
-export const CourseComp = ({ VehicleType, LicenseType, CourseName, Description, OnClick, Image }) => {
-    const [Select, setSelect] = useState(false);
-
-    const onclick = (e) => {
-        setSelect(!Select);
-        OnClick(e);
-    }
-
+export const CourseComp = ({ VehicleType, LicenseType, CourseName, Description, OnClick, Image, Added }) => {
+    // const [Select, setSelect] = useState(false);
     let ModifiedDescription = Description;
 
     let ModifiedCourseName = CourseName;
@@ -79,14 +74,13 @@ export const CourseComp = ({ VehicleType, LicenseType, CourseName, Description, 
     if (ModifiedCourseName && ModifiedCourseName?.split("").length > 30)
         ModifiedCourseName = ModifiedCourseName?.split("")?.slice(0, 30).join('') + "...";
 
-
-    return <div className="col-3 aspect-[159_/_217] max-h-[440px] RecommendedCourses" >
-        <div className="vehicalBox addCourseFIrstVehicalBox" onClick={(e) => setSelect(!Select)}>
+    return <div className="col-3 aspect-[159_/_217] max-h-[440px] RecommendedCourses">
+        <div className={`vehicalBox addCourseFIrstVehicalBox pt-1 ${Added ? "bg-[#9c9c9c]" : ""}`}>
             <div className="vehicalImgConainer">
                 <div className="vehicleInventoryImgTopRate">
-                    {Select
+                    {/* {Select
                         ? <div> 1 </div>
-                        : null}
+                        : null} */}
 
                 </div>
                 <div className="flex justify-center items-center h-[160px] overflow-hidden">
@@ -106,7 +100,7 @@ export const CourseComp = ({ VehicleType, LicenseType, CourseName, Description, 
                 </p>
             </div>
             <center>
-                <button className="vehicalSelectBtn cursor-pointer" type="button" onClick={e => onclick(e)}>
+                <button className="vehicalSelectBtn cursor-pointer" type="button" onClick={OnClick}>
                     Select Course
                 </button>
             </center>

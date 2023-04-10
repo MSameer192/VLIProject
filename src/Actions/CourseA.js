@@ -329,7 +329,6 @@ export const InstituteCoursesA = () => async (dispatch) => {
 
         const { data } = await axios.get(`${BaseUrl}/api/institute/courses`, { withCredentials: true });
 
-
         dispatch({
             type: "GetInstituteCoursesSuccess",
             payload: data

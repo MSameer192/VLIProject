@@ -29,20 +29,38 @@ const ContinueWithGoogle = () => {
 
                 window.google.accounts.id.renderButton(
                     document.getElementById(GoogleBtn?.id),
-                    { theme: "outline", size: "large" } // customization attributes
+                    { theme: "outline", size: "large", width: "full" } // customization attributes
                 );
-                // window.google.accounts.id.prompt(); // also display the One Tap dialog
+                // also display the One Tap dialog
             }
             LoadButton()
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [GoogleBtn, Dispatch])
-
+    const HandleOnClick = () => { window.google.accounts.id.prompt(); console.log(12) }
     return (
-        <div id="buttonDiv"
-            className='w-full flex' ref={(e) => { setGoogleBtn(e) }}
-        ></div>
+
+        <button className={`SignUpSigninPageButtons border-none md:border-solid bg-[#ff000000] md:bg-white   w-auto md:w-full DropShadow`} type="button" onClick={HandleOnClick}>
+            <div id="buttonDiv"
+                className='w-full flex' ref={(e) => { setGoogleBtn(e) }}
+            ></div>
+            {/* <picture>
+                <source media="(min-width:768px)" srcSet={require("../../../../../Assets/Google Icon.png")} />
+                <img
+                    className='w-9 md:w-7 xl:w-10'
+                    src={require("../../../../../Assets/Google Icon @mobile.png")} alt="" />
+            </picture>
+            <h5 className={`SignUpSigninPageButtonText hidden md:inline-block`}
+            // onClick={() => Click("GoogleLogin")}
+
+            >
+                Continue With Google
+            </h5> */}
+
+          
+        </button>
+
     )
 }
 

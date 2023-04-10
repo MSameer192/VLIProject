@@ -41,7 +41,6 @@ const UserSigning = ({ ScreenSize, TopLoginRegisterBtns }) => {
 
         window.grecaptcha?.ready(function () {
             if ((AuthPageName === "Sign Up" && TermsAgreed) || AuthPageName === "Sign In") {
-                console.log("Loading")
                 Dispatch(GoogleReCapthcaLoading(AuthPageName))
             }
             window.grecaptcha.execute(process.env.REACT_APP_GOOGLE_CAPTCHA_KEY)
@@ -57,7 +56,7 @@ const UserSigning = ({ ScreenSize, TopLoginRegisterBtns }) => {
 
                 });
         });
-
+      
         return false
     }
 
@@ -67,7 +66,16 @@ const UserSigning = ({ ScreenSize, TopLoginRegisterBtns }) => {
             {!loading ?
                 <form className='flex w-full flex-col items-center h-fit md:bg-white pb-5 relative' onSubmit={SubmitForm}>
                     <button type="button" className='p-3 md:hidden cursor-pointer rounded-xl border-none bg-[#A1A3EF] flex items-center justify-center absolute right-6 top-2 z-10'
-                        onClick={() => Dispatch(ResetLoginSignUp(false))}
+                        onClick={() => {
+                            Dispatch(ResetLoginSignUp(false));
+                            setCredentials({
+                                Email: "",
+                                Password: "",
+                                ConfirmPassword: "",
+                                FirstName: "",
+                                LastName: ""
+                            })
+                        }}
                     >
                         <img className=' cursor-pointer' src={require('../../Assets/CrossIcon.svg').default} alt="" />
                     </button>
@@ -81,7 +89,9 @@ const UserSigning = ({ ScreenSize, TopLoginRegisterBtns }) => {
 
                         <SignInLeftSide
                             TopLoginRegisterBtns={TopLoginRegisterBtns}
-                            ScreenSize={ScreenSize} />
+                            ScreenSize={ScreenSize}
+                            setCredentials={setCredentials}
+                        />
 
                         <CenterORline />
                         <SigninRightSide

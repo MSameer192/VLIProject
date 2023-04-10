@@ -1,14 +1,14 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import EnrolledCourseDetails from './Components/EnrolledCourseDetails'
 import EnrolledCourseHrs from './Components/EnrolledCourseHrs';
 
 
 const EnrolledCourseInfo = ({ Course, setShowSubscription }) => {
     const { UserInfo } = useSelector((Store) => Store.LoginSignupReducer);
+    const { InstructorId } = useParams()
 
-    // console.log(Course)
     return (
         <div className={`flex  border-[#D6D6D6] border-[1px] border-solid py-7 mt-28 gap-8 items-center
         justify-between
@@ -40,27 +40,40 @@ const EnrolledCourseInfo = ({ Course, setShowSubscription }) => {
                 }
                 {
                     UserInfo?.User === "Institute"
-                        ?
-                        <>
+                        ? <>
 
                             <Link
-                                to={`/enrolledcourse/coursemodule/${Course?.EnrollmentId}`}
+                                to={UserInfo.InstituteUserType === "Instructor"
+                                    ? `/enrolledcourse/coursemodule/${Course?.EnrollmentId}`
+                                    : `/About/Instructor/${InstructorId}`
+                                }
                                 className={`no-underline whitespace-nowrap bg-[#A1A3EF] text-white border-none rounded-xl py-3 cursor-pointer text-center
                                 px-2    w-full max-w-[185px] sm:max-w-[215px]
                                 text-3xs    md:text-xs 
                         `}>
                                 View Calendar
                             </Link>
-                            <button
-                                className={`no-underline whitespace-nowrap bg-[#EE1B1B] text-white border-none rounded-xl py-3 cursor-pointer text-center
+                            {UserInfo?.InstituteUserType === "Instructor"
+                                ? <Link
+                                    className={`no-underline whitespace-nowrap bg-[#EE1B1B] text-white border-none rounded-xl py-3 cursor-pointer text-center
                                 w-full max-w-[185px] sm:max-w-[215px]
                                 px-1 
-                                text-4xs    sm:text-4xs     md:text-3xs     xl:text-2xs      2xl:text-xs 
-                        `}
-                                onClick={() => setShowSubscription(true)}
-                            >
-                                Subscription Status
-                            </button>
+                                text-4xs    sm:text-4xs     md:text-3xs     xl:text-2xs      2xl:text-xs`}
+                                    onClick={() => setShowSubscription(true)}
+                                >
+                                    On Leave
+                                </Link>
+                                :
+                                <button
+                                    className={`no-underline whitespace-nowrap bg-[#EE1B1B] text-white border-none rounded-xl py-3 cursor-pointer text-center
+                                w-full max-w-[185px] sm:max-w-[215px]
+                                px-1 
+                                text-4xs    sm:text-4xs     md:text-3xs     xl:text-2xs      2xl:text-xs`}
+                                    onClick={() => setShowSubscription(true)}
+                                >
+                                    Subscription Status
+                                </button>
+                            }
                         </>
                         : null
                 }

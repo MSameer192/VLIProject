@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import ContinuesWith from './ContinueWIth/ContinuesWith';
 import { OtherOption } from '../MiniComponents';
 import { OpenLoginSignUp } from '../../../../../../Actions/ToggleSignupA';
-
-const SignInLeftSide = ({ TopLoginRegisterBtns, ScreenSize }) => {
+import "./LeftSide.css"
+const SignInLeftSide = ({ TopLoginRegisterBtns, ScreenSize, setCredentials }) => {
     const Dispatch = useDispatch()
     const { AuthPageName } = useSelector((Store) => Store.ToggleSignupReducer);
 
@@ -57,7 +57,16 @@ const SignInLeftSide = ({ TopLoginRegisterBtns, ScreenSize }) => {
                             </h4>
 
                             <button className={`w-full ${ButtonStyle} justify-start py-2 px-0 bg-white `}
-                                onClick={() => Dispatch(OpenLoginSignUp("Register", true))}
+                                onClick={() => {
+                                    Dispatch(OpenLoginSignUp("Register", true));
+                                    setCredentials({
+                                        Email: "",
+                                        Password: "",
+                                        ConfirmPassword: "",
+                                        FirstName: "",
+                                        LastName: ""
+                                    })
+                                }}
                                 type="button"
                             >
                                 <img className='w-6 xl:w-10'

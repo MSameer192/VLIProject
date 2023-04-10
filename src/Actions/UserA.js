@@ -33,8 +33,11 @@ export const LoginUser = (UserData, Dispatch, PageName) => async (dispatch) => {
         SetLocalStorage("UserInfo", { ...data.User, Notifications: data.Notifications })
 
         Dispatch(DoneLoginSignUp(false))
+        dispatch({
+            type: "LoginError",
+            payload: {}
+        })
     } catch (error) {
-        console.log(error)
         Dispatch(AgainOpenLoginSignUp(PageName))
         dispatch({
             type: "LoginError",
@@ -73,11 +76,16 @@ export const SignUpWithGoogleAction = (SignUpInfo, Dispatch, PageName) => async 
 
         SetLocalStorage("UserInfo", { ...data.User, Notifications: data.Notifications });
         Dispatch(DoneLoginSignUp(false))
+        dispatch({
+            type: "SignUpFailure",
+            payload: {},
+        })
     } catch (error) {
+
         Dispatch(AgainOpenLoginSignUp(PageName))
         dispatch({
             type: "SignUpFailure",
-            payload: error,
+            payload: (error?.response?.data) ? (error?.response?.data) : {},
         })
 
     }
